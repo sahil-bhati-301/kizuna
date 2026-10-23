@@ -1,0 +1,20 @@
+{
+  "name": "kizuna",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "scripts": {
+    "dev": "npm run dev -w @kizuna/web",
+    "build": "npm run build -w @kizuna/web",
+    "preview": "npm run preview -w @kizuna/web",
+    "test": "vitest run",
+    "typecheck": "tsc -p packages/content && tsc -p packages/core && tsc -p apps/web"
+  },
+  "devDependencies": {
+    "typescript": "^5.8.3",
+    "vitest": "^3.2.4"
+  }
+}

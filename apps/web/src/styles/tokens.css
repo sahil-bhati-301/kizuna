@@ -1,0 +1,96 @@
+/* Design tokens. Light = soft paper, deep indigo ink, a vermilion "red thread". */
+:root {
+  color-scheme: light dark;
+
+  --paper: #f6f1e7;
+  --paper-2: #efe8da;
+  --surface: #fffdf8;
+  --surface-2: #f8f3ea;
+  --ink: #1d2142;
+  --ink-soft: #3d4266;
+  --muted: #5f6380;
+  --line: #e2d9c8;
+  --line-strong: #cfc3ad;
+
+  --indigo: #2e3a8c;
+  --indigo-strong: #222c70;
+  --indigo-soft: #e4e6f6;
+  --on-indigo: #fffdf8;
+
+  --thread: #c8402a; /* vermilion accent (graphics, fills) */
+  --thread-ink: #a8321f; /* vermilion text, AA on paper */
+  --thread-soft: #f8e2da;
+  --on-thread: #ffffff;
+
+  --ok: #1d7a55;
+  --ok-soft: #dcf0e6;
+  --bad: #b3321f;
+  --bad-soft: #f9e0d9;
+  --warn: #8a5a00;
+
+  /* Kanji stages: Okabe–Ito colour-blind-safe palette, always paired with a pattern or label. */
+  --stage-solid: #009e73;
+  --stage-learning: #56b4e9;
+  --stage-shaky: #e69f00;
+  --stage-weak: #d55e00;
+  --stage-untested: #a29e93;
+  --stage-mix: 20%;
+
+  --focus: #2e3a8c;
+  --shadow-sm: 0 1px 2px rgb(29 33 66 / 0.06), 0 1px 1px rgb(29 33 66 / 0.04);
+  --shadow: 0 1px 2px rgb(29 33 66 / 0.05), 0 6px 24px -8px rgb(29 33 66 / 0.14);
+  --shadow-lg: 0 24px 60px -20px rgb(29 33 66 / 0.35);
+
+  --radius-sm: 10px;
+  --radius: 16px;
+  --radius-lg: 24px;
+
+  --font-sans: 'Inter', 'Noto Sans JP', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-ja: 'Noto Sans JP', 'Hiragino Sans', 'Yu Gothic', sans-serif;
+  --font-ja-serif: 'Noto Serif JP', 'Hiragino Mincho ProN', 'Yu Mincho', serif;
+
+  --ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #12142a;
+    --paper-2: #171a34;
+    --surface: #1c1f3b;
+    --surface-2: #232746;
+    --ink: #eceaf5;
+    --ink-soft: #cfcde2;
+    --muted: #a5a7c2;
+    --line: #2f3458;
+    --line-strong: #434a75;
+
+    --indigo: #8e9bff;
+    --indigo-strong: #aab4ff;
+    --indigo-soft: #2a2f5c;
+    --on-indigo: #12142a;
+
+    --thread: #ff7559;
+    --thread-ink: #ff8f78;
+    --thread-soft: #3e2433;
+    --on-thread: #1a0d0a;
+
+    --ok: #5fd3a2;
+    --ok-soft: #1d3a37;
+    --bad: #ff8f78;
+    --bad-soft: #3e2433;
+    --warn: #f3c05a;
+
+    --stage-solid: #2fc79a;
+    --stage-learning: #6fc3f0;
+    --stage-shaky: #f0b32e;
+    --stage-weak: #ff7a2e;
+    --stage-untested: #6d6f88;
+    --stage-mix: 26%;
+
+    --focus: #aab4ff;
+    --shadow-sm: 0 1px 2px rgb(0 0 0 / 0.3);
+    --shadow: 0 1px 2px rgb(0 0 0 / 0.3), 0 8px 28px -10px rgb(0 0 0 / 0.55);
+    --shadow-lg: 0 24px 60px -20px rgb(0 0 0 / 0.7);
+  }
+}
