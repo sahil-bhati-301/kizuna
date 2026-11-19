@@ -1,6 +1,6 @@
 # Kizuna (絆): Architecture Design
 
-Adaptive kanji learning SaaS · Design v1.1 · 2026-11-19 · Status: **Proposed** (revised after design review; see [Appendix C](#appendix-c-revision-log))
+Adaptive kanji learning SaaS · Design v1.2 · 2026-11-19 · Status: **Proposed** (revised after two design reviews; see [Appendix C](#appendix-c-revision-log))
 
 > **Scope.** This document covers architecture and design only. Nothing in it is implemented yet. The repository was empty when it was written (no commits, no code, no conventions), so it also proposes the initial repository layout and engineering conventions.
 >
@@ -147,7 +147,8 @@ flowchart LR
 
 ### 2.3 Module rules and communication
 
-- A module's only import path is its public `index.ts`, which exposes queries, commands and event types. CI enforces this with dependency-cruiser (or eslint-plugin-boundaries).
+- A module's only import path is its public `index.ts`, which exposes queries and commands. CI enforces this with dependency-cruiser (or eslint-plugin-boundaries).
+- **Domain event definitions live in `packages/contracts`**, not in the producing module. A consumer imports the event type from `contracts`, never from the producer. Otherwise a subscriber would import its producer, and `account` (which `drills` uses for entitlements) importing `drills` for event types would create a package cycle. CI also checks that the package graph has no cycles.
 - Application code never joins across schemas. A module that needs another module's data calls its query API (in-process and cheap) or keeps a local read model fed by events.
 - **Exception, for reporting only:** a `reporting` schema holds read-only views that may join across schemas. Only the internal dashboards (Metabase, on the read replica) and offline analysis use it. Application code and the worker never read from it, which CI enforces.
 - The `domain/` layer of every module is pure: no I/O, no `Date.now()`, no `Math.random()`. Clock and RNG are injected.
@@ -375,9 +376,10 @@ Next interval for desired retention r:   t = (S / f) · (r^(−1/d) − 1)
 
   The event still records *how* the answer was reached (hint, retry, latency), so analytics can tell these cases apart. **Hard and Easy are not used in v1.** An automatic "fast means Easy" rule would give FSRS's large Easy bonus to about 1 in 6 correct answers by construction, and speed also depends on answer length, so intervals would grow too long. Richer mappings (for example hint → Hard, fast → Easy) run in **shadow mode** (§8.6) and are switched on only if they improve held-out log-loss.
 - **Guessing.** Multiple choice (MC) has guess rate `γ = 1/k`. Analytics use `p = γ + (1 − γ)·R`. The scheduler must not mistake lucky guesses for memory either, so:
-  - MC is used only while a trace is in **Learning**, where FSRS short-term steps apply and an over-estimate is small and short-lived.
-  - **A trace leaves Learning only through a correct typed answer.** From then on, it is scheduled from typed answers only.
-  - MC reviews are excluded when fitting FSRS parameters (§4.2).
+  - MC is used only while a trace is in **Learning**.
+  - **MC answers never change long-term state.** They drive only the in-session short-term steps (re-queue after about 5 items). They are stored with `counts_for_scheduling = false`, and they do not change S, D or `due_at`. Because the stage is derived from S (§4.6), MC answers cannot move a trace out of Learning.
+  - **A trace leaves Learning only through a correct typed answer**, which is the first answer that updates S. From then on, it is scheduled from typed answers only.
+  - MC answers are therefore never part of the FSRS parameter fit (§4.2), which uses only answers with `counts_for_scheduling = true`.
   - With `recognition` enabled, its MC answers are scored with the guess rate and use `k ≥ 5`.
 - **"I don't know" is a first-class button.** It produces cleaner data than random guesses.
 - **Shared normalisation and grading.** One pure package grades answers, used by the client for instant feedback and by the server for the authoritative re-grade. It handles:
@@ -385,7 +387,7 @@ Next interval for desired retention r:   t = (S / f) · (r^(−1/d) − 1)
   - okurigana;
   - meaning fuzzy match (Damerau–Levenshtein, tolerance scaled by length);
   - accept-lists and user synonyms.
-- **Alternative valid readings.** If the learner gives a valid reading of the wrong kind (なま when the on'yomi was asked), the UI does not present the answer as a mistake. It says "valid reading, but we want the on'yomi" and offers a retry, and the event is logged as `R_ALT_VALID`. For scheduling it still counts as **Again**, because the requested reading was not recalled on the first try. That class is the main signal for reading-type weaknesses. Any core reading of the requested kind counts as correct.
+- **Alternative valid readings.** If the learner gives a valid reading of the wrong kind (なま when the on'yomi was asked), the UI does not present the answer as a mistake. It says "valid reading, but we want the on'yomi" and offers a retry, and the event is logged as `R_ALT_VALID`. For scheduling it still counts as **Again**, because the requested reading was not recalled on the first try. Once isolated reading facets are enabled, this class is a strong signal for reading-type weaknesses. In v1, where readings are asked only inside words, the equivalent signal is `R_ON_KUN_SWAP_IN_WORD` (§5.2). Any core reading of the requested kind counts as correct.
 
 ### 4.4 Uncertainty
 
@@ -427,8 +429,9 @@ Belief about current recall:                 R_now ~ Beta(α = R·κ, β = (1 �
 - **Kanji mastery vector** = the stage of meaning, plus one segment per core primary reading (on and kun, where they exist). A reading segment shows the best stage among the learner's context words that use that reading. When the flagged facets are enabled, they add their own segments. The UI draws it as a segmented **mastery ring**.
 - A kanji counts as **Mastered** when:
   - meaning is Strong or better;
-  - for each core primary reading, at least one context word using it is Mature or better;
+  - for each core primary reading **that has at least one aligned curriculum word**, at least one context word using it is Mature or better. A reading with no such word in the curriculum is not required. If no core reading has one, at least one context word of any reading must be Mature;
   - any enabled isolated facets are Strong or better.
+- A kanji counts as **Mature** (used by the first rank's sub-levels, §7.2) when its meaning trace is Mature or better *and* at least one of its context words is Young or better. A kanji with no context words yet counts on meaning alone.
 
   Ranks and the kanji map use this definition, never XP.
 - **Group mastery** (radical family, JLPT level, semantic field) = the fraction Mastered, plus mean **R30**: predicted recall 30 days ahead if nothing is reviewed. This drives family-completion visuals and achievements.
@@ -470,7 +473,7 @@ flowchart LR
   F --> G{"Passes<br/>thresholds?"}
   G -- "no" --> X["Keep watching"]
   G -- "yes" --> H["Candidate:<br/>diagnostic probes<br/>6–10 items"]
-  H --> I{"Probe answers alone<br/>show a deficit?"}
+  H --> I{"Probes below expectation<br/>and combined rule holds?"}
   I -- "no" --> X
   I -- "yes" --> J["Active hypothesis<br/>shown as a knot"]
   J --> K["Intervention request<br/>+ randomised arms"]
@@ -556,7 +559,7 @@ Each detector is a pure function, `detect(snapshot, contentIndex, config) → Hy
 | H1 | Radical or component family weakness | `δ_g` for `radical:*` and `component:*` | `radical:氵` | **Family drill:** the component's meaning, a sort / odd-one-out across the family, contrast with lookalike components |
 | H2 | Visual confusion | Confusion pair or cluster stats, `*_VISUAL_NEIGHBOR`, `REC_DISTRACTOR:visual` | `pair:未/末` | **Contrast drill:** side by side with the differing strokes highlighted, minimal-pair MC, rapid timed discrimination |
 | H3 | Semantic confusion | `M_SEMANTIC_NEIGHBOR`, `REC_DISTRACTOR:semantic`, pair stats on semantic edges | `pair:暑/熱` | **Contrast in context:** collocation cloze (暑い日 / 熱いお茶), usage notes |
-| H4 | Reading-type weakness | `δ_g` for `reading_kind:on` or `reading_kind:kun`; rate of `R_ALT_VALID` | `reading_kind:kun` | **Reading-focus drill:** the same kanji read on vs. kun by context (compound vs. okurigana), plus rules of thumb |
+| H4 | Reading-type weakness | `δ_g` for `reading_kind:on` or `reading_kind:kun` over context answers (attributed through `word_kanji`); rate of `R_ON_KUN_SWAP_IN_WORD`. When isolated reading facets are enabled, also the rate of `R_ALT_VALID`. | `reading_kind:kun` | **Reading-focus drill:** the same kanji read on vs. kun by context (compound vs. okurigana), plus rules of thumb |
 | H5 | Specific reading or phonetic series | `δ_g` for `reading:*` or `phonetic:*`; `R_PHONETIC_SIBLING` | `phonetic:青` | **Series lesson:** the family and its shared on'yomi, with exceptions highlighted |
 | H6 | Kana-detail errors | `R_KANA_DETAIL:*` is ≥ 30% of reading errors and ≥ 6 occurrences | `kana:long_vowel` | **Minimal-pair typing and listening** (しょう/しょ, きって/きて) |
 | H7 | Context-transfer gap | The kanji's `meaning` trace is Strong (or, when enabled, its isolated reading trace), but `δ_g` < −τ for context traces using that reading (or globally for the `context` facet) | `context:生:on:せい` | **Vocabulary cloze:** 3–5 words using that kanji and reading, plus sentence reading |
@@ -583,10 +586,13 @@ stateDiagram-v2
 
 - **At most 3 active hypotheses per user** at a time, to keep focus and avoid nagging. They are ranked by expected benefit = `|Δpp|` × items in scope × item importance (frequency).
 - **Candidates are not shown** to the learner until **probes confirm them on fresh data**. This is the main false-alarm filter, so it must be able to say no:
-  - A group candidate gets **6–10 probe items** spread over the next sessions.
-  - It is confirmed only if **the probe answers on their own** give `P(δ_g < 0) ≥ 0.8` with the same estimator. The reviews that triggered detection are left out of this calculation. Otherwise it returns to watching.
-  - A pair candidate gets 4–6 targeted opportunities (the confusable shown, or a typed prompt). It is confirmed if the confusion recurs at least once.
-  - Adding 2–4 probes to a pool of 12+ reviews would almost never overturn the original signal, so the original filter did not really filter anything.
+  - A group candidate gets **6–10 typed probe items** spread over the next sessions. It is confirmed only if **both** of these hold:
+    1. **Fresh-data direction check.** On the probes alone, the learner scores below the calibrated expectation: `Σ (y_i − q_i) < 0` over the probe answers. This is a plain count with no prior, so a small sample is not shrunk to "no effect".
+    2. **Combined rule.** The candidate rule of §5.3 still holds when the probes are added to the original evidence.
+
+    Otherwise the candidate returns to watching. The probes must be able to say no: re-using the detection data alone cannot. They also must not be so strict that real weaknesses never pass. Requiring a full posterior from 6–10 probes alone would do that, because the prior shrinks so few answers towards zero.
+    - *Rough operating point (8 probes, expected 85%):* a learner who truly scores 75% passes the direction check about 63% of the time. A learner with no deficit passes it about 34% of the time. Because candidates already had to pass the §5.3 thresholds, this cuts false knots to about a third while keeping most real ones. The simulation gate (§8.6) tunes the probe count.
+  - A pair candidate gets 4–6 targeted **typed** opportunities: a typed prompt for A or B, where producing the other's answer is the confusion. It is confirmed if the confusion recurs at least once. Typed answers almost never produce exactly the confusable's answer by accident, so one recurrence is meaningful. If a probe has to be multiple choice (for example `recognition`, where typing is impossible), at least **2** picks of the confusable are required. A single pick would happen by chance 1 time in k.
 - **Resolved** means `P(δ_g < −τ/2) < 0.3` after at least 10 new observations; for pair hypotheses, no confusion across the last 6 opportunities.
 - **Lifecycle decisions use `δ_g` only.** Resolve, escalate and relapse are decided from the group effect. The per-user experiment comparison (§6.7) is not used, because a few items per arm cannot support a decision.
 - **Chronic** hypotheses become a long-term focus, shown less prominently and never nagged about.
@@ -633,7 +639,7 @@ The planner is a pure function, `plan(snapshot, content, config, now, seed)`. Th
 | Relearn steps | Items failed earlier today | As needed | Sequenced in the session |
 | Focus drills | Intervention blocks for active hypotheses (treatment arm) | ≤ 25%, one block per session | Expected benefit |
 | Diagnostic probes | In-scope traces of candidate hypotheses; high-uncertainty traces | ≤ 10% | Widest interval and R closest to 0.5 (most informative) |
-| Retention checks | Day-14 outcome checks for experiments, for treatment *and* control items of the same hypothesis on the same day (§6.7) | ≤ 5% | Due date. An item whose natural review falls on the check day uses that review. |
+| Retention checks | Day 13–15 outcome checks for experiments, balanced across treatment and control items on each day (§6.7) | ≤ 5% (never exceeded; new experiments wait instead) | Check date. An item whose natural review falls in the window uses that review. |
 | New items | Next lesson items from the curriculum | Whatever budget remains, capped by the daily new limit and entitlement | Curriculum order |
 
 - **Budget.** The user's time goal (say 10 minutes) is converted to item counts using their median latency per exercise type, with defaults until there is data.
@@ -700,7 +706,11 @@ The planner is a pure function, `plan(snapshot, content, config, now, seed)`. Th
 2. **Treatment.** Focus-drill blocks over 1–3 sessions, with the dose recorded. **Control** items get standard SRS only. They receive the intervention after their day-14 check (the waitlist), or straight away if they lapse twice (a safety valve, recorded as censored).
 3. **Drill answers are exposures, not scheduling reviews.** Focus-drill answers do not change FSRS state, so both arms follow the same standard SRS schedule. The drill is the only planned difference between them.
 4. **Outcome: a fixed-day retention check for both arms.**
-   - **Primary:** on day 14 (±1) after the last treatment session, every treatment and control item of that hypothesis gets a retention check *on the same day*, using the same exercise type. An item whose natural review falls on that day uses it. The check is a normal typed review and updates FSRS like any other.
+   - **Primary:** every treatment and control item of that hypothesis gets one retention check in the **window of days 13–15** after the last treatment session, using the same exercise type. The check is a normal typed review and updates FSRS like any other.
+     - **Spreading.** The checks are spread over the three days, with each day's checks **balanced across arms** (paired treatment and control items, as far as counts allow). The arms are then compared on the same days.
+     - An item whose natural review falls in the window uses that review, in either arm.
+     - **Budget.** Retention checks take at most 5% of a session (§6.2). About 12 items over 3 days is about 4 a day, which fits. If the open check windows of all active hypotheses would exceed the quota, the *next* experiment's start is delayed. A window is never stretched and the quota is never exceeded.
+   - **Estimand.** This measures the effect of *assigning* the drill (intention to treat). That includes any difference in later SRS reviews the drill causes, which is the effect the product actually delivers.
    - The outcome is **plain accuracy, treatment vs. control**. Random assignment makes this comparison fair on its own, so no model-based counterfactual is needed. FSRS-predicted recall at check time is used only as a covariate to reduce variance.
    - *Why not "first natural review ≥ 14 days after"?* Between the drill and day 14, natural reviews update FSRS in both arms. Treatment items pass more often, so the scheduler raises their predictions and pushes their next review further out. A residual measured later is then taken against a prediction that has already absorbed the improvement, which hides most of the effect.
    - **Secondary:** for confusion hypotheses, the confusion rate per opportunity over the 14 days. The short-term residual on the first natural review at least 2 days after treatment is reported for description only.
@@ -769,7 +779,7 @@ apps/web/src/
 | XP | 10 per scheduled item completed, 15 per new item learned, 30 per focus-drill block | XP only for planner-scheduled items; nothing for re-queued attempts or self-initiated cramming |
 | Daily goal | 5, 10 or 20 minutes (converted to an XP target), or "clear all due" | Met when the target is reached *or* everything due is cleared |
 | Streak | Days the goal is met, counted in the learner's **learning day** (their timezone, day starting 04:00 by default) | Freezes: earn 1 per 7-day streak, hold up to 2 (Pro: 3). Vacation mode pauses both the streak and reviews. A timezone change applies **from the next learning day** and never reopens a day that has already closed, so moving the clock cannot rescue a missed day. |
-| Ranks | Based on kanji **Mastered**: 糸 *thread* → 紐 *string* → 縄 *rope* → 綱 *cable* → 絆 *bond*, with sub-levels | Every rank kanji contains 糸, matching the brand. Ranks cannot be bought or ground. A first Mastered kanji takes a couple of months, so the **sub-levels of the first rank (糸) count kanji reaching Mature** (remembered well for about a week). That gives a first rank-up within the first weeks. A progress bar always shows how far the next rank is. |
+| Ranks | Based on kanji **Mastered**: 糸 *thread* → 紐 *string* → 縄 *rope* → 綱 *cable* → 絆 *bond*, with sub-levels | Every rank kanji contains 糸, matching the brand. Ranks cannot be bought or ground. A first Mastered kanji takes a couple of months, so the **sub-levels of the first rank (糸) count kanji reaching Mature** (as defined in §4.6: the meaning remembered well for about a week). That gives a first rank-up within the first weeks. A progress bar always shows how far the next rank is. |
 | Knots | Confirmed weaknesses appear as knots to untie. Resolving one earns "Knot untied". | Only confirmed hypotheses are shown. Results are honest, including "inconclusive". |
 | Achievements | Declarative rules over events and aggregates: milestones, completed radical families, streaks, knots untied, comebacks, exercise-type explorer | Config-driven and versioned. Rules are pure and unit-tested. |
 | Celebrations | Rank-ups, family completion, streak milestones (7, 30, 100, 365) | Reduced-motion variants |
@@ -802,7 +812,8 @@ The API is REST with JSON under `/v1`, validated with Zod, and the OpenAPI spec 
 | `/auth/*` | Auth library routes: magic link or OTP, OAuth, passkeys, sign-out |
 | `GET /v1/me` | Profile, settings, entitlements, current content release |
 | `PATCH /v1/me/settings` | Goal, desired retention, track, reminders, UI preferences |
-| `POST /v1/onboarding/placement` · `POST /v1/onboarding/placement/{id}/answers` | Adaptive placement test |
+| `POST /v1/onboarding/placement` · `POST /v1/onboarding/placement/{id}/answers` | Adaptive placement test (Phase 3) |
+| `POST /v1/onboarding/anki-import` | Upload an Anki export; returns matched and unmatched cards (Phase 3) |
 | `GET /v1/home` | Due and new counts, estimated minutes, goal, streak, top knots, forecast |
 | `POST /v1/sessions` | Plan a session: `{mode: daily, reviews, lessons or focus, hypothesisId?, budgetMinutes}` |
 | `GET /v1/sessions/{id}` | Resume a session |
@@ -844,7 +855,7 @@ erDiagram
   USER ||--o{ MEMORY_TRACE : "owns"
   MEMORY_TRACE ||--o{ REVIEW_EVENT : "reviewed in"
   USER ||--o{ EXPOSURE_EVENT : "has"
-  USER ||--o| SCHEDULER_PARAMS : "fitted"
+  USER ||--o{ SCHEDULER_PARAMS : "fitted per facet family"
   USER ||--o{ SESSION : "studies in"
   SESSION ||--o{ REVIEW_EVENT : "contains"
   USER ||--o{ HYPOTHESIS : "has"
@@ -881,7 +892,8 @@ memory.review_event         id · received_at (server) · PK(id, received_at) ·
                             · pre_s real · pre_d real · pre_r real · post_s real · post_d real
                             · engine_version_set_id int · experiment_arm · idempotency_key
                             PARTITION BY RANGE (received_at) monthly · INDEX(user_id, occurred_at) · INDEX(trace_id, occurred_at)
-memory.review_idempotency   idempotency_key PK · review_event_id · received_at        (not partitioned)
+memory.review_idempotency   idempotency_key PK · user_id · review_event_id · received_at   (not partitioned)
+                            INDEX(received_at) · rows older than 30 days pruned daily
 memory.exposure_event       id · user_id · item_type · item_id · kind(lesson|focus|sentence|lookup) · session_id · occurred_at
 memory.scheduler_params     scope(user_id | population) · facet_family · version · params real[] · n_reviews
                             · log_loss · fitted_at · active
@@ -926,11 +938,18 @@ pgboss.*                    job queue tables (managed by pg-boss)
 ```
 
 **Partitioning and uniqueness.** PostgreSQL requires every primary key and unique constraint on a partitioned table to include the partition key. So `review_event` uses `PK(id, received_at)`, and the "save this answer only once" rule lives in the small unpartitioned `review_idempotency` table. The answer-batch transaction inserts the key there first; on conflict, the answer is a duplicate and its earlier confirmation is returned. Partitioning uses `received_at` (server time), because client clocks can be wrong.
+- **Pruning.** Keys only need to catch *retries*: the same answer sent again because the client never received the confirmation. The client resends unconfirmed answers until they are confirmed, so a retry follows the first receipt within the time the device stays offline. Keys are kept for **30 days after first receipt** and then deleted daily, which keeps the table to about one month of answers, not the whole history.
+  - The client discards a buffered answer that is still unconfirmed after 30 days, so no retry can arrive after its key is gone. This also covers a device left offline for longer.
+  - An answer first *sent* weeks late is not a retry; it is a new receipt with its own fresh key row.
+- **Deletion.** The table carries `user_id` and has RLS like every user-owned table, so the account-deletion cascade (§7.8) removes its rows.
 
 **Concurrency and out-of-order answers.** Two devices may review the same trace, and an offline device may sync hours later with answers *older* than ones already applied.
 - Each trace update takes a row lock (`SELECT … FOR UPDATE`).
 - **If every incoming answer is newer** than the trace's `last_review_at`, it is applied directly (the common case).
 - **If an incoming answer is older** than an answer already applied, the trace is **rebuilt by replay**: its events from the earliest out-of-order answer onwards are read from `review_event` in `occurred_at` order and passed through the scheduler again. The rebuild runs in the same transaction, under the same lock. This works because the trace is a projection of the event log (§4.7). It touches only a few events of one trace.
+  - **Bounded query.** The query also filters `received_at ≥ t₀`, where `t₀` is the earliest out-of-order `occurred_at`. The clamp guarantees `occurred_at ≤ received_at`, so every event that occurred at or after `t₀` was received at or after `t₀`, and the filter loses nothing. It lets PostgreSQL prune to the most recent monthly partitions instead of scanning every month.
+  - **Stored states are historical.** The `pre_*` / `post_*` columns of an event record the state *as applied when it was received*. A replay does not rewrite them, because `review_event` stays append-only. `memory_trace` holds the authoritative current state. Analyses that need replay-consistent states recompute them from the log with the stated scheduler version (§4.7).
+  - Answers that had already produced XP or classifier labels keep them. Replay changes only scheduling state.
 - XP and streak credit go to the learning day the answer *occurred* in, if that day is still open. Days close 6 hours after they end, which gives offline study a grace period. Otherwise credit goes to the day it was received. A closed day is never reopened.
 - Client timestamps are clamped: they cannot be later than `received_at`, and they cannot fall more than 24 hours before the session started.
 
@@ -1034,7 +1053,7 @@ kizuna/
 │  └─ pipeline/            content pipeline CLI: import → normalise → enrich → validate → publish
 ├─ packages/
 │  ├─ kernel/              ids, clock, seeded RNG, events, transaction and outbox helpers
-│  ├─ contracts/           Zod API schemas → OpenAPI + typed client
+│  ├─ contracts/           Zod API schemas → OpenAPI + typed client; domain event definitions (§2.3)
 │  ├─ content/             content types, query API, in-memory release index
 │  ├─ memory/              traces, FSRS adapter, uncertainty, mastery, stats
 │  ├─ insights/            error classifier, detectors, statistics, hypotheses, experiments
@@ -1084,7 +1103,7 @@ packages/<module>/src/
 
 | | 1k DAU | 10k DAU | 100k DAU |
 |---|---|---|---|
-| Reviews per day (≈ 100 per active user with the v1 facet set, about 10 minutes; confirmed by the workload gate) | 100k | 1M | 10M |
+| Reviews per day (planning assumption: ≈ 100 per active user with the v1 facet set; between 10 and 17 minutes at 6–10 s per answer. The real figure and time come from the workload gate and beta data, and the new-item rate adapts to keep learners within their goal, §6.2) | 100k | 1M | 10M |
 | Peak answer-batch requests/s (5 answers per batch, 10× peak) | ≈ 2.5 | ≈ 25 | ≈ 250 |
 | `review_event` growth per year | ≈ 37M rows | ≈ 365M rows | ≈ 3.7B rows |
 | `review_event` storage per year (≈ 200 bytes per row plus indexes) | ≈ 10 GB | ≈ 100 GB | ≈ 1 TB (archived to Parquet after 90 days) |
@@ -1382,6 +1401,23 @@ Durations assume one full-time developer; roughly double them for part-time. The
 - Jōyō Kanji Table (常用漢字表), Agency for Cultural Affairs, 2010.
 
 ## Appendix C: Revision log
+
+### v1.2 (2026-11-19): changes after the second review
+
+| # | Problem in v1.1 | Change | Where |
+|---|---|---|---|
+| 1 | Requiring `P(δ < 0) ≥ 0.8` from 6–10 probes alone almost never confirmed a real deficit, because the prior shrinks so few answers to zero | Confirm when the probes alone fall below calibrated expectation *and* the combined evidence still passes §5.3; operating point stated | §5.1, §5.6 |
+| 2 | One MC pick of the confusable confirmed a pair, which chance alone does 1 time in k per opportunity | Pair probes are typed; MC probes need ≥ 2 picks | §5.6 |
+| 3 | `account` used by `drills`, while importing `drills` for event types: a package cycle | Event definitions live in `contracts`; CI checks the package graph has no cycles | §2.3, §8.2 |
+| 4 | MC answers could raise S past 1 day, so a trace could leave Learning without a typed answer | MC answers don't change S, D or due date (`counts_for_scheduling = false`); only in-session steps | §4.3 |
+| 5 | Same-day checks for about 12 items broke the 5% retention-check quota | Window of days 13–15, balanced across arms per day; quota never exceeded, new experiments wait; estimand stated (intention to treat) | §6.2, §6.7 |
+| 6 | `review_idempotency` had no `user_id` (deletion could miss it) and grew forever | `user_id` plus RLS; keys pruned after 30 days; client discards unconfirmed answers after 30 days | §7.5 |
+| 7 | Replay left stored pre/post states stale, and its query scanned every partition | Stored states declared historical (`memory_trace` is authoritative); `received_at ≥ t₀` filter for partition pruning | §7.5 |
+| 8 | H4's main signal (`R_ALT_VALID`) cannot occur with v1's word-only readings | H4 uses context-answer `δ_g` and `R_ON_KUN_SWAP_IN_WORD` in v1 | §4.3, §5.5 |
+| 9 | A kanji whose primary reading has no curriculum word could never be Mastered | The word requirement applies only to readings that have an aligned curriculum word | §4.6 |
+| 10 | "Mature kanji" (used by rank sub-levels) was undefined | Defined in §4.6 | §4.6, §7.2 |
+| 11 | ER diagram showed one scheduler-params row per user; placement API lacked its phase; a review remark sat in the spec | Diagram fixed; Phase 3 labels and an Anki import endpoint added; remark removed | §5.6, §7.3, §7.5 |
+| 12 | "100 reviews ≈ 10 minutes" assumed 6 s per answer | Stated as a planning assumption (10–17 minutes), decided by the workload gate and the adaptive new-item rate | §8.4 |
 
 ### v1.1 (2026-11-19): changes after design review
 
