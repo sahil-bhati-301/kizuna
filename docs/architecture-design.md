@@ -644,7 +644,7 @@ The planner is a pure function, `plan(snapshot, content, config, now, seed)`. Th
 
 | Source | What it contains | Share of time budget | Ordering within source |
 |---|---|---|---|
-| Due reviews | Graduated traces with R ≤ r, plus **Learning traces whose rule-based `due_at` has passed** (§4.3) | Claims first, up to 100% | Learning traces first, oldest `due_at` first (they are the most fragile). Then graduated traces, lowest R first. In catch-up mode, still-salvageable traces (R ≥ 0.5) go first. |
+| Due reviews | Graduated traces with R ≤ r, plus **Learning traces whose rule-based `due_at` has passed** (§4.3) | Claims first, up to 100% | Learning traces always first, oldest `due_at` first (they are the most fragile and have no R), including in catch-up mode. Then graduated traces, lowest R first; in catch-up mode, still-salvageable graduated traces (R ≥ 0.5) go before the rest. |
 | Relearn steps | Items failed earlier today | As needed | Sequenced in the session |
 | Focus drills | Intervention blocks for active hypotheses (treatment arm) | ≤ 25%, one block per session | Expected benefit |
 | Diagnostic probes | In-scope traces of candidate hypotheses; high-uncertainty traces | ≤ 10% | Widest interval and R closest to 0.5 (most informative) |
