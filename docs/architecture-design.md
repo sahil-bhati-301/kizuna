@@ -644,11 +644,11 @@ The planner is a pure function, `plan(snapshot, content, config, now, seed)`. Th
 
 | Source | What it contains | Share of time budget | Ordering within source |
 |---|---|---|---|
-| Due reviews | Traces with R ≤ r | Claims first, up to 100% | Lowest R first. In catch-up mode, still-salvageable traces (R ≥ 0.5) go first. |
+| Due reviews | Graduated traces with R ≤ r, plus **Learning traces whose rule-based `due_at` has passed** (§4.3) | Claims first, up to 100% | Learning traces first, oldest `due_at` first (they are the most fragile). Then graduated traces, lowest R first. In catch-up mode, still-salvageable traces (R ≥ 0.5) go first. |
 | Relearn steps | Items failed earlier today | As needed | Sequenced in the session |
 | Focus drills | Intervention blocks for active hypotheses (treatment arm) | ≤ 25%, one block per session | Expected benefit |
 | Diagnostic probes | In-scope traces of candidate hypotheses; high-uncertainty traces | ≤ 10% | Widest interval and R closest to 0.5 (most informative) |
-| Retention checks | Day 13–15 outcome checks for experiments, balanced across treatment and control items on each day (§6.7) | ≤ 5% (never exceeded; new experiments wait instead) | Check date. An item whose natural review falls in the window uses that review. |
+| Retention checks | Day 13–15 outcome checks for the evaluated items of experiments, balanced across treatment and control on each day (§6.7) | ≤ 5% (new experiments wait instead; the only overrun is the floor of 1 check a day) | Check date. An evaluated item whose natural review falls in its window uses that review. |
 | New items | Next lesson items from the curriculum | Whatever budget remains, capped by the daily new limit and entitlement | Curriculum order |
 
 - **Budget.** The user's time goal (say 10 minutes) is converted to item counts using their median latency per exercise type, with defaults until there is data.
@@ -716,13 +716,13 @@ The planner is a pure function, `plan(snapshot, content, config, now, seed)`. Th
 2. **Treatment.** Focus-drill blocks over 1–3 sessions, with the dose recorded. **Control** items get standard SRS only. They receive the intervention only after the hypothesis's check window has closed (end of day 15), so a waitlisted drill can never come before another item's check. The one exception is an item that lapses twice, which gets the drill straight away (a safety valve, recorded as censored).
 3. **Drill answers are exposures, not scheduling reviews.** Focus-drill answers do not change FSRS state, so both arms follow the same standard SRS schedule. The drill is the only planned difference between them.
 4. **Outcome: a fixed-day retention check for both arms.**
-   - **Primary:** every treatment and control item of that hypothesis gets one retention check in the **window of days 13–15** after the last treatment session, using the same exercise type. The check is a normal typed review and updates FSRS like any other.
+   - **Primary:** every *evaluated* treatment and control item of that hypothesis (see Budget below) gets one retention check in the **window of days 13–15** after the last treatment session, using the same exercise type. The check is a normal typed review and updates FSRS like any other.
      - **Spreading.** The checks are spread over the three days, with each day's checks **balanced across arms** (paired treatment and control items, as far as counts allow). The arms are then compared on the same days.
-     - An item whose natural review falls in the window uses that review, in either arm.
-     - **Budget.** Retention checks take at most 5% of a learner's daily time goal (§6.2). That is about 3–5 answers a day at a 10-minute goal, and about 2 at a 5-minute goal. The quota is never exceeded and the window is never stretched, so the number of *evaluated* items is capped when the experiment starts:
-       - **Daily check capacity** = 5% of the time goal ÷ the learner's median typed-answer latency (at least 1).
-       - **Evaluated items** = at most 3 × daily check capacity, minus the capacity already promised to other open check windows, keeping the arms equal in size. Natural reviews that fall in the window don't use the quota.
-       - **All in-scope items are still randomised and treated as usual.** Only the evaluated subset (chosen at random, stratified by arm) is checked, so a small capacity means fewer outcomes, not a biased sample.
+     - **Budget.** Retention checks take at most 5% of a learner's daily time goal (§6.2). That is about 3–5 answers a day at a 10-minute goal, and about 2 at a 5-minute goal. The window is never stretched, so the number of *evaluated* items is capped when the experiment starts:
+       - **Daily check capacity** = 5% of the time goal ÷ the learner's median typed-answer latency, with a floor of 1. That floor is the **only permitted overrun** of the quota, for learners whose answers are very slow.
+       - **Evaluated items** = at most 3 × daily check capacity, minus the capacity already promised to other open check windows, keeping the arms equal in size.
+       - **The evaluated subset is fixed by a seeded random draw when the experiment starts**, stratified by arm, and recorded on `hypothesis_item`. **Outcomes come only from this subset.** A natural review of an evaluated item that falls in its window is used as its check and simply saves quota. Natural reviews of items *outside* the subset are never outcomes. Their timing depends on how the drill went, so counting them would select outcomes by something the treatment affected.
+       - **All in-scope items are still randomised and treated as usual.** A small capacity means fewer outcomes, not a biased sample.
        - If the remaining capacity is 0, the *next* experiment's start is delayed instead.
      - **Missed days.** If the learner doesn't study on a window day, that day's checks are recorded as **missing outcomes for both arms' items** scheduled that day. They are never moved to a later day, and the reason is stored. Because each day is balanced across arms, a missed day removes outcomes from both arms equally.
    - **Estimand.** This measures the effect of *assigning* the drill (intention to treat). That includes any difference in later SRS reviews the drill causes, which is the effect the product actually delivers.
@@ -831,7 +831,7 @@ The API is REST with JSON under `/v1`, validated with Zod, and the OpenAPI spec 
 | `POST /v1/onboarding/anki-import` | Upload an Anki export; returns matched and unmatched cards (Phase 3) |
 | `GET /v1/home` | Due and new counts, estimated minutes, goal, streak, top knots, forecast |
 | `POST /v1/sessions` | Plan a session: `{mode: daily, reviews, lessons or focus, hypothesisId?, budgetMinutes}` |
-| `GET /v1/sessions/{id}` | Resume a session |
+| `GET /v1/sessions/{id}` | Resume a session (up to 7 days after it started; §7.5) |
 | `POST /v1/sessions/{id}/answers` | Batch of answers (idempotent). Returns confirmations and XP deltas. |
 | `POST /v1/sessions/{id}/complete` | Session summary, goal and streak status, unlocked achievements |
 | `GET /v1/progress/map?scope=jlpt:N4` | Per-kanji stages for the kanji map |
@@ -910,8 +910,8 @@ memory.review_event         id · received_at (server) · PK(id, received_at) ·
                             PARTITION BY RANGE (received_at) monthly · INDEX(user_id, occurred_at) · INDEX(trace_id, occurred_at)
 memory.review_idempotency   idempotency_key PK · user_id · review_event_id · received_at   (not partitioned)
                             INDEX(received_at) · rows older than 35 days pruned daily
-memory.trace_checkpoint     trace_id · user_id · as_of · state jsonb (S, D, reps, lapses, state) · scheduler_version
-                            PK(trace_id, as_of)        (written before events are archived; see Concurrency)
+memory.trace_checkpoint     trace_id · user_id · as_of (occurred_at boundary) · state jsonb (S, D, reps, lapses, state)
+                            · scheduler_version · PK(trace_id, as_of)   (written only when as_of ≤ now − 29 d; see Concurrency)
 memory.exposure_event       id · user_id · item_type · item_id · kind(lesson|focus|sentence|lookup) · session_id · occurred_at
 memory.scheduler_params     scope(user_id | population) · facet_family · version · params real[] · n_reviews
                             · log_loss · fitted_at · active
@@ -923,7 +923,8 @@ insights.hypothesis         id PK · user_id · type(H1..H9) · scope_key · sta
                             · support jsonb · evidence jsonb · detector_version · first_detected_at
                             · last_evaluated_at · resolved_at · user_feedback
                             UNIQUE(user_id, type, scope_key) WHERE status NOT IN (resolved, dismissed)
-insights.hypothesis_item    hypothesis_id · trace_id · arm(treatment|control|none) · assigned_at · check_due_on · censored
+insights.hypothesis_item    hypothesis_id · trace_id · arm(treatment|control|none) · assigned_at · evaluated bool
+                            · check_due_on · check_outcome(correct|wrong|missing) · censored
 insights.intervention       id · hypothesis_id · template · params jsonb · round · status · dose_delivered
                             · started_at · ended_at
 insights.experiment         id · intervention_id · design(item_randomized|timing_randomized|observational) · seed
@@ -960,6 +961,7 @@ pgboss.*                    job queue tables (managed by pg-boss)
   - **Server-side acceptance window.** The server rejects any answer whose session (`drills.session.started_at`, a server timestamp) began more than **28 days** before the answer's `received_at`. Every answer belongs to a session, so a retry is always received within 28 days of its session start. Its first receipt can't have been before that start, so its key is at most 28 days old when the retry arrives, safely inside the 35-day retention.
   - The client discards buffered answers older than 21 days, which avoids sending answers the server will reject. This is only a courtesy; correctness doesn't depend on it.
   - A rejected late answer is returned as `410 Gone` with `problem+json`, and the client drops it.
+  - **Sessions expire before the window.** An unfinished session can be resumed (`GET /v1/sessions/{id}`) for at most **7 days** after `started_at`. After that the server closes it, and the client plans a new one. A resumed session therefore never runs close to the 28-day limit, and normal study never meets a `410`.
 - **Deletion.** The table carries `user_id` and has RLS like every user-owned table, so the account-deletion cascade (§7.8) removes its rows.
 
 **Concurrency and out-of-order answers.** Two devices may review the same trace, and an offline device may sync hours later with answers *older* than ones already applied.
@@ -967,10 +969,13 @@ pgboss.*                    job queue tables (managed by pg-boss)
 - **If every incoming answer is newer** than the trace's `last_review_at`, it is applied directly (the common case).
 - **If an incoming answer is older** than an answer already applied, the trace is **rebuilt by replaying its whole history**. All of its scheduling events (`counts_for_scheduling = true`) are read from `review_event` in `occurred_at` order and passed through the scheduler again, starting from the trace's creation state (lesson, self-report, placement or import, kept on `memory_trace`). The rebuild runs in the same transaction, under the same lock. This works because the trace is a projection of the event log (§4.7).
   - **Why the whole history.** Starting mid-history would need the state just before the late answer, and the only stored copy of that is a `pre_*` column that an earlier replay may already have made stale. Replaying from the start needs no stored intermediate state at all.
-  - **Checkpoints for archived history.** When `db.maintenance` archives events older than 90 days to Parquet, it first writes each affected trace's state as of the archive boundary to `memory.trace_checkpoint`. That state comes from replaying all events up to the boundary. A replay then starts from the trace's latest checkpoint, or from its creation state if it has none.
-    - A checkpoint is **final**. Answers are accepted only within 28 days of their session start (§7.5 Pruning), and `occurred_at` is clamped to that session, so no answer can arrive with `occurred_at` before a boundary that is 90 days old.
-    - When the scheduler version changes, checkpoints are recomputed offline from the Parquet archive.
-  - **Cost.** Between the checkpoint and now, a trace has at most a few dozen scheduling events, so the rebuild is cheap. The query is bounded by `received_at ≥` the checkpoint time (or `memory_trace.created_at`). That is valid because `occurred_at ≤ received_at`, and it lets PostgreSQL prune older monthly partitions.
+  - **Checkpoints for archived history.** Before `db.maintenance` archives old partitions to Parquet, it writes each affected trace's state to `memory.trace_checkpoint`. A replay then starts from the trace's latest checkpoint, or from its creation state if it has none. The boundary is defined in **`occurred_at` terms**, so each event is counted exactly once:
+    - **Definition.** A checkpoint `as_of` holds the trace state after applying, in `occurred_at` order, *every* scheduling event with `occurred_at < as_of`, wherever it is stored (Parquet or live table). It never includes an event with `occurred_at ≥ as_of`.
+    - **Replay from a checkpoint** applies exactly the events with `occurred_at ≥ as_of`. The query is `occurred_at ≥ as_of AND received_at ≥ as_of`. The second condition loses nothing, because `received_at ≥ occurred_at`, and it lets PostgreSQL skip partitions older than `as_of`. An event that occurred before `as_of` but was received after it is excluded by the first condition, because the checkpoint already contains it.
+    - **Finality.** A checkpoint is written only once `as_of` is at least **29 days** in the past. An answer's `occurred_at` is at least its session start − 24 h, and the session started at most 28 days before receipt (§7.5 Pruning), so `occurred_at ≥ received_at − 29 days`. No answer arriving after the checkpoint is written can have `occurred_at < as_of`. In practice `as_of` is the 90-day archive boundary, which satisfies this comfortably.
+    - **Archiving after checkpointing.** Partitions are archived by `received_at`, and only a partition whose whole `received_at` range ends before `as_of` is archived. Every event in an archived partition has `occurred_at ≤ received_at < as_of`, so it is already inside the checkpoint. Late arrivals with `occurred_at < as_of` stay in the live table until their own partition ages out, and replay ignores them.
+    - **Scheduler version change.** Checkpoints are recomputed offline from the *union* of the Parquet archive and the live rows with `occurred_at < as_of`.
+  - **Cost.** After the checkpoint, a trace has at most a few dozen scheduling events, so the rebuild is cheap. With no checkpoint, the bound is `received_at ≥ memory_trace.created_at`.
   - **Stored states are historical.** The `pre_*` / `post_*` columns of an event record the state *as applied when it was received*. A replay doesn't rewrite them, because `review_event` stays append-only, and the replay never reads them. `memory_trace` holds the authoritative current state.
   - **Insights don't use stored `pre_r` directly.** The nightly job (§7.6) recomputes each review's predicted R from the log with the current scheduler version before computing residuals (§5.3). Replays therefore can't leave stale predictions in the statistics. The incremental job uses the stored value only for traces with no replay since their last nightly recompute (a `replayed_at` column on `memory_trace` marks them).
   - Answers that had already produced XP or classifier labels keep them. Replay changes only scheduling state.
@@ -1433,10 +1438,10 @@ Durations assume one full-time developer; roughly double them for part-time. The
 | 1 | Requiring `P(δ < 0) ≥ 0.8` from 6–10 probes alone almost never confirmed a real deficit, because the prior shrinks so few answers to zero | Confirm when the probes alone fall below calibrated expectation *and* the combined evidence still passes §5.3; operating point stated | §5.1, §5.6 |
 | 2 | One MC pick of the confusable confirmed a pair, which chance alone does 1 time in k per opportunity | Pair probes are typed; MC probes use the §5.4 MC rule over probe opportunities | §5.6 |
 | 3 | `account` used by `drills`, while importing `drills` for event types: a package cycle | Event definitions live in `contracts`, which imports no domain module; CI checks the package graph has no cycles | §2.3, §8.2 |
-| 4 | MC answers could raise S past 1 day, so a trace could leave Learning without a typed answer | The lesson starts traces in Learning with a rule-based due date; MC first, then a typed prompt to graduate (the first FSRS rating); MC never changes S, D or the FSRS due date; prior `p₀` used for analytics before graduation; stage definitions updated | §4.3, §4.6, §6.3 |
-| 5 | Same-day checks for about 12 items broke the 5% retention-check quota | Window of days 13–15, balanced across arms per day; evaluated items capped at 3 × daily check capacity (all items still randomised and treated); missed days recorded as missing for both arms; waitlists released only after the window closes; estimand stated (intention to treat); every reference updated | §0, §5.1, §6.2, §6.7, §7.6, §8.6, §9, §12 |
-| 6 | `review_idempotency` had no `user_id` (deletion could miss it) and grew forever | `user_id` plus RLS; keys kept 35 days; the server rejects answers from sessions started more than 28 days earlier (no reliance on the client clock) | §7.5 |
-| 7 | Replay left stored pre/post states stale, and its query scanned every partition | Replay the whole history from the creation state or the latest final checkpoint (`memory.trace_checkpoint`, written before archiving); stored states are historical and never read by replay; insights recompute predicted R nightly; `received_at` bound for partition pruning | §7.5, §7.6 |
+| 4 | MC answers could raise S past 1 day, so a trace could leave Learning without a typed answer | The lesson starts traces in Learning with a rule-based due date; MC first, then a typed prompt to graduate (the first FSRS rating); MC never changes S, D or the FSRS due date; prior `p₀` used for analytics before graduation; stage definitions updated; the planner's Due source picks up overdue Learning traces | §4.3, §4.6, §6.2, §6.3 |
+| 5 | Same-day checks for about 12 items broke the 5% retention-check quota | Window of days 13–15, balanced across arms per day; evaluated items capped at 3 × daily check capacity, fixed by a seeded draw at the start, and the only source of outcomes (all items still randomised and treated); missed days recorded as missing for both arms; waitlists released only after the window closes; estimand stated (intention to treat); every reference updated | §0, §5.1, §6.2, §6.7, §7.6, §8.6, §9, §12 |
+| 6 | `review_idempotency` had no `user_id` (deletion could miss it) and grew forever | `user_id` plus RLS; keys kept 35 days; the server rejects answers from sessions started more than 28 days earlier (no reliance on the client clock); sessions resumable for 7 days | §7.3, §7.5 |
+| 7 | Replay left stored pre/post states stale, and its query scanned every partition | Replay the whole history from the creation state or the latest final checkpoint (`memory.trace_checkpoint`: an `occurred_at` boundary, written only once 29+ days old, before archiving; replay applies `occurred_at ≥ as_of` exactly once); stored states are historical and never read by replay; insights recompute predicted R nightly; `received_at` bound for partition pruning | §7.5, §7.6 |
 | 8 | H4's main signal (`R_ALT_VALID`) cannot occur with v1's word-only readings | H4 uses context-answer `δ_g` and `R_ON_KUN_SWAP_IN_WORD` in v1 | §4.3, §5.5 |
 | 9 | A kanji whose primary reading has no curriculum word could never be Mastered | The word requirement applies only to readings with an aligned curriculum word; with none, Mastered rests on meaning (and enabled facets); release validation reports such kanji | §3.3, §4.6 |
 | 10 | "Mature kanji" (used by rank sub-levels) was undefined | Defined in §4.6; §7.2 wording matches | §4.6, §7.2 |
