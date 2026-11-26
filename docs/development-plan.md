@@ -1,6 +1,6 @@
 # Kizuna (絆): Development Plan
 
-Delivery plan for building Kizuna with Claude Code · v1.0 · 2026-11-26 · Status: **Proposed**
+Delivery plan for building Kizuna with Claude Code · v1.0 · 2026-11-26 · Status: **Proposed** · v1.1 adds the budget guard and checkpoints (§3.6–3.7)
 
 > **Scope.** This document covers *how* the system in [`architecture-design.md`](architecture-design.md) gets built: the team, the development loops, the usage budget, and a week-by-week schedule from an empty repository to public launch. It does not change the architecture. Where the schedule departs from the architecture roadmap (§12 there), §9 lists each change and the reason for it.
 >
@@ -33,12 +33,14 @@ Delivery plan for building Kizuna with Claude Code · v1.0 · 2026-11-26 · Stat
 ## 0. Summary
 
 1. **Small work packages (WPs) are the unit of work.** Each WP is at most one feature in one or two layers, with testable acceptance criteria. One WP runs in one fresh session. Nothing larger than size **M** is allowed: an L is split before it is scheduled.
-2. **A thin conductor session runs specialised subagents.** You start a WP with `/wp <id> usage=<n>`. A cheap conductor session reads only the WP file and then delegates: a **spec-tester** writes tests first (Tier A only), an **implementer** makes them pass, and a **reviewer** with a fresh context checks the diff. The conductor then opens a PR. Each subagent gets the model its risk tier needs (§4, §6).
+2. **A thin conductor session runs specialised subagents.** You start a WP with `/wp <id>`. A cheap conductor session reads only the WP file and then delegates: a **spec-tester** writes tests first (Tier A only), an **implementer** makes them pass, and a **reviewer** with a fresh context checks the diff. The conductor then opens a PR. Each subagent gets the model its risk tier needs (§4, §6).
 3. **The budget is enforced daily, not hoped for weekly.** Plan to use at most **80%** of the weekly allowance:
    - each of the five build days is capped at **15%**, and the two light days at **2.5%** each;
-   - every session starts with your current `/usage` figure and a green, amber or red check that can downgrade models or stop the work (§2.3).
+   - a **budget guard** applies a green, amber or red check that can downgrade models or stop the work (§2.3). It reads your 5-hour and weekly usage from the status line, with no model calls and no `/usage` typing, checks it after every tool call, and tells Claude when to wrap up and when to stop (§3.6).
 
    Because the caps are daily, any seven consecutive days stay under 80%, whether your weekly window is rolling or fixed.
+
+   **Unfinished work is handed over through checkpoints.** A session that has to stop mid-WP commits its work in progress and writes a self-contained checkpoint: what is done, what is half done, the exact next action, and what not to retry. The next session is shown it automatically and resumes from it (§3.7).
 4. **Context is the main cost, so the repository is built to keep it small.** The 137 KB architecture doc is never loaded whole. It is split once into per-module **spec digests**, a 60-line `STATUS.md` replaces "re-read everything", verification output is cut to the failures only, and each package has its own `CLAUDE.md` (§3).
 5. **Model routing.** Opus is used for planning and Tier A domain logic. Sonnet does routine implementation and review, and Haiku does search and mechanical work. Bulk content drafting (2,136 keywords, semantic relations) runs through the **Claude API Batch endpoint**, outside the subscription. That costs a few dollars and saves a lot of plan budget (§2.5).
 6. **Each loop has a fixed rhythm:**
@@ -127,9 +129,9 @@ Sources: [Anthropic support: weekly limits](https://support.claude.com/en/articl
 - **If `/usage` shows a fixed weekly reset time,** make Day 1 the first day after the reset.
 - **If your window is rolling,** the daily caps alone keep any seven consecutive days at or below 80%.
 
-### 2.3 The traffic light (checked at the start of every session)
+### 2.3 The traffic light (worked out automatically)
 
-Every session command takes your current weekly figure, for example `/wp W07-2 usage=41`. The command compares it with the cumulative line for today:
+The budget guard (§3.6) compares your weekly usage with today's cumulative line at session start and after every tool call. You type a figure only when the guard has no usage data (`/budget`, §3.6).
 
 | Light | Condition | What changes |
 |---|---|---|
@@ -138,7 +140,11 @@ Every session command takes your current weekly figure, for example `/wp W07-2 u
 | 🔴 **Red** | used > line + 10, **or** used > 80% | No new WPs. Only: (a) finishing a WP already past review, at the conductor's minimum, (b) answering your questions, (c) production incidents from the reserve. Switch to owner-track work (§8). |
 | ⛔ **Hard stop** | used > 90% | Production incidents only |
 
-**5-hour window rule.** Run at most **2 WP sessions per 5-hour window**. If the session bar on `/usage` is above 75%, don't start a new WP in that window. Finish the current step, write the handoff, and stop.
+**5-hour window rule.** Run at most **2 WP sessions per 5-hour window**. The guard enforces the rest:
+- at **75%** of the 5-hour window it sends WRAP-UP: finish the current step, start nothing new;
+- at **88%** it sends CHECKPOINT-NOW: write the checkpoint and stop.
+
+The last 12% is kept for the checkpoint itself (§3.6).
 
 ### 2.4 Model and effort routing
 
@@ -183,7 +189,7 @@ The content work in architecture §3.1 and §8.7 is drafted by an LLM and review
 
 The schedule in §7 assumes a capacity of about **8 M-sized WPs a week** inside the 60% build bucket. S counts as half an M. That is an assumption to test, not a promise.
 
-1. In W00 and W01, record the weekly % before and after every WP in `docs/plan/budget-log.md` (template A.5).
+1. In W00 and W01, the guard records the weekly % at the start and end of every session in `docs/plan/budget-log.md` (template A.5). You don't have to do anything.
 2. At the W01 retro, compute `capacity = 60 ÷ (average % per M-equivalent WP)`.
 3. Then apply one of these:
 
@@ -209,8 +215,10 @@ packages/<module>/CLAUDE.md       module rules: purpose, public API, invariants,
 apps/<app>/CLAUDE.md              same, per app
 .claude/
   agents/                         spec-tester, implementer, implementer-core, reviewer, scout, ui-verifier, content-qa
-  commands/                       plan-week, wp, retro, gate, hotfix
-  settings.json                   permissions allowlist, formatting hook
+  commands/                       plan-week, wp, checkpoint, budget, retro, gate, hotfix
+  settings.json                   permissions allowlist, status line, guard and formatting hooks
+  budget.json                     guard thresholds and daily caps (§2.2, §3.6)
+scripts/claude/budget.mjs         budget guard: status-line recorder, hook checker, logger (§3.6)
 docs/
   architecture-design.md          source of truth (unchanged)
   development-plan.md             this file
@@ -260,7 +268,83 @@ The conductor updates it at the end of each WP, and the retro rewrites it on Fri
 
 - **PostToolUse hook** on `Edit|Write`: run `prettier --write` and `eslint --fix` on the changed file, silently.
 - **Permissions allowlist:** the `pnpm` scripts, `git` (no force push), `docker compose`, and read-only commands. This saves you from approving prompts, and saves the turns that approvals cost. In W00, the `fewer-permission-prompts` skill can generate it from real transcripts.
-- **No Stop hooks or prompt hooks that call a model.** They cost usage on every turn.
+- **Hooks are command hooks only: local scripts, never prompt hooks that call a model.** Command hooks cost no usage. A hook that calls a model would cost usage on every turn.
+
+### 3.6 Budget guard: sessions that know their own usage
+
+**Where usage data comes from.** Claude can't run `/usage`: built-in commands run only when you type them. No hook receives usage data either. The one documented source is the **status line**:
+- Claude Code passes the status-line script a JSON object on every update.
+- For Pro and Max subscribers, the object includes `rate_limits.five_hour` and `rate_limits.seven_day`, each with `used_percentage` (0–100) and `resets_at` (Unix seconds). It also includes `context_window.used_percentage`.
+- `rate_limits` appears after the session's first response.
+- Sources: [status line docs](https://code.claude.com/docs/en/statusline), [hooks docs](https://code.claude.com/docs/en/hooks).
+
+The guard is one script, `scripts/claude/budget.mjs`, with three jobs. It never calls a model, so it costs no usage.
+
+1. **Recorder (status line).** `statusLine` in `.claude/settings.json` runs `budget.mjs statusline`.
+   - On each update it writes `~/.claude/kizuna/usage.json`: 5-hour %, weekly %, both reset times, context %, model, `written_at`.
+   - The file is shared by every session and worktree on the machine. Rate limits are per account, so the latest write is correct for all of them.
+   - It also prints one line for you, for example `🟢 week 41% / line 45% · 5h 23% · ctx 31% · W07-2 implement`.
+2. **Checker (hooks).** `budget.mjs check` reads the cache and `.claude/budget.json`, which holds the thresholds and the daily caps from §2.2. It works out today's line from `seven_day.resets_at` (Day 1 is the first 24 hours after the last reset), then the light. It runs on:
+   - **SessionStart:** injects a short budget card: the light, both figures, today's line, minutes until the 5-hour reset. It also injects the resume card from §3.7.
+   - **PostToolUse:** runs after every tool call, in subagents too. It is silent unless a level has changed since the last notice; the last notice is kept in `~/.claude/kizuna/guard-state.json`. Checking is continuous, but Claude sees a message (about 40 tokens) only when something changes.
+   - **UserPromptSubmit:** the same check, so a session left open across a reset notices it.
+3. **Logger.** SessionStart and SessionEnd append the weekly % at start and end to `docs/plan/budget-log.md`. That feeds calibration (§2.7) without any typing.
+
+**Notice levels** (defaults live in `.claude/budget.json`):
+
+| Level | Trigger | What Claude does |
+|---|---|---|
+| Light change | green → amber → red (§2.3) | Applies that light's routing for the rest of the session |
+| **WRAP-UP** | 5h ≥ 75%, or weekly ≥ today's line, or context ≥ 50% | Finishes the current step (the test, the function), starts no new subagent or loop step, then runs `/checkpoint` (or completes the WP if it is one step from done) and ends |
+| **CHECKPOINT-NOW** | 5h ≥ 88%, or weekly ≥ line + 10, or weekly ≥ 80%, or context ≥ 70% | Stops at the nearest safe point, runs `/checkpoint`, ends the session. A subagent returns a partial report straight away. |
+
+The space between 88% and 100% of the 5-hour window is kept for the checkpoint itself: one file write, one commit, one push.
+
+**When usage data is missing.** The light becomes ⚪ *unknown* when the cache is absent or more than 15 minutes old. That happens with no status line, or with API-key billing, where `rate_limits` isn't sent. Then:
+- the SessionStart card asks Claude to ask you once for your `/usage` figures;
+- `/budget <weekly%> <5h%>` writes your figures into the cache;
+- WRAP-UP falls back to a tool-call count (default 150 per session), which also limits context growth.
+
+**Verify in W00.** Hooks fire in cloud sessions (claude.ai/code) as well as locally, but they read the project's `.claude/settings.json`, not your personal settings, so the guard must be committed in the repository. The docs don't say whether the status line runs in cloud sessions. W00-7 tests each environment you'll actually use, and records which ones need the `/budget` fallback.
+
+### 3.7 Checkpoints: where the next session starts
+
+**Why a WP stops early.** For one of four reasons:
+- a CHECKPOINT-NOW notice;
+- a WRAP-UP at the end of a step;
+- the 3-strike rule;
+- you stop it.
+
+In each case the session writes a **checkpoint** before it ends. The next session starts from it without exploring.
+
+**What `/checkpoint` writes** (Sonnet, about one turn):
+1. **A work-in-progress commit** on the WP branch, pushed: `wip(W07-2): checkpoint, <reason>`. Cloud containers are reclaimed, so nothing may stay uncommitted. `wip:` commits are squashed away at merge.
+2. **The `## Checkpoint` section of the WP file**, overwritten each time (template A.1). It holds:
+   - the loop step;
+   - the acceptance criteria done and remaining;
+   - what is half done (file, function, state);
+   - the **next action**, the first thing the next session does;
+   - the verify state, meaning which tests fail and whether that is expected;
+   - decisions taken;
+   - **approaches tried and rejected**, so they are not tried again;
+   - open questions;
+   - usage at the stop.
+
+   It is written for a reader with no context, because it replaces the conversation the next session won't have.
+3. **The WP's row in `STATUS.md`**, set to `⏸ paused (<reason>) · resume: /wp W07-2`.
+
+**How the next session picks it up**
+- The SessionStart hook finds paused WPs in `STATUS.md` and injects a resume card: the WP, the reason, the next action, the branch, the checkpoint commit, and whether the light allows resuming now.
+- `/wp W07-2` sees the checkpoint, checks out the branch and confirms that HEAD matches the checkpoint commit. It then continues at the recorded loop step. Spec tests already written: it goes straight to the implementer, with the checkpoint as its brief. Review findings open: they go to the implementer.
+- If the light is red when you resume, the card says so and suggests owner-track work instead.
+
+**Safety nets**
+- **Stop hook.** If the WP is in progress, files have changed since the last checkpoint and none was written, it blocks the session from ending once and tells Claude to run `/checkpoint`. It respects `stop_hook_active`, so it can't loop.
+- **PreCompact hook.** It tells the compaction summary to keep the WP ID, loop step, next action and the do-not-retry list.
+- **Sessions that die without a checkpoint** (the 5-hour limit hit outright, a crash). The next SessionStart sees uncommitted changes or commits newer than the checkpoint, and says so. That session starts with `git status` and `git log` on the branch.
+- **Frequent commits.** Implementers commit at every green point, so a hard stop loses at most one step.
+
+**Parallel sessions.** Checkpoints live in the WP file. Two sessions on two WPs never write to the same checkpoint, and `STATUS.md` holds only one row per WP.
 
 ---
 
@@ -297,7 +381,7 @@ Seven custom agents, kept small on purpose. Each one has a fixed **output contra
 
 ```mermaid
 flowchart LR
-  A["/wp ID usage=n<br/>conductor (Sonnet, low)"] --> B{"Budget light<br/>and deps merged?"}
+  A["/wp ID<br/>conductor (Sonnet, low)<br/>resumes from checkpoint if any"] --> B{"Budget light<br/>and deps merged?"}
   B -- "red / blocked" --> X["Stop: note in STATUS,<br/>owner-track work"]
   B -- "ok" --> C{"Tier A?"}
   C -- "yes" --> D["spec-tester (Opus)<br/>failing tests first"]
@@ -315,6 +399,8 @@ flowchart LR
   L --> M["Owner: review evidence → merge"]
 ```
 
+**Interruptions.** A WRAP-UP or CHECKPOINT-NOW notice from the guard (§3.6) can arrive at any step. The session then runs `/checkpoint` and ends (§3.7). The next `/wp` for that WP re-enters the loop at the step the checkpoint recorded, not at the beginning.
+
 **WP definition of done:**
 
 1. Every acceptance criterion is mapped to a test or evidence item.
@@ -331,10 +417,10 @@ flowchart LR
 
 | Time | Owner | Claude |
 |---|---|---|
-| Morning (20–30 min) | Read `STATUS.md`. Review and merge yesterday's PRs. Answer `OPEN-Q`s in the WP files. Check `/usage`. | — |
-| Build block 1 (one 5-hour window) | Start 1–2 `/wp` sessions with today's usage figure. You may walk away. | WP loops |
-| Build block 2 (optional, a later window) | Start 1 more `/wp` if the daily cap allows | WP loop |
-| End of day (5 min) | Glance at the PRs that opened | Conductor has updated STATUS |
+| Morning (20–30 min) | Read `STATUS.md`, including any ⏸ paused WPs. Review and merge yesterday's PRs. Answer `OPEN-Q`s in the WP files. | — |
+| Build block 1 (one 5-hour window) | Start 1–2 `/wp` sessions. Paused WPs first. You may walk away: the guard stops sessions at the limits. | WP loops |
+| Build block 2 (optional, a later window) | Start 1 more `/wp`. If the light no longer allows it, the session refuses at start. | WP loop |
+| End of day (5 min) | Glance at the PRs that opened and at any checkpoints | Conductor has updated STATUS |
 
 The plan is **2–3 WPs a day, 8–10 a week**. Use the PR queue as a brake: if more than 3 PRs await your review, the next session addresses review comments instead of starting new work. Unreviewed work piling up is how quality drifts.
 
@@ -342,7 +428,7 @@ The plan is **2–3 WPs a day, 8–10 a week**. Use the PR queue as a brake: if 
 
 | Day | Activity | Who | Budget |
 |---|---|---|---|
-| **Day 1** | `/plan-week usage=n` (Opus): reads the roadmap, last retro and calibration; writes `weeks/Wnn.md` and the WP files. You approve (30 min). Then the first WP starts. | Planner, then owner | ≤15% (planning ≈5%) |
+| **Day 1** | `/plan-week` (Opus): reads the roadmap, last retro and calibration; writes `weeks/Wnn.md` and the WP files. You approve (30 min). Then the first WP starts. | Planner, then owner | ≤15% (planning ≈5%) |
 | **Days 2–4** | WP loops; morning PR reviews | Conductor, owner | ≤15%/day |
 | **Day 5** | Merge the remainder, deploy to staging, `ui-verifier` demo pack, then **you test by hand**. `/retro` (Sonnet): planned vs. actual %, calibration factor, carry-overs, STATUS rewrite. | Conductor, owner | ≤15% |
 | **Days 6–7** | **Light.** No WPs. Owner-track tasks. Claude only for a production hotfix, from the reserve. | Owner | ≤2.5%/day |
@@ -370,6 +456,9 @@ The plan is **2–3 WPs a day, 8–10 a week**. Use the PR queue as a brake: if 
 | WP overruns its estimate by more than 2× | Conductor stops at a clean point, splits the remainder into a new WP and records actuals |
 | CI red on `main` | Top priority: the next session is `/hotfix`, from the reserve |
 | Red light | Only the actions listed in §2.3 |
+| Guard WRAP-UP notice | Finish the current step, then run `/checkpoint` (or complete the WP if it's one step from done), and end |
+| Guard CHECKPOINT-NOW notice | Stop at the nearest safe point, run `/checkpoint` immediately, end. Subagents return partial reports. |
+| Session died without a checkpoint | The next session starts with `git status` and `git log` on the branch, rebuilds the checkpoint, then resumes |
 
 ---
 
@@ -393,7 +482,7 @@ Notation: `Wnn-k` is a WP ID, followed by **tier/size**. Sizes are **S** (½ M) 
 
 | Week | Goal | Work packages | You | Demo / exit |
 |---|---|---|---|---|
-| **W00** Setup and calibration | The agent-ready repository | W00-1 Monorepo: pnpm, Turborepo, TS strict, ESLint/Prettier, Vitest, dependency-cruiser rules from arch §2.3/§8.2, `verify` scripts + `verify-summary` (B/M) · W00-2 CI on GitHub Actions + branch protection (B/S) · W00-3 Agent scaffolding: root and module `CLAUDE.md`, `.claude/agents` and `commands`, hook, permissions, PR template, `docs/plan/*` (C/M) · W00-4 Spec digests for all modules + cross-check pass (C/M) · W00-5 `kernel`: UUIDv7 IDs, injected clock, seeded RNG, errors, logger and event base types (A/S) · W00-6 Local dev: docker-compose Postgres, Drizzle set-up, Testcontainers harness (B/S) | O-1 to O-4 | CI green on `main`; first calibration numbers in the budget log |
+| **W00** Setup and calibration | The agent-ready repository | W00-1 Monorepo: pnpm, Turborepo, TS strict, ESLint/Prettier, Vitest, dependency-cruiser rules from arch §2.3/§8.2, `verify` scripts + `verify-summary` (B/M) · W00-2 CI on GitHub Actions + branch protection (B/S) · W00-3 Agent scaffolding: root and module `CLAUDE.md`, `.claude/agents` and `commands`, hook, permissions, PR template, `docs/plan/*` (C/M) · W00-4 Spec digests for all modules + cross-check pass (C/M) · W00-5 `kernel`: UUIDv7 IDs, injected clock, seeded RNG, errors, logger and event base types (A/S) · W00-6 Local dev: docker-compose Postgres, Drizzle set-up, Testcontainers harness (B/S) · **W00-7 Budget guard and checkpoints, built first** (§3.6–3.7): `budget.mjs` recorder, checker and logger; `budget.json`; the SessionStart, PostToolUse, UserPromptSubmit, Stop, PreCompact and SessionEnd hooks; `/checkpoint` and `/budget`; checkpoint resume in `/wp`; tests with recorded status-line JSON; a test of each environment you use (B/M) | O-1 to O-4 | CI green on `main`; first calibration numbers in the budget log |
 | **W01** Pipeline I | Parse and normalise the core sources | W01-1 `sources.lock.yaml` + fetcher with checksums (B/S) · W01-2 `content` Drizzle schema (arch §3.1) + content types (B/M) · W01-3 KANJIDIC2 parser + Jōyō table import: teach set, official readings (A/M) · W01-4 Normalisation library: NFC, hiragana storage / katakana display, okurigana and affix markers, radical variants (A/M) · W01-5 KRADFILE parser (B/S) | O-5, O-6 | Capacity calibrated (§2.7); schedule confirmed or stretched |
 | **W02** Pipeline II | Components, words, alignment | W02-1 KanjiVG parser: element tree, positions → `component`, `kanji_component` (A/M) · W02-2 JMdict common subset, frequency-ranked (B/M) · W02-3 JmdictFurigana alignment → `word_kanji` with phenomenon tags (A/M) · W02-4 Tatoeba subset + word links (B/M) · W02-5 Cross-checks → review queue (B/S) | O-7 | Review-queue summary from content-qa |
 | **W03** Pipeline III and release 0.1 | A deterministic, validated release | W03-1 Relations v1: `shares_component` (IDF), `visual_similar` v1, `phonetic_series` (A/M) · W03-2 Feature tags (B/S) · W03-3 Overrides layer + provenance on every row (B/S) · W03-4 Validation rules + release diff (A/M) · W03-5 Publish: DB load, static chunks + manifest, attribution manifest, CC BY-SA dataset; byte-identical determinism check in CI (B/M) · W03-6 Keyword-drafting Batch script + review-sheet generator (C/S) | O-8, O-9 | Release 0.1 builds deterministically in CI |
@@ -555,7 +644,9 @@ These run in parallel with the build. Do them first on red-budget days and on th
 
 | Risk | Mitigation |
 |---|---|
-| **Usage spikes** (a hard Tier A WP, thrashing) | Daily caps, the traffic light, the 3-strike rule, the 2× overrun split rule, a 20% reserve |
+| **Usage spikes** (a hard Tier A WP, thrashing) | Daily caps, the automatic guard notices, the 3-strike rule, the 2× overrun split rule, a 20% reserve |
+| **Guard has no data** (status line not running in some environment, or the `rate_limits` field changes) | The ⚪ unknown light with the `/budget` fallback and a tool-call cap (§3.6). Recorded status-line JSON fixtures in tests catch a changed field early. |
+| **Work lost when a session stops abruptly** | WIP commits at every green point, pushed checkpoints, the Stop-hook safety net, dead-session detection at the next SessionStart (§3.7) |
 | **Spec drift**: agents implement "close enough" | Spec digests with exact formulas; spec-tester tests first for Tier A; the reviewer checks against the WP file and digest; the PR spec-trace table |
 | **Plausible but wrong statistics** | Golden tests with hand-computed values; property tests; simulation gates with known ground truth; Opus review |
 | **Integration breakage between modules** | Walking skeleton at W08; boundaries and cycle checks in CI; contract tests from Zod; `main` always deployable |
@@ -572,13 +663,19 @@ These run in parallel with the build. Do them first on red-budget days and on th
 
 **Session 1: scaffolding (Opus, plan mode, ≈ 1 WP).** Paste:
 
-> Read `docs/development-plan.md` §3, §4 and Appendices A–C. Do not read `docs/architecture-design.md` yet. Create W00-3: root `CLAUDE.md` from Appendix C, `.claude/agents/*` and `.claude/commands/*` from Appendix B (check the frontmatter fields against the current Claude Code docs), the `docs/plan/` files, and the PR template. Write `docs/plan/wp/W00-1.md` … `W00-6.md` from template A.1. Open one PR. Report in under 150 words.
+Before Session 1, look at `/usage` once and give Claude the figures. This is the last time you have to, provided the status line works where you run Claude.
+
+> Read `docs/development-plan.md` §3, §4 and Appendices A–C. Do not read `docs/architecture-design.md` yet. Build W00-7 first: the budget guard and checkpoints (§3.6–3.7, Appendix B.2), with tests using recorded status-line JSON. Then W00-3: root `CLAUDE.md` from Appendix C, `.claude/agents/*` and `.claude/commands/*` from Appendix B (check the frontmatter and settings fields against the current Claude Code docs), the `docs/plan/` files, and the PR template. Write `docs/plan/wp/W00-1.md` … `W00-6.md` from template A.1. My usage now: weekly <n>%, 5-hour <n>%. Open one PR. Report in under 150 words.
+
+Then **restart Claude Code** so the new status line and hooks load. Check that the status line shows your usage and that a new session shows the budget card.
 
 **Session 2: spec digests (Sonnet, then Opus for the cross-check).**
 
-> `/wp W00-4 usage=<n>`. Split `docs/architecture-design.md` into `docs/specs/*.md` per §3.2, one module per subagent, at most 2 at a time. Then cross-check: every number and threshold in the architecture doc appears in exactly one digest.
+> `/wp W00-4`. Split `docs/architecture-design.md` into `docs/specs/*.md` per §3.2, one module per subagent, at most 2 at a time. Then cross-check: every number and threshold in the architecture doc appears in exactly one digest.
 
-**Session 3 onwards:** `/wp W00-1 usage=<n>`, then W00-2, W00-5 and W00-6 in the usual loop, and record calibration numbers after each.
+This is a good first real test of checkpoints: if the guard calls WRAP-UP partway through, the next `/wp W00-4` should resume from the digests that aren't done yet.
+
+**Session 3 onwards:** `/wp W00-1`, then W00-2, W00-5 and W00-6 in the usual loop. The guard logs the calibration numbers.
 
 ---
 
@@ -610,6 +707,18 @@ Spec refs: docs/specs/<module>.md#<anchor> (→ arch §x.y)
 
 ## OPEN-Q
 - (none) | Q1: <question> · Options: a / b · Recommendation: a, because …
+
+## Checkpoint (overwritten by /checkpoint; empty when the WP is not paused)
+Written: <timestamp> · Reason: wrap-up | checkpoint-now | 3-strike | owner-stop
+Branch: wp/Wnn-k-<slug> · Checkpoint commit: <sha> (pushed) · Usage at stop: week <%>, 5h <%>
+Loop step: spec-tests | implement | review | fix | full-verify | pr
+Criteria done: 1, 2 · Remaining: 3, 4
+Half done: <file › function: what exists, what is missing>
+NEXT ACTION: <one imperative sentence: the first thing the next session does>
+Verify state: <failing tests and whether that is expected>
+Decisions this session: …
+Tried and rejected (do not retry): …
+Open questions: …
 
 ## Handoff (filled at the end)
 State: done | partial (what's left) · Gotchas: … · Follow-ups → backlog.md
@@ -669,18 +778,22 @@ Reviewer: <agent, model> · must-fix: 0 open · should-fix: fixed <n>, deferred 
 Tier: A|B|C · Migration: yes/no (expand-contract?) · Feature flag: …
 ```
 
-### A.5 Budget log (`docs/plan/budget-log.md`)
+### A.5 Budget log (`docs/plan/budget-log.md`, written by the guard)
 
 ```markdown
-| Date | Day | Session | WP | Models | Weekly % start | Weekly % end | Δ | Light |
-|---|---|---|---|---|---|---|---|---|
+| Date | Day | Session | WP | Models | Weekly % start | Weekly % end | Δ | 5h % end | Light | Ended by |
+|---|---|---|---|---|---|---|---|---|---|---|
 ```
+
+"Ended by" is one of `done`, `wrap-up`, `checkpoint-now`, `3-strike`, `owner`, `no-checkpoint`.
 
 ---
 
 ## Appendix B: Draft agent and command definitions
 
 These are drafts. In W00, check field names and allowed values (`model`, `effort`, `tools`) against the current Claude Code documentation before committing them.
+
+### B.1 Agents and commands
 
 **`.claude/agents/spec-tester.md`**
 
@@ -713,6 +826,8 @@ Read: the WP file, its cited digest anchors, and the CLAUDE.md of each package y
 Tests written by spec-tester are frozen. If one looks wrong, stop and report it as a deviation.
 `domain/` stays pure: no I/O, no Date.now, no Math.random. Cross-module imports go through index.ts only.
 Verify only with `pnpm verify:affected`. 3-strike rule: after the same failure survives 3 attempts, stop and report a stuck note.
+Commit at every green point (`wip(<WP>): …`).
+Budget notices: on WRAP-UP, finish the current step, commit, and return. On CHECKPOINT-NOW, commit what is safe and return at once. Either way, return a partial report: done, half done, next action, tried and rejected.
 Return at most 150 words: summary, files changed, verify result, deviations, out-of-scope finds.
 ```
 
@@ -748,16 +863,33 @@ Answer only what was asked, as path:line plus a one-line answer. At most 10 item
 
 ```markdown
 ---
-description: Run one work package end to end. Usage: /wp <WP-id> usage=<weekly %>
+description: Run or resume one work package end to end. Usage: /wp <WP-id>
 model: sonnet
 ---
-1. Read docs/plan/STATUS.md and docs/plan/wp/$WP.md only. Compute the light from usage= and the daily line in docs/development-plan.md §2.2–2.3. On red, stop and say so. On amber, apply the amber rules.
-2. Check the dependencies are merged. Create the branch.
+1. Read docs/plan/STATUS.md and docs/plan/wp/$WP.md only. Use the light from the budget card. If the light is unknown, ask the user once for /usage figures and run /budget. On red, stop and say so. On amber, apply the amber rules.
+2. If the WP file has a Checkpoint: check out its branch, confirm HEAD matches the checkpoint commit (if not, run git status and git log and reconcile first), and continue at the recorded loop step, giving the checkpoint to the agent as its brief. Otherwise: check the dependencies are merged and create the branch.
 3. Tier A: run spec-tester, then implementer-core. Tier B/C: run implementer. Pass file paths and anchors; never paste file contents.
 4. When green: Tier A/B → reviewer (Opus for A, Sonnet for B); send must-fix items to the same implementer via SendMessage. Tier C → ui-verifier.
 5. Run the full `pnpm verify`. Open the PR with .github/pull_request_template.md.
-6. Fill in the WP Handoff and Actuals, update STATUS.md, append to budget-log.md (ask the user for the end usage %). Stop.
+6. Fill in the WP Handoff and Actuals, clear the Checkpoint section, update STATUS.md. Stop. The guard logs usage.
+On a WRAP-UP or CHECKPOINT-NOW notice at any step: tell running subagents to return, then run /checkpoint and stop.
 ```
+
+**`.claude/commands/checkpoint.md`**
+
+```markdown
+---
+description: Save where this WP stands so the next session can resume. Usage: /checkpoint [reason]
+model: sonnet
+---
+Be brief: this often runs with little budget left.
+1. git add the WP's changes; commit "wip(<WP>): checkpoint, <reason>"; push the WP branch.
+2. Overwrite the "## Checkpoint" section of docs/plan/wp/<WP>.md using template A.1. Write it for a reader with no context, and make NEXT ACTION a single imperative sentence.
+3. Set the WP's row in docs/plan/STATUS.md to "⏸ paused (<reason>) · resume: /wp <WP>".
+4. Commit and push those two files. Reply with one line: the WP, the next action, the commit SHA.
+```
+
+**`.claude/commands/budget.md`** (`model: haiku`): `/budget <weekly%> <5h%>` runs `node scripts/claude/budget.mjs set <weekly> <5h>`, which writes the figures to the usage cache with `source: manual`, then prints the light. Use it only when the guard shows ⚪ unknown.
 
 **`.claude/commands/plan-week.md`** (`model: opus`): reads `roadmap.md`, the last retro, `STATUS.md`, `backlog.md` and the schedule row in §7. Writes `weeks/Wnn.md` and the WP files within `capacity × 0.9`. Lists owner tasks and `OPEN-Q`s. Stops for approval.
 
@@ -767,7 +899,49 @@ model: sonnet
 
 **`.claude/commands/hotfix.md`** (`model: sonnet`): fixes CI on `main` or a production bug, using the reserve, with the minimal diff and a regression test.
 
-**`.claude/settings.json`** (sketch): a permissions allowlist for `pnpm verify*`, `pnpm test*`, `pnpm build`, `git status|diff|log|add|commit|push|checkout|switch` (no `--force`), `docker compose *`, `node scripts/*`; plus a PostToolUse hook on `Edit|Write` that runs Prettier and `eslint --fix` on the edited file.
+### B.2 Budget guard wiring
+
+**`.claude/settings.json`** (sketch; check the key names against the current docs in W00):
+
+```json
+{
+  "statusLine": { "type": "command", "command": "node scripts/claude/budget.mjs statusline" },
+  "hooks": {
+    "SessionStart":     [{ "hooks": [{ "type": "command", "command": "node scripts/claude/budget.mjs session-start" }] }],
+    "UserPromptSubmit": [{ "hooks": [{ "type": "command", "command": "node scripts/claude/budget.mjs check" }] }],
+    "PostToolUse": [
+      { "hooks": [{ "type": "command", "command": "node scripts/claude/budget.mjs check" }] },
+      { "matcher": "Edit|Write", "hooks": [{ "type": "command", "command": "node scripts/claude/format-file.mjs" }] }
+    ],
+    "Stop":       [{ "hooks": [{ "type": "command", "command": "node scripts/claude/budget.mjs stop-guard" }] }],
+    "PreCompact": [{ "hooks": [{ "type": "command", "command": "node scripts/claude/budget.mjs pre-compact" }] }],
+    "SessionEnd": [{ "hooks": [{ "type": "command", "command": "node scripts/claude/budget.mjs session-end" }] }]
+  },
+  "permissions": { "allow": ["Bash(pnpm verify*)", "Bash(pnpm test*)", "Bash(pnpm build)", "Bash(git status*)", "Bash(git diff*)", "Bash(git log*)", "Bash(git add*)", "Bash(git commit*)", "Bash(git push origin wp/*)", "Bash(git checkout*)", "Bash(git switch*)", "Bash(docker compose*)", "Bash(node scripts/*)"] }
+}
+```
+
+**`.claude/budget.json`** (defaults):
+
+```json
+{
+  "dailyCaps": [15, 15, 15, 15, 15, 2.5, 2.5],
+  "weeklyCeiling": 80, "hardStop": 90, "amberBand": 10,
+  "fiveHour": { "wrapUp": 75, "checkpointNow": 88 },
+  "context":  { "wrapUp": 50, "checkpointNow": 70 },
+  "staleAfterMinutes": 15,
+  "fallbackToolCallCap": 150
+}
+```
+
+**`budget.mjs` subcommands.** Plain Node, no dependencies, about 250 lines, with unit tests run on recorded status-line JSON.
+- `statusline`: reads stdin, writes `~/.claude/kizuna/usage.json`, prints the one-line status.
+- `check`: computes the light and level. It emits `hookSpecificOutput.additionalContext` only when the level has changed since the last notice, and is otherwise silent.
+- `session-start`: prints the budget card and resume cards (from `STATUS.md` and the WP checkpoints), and warns about uncommitted or unrecorded work. It also logs the start figure.
+- `stop-guard`: returns `decision: "block"` once, with a reason pointing to `/checkpoint`, if the WP is in progress with changes since the last checkpoint. If `stop_hook_active` is true, it never blocks.
+- `pre-compact`: prints instructions to keep the WP ID, loop step, next action and the do-not-retry list.
+- `session-end`: logs the end figure and how the session ended.
+- `set <weekly> <5h>`: the manual fallback.
 
 ---
 
@@ -802,5 +976,8 @@ Adaptive kanji-learning SaaS. TypeScript modular monolith: pnpm + Turborepo, Fas
 - Tier A ambiguity: write an OPEN-Q in the WP file and never guess.
 - 3-strike rule: after the same failure survives 3 attempts, stop and write a stuck note.
 - Subagent results: at most 150 words plus files changed. No raw logs.
+- Budget notices come from the guard hook. On WRAP-UP, finish the current step, then /checkpoint. On CHECKPOINT-NOW, /checkpoint immediately. Never ignore one.
+- If the session-start card shows a paused WP, resume it with /wp <id>. Never start it over.
+- Commit at every green point. Never end a session with uncommitted work.
 - Commit messages: imperative, scoped (e.g. "memory: replay out-of-order answers").
 ```
