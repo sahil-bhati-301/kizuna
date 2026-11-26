@@ -25,7 +25,7 @@ Light: ⚪ unknown until the budget guard runs (W00-7). Use /budget if needed.
 
 ## Last decisions
 - Plan: docs/development-plan.md is the source for workflow; docs/architecture-design.md wins design conflicts.
-- Until W00-1 lands, the only test command is `node --test scripts/claude/`.
+- Until W00-1 lands, the only test command is `node --test "scripts/claude/*.test.mjs"`.
 
 ## Flaky tests
 - None

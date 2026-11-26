@@ -12,7 +12,7 @@ Adaptive kanji-learning SaaS. TypeScript modular monolith: pnpm + Turborepo, Fas
 - pnpm verify: everything, once before a PR
 - pnpm db:up / pnpm db:migrate: local Postgres
 - Never run raw test commands with full output.
-- Until W00-1 lands, the verify scripts and pnpm commands above do not exist. The only test command is `node --test scripts/claude/`.
+- Until W00-1 lands, the verify scripts and pnpm commands above do not exist. The only test command is `node --test "scripts/claude/*.test.mjs"`.
 
 ## Architecture rules (CI enforces them)
 - Modules import each other only through src/index.ts. Domain events live in packages/contracts.

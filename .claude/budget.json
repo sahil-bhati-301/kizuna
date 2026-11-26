@@ -1,0 +1,10 @@
+{
+  "dailyCaps": [15, 15, 15, 15, 15, 2.5, 2.5],
+  "weeklyCeiling": 75,
+  "hardStop": 90,
+  "amberBand": 10,
+  "fiveHour": { "wrapUp": 75, "checkpointNow": 88 },
+  "context": { "wrapUp": 50, "checkpointNow": 70 },
+  "staleAfterMinutes": 15,
+  "fallbackToolCallCap": 150
+}
