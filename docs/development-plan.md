@@ -1,6 +1,6 @@
 # Kizuna (絆): Development Plan
 
-Delivery plan for building Kizuna with Claude Code · v1.0 · 2026-11-26 · Status: **Proposed** · v1.1 adds the budget guard and checkpoints (§3.6–3.7)
+Delivery plan for building Kizuna with Claude Code · v1.1 · 2026-11-26 · Status: **Proposed** · v1.1 adds the budget guard and checkpoints (§3.6–3.7)
 
 > **Scope.** This document covers *how* the system in [`architecture-design.md`](architecture-design.md) gets built: the team, the development loops, the usage budget, and a week-by-week schedule from an empty repository to public launch. It does not change the architecture. Where the schedule departs from the architecture roadmap (§12 there), §9 lists each change and the reason for it.
 >
