@@ -4,13 +4,15 @@ Phase 0 · Week W02 (Pipeline II: components, words, alignment) · planned and a
 Light: 🟢 green at session 13 end (week 33%, 5h 55%). Run /budget with /usage figures at the start and end of every session.
 
 ## Next step
-- Owner: review and merge PR #19 (W02-2). Then run the next W02 WP per the weekly plan.
+- Run the next W02 WP per the weekly plan (W02-2 merged in PR #19).
 - W01 retro done: measured ≈2% per M-eq, capacity ≈30 M-eq (coarse). Schedule kept; W02 is planned at 8 M-eq (§2.7), the surplus is reserve.
 - Need from the owner: a /usage figure at the end of session 11 (W01-7 and the retro have no end reading).
 
 ## Active WPs
-- W02-2 JMdict → word: in review, PR #19 (30,188 entries, 22,668 common).
-- W02 plan: W02-1, W02-3 to W02-6 not started.
+- (none started; W02-1, W02-3 to W02-6 remain)
+
+## Merged in W02
+- W02-2 JMdict common subset → word (PR #19)
 
 ## Merged in W01 (all 7 WPs)
 - W01-1 Pipeline app, sources lock, fetcher (PR #9) · W01-6 kernel domain/ (PR #10)
