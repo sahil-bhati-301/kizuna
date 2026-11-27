@@ -66,6 +66,13 @@ module.exports = {
       to: { path: '^packages/(content|memory|insights|drills|account|ui|sim)/' },
     },
     {
+      name: 'no-app-to-app',
+      comment: 'An app may not import another app (arch 8.2).',
+      severity: 'error',
+      from: { path: '^apps/([^/]+)/' },
+      to: { path: '^apps/([^/]+)/', pathNot: '^apps/$1/' },
+    },
+    {
       name: 'web-allow-list',
       comment:
         'apps/web may import only contracts, drills/grading, content types and ui (arch 8.2).',

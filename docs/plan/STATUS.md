@@ -6,16 +6,24 @@ Light: 🟢 green at session 5 (week 20%, 5h 42%). Run /budget with /usage figur
 ## Active WPs
 | WP | Title | Tier/Size | State |
 |---|---|---|---|
-| (none) | W01 not planned yet: run /plan-week W01 | | |
+| W01-1 | Pipeline app, sources lock, fetcher | B/S | 🔄 in review (session 6) |
+| W01-6 | kernel: pure code under src/domain/ | B/S | ⬜ todo |
+| W01-2 | content Drizzle schema and types | B/M | ⬜ todo |
+| W01-7 | CI hygiene: Node 24 actions, .nvmrc | C/S | ⬜ todo |
+| W01-4 | Normalisation library | A/M | ⬜ todo |
+| W01-3 | KANJIDIC2 parser and Jōyō import | A/M | ⬜ todo |
+| W01-5 | KRADFILE parser | B/S | ⬜ todo |
 
 ## Merged last week (W00, all 7 WPs)
 - W00-7 Budget guard and checkpoints, W00-3 Agent scaffolding (PR #2)
 - W00-1 Monorepo, verify scripts (PR #3) · W00-2 CI (PR #4)
 - W00-5 kernel (PR #5) · W00-4 Spec digests (PR #6) · W00-6 Local dev and DB harness (PR #7)
 
-## Owner tasks open
+## Owner tasks
 - O-3: done, ADR-0001 accepted (Fly.io, Vercel, Neon, R2, Better Auth).
-- O-4: approve root CLAUDE.md, agent definitions and spec digests.
+- O-4: done, approved by the owner (session 5).
+- O-5 (W01): done. The "kizuna" cloud environment allows www.edrdg.org.
+- O-6 (W01): re-verify the KANJIDIC2 and KRADFILE licences at source.
 
 ## Blockers
 - (none)
@@ -24,6 +32,7 @@ Light: 🟢 green at session 5 (week 20%, 5h 42%). Run /budget with /usage figur
 - (none)
 
 ## Last decisions
+- W01 plan approved. Sources are committed to the repo under content/sources/ (W01-1 Q1); the Jōyō table is a checked-in TSV (W01-3 Q1).
 - Plan: docs/development-plan.md is the source for workflow; docs/architecture-design.md wins design conflicts.
 - Cloud sessions cannot push wp/ branches: each WP works on its session branch (W00-1, 2, 4, 5, 6).
 - Capacity stays at the assumed 8 M-eq for W01; calibration happens at the W01 retro (§2.7). W01 WPs carry Est. % (7.5% per M-eq).
