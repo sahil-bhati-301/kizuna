@@ -10,3 +10,5 @@ Written by the budget guard. "Ended by" is one of `done`, `wrap-up`, `checkpoint
 | 2026-11-27 | 5 | de32d3be | main | ? | ? | ? | ? | ? | unknown | — |
 | 2026-11-27 | 5 | de32d3be | main | ? | ? | ? | ? | ? | unknown | — |
 | 2026-11-27 | 5 | e43c7e4c | claude/busy-hamilton-ifpwb3 | ? | ? | 24% | ? | 72% | unknown | — |
+| 2026-11-27 | 5 | e43c7e4c | claude/busy-hamilton-ifpwb3 | ? | ? | 24% | ? | 72% | unknown | — |
+| 2026-11-27 | 5 | e43c7e4c | claude/busy-hamilton-ifpwb3 | ? | ? | 24% | ? | 72% | unknown | — |
