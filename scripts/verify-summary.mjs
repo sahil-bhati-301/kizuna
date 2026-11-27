@@ -86,7 +86,6 @@ function sh(cmd, args, cwd) {
   const r = spawnSync(cmd, args, {
     env: { ...process.env, DO_NOT_TRACK: '1' },
     cwd,
-    env: { ...process.env, DO_NOT_TRACK: '1' },
     encoding: 'utf8',
     maxBuffer: 64 * 1024 * 1024,
   });

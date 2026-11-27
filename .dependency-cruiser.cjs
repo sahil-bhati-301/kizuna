@@ -17,7 +17,7 @@ module.exports = {
       to: {
         path: '^packages/([^/]+)/(src/)?',
         pathNot: [
-          '^packages/$1/',
+          '^$1/$2/',
           '^packages/[^/]+/src/index\\.ts$',
           // drills/grading is a separate public entry (also used by web).
           '^packages/drills/(src/)?grading/index\\.ts$',

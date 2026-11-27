@@ -1,2 +1,3 @@
-import { a } from '../../a/src/index.js';
-export const b = a;
+import { a as base } from '../../a/src/index.js';
+import { helper } from './internal.js';
+export const b = base + helper;
