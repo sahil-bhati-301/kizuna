@@ -161,7 +161,7 @@ packages/<module>/src/
 ## §8.3 Deployment topology
 
 - **web:** Vercel, or a container beside the API.
-- **api:** 1–2 small containers (Fly.io, Render or Railway), stateless and horizontally scalable.
+- **api:** 1–2 small containers on Fly.io (ADR-0001), stateless and horizontally scalable.
 - **worker:** one container, same image, different entrypoint.
 - **Postgres:** managed, with point-in-time recovery. Add a read replica once dashboards or analytics start to load production.
 - **Environments:** local (docker-compose Postgres seeded with a content release), staging, production.
@@ -223,7 +223,7 @@ Object storage and CDN: pipeline digest. → arch §8.3
 
 ## §14 Open decisions
 
-1. **Auth:** Better Auth (ownership) vs. Clerk (speed). Recommended: Better Auth.
+1. **Auth:** decided: Better Auth (ADR-0001).
 2. **Billing:** Stripe Billing with Stripe Tax vs. a merchant of record (Paddle).
 3. **Free-tier boundaries:** kanji scope, daily new limit, knot limits (starting proposal in §7.7).
 4. **Default desired retention** for beginners: 0.90 vs. 0.85, to reduce early workload.

@@ -14,7 +14,7 @@ Light: 🟢 green at session 5 (week 20%, 5h 42%). Run /budget with /usage figur
 - W00-5 kernel (PR #5) · W00-4 Spec digests (PR #6) · W00-6 Local dev and DB harness (PR #7)
 
 ## Owner tasks open
-- O-3: ADR-0001 hosting (Vercel, Fly.io or Render, Neon, Cloudflare R2; confirm Better Auth).
+- O-3: done, ADR-0001 accepted (Fly.io, Vercel, Neon, R2, Better Auth).
 - O-4: approve root CLAUDE.md, agent definitions and spec digests.
 
 ## Blockers
