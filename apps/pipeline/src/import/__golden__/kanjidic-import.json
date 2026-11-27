@@ -1,0 +1,1751 @@
+{
+  "kanji": [
+    {
+      "literal": "唖",
+      "codepoint": 21782,
+      "strokes": 10,
+      "radicalNumber": 30,
+      "grade": null,
+      "freqRank": null,
+      "isJoyo": false,
+      "meanings": [
+        {
+          "lang": "en",
+          "text": "mute"
+        },
+        {
+          "lang": "en",
+          "text": "dumb"
+        }
+      ],
+      "source": "kanjidic2",
+      "sourceVersion": "2026-331",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "literal": "御",
+      "codepoint": 24481,
+      "strokes": 12,
+      "radicalNumber": 60,
+      "grade": 8,
+      "freqRank": 1087,
+      "isJoyo": true,
+      "meanings": [
+        {
+          "lang": "en",
+          "text": "honorable"
+        },
+        {
+          "lang": "en",
+          "text": "manipulate"
+        },
+        {
+          "lang": "en",
+          "text": "govern"
+        },
+        {
+          "lang": "fr",
+          "text": "honorable"
+        },
+        {
+          "lang": "fr",
+          "text": "diriger"
+        },
+        {
+          "lang": "fr",
+          "text": "contrôler"
+        },
+        {
+          "lang": "es",
+          "text": "prefijo honorífico"
+        },
+        {
+          "lang": "es",
+          "text": "manipular"
+        },
+        {
+          "lang": "es",
+          "text": "gobernar"
+        },
+        {
+          "lang": "pt",
+          "text": "honrado"
+        },
+        {
+          "lang": "pt",
+          "text": "manipular"
+        },
+        {
+          "lang": "pt",
+          "text": "governar"
+        }
+      ],
+      "source": "kanjidic2",
+      "sourceVersion": "2026-331",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "literal": "日",
+      "codepoint": 26085,
+      "strokes": 4,
+      "radicalNumber": 72,
+      "grade": 1,
+      "freqRank": 1,
+      "isJoyo": true,
+      "meanings": [
+        {
+          "lang": "en",
+          "text": "day"
+        },
+        {
+          "lang": "en",
+          "text": "sun"
+        },
+        {
+          "lang": "en",
+          "text": "Japan"
+        },
+        {
+          "lang": "en",
+          "text": "counter for days"
+        },
+        {
+          "lang": "fr",
+          "text": "jour"
+        },
+        {
+          "lang": "fr",
+          "text": "soleil"
+        },
+        {
+          "lang": "fr",
+          "text": "Japon"
+        },
+        {
+          "lang": "fr",
+          "text": "compteur de jours"
+        },
+        {
+          "lang": "es",
+          "text": "día"
+        },
+        {
+          "lang": "es",
+          "text": "solar"
+        },
+        {
+          "lang": "es",
+          "text": "Japón"
+        },
+        {
+          "lang": "es",
+          "text": "sol"
+        },
+        {
+          "lang": "es",
+          "text": "rayo de sol"
+        },
+        {
+          "lang": "pt",
+          "text": "dia"
+        },
+        {
+          "lang": "pt",
+          "text": "sol"
+        },
+        {
+          "lang": "pt",
+          "text": "Japão"
+        }
+      ],
+      "source": "kanjidic2",
+      "sourceVersion": "2026-331",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "literal": "犀",
+      "codepoint": 29312,
+      "strokes": 12,
+      "radicalNumber": 93,
+      "grade": 9,
+      "freqRank": 2426,
+      "isJoyo": false,
+      "meanings": [
+        {
+          "lang": "en",
+          "text": "rhinoceros"
+        }
+      ],
+      "source": "kanjidic2",
+      "sourceVersion": "2026-331",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "literal": "狼",
+      "codepoint": 29436,
+      "strokes": 10,
+      "radicalNumber": 94,
+      "grade": 9,
+      "freqRank": 2129,
+      "isJoyo": false,
+      "meanings": [
+        {
+          "lang": "en",
+          "text": "wolf"
+        },
+        {
+          "lang": "es",
+          "text": "lobo"
+        },
+        {
+          "lang": "es",
+          "text": "confundirse"
+        },
+        {
+          "lang": "es",
+          "text": "estar desordenado"
+        },
+        {
+          "lang": "es",
+          "text": "estar desorganizado"
+        }
+      ],
+      "source": "kanjidic2",
+      "sourceVersion": "2026-331",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "literal": "生",
+      "codepoint": 29983,
+      "strokes": 5,
+      "radicalNumber": 100,
+      "grade": 1,
+      "freqRank": 29,
+      "isJoyo": true,
+      "meanings": [
+        {
+          "lang": "en",
+          "text": "life"
+        },
+        {
+          "lang": "en",
+          "text": "genuine"
+        },
+        {
+          "lang": "en",
+          "text": "birth"
+        },
+        {
+          "lang": "fr",
+          "text": "vie"
+        },
+        {
+          "lang": "fr",
+          "text": "naissance"
+        },
+        {
+          "lang": "fr",
+          "text": "authentique"
+        },
+        {
+          "lang": "fr",
+          "text": "cru"
+        },
+        {
+          "lang": "es",
+          "text": "vida"
+        },
+        {
+          "lang": "es",
+          "text": "nacimiento"
+        },
+        {
+          "lang": "es",
+          "text": "vivir"
+        },
+        {
+          "lang": "es",
+          "text": "existir"
+        },
+        {
+          "lang": "es",
+          "text": "nacer"
+        },
+        {
+          "lang": "es",
+          "text": "dar a luz"
+        },
+        {
+          "lang": "es",
+          "text": "puro"
+        },
+        {
+          "lang": "es",
+          "text": "crudo"
+        },
+        {
+          "lang": "pt",
+          "text": "vida"
+        },
+        {
+          "lang": "pt",
+          "text": "genuína"
+        },
+        {
+          "lang": "pt",
+          "text": "nascimento"
+        }
+      ],
+      "source": "kanjidic2",
+      "sourceVersion": "2026-331",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "literal": "籠",
+      "codepoint": 31840,
+      "strokes": 22,
+      "radicalNumber": 118,
+      "grade": 8,
+      "freqRank": null,
+      "isJoyo": true,
+      "meanings": [
+        {
+          "lang": "en",
+          "text": "basket"
+        },
+        {
+          "lang": "en",
+          "text": "devote oneself"
+        },
+        {
+          "lang": "en",
+          "text": "seclude oneself"
+        },
+        {
+          "lang": "en",
+          "text": "cage"
+        },
+        {
+          "lang": "en",
+          "text": "coop"
+        },
+        {
+          "lang": "en",
+          "text": "implied"
+        },
+        {
+          "lang": "es",
+          "text": "cesto"
+        },
+        {
+          "lang": "es",
+          "text": "canasta"
+        },
+        {
+          "lang": "es",
+          "text": "palanquín"
+        },
+        {
+          "lang": "es",
+          "text": "confinarse"
+        },
+        {
+          "lang": "es",
+          "text": "recluirse"
+        },
+        {
+          "lang": "es",
+          "text": "confinar"
+        },
+        {
+          "lang": "es",
+          "text": "recluir"
+        },
+        {
+          "lang": "es",
+          "text": "engatusar"
+        },
+        {
+          "lang": "es",
+          "text": "seducir"
+        }
+      ],
+      "source": "kanjidic2",
+      "sourceVersion": "2026-331",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "literal": "薄",
+      "codepoint": 34180,
+      "strokes": 16,
+      "radicalNumber": 140,
+      "grade": 8,
+      "freqRank": 1009,
+      "isJoyo": true,
+      "meanings": [
+        {
+          "lang": "en",
+          "text": "dilute"
+        },
+        {
+          "lang": "en",
+          "text": "thin"
+        },
+        {
+          "lang": "en",
+          "text": "weak (tea)"
+        },
+        {
+          "lang": "en",
+          "text": "pampas grass"
+        },
+        {
+          "lang": "fr",
+          "text": "fin"
+        },
+        {
+          "lang": "fr",
+          "text": "dilué"
+        },
+        {
+          "lang": "fr",
+          "text": "léger (thé)"
+        },
+        {
+          "lang": "es",
+          "text": "pálido"
+        },
+        {
+          "lang": "es",
+          "text": "fino"
+        },
+        {
+          "lang": "es",
+          "text": "delgado"
+        },
+        {
+          "lang": "es",
+          "text": "diluirse"
+        },
+        {
+          "lang": "es",
+          "text": "debilitarse"
+        },
+        {
+          "lang": "es",
+          "text": "diluir"
+        },
+        {
+          "lang": "es",
+          "text": "aclarar"
+        },
+        {
+          "lang": "es",
+          "text": "palidecer"
+        },
+        {
+          "lang": "es",
+          "text": "desvanecerse"
+        },
+        {
+          "lang": "pt",
+          "text": "diluir"
+        },
+        {
+          "lang": "pt",
+          "text": "fraco"
+        },
+        {
+          "lang": "pt",
+          "text": "ralo (chá)"
+        }
+      ],
+      "source": "kanjidic2",
+      "sourceVersion": "2026-331",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "literal": "謡",
+      "codepoint": 35617,
+      "strokes": 16,
+      "radicalNumber": 149,
+      "grade": 8,
+      "freqRank": 1580,
+      "isJoyo": true,
+      "meanings": [
+        {
+          "lang": "en",
+          "text": "song"
+        },
+        {
+          "lang": "en",
+          "text": "sing"
+        },
+        {
+          "lang": "en",
+          "text": "ballad"
+        },
+        {
+          "lang": "en",
+          "text": "noh chanting"
+        },
+        {
+          "lang": "fr",
+          "text": "chanter"
+        },
+        {
+          "lang": "fr",
+          "text": "chant Noh"
+        },
+        {
+          "lang": "es",
+          "text": "canto del teatro Noh"
+        },
+        {
+          "lang": "es",
+          "text": "canto melódico"
+        },
+        {
+          "lang": "es",
+          "text": "cantar"
+        },
+        {
+          "lang": "pt",
+          "text": "Canto de teatro noh"
+        }
+      ],
+      "source": "kanjidic2",
+      "sourceVersion": "2026-331",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "literal": "食",
+      "codepoint": 39135,
+      "strokes": 9,
+      "radicalNumber": 184,
+      "grade": 2,
+      "freqRank": 328,
+      "isJoyo": true,
+      "meanings": [
+        {
+          "lang": "en",
+          "text": "eat"
+        },
+        {
+          "lang": "en",
+          "text": "food"
+        },
+        {
+          "lang": "fr",
+          "text": "manger"
+        },
+        {
+          "lang": "fr",
+          "text": "nourriture"
+        },
+        {
+          "lang": "es",
+          "text": "alimento"
+        },
+        {
+          "lang": "es",
+          "text": "comida"
+        },
+        {
+          "lang": "es",
+          "text": "eclipse"
+        },
+        {
+          "lang": "es",
+          "text": "comer"
+        },
+        {
+          "lang": "pt",
+          "text": "comer"
+        },
+        {
+          "lang": "pt",
+          "text": "comida"
+        },
+        {
+          "lang": "pt",
+          "text": "alimento"
+        }
+      ],
+      "source": "kanjidic2",
+      "sourceVersion": "2026-331",
+      "license": "CC BY-SA 4.0"
+    }
+  ],
+  "readings": [
+    {
+      "id": "唖:on:あ",
+      "kanjiLiteral": "唖",
+      "kind": "on",
+      "kana": "あ",
+      "okurigana": null,
+      "isJoyo": false,
+      "source": "kanjidic2",
+      "sourceVersion": "2026-331",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "id": "唖:on:あく",
+      "kanjiLiteral": "唖",
+      "kind": "on",
+      "kana": "あく",
+      "okurigana": null,
+      "isJoyo": false,
+      "source": "kanjidic2",
+      "sourceVersion": "2026-331",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "id": "唖:kun:おし",
+      "kanjiLiteral": "唖",
+      "kind": "kun",
+      "kana": "おし",
+      "okurigana": null,
+      "isJoyo": false,
+      "source": "kanjidic2",
+      "sourceVersion": "2026-331",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "id": "御:on:ぎょ",
+      "kanjiLiteral": "御",
+      "kind": "on",
+      "kana": "ぎょ",
+      "okurigana": null,
+      "isJoyo": true,
+      "source": "kanjidic2",
+      "sourceVersion": "2026-331",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "id": "御:on:ご",
+      "kanjiLiteral": "御",
+      "kind": "on",
+      "kana": "ご",
+      "okurigana": null,
+      "isJoyo": true,
+      "source": "kanjidic2",
+      "sourceVersion": "2026-331",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "id": "御:kun:お-",
+      "kanjiLiteral": "御",
+      "kind": "kun",
+      "kana": "お",
+      "okurigana": null,
+      "isJoyo": false,
+      "source": "kanjidic2",
+      "sourceVersion": "2026-331",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "id": "御:kun:おん-",
+      "kanjiLiteral": "御",
+      "kind": "kun",
+      "kana": "おん",
+      "okurigana": null,
+      "isJoyo": false,
+      "source": "kanjidic2",
+      "sourceVersion": "2026-331",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "id": "御:kun:み-",
+      "kanjiLiteral": "御",
+      "kind": "kun",
+      "kana": "み",
+      "okurigana": null,
+      "isJoyo": false,
+      "source": "kanjidic2",
+      "sourceVersion": "2026-331",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "id": "御:nanori:う",
+      "kanjiLiteral": "御",
+      "kind": "nanori",
+      "kana": "う",
+      "okurigana": null,
+      "isJoyo": false,
+      "source": "kanjidic2",
+      "sourceVersion": "2026-331",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "id": "日:on:じつ",
+      "kanjiLiteral": "日",
+      "kind": "on",
+      "kana": "じつ",
+      "okurigana": null,
+      "isJoyo": true,
+      "source": "kanjidic2",
+      "sourceVersion": "2026-331",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "id": "日:on:にち",
+      "kanjiLiteral": "日",
+      "kind": "on",
+      "kana": "にち",
+      "okurigana": null,
+      "isJoyo": true,
+      "source": "kanjidic2",
+      "sourceVersion": "2026-331",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "id": "日:kun:-か",
+      "kanjiLiteral": "日",
+      "kind": "kun",
+      "kana": "か",
+      "okurigana": null,
+      "isJoyo": true,
+      "source": "kanjidic2",
+      "sourceVersion": "2026-331",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "id": "日:kun:-び",
+      "kanjiLiteral": "日",
+      "kind": "kun",
+      "kana": "び",
+      "okurigana": null,
+      "isJoyo": false,
+      "source": "kanjidic2",
+      "sourceVersion": "2026-331",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "id": "日:kun:ひ",
+      "kanjiLiteral": "日",
+      "kind": "kun",
+      "kana": "ひ",
+      "okurigana": null,
+      "isJoyo": true,
+      "source": "kanjidic2",
+      "sourceVersion": "2026-331",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "id": "日:nanori:あ",
+      "kanjiLiteral": "日",
+      "kind": "nanori",
+      "kana": "あ",
+      "okurigana": null,
+      "isJoyo": false,
+      "source": "kanjidic2",
+      "sourceVersion": "2026-331",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "id": "日:nanori:あき",
+      "kanjiLiteral": "日",
+      "kind": "nanori",
+      "kana": "あき",
+      "okurigana": null,
+      "isJoyo": false,
+      "source": "kanjidic2",
+      "sourceVersion": "2026-331",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "id": "日:nanori:いる",
+      "kanjiLiteral": "日",
+      "kind": "nanori",
+      "kana": "いる",
+      "okurigana": null,
+      "isJoyo": false,
+      "source": "kanjidic2",
+      "sourceVersion": "2026-331",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "id": "日:nanori:く",
+      "kanjiLiteral": "日",
+      "kind": "nanori",
+      "kana": "く",
+      "okurigana": null,
+      "isJoyo": false,
+      "source": "kanjidic2",
+      "sourceVersion": "2026-331",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "id": "日:nanori:くさ",
+      "kanjiLiteral": "日",
+      "kind": "nanori",
+      "kana": "くさ",
+      "okurigana": null,
+      "isJoyo": false,
+      "source": "kanjidic2",
+      "sourceVersion": "2026-331",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "id": "日:nanori:こう",
+      "kanjiLiteral": "日",
+      "kind": "nanori",
+      "kana": "こう",
+      "okurigana": null,
+      "isJoyo": false,
+      "source": "kanjidic2",
+      "sourceVersion": "2026-331",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "id": "日:nanori:す",
+      "kanjiLiteral": "日",
+      "kind": "nanori",
+      "kana": "す",
+      "okurigana": null,
+      "isJoyo": false,
+      "source": "kanjidic2",
+      "sourceVersion": "2026-331",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "id": "日:nanori:たち",
+      "kanjiLiteral": "日",
+      "kind": "nanori",
+      "kana": "たち",
+      "okurigana": null,
+      "isJoyo": false,
+      "source": "kanjidic2",
+      "sourceVersion": "2026-331",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "id": "日:nanori:に",
+      "kanjiLiteral": "日",
+      "kind": "nanori",
+      "kana": "に",
+      "okurigana": null,
+      "isJoyo": false,
+      "source": "kanjidic2",
+      "sourceVersion": "2026-331",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "id": "日:nanori:にっ",
+      "kanjiLiteral": "日",
+      "kind": "nanori",
+      "kana": "にっ",
+      "okurigana": null,
+      "isJoyo": false,
+      "source": "kanjidic2",
+      "sourceVersion": "2026-331",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "id": "日:nanori:につ",
+      "kanjiLiteral": "日",
+      "kind": "nanori",
+      "kana": "につ",
+      "okurigana": null,
+      "isJoyo": false,
+      "source": "kanjidic2",
+      "sourceVersion": "2026-331",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "id": "日:nanori:へ",
+      "kanjiLiteral": "日",
+      "kind": "nanori",
+      "kana": "へ",
+      "okurigana": null,
+      "isJoyo": false,
+      "source": "kanjidic2",
+      "sourceVersion": "2026-331",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "id": "犀:on:さい",
+      "kanjiLiteral": "犀",
+      "kind": "on",
+      "kana": "さい",
+      "okurigana": null,
+      "isJoyo": false,
+      "source": "kanjidic2",
+      "sourceVersion": "2026-331",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "id": "犀:on:せい",
+      "kanjiLiteral": "犀",
+      "kind": "on",
+      "kana": "せい",
+      "okurigana": null,
+      "isJoyo": false,
+      "source": "kanjidic2",
+      "sourceVersion": "2026-331",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "id": "狼:on:ろう",
+      "kanjiLiteral": "狼",
+      "kind": "on",
+      "kana": "ろう",
+      "okurigana": null,
+      "isJoyo": false,
+      "source": "kanjidic2",
+      "sourceVersion": "2026-331",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "id": "狼:kun:おおかみ",
+      "kanjiLiteral": "狼",
+      "kind": "kun",
+      "kana": "おおかみ",
+      "okurigana": null,
+      "isJoyo": false,
+      "source": "kanjidic2",
+      "sourceVersion": "2026-331",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "id": "生:on:しょう",
+      "kanjiLiteral": "生",
+      "kind": "on",
+      "kana": "しょう",
+      "okurigana": null,
+      "isJoyo": true,
+      "source": "kanjidic2",
+      "sourceVersion": "2026-331",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "id": "生:on:せい",
+      "kanjiLiteral": "生",
+      "kind": "on",
+      "kana": "せい",
+      "okurigana": null,
+      "isJoyo": true,
+      "source": "kanjidic2",
+      "sourceVersion": "2026-331",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "id": "生:kun:-う",
+      "kanjiLiteral": "生",
+      "kind": "kun",
+      "kana": "う",
+      "okurigana": null,
+      "isJoyo": false,
+      "source": "kanjidic2",
+      "sourceVersion": "2026-331",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "id": "生:kun:い.かす",
+      "kanjiLiteral": "生",
+      "kind": "kun",
+      "kana": "い",
+      "okurigana": "かす",
+      "isJoyo": true,
+      "source": "kanjidic2",
+      "sourceVersion": "2026-331",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "id": "生:kun:い.きる",
+      "kanjiLiteral": "生",
+      "kind": "kun",
+      "kana": "い",
+      "okurigana": "きる",
+      "isJoyo": true,
+      "source": "kanjidic2",
+      "sourceVersion": "2026-331",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "id": "生:kun:い.ける",
+      "kanjiLiteral": "生",
+      "kind": "kun",
+      "kana": "い",
+      "okurigana": "ける",
+      "isJoyo": true,
+      "source": "kanjidic2",
+      "sourceVersion": "2026-331",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "id": "生:kun:う.まれ",
+      "kanjiLiteral": "生",
+      "kind": "kun",
+      "kana": "う",
+      "okurigana": "まれ",
+      "isJoyo": false,
+      "source": "kanjidic2",
+      "sourceVersion": "2026-331",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "id": "生:kun:う.まれる",
+      "kanjiLiteral": "生",
+      "kind": "kun",
+      "kana": "う",
+      "okurigana": "まれる",
+      "isJoyo": true,
+      "source": "kanjidic2",
+      "sourceVersion": "2026-331",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "id": "生:kun:う.む",
+      "kanjiLiteral": "生",
+      "kind": "kun",
+      "kana": "う",
+      "okurigana": "む",
+      "isJoyo": true,
+      "source": "kanjidic2",
+      "sourceVersion": "2026-331",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "id": "生:kun:うま.れる",
+      "kanjiLiteral": "生",
+      "kind": "kun",
+      "kana": "うま",
+      "okurigana": "れる",
+      "isJoyo": false,
+      "source": "kanjidic2",
+      "sourceVersion": "2026-331",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "id": "生:kun:うまれ",
+      "kanjiLiteral": "生",
+      "kind": "kun",
+      "kana": "うまれ",
+      "okurigana": null,
+      "isJoyo": false,
+      "source": "kanjidic2",
+      "sourceVersion": "2026-331",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "id": "生:kun:お.う",
+      "kanjiLiteral": "生",
+      "kind": "kun",
+      "kana": "お",
+      "okurigana": "う",
+      "isJoyo": true,
+      "source": "kanjidic2",
+      "sourceVersion": "2026-331",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "id": "生:kun:き",
+      "kanjiLiteral": "生",
+      "kind": "kun",
+      "kana": "き",
+      "okurigana": null,
+      "isJoyo": true,
+      "source": "kanjidic2",
+      "sourceVersion": "2026-331",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "id": "生:kun:な.す",
+      "kanjiLiteral": "生",
+      "kind": "kun",
+      "kana": "な",
+      "okurigana": "す",
+      "isJoyo": false,
+      "source": "kanjidic2",
+      "sourceVersion": "2026-331",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "id": "生:kun:な.る",
+      "kanjiLiteral": "生",
+      "kind": "kun",
+      "kana": "な",
+      "okurigana": "る",
+      "isJoyo": false,
+      "source": "kanjidic2",
+      "sourceVersion": "2026-331",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "id": "生:kun:なま",
+      "kanjiLiteral": "生",
+      "kind": "kun",
+      "kana": "なま",
+      "okurigana": null,
+      "isJoyo": true,
+      "source": "kanjidic2",
+      "sourceVersion": "2026-331",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "id": "生:kun:なま-",
+      "kanjiLiteral": "生",
+      "kind": "kun",
+      "kana": "なま",
+      "okurigana": null,
+      "isJoyo": false,
+      "source": "kanjidic2",
+      "sourceVersion": "2026-331",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "id": "生:kun:は.える",
+      "kanjiLiteral": "生",
+      "kind": "kun",
+      "kana": "は",
+      "okurigana": "える",
+      "isJoyo": true,
+      "source": "kanjidic2",
+      "sourceVersion": "2026-331",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "id": "生:kun:は.やす",
+      "kanjiLiteral": "生",
+      "kind": "kun",
+      "kana": "は",
+      "okurigana": "やす",
+      "isJoyo": true,
+      "source": "kanjidic2",
+      "sourceVersion": "2026-331",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "id": "生:kun:む.す",
+      "kanjiLiteral": "生",
+      "kind": "kun",
+      "kana": "む",
+      "okurigana": "す",
+      "isJoyo": false,
+      "source": "kanjidic2",
+      "sourceVersion": "2026-331",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "id": "生:nanori:あさ",
+      "kanjiLiteral": "生",
+      "kind": "nanori",
+      "kana": "あさ",
+      "okurigana": null,
+      "isJoyo": false,
+      "source": "kanjidic2",
+      "sourceVersion": "2026-331",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "id": "生:nanori:いき",
+      "kanjiLiteral": "生",
+      "kind": "nanori",
+      "kana": "いき",
+      "okurigana": null,
+      "isJoyo": false,
+      "source": "kanjidic2",
+      "sourceVersion": "2026-331",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "id": "生:nanori:いく",
+      "kanjiLiteral": "生",
+      "kind": "nanori",
+      "kana": "いく",
+      "okurigana": null,
+      "isJoyo": false,
+      "source": "kanjidic2",
+      "sourceVersion": "2026-331",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "id": "生:nanori:いけ",
+      "kanjiLiteral": "生",
+      "kind": "nanori",
+      "kana": "いけ",
+      "okurigana": null,
+      "isJoyo": false,
+      "source": "kanjidic2",
+      "sourceVersion": "2026-331",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "id": "生:nanori:うぶ",
+      "kanjiLiteral": "生",
+      "kind": "nanori",
+      "kana": "うぶ",
+      "okurigana": null,
+      "isJoyo": false,
+      "source": "kanjidic2",
+      "sourceVersion": "2026-331",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "id": "生:nanori:うまい",
+      "kanjiLiteral": "生",
+      "kind": "nanori",
+      "kana": "うまい",
+      "okurigana": null,
+      "isJoyo": false,
+      "source": "kanjidic2",
+      "sourceVersion": "2026-331",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "id": "生:nanori:え",
+      "kanjiLiteral": "生",
+      "kind": "nanori",
+      "kana": "え",
+      "okurigana": null,
+      "isJoyo": false,
+      "source": "kanjidic2",
+      "sourceVersion": "2026-331",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "id": "生:nanori:おい",
+      "kanjiLiteral": "生",
+      "kind": "nanori",
+      "kana": "おい",
+      "okurigana": null,
+      "isJoyo": false,
+      "source": "kanjidic2",
+      "sourceVersion": "2026-331",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "id": "生:nanori:ぎゅう",
+      "kanjiLiteral": "生",
+      "kind": "nanori",
+      "kana": "ぎゅう",
+      "okurigana": null,
+      "isJoyo": false,
+      "source": "kanjidic2",
+      "sourceVersion": "2026-331",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "id": "生:nanori:くるみ",
+      "kanjiLiteral": "生",
+      "kind": "nanori",
+      "kana": "くるみ",
+      "okurigana": null,
+      "isJoyo": false,
+      "source": "kanjidic2",
+      "sourceVersion": "2026-331",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "id": "生:nanori:ごせ",
+      "kanjiLiteral": "生",
+      "kind": "nanori",
+      "kana": "ごせ",
+      "okurigana": null,
+      "isJoyo": false,
+      "source": "kanjidic2",
+      "sourceVersion": "2026-331",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "id": "生:nanori:さ",
+      "kanjiLiteral": "生",
+      "kind": "nanori",
+      "kana": "さ",
+      "okurigana": null,
+      "isJoyo": false,
+      "source": "kanjidic2",
+      "sourceVersion": "2026-331",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "id": "生:nanori:じょう",
+      "kanjiLiteral": "生",
+      "kind": "nanori",
+      "kana": "じょう",
+      "okurigana": null,
+      "isJoyo": false,
+      "source": "kanjidic2",
+      "sourceVersion": "2026-331",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "id": "生:nanori:すぎ",
+      "kanjiLiteral": "生",
+      "kind": "nanori",
+      "kana": "すぎ",
+      "okurigana": null,
+      "isJoyo": false,
+      "source": "kanjidic2",
+      "sourceVersion": "2026-331",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "id": "生:nanori:そ",
+      "kanjiLiteral": "生",
+      "kind": "nanori",
+      "kana": "そ",
+      "okurigana": null,
+      "isJoyo": false,
+      "source": "kanjidic2",
+      "sourceVersion": "2026-331",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "id": "生:nanori:そう",
+      "kanjiLiteral": "生",
+      "kind": "nanori",
+      "kana": "そう",
+      "okurigana": null,
+      "isJoyo": false,
+      "source": "kanjidic2",
+      "sourceVersion": "2026-331",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "id": "生:nanori:ちる",
+      "kanjiLiteral": "生",
+      "kind": "nanori",
+      "kana": "ちる",
+      "okurigana": null,
+      "isJoyo": false,
+      "source": "kanjidic2",
+      "sourceVersion": "2026-331",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "id": "生:nanori:なば",
+      "kanjiLiteral": "生",
+      "kind": "nanori",
+      "kana": "なば",
+      "okurigana": null,
+      "isJoyo": false,
+      "source": "kanjidic2",
+      "sourceVersion": "2026-331",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "id": "生:nanori:にう",
+      "kanjiLiteral": "生",
+      "kind": "nanori",
+      "kana": "にう",
+      "okurigana": null,
+      "isJoyo": false,
+      "source": "kanjidic2",
+      "sourceVersion": "2026-331",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "id": "生:nanori:にゅう",
+      "kanjiLiteral": "生",
+      "kind": "nanori",
+      "kana": "にゅう",
+      "okurigana": null,
+      "isJoyo": false,
+      "source": "kanjidic2",
+      "sourceVersion": "2026-331",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "id": "生:nanori:ふ",
+      "kanjiLiteral": "生",
+      "kind": "nanori",
+      "kana": "ふ",
+      "okurigana": null,
+      "isJoyo": false,
+      "source": "kanjidic2",
+      "sourceVersion": "2026-331",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "id": "生:nanori:み",
+      "kanjiLiteral": "生",
+      "kind": "nanori",
+      "kana": "み",
+      "okurigana": null,
+      "isJoyo": false,
+      "source": "kanjidic2",
+      "sourceVersion": "2026-331",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "id": "生:nanori:もう",
+      "kanjiLiteral": "生",
+      "kind": "nanori",
+      "kana": "もう",
+      "okurigana": null,
+      "isJoyo": false,
+      "source": "kanjidic2",
+      "sourceVersion": "2026-331",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "id": "生:nanori:よい",
+      "kanjiLiteral": "生",
+      "kind": "nanori",
+      "kana": "よい",
+      "okurigana": null,
+      "isJoyo": false,
+      "source": "kanjidic2",
+      "sourceVersion": "2026-331",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "id": "生:nanori:りゅう",
+      "kanjiLiteral": "生",
+      "kind": "nanori",
+      "kana": "りゅう",
+      "okurigana": null,
+      "isJoyo": false,
+      "source": "kanjidic2",
+      "sourceVersion": "2026-331",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "id": "籠:on:る",
+      "kanjiLiteral": "籠",
+      "kind": "on",
+      "kana": "る",
+      "okurigana": null,
+      "isJoyo": false,
+      "source": "kanjidic2",
+      "sourceVersion": "2026-331",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "id": "籠:on:ろう",
+      "kanjiLiteral": "籠",
+      "kind": "on",
+      "kana": "ろう",
+      "okurigana": null,
+      "isJoyo": true,
+      "source": "kanjidic2",
+      "sourceVersion": "2026-331",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "id": "籠:kun:かご",
+      "kanjiLiteral": "籠",
+      "kind": "kun",
+      "kana": "かご",
+      "okurigana": null,
+      "isJoyo": true,
+      "source": "kanjidic2",
+      "sourceVersion": "2026-331",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "id": "籠:kun:こ.む",
+      "kanjiLiteral": "籠",
+      "kind": "kun",
+      "kana": "こ",
+      "okurigana": "む",
+      "isJoyo": false,
+      "source": "kanjidic2",
+      "sourceVersion": "2026-331",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "id": "籠:kun:こ.める",
+      "kanjiLiteral": "籠",
+      "kind": "kun",
+      "kana": "こ",
+      "okurigana": "める",
+      "isJoyo": false,
+      "source": "kanjidic2",
+      "sourceVersion": "2026-331",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "id": "籠:kun:こも.る",
+      "kanjiLiteral": "籠",
+      "kind": "kun",
+      "kana": "こも",
+      "okurigana": "る",
+      "isJoyo": true,
+      "source": "kanjidic2",
+      "sourceVersion": "2026-331",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "id": "籠:nanori:ごめ",
+      "kanjiLiteral": "籠",
+      "kind": "nanori",
+      "kana": "ごめ",
+      "okurigana": null,
+      "isJoyo": false,
+      "source": "kanjidic2",
+      "sourceVersion": "2026-331",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "id": "籠:nanori:もり",
+      "kanjiLiteral": "籠",
+      "kind": "nanori",
+      "kana": "もり",
+      "okurigana": null,
+      "isJoyo": false,
+      "source": "kanjidic2",
+      "sourceVersion": "2026-331",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "id": "薄:on:はく",
+      "kanjiLiteral": "薄",
+      "kind": "on",
+      "kana": "はく",
+      "okurigana": null,
+      "isJoyo": true,
+      "source": "kanjidic2",
+      "sourceVersion": "2026-331",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "id": "薄:kun:-うす",
+      "kanjiLiteral": "薄",
+      "kind": "kun",
+      "kana": "うす",
+      "okurigana": null,
+      "isJoyo": false,
+      "source": "kanjidic2",
+      "sourceVersion": "2026-331",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "id": "薄:kun:うす-",
+      "kanjiLiteral": "薄",
+      "kind": "kun",
+      "kana": "うす",
+      "okurigana": null,
+      "isJoyo": false,
+      "source": "kanjidic2",
+      "sourceVersion": "2026-331",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "id": "薄:kun:うす.い",
+      "kanjiLiteral": "薄",
+      "kind": "kun",
+      "kana": "うす",
+      "okurigana": "い",
+      "isJoyo": true,
+      "source": "kanjidic2",
+      "sourceVersion": "2026-331",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "id": "薄:kun:うす.まる",
+      "kanjiLiteral": "薄",
+      "kind": "kun",
+      "kana": "うす",
+      "okurigana": "まる",
+      "isJoyo": true,
+      "source": "kanjidic2",
+      "sourceVersion": "2026-331",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "id": "薄:kun:うす.める",
+      "kanjiLiteral": "薄",
+      "kind": "kun",
+      "kana": "うす",
+      "okurigana": "める",
+      "isJoyo": true,
+      "source": "kanjidic2",
+      "sourceVersion": "2026-331",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "id": "薄:kun:うす.ら-",
+      "kanjiLiteral": "薄",
+      "kind": "kun",
+      "kana": "うす",
+      "okurigana": "ら",
+      "isJoyo": false,
+      "source": "kanjidic2",
+      "sourceVersion": "2026-331",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "id": "薄:kun:うす.らぐ",
+      "kanjiLiteral": "薄",
+      "kind": "kun",
+      "kana": "うす",
+      "okurigana": "らぐ",
+      "isJoyo": true,
+      "source": "kanjidic2",
+      "sourceVersion": "2026-331",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "id": "薄:kun:うす.れる",
+      "kanjiLiteral": "薄",
+      "kind": "kun",
+      "kana": "うす",
+      "okurigana": "れる",
+      "isJoyo": true,
+      "source": "kanjidic2",
+      "sourceVersion": "2026-331",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "id": "薄:kun:すすき",
+      "kanjiLiteral": "薄",
+      "kind": "kun",
+      "kana": "すすき",
+      "okurigana": null,
+      "isJoyo": false,
+      "source": "kanjidic2",
+      "sourceVersion": "2026-331",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "id": "謡:on:よう",
+      "kanjiLiteral": "謡",
+      "kind": "on",
+      "kana": "よう",
+      "okurigana": null,
+      "isJoyo": true,
+      "source": "kanjidic2",
+      "sourceVersion": "2026-331",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "id": "謡:kun:うた.い",
+      "kanjiLiteral": "謡",
+      "kind": "kun",
+      "kana": "うた",
+      "okurigana": "い",
+      "isJoyo": true,
+      "source": "kanjidic2",
+      "sourceVersion": "2026-331",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "id": "謡:kun:うた.う",
+      "kanjiLiteral": "謡",
+      "kind": "kun",
+      "kana": "うた",
+      "okurigana": "う",
+      "isJoyo": true,
+      "source": "kanjidic2",
+      "sourceVersion": "2026-331",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "id": "食:on:しょく",
+      "kanjiLiteral": "食",
+      "kind": "on",
+      "kana": "しょく",
+      "okurigana": null,
+      "isJoyo": true,
+      "source": "kanjidic2",
+      "sourceVersion": "2026-331",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "id": "食:on:じき",
+      "kanjiLiteral": "食",
+      "kind": "on",
+      "kana": "じき",
+      "okurigana": null,
+      "isJoyo": true,
+      "source": "kanjidic2",
+      "sourceVersion": "2026-331",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "id": "食:kun:く.う",
+      "kanjiLiteral": "食",
+      "kind": "kun",
+      "kana": "く",
+      "okurigana": "う",
+      "isJoyo": true,
+      "source": "kanjidic2",
+      "sourceVersion": "2026-331",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "id": "食:kun:く.らう",
+      "kanjiLiteral": "食",
+      "kind": "kun",
+      "kana": "く",
+      "okurigana": "らう",
+      "isJoyo": true,
+      "source": "kanjidic2",
+      "sourceVersion": "2026-331",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "id": "食:kun:た.べる",
+      "kanjiLiteral": "食",
+      "kind": "kun",
+      "kana": "た",
+      "okurigana": "べる",
+      "isJoyo": true,
+      "source": "kanjidic2",
+      "sourceVersion": "2026-331",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "id": "食:kun:は.む",
+      "kanjiLiteral": "食",
+      "kind": "kun",
+      "kana": "は",
+      "okurigana": "む",
+      "isJoyo": false,
+      "source": "kanjidic2",
+      "sourceVersion": "2026-331",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "id": "食:nanori:ぐい",
+      "kanjiLiteral": "食",
+      "kind": "nanori",
+      "kana": "ぐい",
+      "okurigana": null,
+      "isJoyo": false,
+      "source": "kanjidic2",
+      "sourceVersion": "2026-331",
+      "license": "CC BY-SA 4.0"
+    }
+  ],
+  "report": {
+    "missingKanji": [
+      {
+        "kanji": "丼",
+        "readings": [
+          {
+            "literal": "丼",
+            "kind": "kun",
+            "reading": "どんぶり"
+          }
+        ]
+      }
+    ],
+    "missingReadings": [
+      {
+        "literal": "食",
+        "kind": "kun",
+        "reading": "め.し"
+      }
+    ],
+    "ambiguousReadings": [
+      {
+        "kanji": "薄",
+        "kind": "kun",
+        "reading": "うす"
+      }
+    ],
+    "excludedCharacters": [
+      {
+        "literal": "逸",
+        "codepoint": 64103,
+        "nfcLiteral": "逸",
+        "reason": "compatibility-ideograph"
+      }
+    ]
+  }
+}

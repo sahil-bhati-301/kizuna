@@ -1,0 +1,513 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Test fixture: an excerpt of KANJIDIC2 (database_version 2026-331).
+  KANJIDIC2 is copyright the Electronic Dictionary Research and Development Group (EDRDG),
+  https://www.edrdg.org/, and is used under the Creative Commons Attribution-ShareAlike 4.0
+  licence, https://creativecommons.org/licenses/by-sa/4.0/ (see https://www.edrdg.org/edrdg/licence.html).
+  Modified: eleven entries selected (one a CJK compatibility ideograph, U+FA67); dic_number and query_code elements removed; no other change.
+  This excerpt is itself CC BY-SA 4.0.
+-->
+<kanjidic2>
+<header>
+<file_version>4</file_version>
+<database_version>2026-331</database_version>
+<date_of_creation>2026-11-27</date_of_creation>
+</header>
+<!-- Entry for Kanji: 食 -->
+<character>
+<literal>食</literal>
+<codepoint>
+<cp_value cp_type="ucs">98df</cp_value>
+<cp_value cp_type="jis208">1-31-09</cp_value>
+</codepoint>
+<radical>
+<rad_value rad_type="classical">184</rad_value>
+</radical>
+<misc>
+<grade>2</grade>
+<stroke_count>9</stroke_count>
+<freq>328</freq>
+<jlpt>4</jlpt>
+</misc>
+<reading_meaning>
+<rmgroup>
+<reading r_type="pinyin">shi2</reading>
+<reading r_type="pinyin">si4</reading>
+<reading r_type="korean_r">sig</reading>
+<reading r_type="korean_r">sa</reading>
+<reading r_type="korean_h">식</reading>
+<reading r_type="korean_h">사</reading>
+<reading r_type="vietnam">Thực</reading>
+<reading r_type="vietnam">Tự</reading>
+<reading r_type="ja_on">ショク</reading>
+<reading r_type="ja_on">ジキ</reading>
+<reading r_type="ja_kun">く.う</reading>
+<reading r_type="ja_kun">く.らう</reading>
+<reading r_type="ja_kun">た.べる</reading>
+<reading r_type="ja_kun">は.む</reading>
+<meaning>eat</meaning>
+<meaning>food</meaning>
+<meaning m_lang="fr">manger</meaning>
+<meaning m_lang="fr">nourriture</meaning>
+<meaning m_lang="es">alimento</meaning>
+<meaning m_lang="es">comida</meaning>
+<meaning m_lang="es">eclipse</meaning>
+<meaning m_lang="es">comer</meaning>
+<meaning m_lang="pt">comer</meaning>
+<meaning m_lang="pt">comida</meaning>
+<meaning m_lang="pt">alimento</meaning>
+</rmgroup>
+<nanori>ぐい</nanori>
+</reading_meaning>
+</character>
+<!-- Entry for Kanji: 生 -->
+<character>
+<literal>生</literal>
+<codepoint>
+<cp_value cp_type="ucs">751f</cp_value>
+<cp_value cp_type="jis208">1-32-24</cp_value>
+</codepoint>
+<radical>
+<rad_value rad_type="classical">100</rad_value>
+</radical>
+<misc>
+<grade>1</grade>
+<stroke_count>5</stroke_count>
+<freq>29</freq>
+<jlpt>4</jlpt>
+</misc>
+<reading_meaning>
+<rmgroup>
+<reading r_type="pinyin">sheng1</reading>
+<reading r_type="korean_r">saeng</reading>
+<reading r_type="korean_h">생</reading>
+<reading r_type="vietnam">Sanh</reading>
+<reading r_type="vietnam">Sinh</reading>
+<reading r_type="ja_on">セイ</reading>
+<reading r_type="ja_on">ショウ</reading>
+<reading r_type="ja_kun">い.きる</reading>
+<reading r_type="ja_kun">い.かす</reading>
+<reading r_type="ja_kun">い.ける</reading>
+<reading r_type="ja_kun">う.まれる</reading>
+<reading r_type="ja_kun">うま.れる</reading>
+<reading r_type="ja_kun">う.まれ</reading>
+<reading r_type="ja_kun">うまれ</reading>
+<reading r_type="ja_kun">う.む</reading>
+<reading r_type="ja_kun">お.う</reading>
+<reading r_type="ja_kun">は.える</reading>
+<reading r_type="ja_kun">は.やす</reading>
+<reading r_type="ja_kun">き</reading>
+<reading r_type="ja_kun">なま</reading>
+<reading r_type="ja_kun">なま-</reading>
+<reading r_type="ja_kun">な.る</reading>
+<reading r_type="ja_kun">な.す</reading>
+<reading r_type="ja_kun">む.す</reading>
+<reading r_type="ja_kun">-う</reading>
+<meaning>life</meaning>
+<meaning>genuine</meaning>
+<meaning>birth</meaning>
+<meaning m_lang="fr">vie</meaning>
+<meaning m_lang="fr">naissance</meaning>
+<meaning m_lang="fr">authentique</meaning>
+<meaning m_lang="fr">cru</meaning>
+<meaning m_lang="es">vida</meaning>
+<meaning m_lang="es">nacimiento</meaning>
+<meaning m_lang="es">vivir</meaning>
+<meaning m_lang="es">existir</meaning>
+<meaning m_lang="es">nacer</meaning>
+<meaning m_lang="es">dar a luz</meaning>
+<meaning m_lang="es">puro</meaning>
+<meaning m_lang="es">crudo</meaning>
+<meaning m_lang="pt">vida</meaning>
+<meaning m_lang="pt">genuína</meaning>
+<meaning m_lang="pt">nascimento</meaning>
+</rmgroup>
+<nanori>あさ</nanori>
+<nanori>いき</nanori>
+<nanori>いく</nanori>
+<nanori>いけ</nanori>
+<nanori>うぶ</nanori>
+<nanori>うまい</nanori>
+<nanori>え</nanori>
+<nanori>おい</nanori>
+<nanori>ぎゅう</nanori>
+<nanori>くるみ</nanori>
+<nanori>ごせ</nanori>
+<nanori>さ</nanori>
+<nanori>じょう</nanori>
+<nanori>すぎ</nanori>
+<nanori>そ</nanori>
+<nanori>そう</nanori>
+<nanori>ちる</nanori>
+<nanori>なば</nanori>
+<nanori>にう</nanori>
+<nanori>にゅう</nanori>
+<nanori>ふ</nanori>
+<nanori>み</nanori>
+<nanori>もう</nanori>
+<nanori>よい</nanori>
+<nanori>りゅう</nanori>
+</reading_meaning>
+</character>
+<!-- Entry for Kanji: 日 -->
+<character>
+<literal>日</literal>
+<codepoint>
+<cp_value cp_type="ucs">65e5</cp_value>
+<cp_value cp_type="jis208">1-38-92</cp_value>
+</codepoint>
+<radical>
+<rad_value rad_type="classical">72</rad_value>
+</radical>
+<misc>
+<grade>1</grade>
+<stroke_count>4</stroke_count>
+<freq>1</freq>
+<jlpt>4</jlpt>
+</misc>
+<reading_meaning>
+<rmgroup>
+<reading r_type="pinyin">ri4</reading>
+<reading r_type="korean_r">il</reading>
+<reading r_type="korean_h">일</reading>
+<reading r_type="vietnam">Nhật</reading>
+<reading r_type="ja_on">ニチ</reading>
+<reading r_type="ja_on">ジツ</reading>
+<reading r_type="ja_kun">ひ</reading>
+<reading r_type="ja_kun">-び</reading>
+<reading r_type="ja_kun">-か</reading>
+<meaning>day</meaning>
+<meaning>sun</meaning>
+<meaning>Japan</meaning>
+<meaning>counter for days</meaning>
+<meaning m_lang="fr">jour</meaning>
+<meaning m_lang="fr">soleil</meaning>
+<meaning m_lang="fr">Japon</meaning>
+<meaning m_lang="fr">compteur de jours</meaning>
+<meaning m_lang="es">día</meaning>
+<meaning m_lang="es">solar</meaning>
+<meaning m_lang="es">Japón</meaning>
+<meaning m_lang="es">sol</meaning>
+<meaning m_lang="es">rayo de sol</meaning>
+<meaning m_lang="pt">dia</meaning>
+<meaning m_lang="pt">sol</meaning>
+<meaning m_lang="pt">Japão</meaning>
+</rmgroup>
+<nanori>あ</nanori>
+<nanori>あき</nanori>
+<nanori>いる</nanori>
+<nanori>く</nanori>
+<nanori>くさ</nanori>
+<nanori>こう</nanori>
+<nanori>す</nanori>
+<nanori>たち</nanori>
+<nanori>に</nanori>
+<nanori>にっ</nanori>
+<nanori>につ</nanori>
+<nanori>へ</nanori>
+</reading_meaning>
+</character>
+<!-- Entry for Kanji: 御 -->
+<character>
+<literal>御</literal>
+<codepoint>
+<cp_value cp_type="ucs">5fa1</cp_value>
+<cp_value cp_type="jis208">1-24-70</cp_value>
+</codepoint>
+<radical>
+<rad_value rad_type="classical">60</rad_value>
+</radical>
+<misc>
+<grade>8</grade>
+<stroke_count>12</stroke_count>
+<freq>1087</freq>
+<jlpt>2</jlpt>
+</misc>
+<reading_meaning>
+<rmgroup>
+<reading r_type="pinyin">yu4</reading>
+<reading r_type="korean_r">eo</reading>
+<reading r_type="korean_r">a</reading>
+<reading r_type="korean_h">어</reading>
+<reading r_type="korean_h">아</reading>
+<reading r_type="vietnam">Ngự</reading>
+<reading r_type="vietnam">Nhạ</reading>
+<reading r_type="ja_on">ギョ</reading>
+<reading r_type="ja_on">ゴ</reading>
+<reading r_type="ja_kun">おん-</reading>
+<reading r_type="ja_kun">お-</reading>
+<reading r_type="ja_kun">み-</reading>
+<meaning>honorable</meaning>
+<meaning>manipulate</meaning>
+<meaning>govern</meaning>
+<meaning m_lang="fr">honorable</meaning>
+<meaning m_lang="fr">diriger</meaning>
+<meaning m_lang="fr">contrôler</meaning>
+<meaning m_lang="es">prefijo honorífico</meaning>
+<meaning m_lang="es">manipular</meaning>
+<meaning m_lang="es">gobernar</meaning>
+<meaning m_lang="pt">honrado</meaning>
+<meaning m_lang="pt">manipular</meaning>
+<meaning m_lang="pt">governar</meaning>
+</rmgroup>
+<nanori>う</nanori>
+</reading_meaning>
+</character>
+<!-- Entry for Kanji: 犀 -->
+<character>
+<literal>犀</literal>
+<codepoint>
+<cp_value cp_type="ucs">7280</cp_value>
+<cp_value cp_type="jis208">1-26-52</cp_value>
+</codepoint>
+<radical>
+<rad_value rad_type="classical">93</rad_value>
+<rad_value rad_type="nelson_c">44</rad_value>
+</radical>
+<misc>
+<grade>9</grade>
+<stroke_count>12</stroke_count>
+<stroke_count>11</stroke_count>
+<freq>2426</freq>
+</misc>
+<reading_meaning>
+<rmgroup>
+<reading r_type="pinyin">xi1</reading>
+<reading r_type="korean_r">seo</reading>
+<reading r_type="korean_h">서</reading>
+<reading r_type="vietnam">Tê</reading>
+<reading r_type="ja_on">サイ</reading>
+<reading r_type="ja_on">セイ</reading>
+<meaning>rhinoceros</meaning>
+</rmgroup>
+</reading_meaning>
+</character>
+<!-- Entry for Kanji: 唖 -->
+<character>
+<literal>唖</literal>
+<codepoint>
+<cp_value cp_type="ucs">5516</cp_value>
+<cp_value cp_type="jis208">1-16-02</cp_value>
+</codepoint>
+<radical>
+<rad_value rad_type="classical">30</rad_value>
+</radical>
+<misc>
+<stroke_count>10</stroke_count>
+<variant var_type="jis212">1-21-64</variant>
+<variant var_type="jis212">1-45-68</variant>
+</misc>
+<reading_meaning>
+<rmgroup>
+<reading r_type="pinyin">ya1</reading>
+<reading r_type="korean_r">a</reading>
+<reading r_type="korean_h">아</reading>
+<reading r_type="vietnam">Á</reading>
+<reading r_type="vietnam">Ớ</reading>
+<reading r_type="vietnam">Ứ</reading>
+<reading r_type="ja_on">ア</reading>
+<reading r_type="ja_on">アク</reading>
+<reading r_type="ja_kun">おし</reading>
+<meaning>mute</meaning>
+<meaning>dumb</meaning>
+</rmgroup>
+</reading_meaning>
+</character>
+<!-- Entry for Kanji: 狼 -->
+<character>
+<literal>狼</literal>
+<codepoint>
+<cp_value cp_type="ucs">72fc</cp_value>
+<cp_value cp_type="jis208">1-47-21</cp_value>
+</codepoint>
+<radical>
+<rad_value rad_type="classical">94</rad_value>
+</radical>
+<misc>
+<grade>9</grade>
+<stroke_count>10</stroke_count>
+<freq>2129</freq>
+</misc>
+<reading_meaning>
+<rmgroup>
+<reading r_type="pinyin">lang2</reading>
+<reading r_type="korean_r">rang</reading>
+<reading r_type="korean_h">랑</reading>
+<reading r_type="vietnam">Lang</reading>
+<reading r_type="ja_on">ロウ</reading>
+<reading r_type="ja_kun">おおかみ</reading>
+<meaning>wolf</meaning>
+<meaning m_lang="es">lobo</meaning>
+<meaning m_lang="es">confundirse</meaning>
+<meaning m_lang="es">estar desordenado</meaning>
+<meaning m_lang="es">estar desorganizado</meaning>
+</rmgroup>
+</reading_meaning>
+</character>
+<!-- Entry for Kanji: 謡 -->
+<character>
+<literal>謡</literal>
+<codepoint>
+<cp_value cp_type="ucs">8b21</cp_value>
+<cp_value cp_type="jis208">1-45-56</cp_value>
+</codepoint>
+<radical>
+<rad_value rad_type="classical">149</rad_value>
+</radical>
+<misc>
+<grade>8</grade>
+<stroke_count>16</stroke_count>
+<variant var_type="jis208">1-75-79</variant>
+<freq>1580</freq>
+<jlpt>1</jlpt>
+</misc>
+<reading_meaning>
+<rmgroup>
+<reading r_type="pinyin">yao2</reading>
+<reading r_type="korean_r">yo</reading>
+<reading r_type="korean_h">요</reading>
+<reading r_type="vietnam">Dao</reading>
+<reading r_type="ja_on">ヨウ</reading>
+<reading r_type="ja_kun">うた.い</reading>
+<reading r_type="ja_kun">うた.う</reading>
+<meaning>song</meaning>
+<meaning>sing</meaning>
+<meaning>ballad</meaning>
+<meaning>noh chanting</meaning>
+<meaning m_lang="fr">chanter</meaning>
+<meaning m_lang="fr">chant Noh</meaning>
+<meaning m_lang="es">canto del teatro Noh</meaning>
+<meaning m_lang="es">canto melódico</meaning>
+<meaning m_lang="es">cantar</meaning>
+<meaning m_lang="pt">Canto de teatro noh</meaning>
+</rmgroup>
+</reading_meaning>
+</character>
+<!-- Entry for Kanji: 籠 -->
+<character>
+<literal>籠</literal>
+<codepoint>
+<cp_value cp_type="ucs">7c60</cp_value>
+<cp_value cp_type="jis208">1-68-38</cp_value>
+</codepoint>
+<radical>
+<rad_value rad_type="classical">118</rad_value>
+</radical>
+<misc>
+<grade>8</grade>
+<stroke_count>22</stroke_count>
+<variant var_type="jis208">1-47-22</variant>
+</misc>
+<reading_meaning>
+<rmgroup>
+<reading r_type="pinyin">long2</reading>
+<reading r_type="pinyin">long3</reading>
+<reading r_type="korean_r">rong</reading>
+<reading r_type="korean_h">롱</reading>
+<reading r_type="vietnam">Lung</reading>
+<reading r_type="vietnam">Lộng</reading>
+<reading r_type="ja_on">ロウ</reading>
+<reading r_type="ja_on">ル</reading>
+<reading r_type="ja_kun">かご</reading>
+<reading r_type="ja_kun">こ.める</reading>
+<reading r_type="ja_kun">こも.る</reading>
+<reading r_type="ja_kun">こ.む</reading>
+<meaning>basket</meaning>
+<meaning>devote oneself</meaning>
+<meaning>seclude oneself</meaning>
+<meaning>cage</meaning>
+<meaning>coop</meaning>
+<meaning>implied</meaning>
+<meaning m_lang="es">cesto</meaning>
+<meaning m_lang="es">canasta</meaning>
+<meaning m_lang="es">palanquín</meaning>
+<meaning m_lang="es">confinarse</meaning>
+<meaning m_lang="es">recluirse</meaning>
+<meaning m_lang="es">confinar</meaning>
+<meaning m_lang="es">recluir</meaning>
+<meaning m_lang="es">engatusar</meaning>
+<meaning m_lang="es">seducir</meaning>
+</rmgroup>
+<nanori>ごめ</nanori>
+<nanori>もり</nanori>
+</reading_meaning>
+</character>
+<!-- Entry for Kanji: 薄 -->
+<character>
+<literal>薄</literal>
+<codepoint>
+<cp_value cp_type="ucs">8584</cp_value>
+<cp_value cp_type="jis208">1-39-86</cp_value>
+</codepoint>
+<radical>
+<rad_value rad_type="classical">140</rad_value>
+</radical>
+<misc>
+<grade>8</grade>
+<stroke_count>16</stroke_count>
+<freq>1009</freq>
+<jlpt>2</jlpt>
+</misc>
+<reading_meaning>
+<rmgroup>
+<reading r_type="pinyin">bo2</reading>
+<reading r_type="pinyin">bao2</reading>
+<reading r_type="pinyin">bo4</reading>
+<reading r_type="korean_r">bag</reading>
+<reading r_type="korean_h">박</reading>
+<reading r_type="vietnam">Bạc</reading>
+<reading r_type="vietnam">Bác</reading>
+<reading r_type="ja_on">ハク</reading>
+<reading r_type="ja_kun">うす.い</reading>
+<reading r_type="ja_kun">うす-</reading>
+<reading r_type="ja_kun">-うす</reading>
+<reading r_type="ja_kun">うす.める</reading>
+<reading r_type="ja_kun">うす.まる</reading>
+<reading r_type="ja_kun">うす.らぐ</reading>
+<reading r_type="ja_kun">うす.ら-</reading>
+<reading r_type="ja_kun">うす.れる</reading>
+<reading r_type="ja_kun">すすき</reading>
+<meaning>dilute</meaning>
+<meaning>thin</meaning>
+<meaning>weak (tea)</meaning>
+<meaning>pampas grass</meaning>
+<meaning m_lang="fr">fin</meaning>
+<meaning m_lang="fr">dilué</meaning>
+<meaning m_lang="fr">léger (thé)</meaning>
+<meaning m_lang="es">pálido</meaning>
+<meaning m_lang="es">fino</meaning>
+<meaning m_lang="es">delgado</meaning>
+<meaning m_lang="es">diluirse</meaning>
+<meaning m_lang="es">debilitarse</meaning>
+<meaning m_lang="es">diluir</meaning>
+<meaning m_lang="es">aclarar</meaning>
+<meaning m_lang="es">palidecer</meaning>
+<meaning m_lang="es">desvanecerse</meaning>
+<meaning m_lang="pt">diluir</meaning>
+<meaning m_lang="pt">fraco</meaning>
+<meaning m_lang="pt">ralo (chá)</meaning>
+</rmgroup>
+</reading_meaning>
+</character>
+<!-- Entry for Kanji: 逸 -->
+<character>
+<literal>逸</literal>
+<codepoint>
+<cp_value cp_type="ucs">FA67</cp_value>
+<cp_value cp_type="jis213">1-92-57</cp_value>
+</codepoint>
+<radical>
+<rad_value rad_type="classical">162</rad_value>
+</radical>
+<misc>
+<grade>10</grade>
+<stroke_count>12</stroke_count>
+<variant var_type="jis208">1-16-79</variant>
+</misc>
+<reading_meaning>
+<rmgroup>
+<reading r_type="ja_kun">しんにょう</reading>
+</rmgroup>
+</reading_meaning>
+</character>
+</kanjidic2>

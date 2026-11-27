@@ -20,3 +20,6 @@ Out-of-scope finds go here, not into code. One line each, with the WP that found
 - (W00-2) CI: add .nvmrc or engines.node so local and CI Node versions come from one place. Planned: W01-7.
 - (W01-6 review) dependency-cruiser: add a repo-level fixture test that cruises a deliberate I/O import from a domain/ file, so the domain-no-io rule is proven end to end (purity.test.ts used to do this for kernel only).
 - (W00-5) kernel: production ID generators need a crypto-seeded `Rng` wired at the composition root; `createSeededRng` is 32-bit and not secure.
+- (W01-3) sources lock: nothing verifies the new `transcribed:` entries yet. Add a check that each checked-in file's sha256 matches its lock entry (CI or `sources:verify`).
+- (W01-3 review) Nine Jōyō readings are absent from KANJIDIC2 and are only reported (塞, 羨, 曽 ゾ, 速, 中 ジュウ, 丼 どん, 務, 踊, 絡). Decide whether the pipeline adds them as Jōyō-sourced reading rows.
+- (W01-3) The Jōyō 付表 (special word readings) is not imported. It is a candidate input for the words work (W02).

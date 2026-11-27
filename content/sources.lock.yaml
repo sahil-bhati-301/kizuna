@@ -14,3 +14,14 @@ sources:
     file: kradfile.gz
     sha256: '0c5487c1de77e36ffb5bde652f469f2de9c52efc8320137c115506f3500e9c5f'
     license: CC BY-SA 4.0 (EDRDG licence)
+# Checked-in transcriptions of upstream documents (W01-3 Q1). Not fetched by sources:fetch; the
+# sha256 is of the checked-in file, the upstream_sha256 of the document it was extracted from.
+transcribed:
+  - id: joyo
+    url: https://www.bunka.go.jp/kokugo_nihongo/sisaku/joho/joho/kijun/naikaku/pdf/joyokanjihyo_20101130.pdf
+    version: Cabinet Notice No. 2 of 2010-11-30
+    fetched: '2026-11-27'
+    file: joyo/joyo.tsv
+    sha256: '597fe0c96ea25075861eefd2e642764d6dcc64994ee69fe75cadc8802d707de6'
+    upstream_sha256: 'd9f28aeb4ce8250dbde07de20ac66cca71805ba09d94e4942c752dffa84d8d42'
+    license: Cabinet notice, outside copyright (Art. 13, Japanese Copyright Act); cite the source

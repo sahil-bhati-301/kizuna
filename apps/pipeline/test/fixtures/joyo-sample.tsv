@@ -1,0 +1,48 @@
+# Test fixture: a sample of the Jōyō kanji table (常用漢字表).
+# Source: Agency for Cultural Affairs (文化庁), Cabinet Notice No. 2 of 30 November 2010.
+# Generally outside copyright under Art. 13 of the Japanese Copyright Act; cited as required (pipeline.md §3.4).
+# Abridged: only some kanji and readings are listed. Readings use KANJIDIC notation
+# (on'yomi in katakana, kun'yomi in hiragana, "." before okurigana).
+# SYNTHETIC ROWS (not in the real table), for W01-3 AC 4 and Q13:
+#   食 kun め.し  -- a reading KANJIDIC2 does not list for 食
+#   丼 kun どんぶり -- a real Jōyō kanji that is absent from the KANJIDIC2 test excerpt
+#   薄 kun うす    -- no exact KANJIDIC2 form; the marker-free fallback finds both うす- and -うす (Q13)
+literal	kind	reading
+食	on	ショク
+食	on	ジキ
+食	kun	く.う
+食	kun	く.らう
+食	kun	た.べる
+食	kun	め.し
+生	on	セイ
+生	on	ショウ
+生	kun	い.きる
+生	kun	い.かす
+生	kun	い.ける
+生	kun	う.まれる
+生	kun	う.む
+生	kun	お.う
+生	kun	は.える
+生	kun	は.やす
+生	kun	き
+生	kun	なま
+日	on	ニチ
+日	on	ジツ
+日	kun	ひ
+日	kun	か
+御	on	ギョ
+御	on	ゴ
+謡	on	ヨウ
+謡	kun	うたい
+謡	kun	うた.う
+籠	on	ロウ
+籠	kun	かご
+籠	kun	こ.もる
+薄	on	ハク
+薄	kun	うす.い
+薄	kun	うす.める
+薄	kun	うす.まる
+薄	kun	うす.らぐ
+薄	kun	うす.れる
+薄	kun	うす
+丼	kun	どんぶり

@@ -11,3 +11,4 @@ scripts/claude/fixtures
 CLAUDE.md
 scripts/claude
 scripts/fixtures
+.vitest-report.json
