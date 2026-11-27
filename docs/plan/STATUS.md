@@ -1,17 +1,19 @@
 # STATUS
 
-Phase 0 · Week W02 (Pipeline II: components, words, alignment) · planned and approved · Updated: session 14 (/wp W02-1)
-Light: 🟢 green at session 14 start (week 33%, 5h 53%). Run /budget with /usage figures at the start and end of every session.
+Phase 0 · Week W02 (Pipeline II: components, words, alignment) · planned and approved · Updated: session 15 (/wp W02-4)
+Light: 🟢 green at session 15 start (week 40%, 5h 0%). Run /budget with /usage figures at the start and end of every session.
 
 ## Next step
-- W02-1 PR open (see Active WPs): owner review and merge. Then the next W02 WP per the weekly plan.
+- W02-4 PR open (see Active WPs): owner review and merge. Then W02-3, W02-5 or W02-6 per the weekly plan.
 - W01 retro done: measured ≈2% per M-eq, capacity ≈30 M-eq (coarse). Schedule kept; W02 is planned at 8 M-eq (§2.7), the surplus is reserve.
-- Need from the owner: /usage figures at the end of session 14 (W02-1) and session 11.
+- Need from the owner: /usage figures at the end of session 15 (W02-4), session 14 (W02-1) and session 11.
 
 ## Active WPs
-- W02-1 KanjiVG parser: done, PR #21 open, awaiting merge. W02-3 to W02-6 remain.
+- W02-4 Tatoeba → sentence: done, PR open (branch claude/sleepy-thompson-7go6fm), awaiting merge. 145,873 sentences kept.
+- W02-3, W02-5 and W02-6 remain.
 
 ## Merged in W02
+- W02-1 KanjiVG parser (PR #21)
 - W02-2 JMdict common subset → word (PR #19)
 
 ## Merged in W01 (all 7 WPs)
@@ -34,6 +36,7 @@ Light: 🟢 green at session 14 start (week 33%, 5h 53%). Run /budget with /usag
 - (none open; W02 Q-G answered in session 12)
 
 ## Last decisions
+- W02-4 (session 15): `(#entSeq)` index items link JMdict directly; when there are several English meaning IDs, the lowest linked ID wins; ambiguous items stay in the `quality` denominator (backlog item on particles); Tatoeba .bz2 files are committed whole.
 - W02-1 (Q4–Q7, session 14): `ord` is the pre-order index per kanji (PK unique, tree rebuilds from depth + ord); only kvg:radical general/tradit count as semantic; a merged split element takes part 1's place; code-point-less components get glyph 〓; `middle` → `unknown`. KanjiVG bundle = the 6,984 base files at commit 9d7220df, in a `bundled:` lock section.
 - W02-2: headword skips search-only and irregular (iK, io, sK) kanji forms; 37 all-irregular entries take a reading as headword; senses without pos inherit the previous one; glosses without xml:lang are eng; stagk/stagr not parsed yet (backlog, for W02-3).
 - W02 plan (session 12): all recommendations taken. Sources: commit compressed files under content/sources/; a file over 50 MB gets a filtered subset with the upstream checksum pinned. JMdict: all-language JMdict.gz, entries with any priority tag. W02-5 is M (adds Unihan); W02-6 added.

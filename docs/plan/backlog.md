@@ -31,3 +31,4 @@ Out-of-scope finds go here, not into code. One line each, with the WP that found
 - (W02-1) radicals: 阝 (and KanjiVG's ⻖ U+2ED6, ⻏ U+2ECF) get radical null; map by position (left → 170 阜, right → 163 邑) in the W01-4 table or W03 overrides.
 - (W02-1) KanjiVG positions ⿵/⿶ and `middle` map to `unknown` (21 rows); decide whether the schema vocabulary needs them.
 - (W02-2) stagk and stagr are ignored by the W02-2 parser; W02-3 alignment should consider them.
+- (W02-4 review) Tatoeba: 241,369 index items in kept sentences are ambiguous, mostly particles (は, を, の), which pulls `quality` down. Resolve them via the reading or `{form}` surface, or leave function words out of the denominator.
