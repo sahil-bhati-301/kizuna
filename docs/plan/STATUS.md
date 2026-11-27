@@ -13,9 +13,9 @@ Light: 🟢 green at session 5 (week 20%, 5h 42%). Run /budget with /usage figur
 - W00-1 Monorepo, verify scripts (PR #3) · W00-2 CI (PR #4)
 - W00-5 kernel (PR #5) · W00-4 Spec digests (PR #6) · W00-6 Local dev and DB harness (PR #7)
 
-## Owner tasks open
+## Owner tasks
 - O-3: done, ADR-0001 accepted (Fly.io, Vercel, Neon, R2, Better Auth).
-- O-4: approve root CLAUDE.md, agent definitions and spec digests.
+- O-4: done, approved by the owner (session 5).
 
 ## Blockers
 - (none)
