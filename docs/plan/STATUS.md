@@ -1,13 +1,13 @@
 # STATUS
 
-Phase 0 · Week W01 (Pipeline I: parse and normalise the core sources) · Updated: W00 retro (session 5)
-Light: 🟢 green at session 5 (week 20%, 5h 42%). Run /budget with /usage figures at the start and end of every session.
+Phase 0 · Week W01 (Pipeline I: parse and normalise the core sources) · Updated: session 7 (W01-6)
+Light: 🟢 green at session 7 (week 22%, 5h 58%). Run /budget with /usage figures at the start and end of every session.
 
 ## Active WPs
 | WP | Title | Tier/Size | State |
 |---|---|---|---|
-| W01-1 | Pipeline app, sources lock, fetcher | B/S | 🔄 in review (session 6) |
-| W01-6 | kernel: pure code under src/domain/ | B/S | ⬜ todo |
+| W01-1 | Pipeline app, sources lock, fetcher | B/S | ✅ merged (PR #9) |
+| W01-6 | kernel: pure code under src/domain/ | B/S | 🔄 in review (PR #10, session 7) |
 | W01-2 | content Drizzle schema and types | B/M | ⬜ todo |
 | W01-7 | CI hygiene: Node 24 actions, .nvmrc | C/S | ⬜ todo |
 | W01-4 | Normalisation library | A/M | ⬜ todo |
@@ -32,6 +32,7 @@ Light: 🟢 green at session 5 (week 20%, 5h 42%). Run /budget with /usage figur
 - (none)
 
 ## Last decisions
+- W01-6: end-to-end depcruise fixture test deferred to backlog (frozen boundaries.test.ts; AC 5).
 - W01 plan approved. Sources are committed to the repo under content/sources/ (W01-1 Q1); the Jōyō table is a checked-in TSV (W01-3 Q1).
 - Plan: docs/development-plan.md is the source for workflow; docs/architecture-design.md wins design conflicts.
 - Cloud sessions cannot push wp/ branches: each WP works on its session branch (W00-1, 2, 4, 5, 6).

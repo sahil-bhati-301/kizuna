@@ -43,12 +43,13 @@ describe('public surface (AC4)', () => {
   it('has the expected source files', () => {
     for (const f of [
       'index.ts',
-      'ids.ts',
+      'domain/ids.ts',
       'clock.ts',
-      'rng.ts',
-      'errors.ts',
+      'domain/clock.ts',
+      'domain/rng.ts',
+      'domain/errors.ts',
       'logger.ts',
-      'events.ts',
+      'domain/events.ts',
     ]) {
       expect(sources.map((s) => s.file)).toContain(f);
     }

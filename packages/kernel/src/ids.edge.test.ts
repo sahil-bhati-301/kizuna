@@ -1,7 +1,7 @@
 import fc from 'fast-check';
 import { describe, expect, it } from 'vitest';
 import { createFakeClock, createSeededRng, isUuidV7, type Rng } from './index.js';
-import { COUNTER_MAX, MAX_MS, createIdGeneratorFromState } from './ids.js';
+import { COUNTER_MAX, MAX_MS, createIdGeneratorFromState } from './domain/ids.js';
 
 // Review follow-up for W00-5: clock rollback, counter overflow and range checks.
 // The frozen spec tests stay in ids.test.ts; these use the internal seam in ids.ts.
