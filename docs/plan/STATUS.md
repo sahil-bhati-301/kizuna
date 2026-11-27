@@ -7,10 +7,10 @@ Light: 🟢 green at session 7 (week 22%, 5h 58%). Run /budget with /usage figur
 | WP | Title | Tier/Size | State |
 |---|---|---|---|
 | W01-1 | Pipeline app, sources lock, fetcher | B/S | ✅ merged (PR #9) |
-| W01-6 | kernel: pure code under src/domain/ | B/S | 🔄 in review (PR #10, session 7) |
+| W01-6 | kernel: pure code under src/domain/ | B/S | ✅ merged (PR #10) |
 | W01-2 | content Drizzle schema and types | B/M | ⬜ todo |
 | W01-7 | CI hygiene: Node 24 actions, .nvmrc | C/S | ⬜ todo |
-| W01-4 | Normalisation library | A/M | ⬜ todo |
+| W01-4 | Normalisation library | A/M | 🔄 in review (PR #11, session 7) |
 | W01-3 | KANJIDIC2 parser and Jōyō import | A/M | ⬜ todo |
 | W01-5 | KRADFILE parser | B/S | ⬜ todo |
 
@@ -32,6 +32,7 @@ Light: 🟢 green at session 7 (week 22%, 5h 58%). Run /budget with /usage figur
 - (none)
 
 ## Last decisions
+- W01-4 OPEN-Q 1-3 resolved by the owner: standard radical-variant set, ヴ/ヵ/ヶ by offset, KANJIDIC hyphen convention (trailing `-` = prefix). 月 as 肉 is keyed ⺼; KRADFILE mapping is for W01-3/W01-5.
 - W01-6: end-to-end depcruise fixture test deferred to backlog (frozen boundaries.test.ts; AC 5).
 - W01 plan approved. Sources are committed to the repo under content/sources/ (W01-1 Q1); the Jōyō table is a checked-in TSV (W01-3 Q1).
 - Plan: docs/development-plan.md is the source for workflow; docs/architecture-design.md wins design conflicts.
