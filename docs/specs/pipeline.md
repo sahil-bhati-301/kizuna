@@ -1,6 +1,6 @@
 # pipeline: spec digest
 Source: docs/architecture-design.md. The architecture doc wins any conflict.
-Covers: §3.3, §3.4, §8.7 (content pipeline and data quality, data sources and licensing, where ML and LLMs fit)
+Covers: §3.3, §3.4, §7.6 (content.migrateRelease), §8.2, §8.3, §8.5, §8.6 (pipeline parts), §8.7 (content pipeline and data quality, data sources and licensing, where ML and LLMs fit)
 
 ## §3.3 Content pipeline and data quality
 
@@ -90,3 +90,32 @@ A release can change what an existing trace *refers to* without renaming anythin
 → arch §8.7
 
 - Every LLM use sits behind an `AuthoringAssistant` or `ExplanationAssistant` adapter interface, so providers and models can change and every use can be tested with fixtures. → arch §8.7
+
+## §7.6 Background jobs (worker): pipeline job
+
+| Job | Trigger | Purpose |
+|---|---|---|
+| `content.migrateRelease` | on release switch | Apply ID redirects to traces |
+
+→ arch §7.6
+
+## §8.2 Repository layout: pipeline package
+
+- `apps/pipeline/`: content pipeline CLI: import → normalise → enrich → validate → publish. → arch §8.2
+- `packages/content/`: content types, query API, in-memory release index. → arch §8.2
+- `packages/kernel/`: ids, clock, seeded RNG, events, transaction and outbox helpers. → arch §8.2
+
+## §8.3 Deployment topology: releases
+
+- **Object storage + CDN** for content releases and media. → arch §8.3
+- **Environments:** local (docker-compose Postgres seeded with a content release), staging, production. → arch §8.3
+
+## §8.5 Operations: release rollback
+
+- **Short runbooks** for webhook replay, release rollback (switch the current-release pointer), user data export and deletion, and restore from point-in-time recovery. → arch §8.5
+- **Alerts:** API 5xx rate, p95 latency, job failures and queue depth, webhook failures, calibration drift, content-report spikes. → arch §8.5
+
+## §8.6 Testing: content validation
+
+- **Content validation** runs in the pipeline (§3.3). → arch §8.6
+- **Engine versioning and shadow mode.** Every derived row stores the version of the engine that produced it. → arch §8.6
