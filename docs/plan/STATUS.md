@@ -1,7 +1,7 @@
 # STATUS
 
 Phase 0 · Week W01 (Pipeline I: parse and normalise the core sources) · Updated: session 8 (W01-2)
-Light: 🟢 green at session 8 (week 22%, 5h 67%). Run /budget with /usage figures at the start and end of every session.
+Light: 🟢 green at end of session 8 (week 24%, 5h 71%). Run /budget with /usage figures at the start and end of every session.
 
 ## Active WPs
 | WP | Title | Tier/Size | State |
