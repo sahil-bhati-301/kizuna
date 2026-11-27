@@ -8,10 +8,10 @@ Light: 🟢 green at session 8 (week 22%, 5h 67%). Run /budget with /usage figur
 |---|---|---|---|
 | W01-1 | Pipeline app, sources lock, fetcher | B/S | ✅ merged (PR #9) |
 | W01-6 | kernel: pure code under src/domain/ | B/S | ✅ merged (PR #10) |
-| W01-2 | content Drizzle schema and types | B/M | 🔄 in review (PR #12, session 8) |
+| W01-2 | content Drizzle schema and types | B/M | ✅ merged (PR #12) |
 | W01-7 | CI hygiene: Node 24 actions, .nvmrc | C/S | ⬜ todo |
 | W01-4 | Normalisation library | A/M | ✅ merged (PR #11) |
-| W01-3 | KANJIDIC2 parser and Jōyō import | A/M | ⬜ todo |
+| W01-3 | KANJIDIC2 parser and Jōyō import | A/M | ⏸ paused (CHECKPOINT-NOW, 5h limit) · resume: /wp W01-3 |
 | W01-5 | KRADFILE parser | B/S | ⬜ todo |
 
 ## Merged last week (W00, all 7 WPs)
