@@ -1,5 +1,5 @@
 /**
- * W02-1 AC 1-5: the KanjiVG parser (element tree → `component`, `kanji_component`, stroke counts).
+ * W02-1 AC 1-5: the KanjiVG parser (here, not in domain/: it reads the fixture file) (element tree → `component`, `kanji_component`, stroke counts).
  * Expected values are hand-read from test/fixtures/kanjivg-excerpt.xml (KanjiVG commit 9d7220df).
  * Owner answers: Q1a positions, Q2a roles, Q3a slugs, Q4a ord = pre-order index within the kanji,
  * Q5a only kvg:radical general/tradit count as semantic, Q6a a merged split element takes the
@@ -21,10 +21,10 @@
 import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { describe, expect, it } from 'vitest';
-import { mapPosition, parseKanjivg } from './index.ts';
+import { mapPosition, parseKanjivg } from '../domain/kanjivg/index.ts';
 
 const at = (rel: string) => fileURLToPath(new URL(rel, import.meta.url));
-const xml = readFileSync(at('../../../test/fixtures/kanjivg-excerpt.xml'), 'utf8');
+const xml = readFileSync(at('../../test/fixtures/kanjivg-excerpt.xml'), 'utf8');
 const PROVENANCE = { source: 'kanjivg', sourceVersion: 'test', license: 'CC BY-SA 3.0' };
 const GETA = '〓';
 const NIKUZUKI = '⺼';

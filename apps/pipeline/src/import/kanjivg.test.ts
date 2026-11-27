@@ -36,7 +36,8 @@ function cmp(a: string, b: string): number {
 
 /** The fixture with its <kanji> elements in reverse order. */
 function reversedKanji(source: string): string {
-  const start = source.indexOf('<kanji id=');
+  // Search after the <kanjivg> root: the header comment also mentions `<kanji id=`.
+  const start = source.indexOf('<kanji id=', source.indexOf('<kanjivg '));
   const end = source.lastIndexOf('</kanjivg>');
   const parts = source.slice(start, end).split(/(?=<kanji id=)/u);
   return source.slice(0, start) + parts.reverse().join('') + source.slice(end);
@@ -72,6 +73,7 @@ describe('importKanjivg sorting and keys (AC 1)', () => {
   it('does not depend on the order of the kanji in the input', async () => {
     const reversed = reversedKanji(xml);
     expect(reversed).not.toBe(xml);
+    expect((await run([reversed])).kanjiComponents).toHaveLength(45);
     expect(serialiseKanjivg(await run([reversed]))).toBe(serialiseKanjivg(await run()));
   });
 });
