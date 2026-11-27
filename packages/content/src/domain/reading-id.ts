@@ -12,6 +12,8 @@ const kinds: readonly string[] = ['on', 'kun', 'nanori'];
 export function buildReadingId(parts: ReadingIdParts): string {
   if (parts.kanji === '' || parts.kana === '')
     throw new Error('Reading ID parts must be non-empty');
+  if (parts.kanji.includes(':') || parts.kana.includes(':'))
+    throw new Error('Reading ID parts must be non-empty');
   return `${parts.kanji}:${parts.kind}:${parts.kana}`;
 }
 

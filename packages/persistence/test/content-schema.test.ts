@@ -66,4 +66,20 @@ describe.skipIf(reason !== undefined)('content schema', () => {
       tx.client.query(`UPDATE content.content_release SET is_current = true`),
     ).rejects.toThrow(/immutable/);
   });
+
+  it('rejects deletes and truncates of content_release', async () => {
+    await tx.client.query(inserts.content_release!);
+    await tx.client.query('SAVEPOINT a');
+    await expect(tx.client.query('DELETE FROM content.content_release')).rejects.toThrow(
+      /immutable/,
+    );
+    await tx.client.query('ROLLBACK TO a');
+    await expect(tx.client.query('TRUNCATE content.content_release')).rejects.toThrow(/immutable/);
+  });
+
+  it('rejects unknown item types', async () => {
+    await expect(
+      tx.client.query(inserts.item_keyword!.replace("'kanji'", "'bogus'")),
+    ).rejects.toThrow(/check/);
+  });
 });

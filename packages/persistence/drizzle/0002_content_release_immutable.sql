@@ -6,5 +6,9 @@ END;
 $$ LANGUAGE plpgsql;
 --> statement-breakpoint
 CREATE TRIGGER "content_release_no_update"
-BEFORE UPDATE ON "content"."content_release"
+BEFORE UPDATE OR DELETE ON "content"."content_release"
 FOR EACH ROW EXECUTE FUNCTION "content"."content_release_immutable"();
+--> statement-breakpoint
+CREATE TRIGGER "content_release_no_truncate"
+BEFORE TRUNCATE ON "content"."content_release"
+FOR EACH STATEMENT EXECUTE FUNCTION "content"."content_release_immutable"();

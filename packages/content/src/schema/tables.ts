@@ -1,5 +1,6 @@
 import {
   boolean,
+  check,
   integer,
   jsonb,
   primaryKey,
@@ -9,6 +10,7 @@ import {
   timestamp,
   uuid,
 } from 'drizzle-orm/pg-core';
+import { sql } from 'drizzle-orm';
 import { contentSchema as c, provenance } from './common.js';
 
 // No foreign keys to other schemas. Foreign keys inside `content` are kept where the
@@ -142,7 +144,11 @@ export const relation = c.table(
     evidence: jsonb('evidence'),
     ...provenance,
   },
-  (t) => [primaryKey({ columns: [t.fromType, t.fromId, t.toType, t.toId, t.kind] })],
+  (t) => [
+    primaryKey({ columns: [t.fromType, t.fromId, t.toType, t.toId, t.kind] }),
+    check('relation_from_type_check', sql`${t.fromType} in ('kanji', 'word')`),
+    check('relation_to_type_check', sql`${t.toType} in ('kanji', 'word')`),
+  ],
 );
 
 export const featureTag = c.table(
@@ -153,7 +159,10 @@ export const featureTag = c.table(
     tag: text('tag').notNull(),
     ...provenance,
   },
-  (t) => [primaryKey({ columns: [t.itemType, t.itemId, t.tag] })],
+  (t) => [
+    primaryKey({ columns: [t.itemType, t.itemId, t.tag] }),
+    check('feature_tag_item_type_check', sql`${t.itemType} in ('kanji', 'word')`),
+  ],
 );
 
 /** Our own keywords, kept apart from dictionary-derived rows (pipeline spec: original content in separate tables). */
@@ -165,7 +174,10 @@ export const itemKeyword = c.table(
     keyword: text('keyword').notNull(),
     ...provenance,
   },
-  (t) => [primaryKey({ columns: [t.itemType, t.itemId] })],
+  (t) => [
+    primaryKey({ columns: [t.itemType, t.itemId] }),
+    check('item_keyword_item_type_check', sql`${t.itemType} in ('kanji', 'radical', 'component')`),
+  ],
 );
 
 export const mnemonic = c.table('mnemonic', {
