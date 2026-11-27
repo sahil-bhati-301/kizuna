@@ -39,6 +39,8 @@ interface Node {
   paths: number;
   split: boolean;
   children: Node[];
+  /** Children drawn inside kvg:part="2" (used only when the node is split). */
+  later: Node[];
 }
 
 const { node } = fc.letrec<{ node: Node }>((tie) => ({
@@ -54,6 +56,11 @@ const { node } = fc.letrec<{ node: Node }>((tie) => ({
       fc.constant([] as Node[]),
       fc.array(tie('node'), { maxLength: 3 }),
     ),
+    later: fc.oneof(
+      { maxDepth: 3, depthSize: 'small' },
+      fc.constant([] as Node[]),
+      fc.array(tie('node'), { maxLength: 2 }),
+    ),
   }),
 }));
 
@@ -67,13 +74,20 @@ interface Expected {
   radical: Node['radical'];
 }
 
-/** Renders one kanji in release-bundle shape and records what each element should become. */
-function renderKanji(cp: number, roots: Node[]) {
+/**
+ * Renders one kanji in release-bundle shape and records, in pre-order of the merged tree, what each
+ * element should become. A split node is drawn as part 1 (its children) and, after its siblings,
+ * part 2 (one stroke and its `later` children). Merged (Q6a), the node keeps part 1's place and
+ * takes part 1's children, then part 2's.
+ */
+function renderKanji(cp: number, generated: Node[]) {
+  const roots = structuredClone(generated);
   const hex = cp.toString(16).padStart(5, '0');
-  const expected: Expected[] = [];
+  const ids = new Map<Node, string>();
   let strokes = 0;
   let g = 0;
   let s = 0;
+  let laterChildren = 0;
   const path = () => {
     strokes++;
     return `<path id="kvg:${hex}-s${++s}" d="M0,0"/>`;
@@ -84,13 +98,31 @@ function renderKanji(cp: number, roots: Node[]) {
     (n.pos === null ? '' : ` kvg:position="${n.pos}"`) +
     (n.flag === 'phon' ? ` kvg:phon="${n.glyph ?? 'x'}${part ?? ''}"` : '') +
     (n.flag === 'radical' ? ` kvg:radical="${n.radical}"` : '');
+  const splitIndex = (nodes: Node[]) => nodes.findIndex((n) => n.split && n.glyph !== null);
 
-  function list(nodes: Node[], parent: string | null, depth: number): string {
-    const splitAt = nodes.findIndex((n) => n.split && n.glyph !== null);
+  function render(nodes: Node[]): string {
+    const splitAt = splitIndex(nodes);
     let out = '';
     nodes.forEach((n, i) => {
       const id = `kvg:${hex}-g${++g}`;
-      const part = i === splitAt ? 1 : undefined;
+      ids.set(n, id);
+      out += `<g id="${id}"${attrs(n, i === splitAt ? 1 : undefined)}>`;
+      for (let p = 0; p < n.paths; p++) out += path();
+      out += `${render(n.children)}</g>\n`;
+    });
+    if (splitAt >= 0) {
+      const n = nodes[splitAt]!;
+      laterChildren += n.later.length;
+      out += `<g id="kvg:${hex}-g${++g}"${attrs(n, 2)}>${path()}${render(n.later)}</g>\n`;
+    }
+    return out;
+  }
+
+  const expected: Expected[] = [];
+  function walk(nodes: Node[], parent: string | null, depth: number) {
+    const splitAt = splitIndex(nodes);
+    nodes.forEach((n, i) => {
+      const id = ids.get(n)!;
       expected.push({
         id,
         parent,
@@ -100,24 +132,30 @@ function renderKanji(cp: number, roots: Node[]) {
         flag: n.flag,
         radical: n.radical,
       });
-      out += `<g id="${id}"${attrs(n, part)}>`;
-      for (let p = 0; p < n.paths; p++) out += path();
-      out += list(n.children, id, depth + 1);
-      out += '</g>\n';
+      walk(n.children, id, depth + 1);
+      if (i === splitAt) walk(n.later, id, depth + 1);
     });
-    if (splitAt >= 0) {
-      const n = nodes[splitAt]!;
-      out += `<g id="kvg:${hex}-g${++g}"${attrs(n, 2)}>${path()}</g>\n`;
-    }
-    return out;
   }
 
-  const body = list(roots, null, 1);
+  const body = render(roots);
+  walk(roots, null, 1);
   const literal = String.fromCodePoint(cp);
   const xml =
     `<kanji id="kvg:kanji_${hex}">\n<g id="kvg:${hex}" kvg:element="${literal}">\n` +
     `${body}</g>\n</kanji>\n`;
-  return { literal, xml, expected, strokes };
+  return { literal, xml, expected, strokes, laterChildren };
+}
+
+/**
+ * Rebuilds parents from rows sorted by ord using depth alone: a row's parent is the nearest earlier
+ * row with depth - 1; depth 1 hangs under the kanji (null).
+ */
+function rebuildParents(rows: readonly { depth: number; kvgId: string }[]): (string | null)[] {
+  return rows.map((r, i) => {
+    if (r.depth === 1) return null;
+    for (let j = i - 1; j >= 0; j--) if (rows[j]!.depth === r.depth - 1) return rows[j]!.kvgId;
+    return 'no parent';
+  });
 }
 
 const bundleArb = fc.array(fc.array(node, { minLength: 1, maxLength: 4 }), {
@@ -208,6 +246,29 @@ describe('kanjivg parser properties', () => {
         expect(new Set(pks).size).toBe(pks.length);
       }),
       { numRuns: 100 },
+    );
+  });
+
+  it('generates split elements with children inside a later part', () => {
+    const samples = fc.sample(bundleArb, { numRuns: 200, seed: 1 });
+    expect(samples.some((kanji) => build(kanji).rendered.some((k) => k.laterChildren > 0))).toBe(
+      true,
+    );
+  });
+
+  it('rebuilds each kanji tree from depth and ord alone (Q4a)', async () => {
+    await fc.assert(
+      fc.asyncProperty(bundleArb, async (kanji) => {
+        const { xml, rendered } = build(kanji);
+        const { kanjiComponents } = await parseKanjivg([xml], PROVENANCE);
+        for (const k of rendered) {
+          const rows = kanjiComponents
+            .filter((r) => r.kanjiLiteral === k.literal)
+            .sort((x, y) => x.ord - y.ord);
+          expect(rebuildParents(rows)).toEqual(rows.map((r) => r.parentKvgId));
+        }
+      }),
+      { numRuns: 200 },
     );
   });
 

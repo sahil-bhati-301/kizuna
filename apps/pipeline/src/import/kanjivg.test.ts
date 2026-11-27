@@ -50,7 +50,7 @@ describe('importKanjivg sorting and keys (AC 1)', () => {
       (a, b) => a.kanjiLiteral.codePointAt(0)! - b.kanjiLiteral.codePointAt(0)! || a.ord - b.ord,
     );
     expect(kanjiComponents).toEqual(sorted);
-    expect(kanjiComponents).toHaveLength(45);
+    expect(kanjiComponents).toHaveLength(49);
   });
 
   it('sorts components by slug and stroke counts by kanji code point', async () => {
@@ -58,7 +58,7 @@ describe('importKanjivg sorting and keys (AC 1)', () => {
     expect(components.map((c) => c.slug)).toEqual(components.map((c) => c.slug).sort(cmp));
     const cps = strokes.map((s) => s.kanji.codePointAt(0)!);
     expect(cps).toEqual([...cps].sort((a, b) => a - b));
-    expect(strokes).toHaveLength(10);
+    expect(strokes).toHaveLength(11);
   });
 
   it('has no duplicate primary key (kanji, component slug, depth, ord), even for 競 (Q4a)', async () => {
@@ -73,7 +73,7 @@ describe('importKanjivg sorting and keys (AC 1)', () => {
   it('does not depend on the order of the kanji in the input', async () => {
     const reversed = reversedKanji(xml);
     expect(reversed).not.toBe(xml);
-    expect((await run([reversed])).kanjiComponents).toHaveLength(45);
+    expect((await run([reversed])).kanjiComponents).toHaveLength(49);
     expect(serialiseKanjivg(await run([reversed]))).toBe(serialiseKanjivg(await run()));
   });
 });
@@ -93,9 +93,9 @@ describe('provenance (AC 6)', () => {
   it('reports kanji count, row counts and unknown roles', async () => {
     const { report, kanjiComponents } = await run();
     expect(report).toMatchObject({
-      kanjiCount: 10,
-      componentRows: 29,
-      kanjiComponentRows: 45,
+      kanjiCount: 11,
+      componentRows: 31,
+      kanjiComponentRows: 49,
       codepointlessComponents: 6,
       unknownPositions: 0,
       unknownRoles: kanjiComponents.filter((r) => r.role === 'unknown').length,

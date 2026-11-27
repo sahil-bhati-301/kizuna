@@ -195,6 +195,41 @@ describe('split elements (AC 2, Q6a)', () => {
   });
 });
 
+/** Parents rebuilt from rows sorted by ord using depth alone (nearest earlier row at depth - 1). */
+function rebuildParents(rows: readonly { depth: number; kvgId: string }[]): (string | null)[] {
+  return rows.map((r, i) => {
+    if (r.depth === 1) return null;
+    for (let j = i - 1; j >= 0; j--) if (rows[j]!.depth === r.depth - 1) return rows[j]!.kvgId;
+    return 'no parent';
+  });
+}
+
+describe('tree rebuild from depth and ord (Q4a, Q6a)', () => {
+  it('puts the children of a later part (井: 十 inside 二 part 2) right after the merged 二', async () => {
+    const { kanjiComponents } = await run();
+    const rows = kanjiComponents
+      .filter((r) => r.kanjiLiteral === '井')
+      .sort((a, b) => a.ord - b.ord)
+      .map((r) => [r.componentSlug, r.kvgId, r.parentKvgId, r.depth, r.ord]);
+    expect(rows).toEqual([
+      ['二', 'kvg:04e95-g1', null, 1, 1],
+      ['十', 'kvg:04e95-g4', 'kvg:04e95-g1', 2, 2],
+      ['廾', 'kvg:04e95-g2', null, 1, 3],
+      ['丿', 'kvg:04e95-g5', 'kvg:04e95-g2', 2, 4],
+    ]);
+  });
+
+  it('rebuilds every fixture kanji tree from depth and ord to the parser parents', async () => {
+    const { kanjiComponents } = await run();
+    for (const kanji of new Set(kanjiComponents.map((r) => r.kanjiLiteral))) {
+      const rows = kanjiComponents
+        .filter((r) => r.kanjiLiteral === kanji)
+        .sort((a, b) => a.ord - b.ord);
+      expect([kanji, rebuildParents(rows)]).toEqual([kanji, rows.map((r) => r.parentKvgId)]);
+    }
+  });
+});
+
 describe('normalisation (AC 3)', () => {
   it('keys 月 used as 肉 (kvg:original="肉") as ⺼ (slug and glyph), linked to radical 130', async () => {
     const rows = await rowsOf('肝');
@@ -327,6 +362,7 @@ describe('stroke counts and report (AC 5, 6)', () => {
       池: 6,
       特: 10,
       競: 20,
+      井: 4,
       肝: 7,
       衣: 6,
     });
@@ -334,9 +370,9 @@ describe('stroke counts and report (AC 5, 6)', () => {
 
   it('reports kanji, component and kanji_component counts', async () => {
     const { report, components, kanjiComponents } = await run();
-    expect(report).toMatchObject({ kanjiCount: 10, componentRows: 29, kanjiComponentRows: 45 });
-    expect(components).toHaveLength(29);
-    expect(kanjiComponents).toHaveLength(45);
+    expect(report).toMatchObject({ kanjiCount: 11, componentRows: 31, kanjiComponentRows: 49 });
+    expect(components).toHaveLength(31);
+    expect(kanjiComponents).toHaveLength(49);
   });
 
   it('carries source, source_version and license on every row', async () => {
