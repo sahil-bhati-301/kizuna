@@ -11,7 +11,9 @@
     "test": "vitest run",
     "sources:fetch": "node --experimental-strip-types src/sources/cli.ts fetch",
     "sources:pin": "node --experimental-strip-types src/sources/cli.ts pin",
-    "jmdict:run": "node --experimental-strip-types src/import/jmdict-cli.ts"
+    "jmdict:run": "node --experimental-strip-types src/import/jmdict-cli.ts",
+    "kanjivg:bundle": "node --experimental-strip-types src/sources/kanjivg-bundle-cli.ts",
+    "kanjivg:run": "node --experimental-strip-types src/import/kanjivg-cli.ts"
   },
   "dependencies": {
     "@kizuna/content": "workspace:*",

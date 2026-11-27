@@ -32,3 +32,16 @@ transcribed:
     sha256: '597fe0c96ea25075861eefd2e642764d6dcc64994ee69fe75cadc8802d707de6'
     upstream_sha256: 'd9f28aeb4ce8250dbde07de20ac66cca71805ba09d94e4942c752dffa84d8d42'
     license: Cabinet notice, outside copyright (Art. 13, Japanese Copyright Act); cite the source
+# Built locally from a pinned upstream commit (W02 Q-G answer a: GitHub release files are not
+# reachable from the session). Not fetched by sources:fetch. Rebuild with
+# pnpm --filter @kizuna/pipeline kanjivg:bundle <kanjivg clone at the commit>; the sha256 is of the
+# committed file. Same selection as upstream kvg.py release(): the 6,984 base files kanji/XXXXX.svg.
+bundled:
+  - id: kanjivg
+    url: https://github.com/KanjiVG/kanjivg
+    version: 9d7220dfca09107dca2e0b0e45f90f696185e3c3 (2026-11-18)
+    commit: 9d7220dfca09107dca2e0b0e45f90f696185e3c3
+    fetched: '2026-11-27'
+    file: kanjivg.xml.gz
+    sha256: '48793634c3d93f2808556d64f37f719bea6ec78ea3aa277ac540ee5d8bd84776'
+    license: CC BY-SA 3.0

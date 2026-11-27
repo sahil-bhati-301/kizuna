@@ -54,3 +54,32 @@ export function validateLock(doc: unknown): SourcesLock {
 export function parseLock(text: string): SourcesLock {
   return validateLock(parse(text));
 }
+
+/**
+ * A source built locally from a pinned upstream commit (W02 Q-G answer a): listed under `bundled:`,
+ * so `sources:fetch` and `sources:pin` never download it (like the `transcribed:` entries). The
+ * sha256 is of the committed file; `commit` is the upstream commit it was built from.
+ */
+export interface BundledEntry extends SourceEntry {
+  commit: string;
+}
+
+/** Validates the `bundled:` list (may be absent); throws LockSchemaError naming entry and field. */
+export function validateBundled(doc: unknown): BundledEntry[] {
+  const bundled = (doc as { bundled?: unknown } | null)?.bundled;
+  if (bundled === undefined || bundled === null) return [];
+  if (!Array.isArray(bundled)) {
+    throw new LockSchemaError('sources.lock.yaml: "bundled" must be a list');
+  }
+  validateLock({ sources: bundled });
+  for (const raw of bundled as Record<string, unknown>[]) {
+    if (typeof raw.commit !== 'string' || !/^[0-9a-f]{40}$/.test(raw.commit)) {
+      throw new LockSchemaError(`sources.lock.yaml: entry ${String(raw.id)} has an invalid commit`);
+    }
+  }
+  return bundled as BundledEntry[];
+}
+
+export function parseBundled(text: string): BundledEntry[] {
+  return validateBundled(parse(text));
+}
