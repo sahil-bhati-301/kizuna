@@ -136,7 +136,7 @@ function run(root, affected) {
 
   const bounds = sh(
     'pnpm',
-    ['exec', 'depcruise', '--config', '.dependency-cruiser.cjs', 'packages'],
+    ['exec', 'depcruise', '--config', '.dependency-cruiser.cjs', 'packages', 'apps'],
     root,
   );
   if (bounds.code !== 0) toolFailures.push({ step: 'boundaries', lines: toolLines(bounds.out) });

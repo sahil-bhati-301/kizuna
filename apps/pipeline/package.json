@@ -1,0 +1,18 @@
+{
+  "name": "@kizuna/pipeline",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "tsc -p tsconfig.json --noEmit",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "lint": "eslint .",
+    "format:check": "prettier --check . --ignore-path ../../.prettierignore",
+    "test": "vitest run",
+    "sources:fetch": "node --experimental-strip-types src/sources/cli.ts fetch",
+    "sources:pin": "node --experimental-strip-types src/sources/cli.ts pin"
+  },
+  "dependencies": {
+    "yaml": "^2.9.1"
+  }
+}
