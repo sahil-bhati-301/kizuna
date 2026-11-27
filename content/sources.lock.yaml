@@ -14,6 +14,13 @@ sources:
     file: kradfile.gz
     sha256: '0c5487c1de77e36ffb5bde652f469f2de9c52efc8320137c115506f3500e9c5f'
     license: CC BY-SA 4.0 (EDRDG licence)
+  - id: jmdict
+    url: https://www.edrdg.org/pub/Nihongo/JMdict.gz
+    version: JMdict (all languages, file dated 2026-11-27)
+    fetched: '2026-11-27'
+    file: JMdict.gz
+    sha256: '47379c28c4bc1f52d367da4e9f5eaf0515ff6a1f635574c998574d2727130984'
+    license: CC BY-SA 4.0 (EDRDG licence)
 # Checked-in transcriptions of upstream documents (W01-3 Q1). Not fetched by sources:fetch; the
 # sha256 is of the checked-in file, the upstream_sha256 of the document it was extracted from.
 transcribed:
