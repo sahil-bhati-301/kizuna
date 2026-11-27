@@ -1,0 +1,21 @@
+# Local development database. Start with `pnpm db:up`.
+services:
+  postgres:
+    image: postgres:16-alpine
+    ports:
+      - '5432:5432'
+    environment:
+      POSTGRES_USER: kizuna
+      POSTGRES_PASSWORD: kizuna
+      POSTGRES_DB: kizuna
+    volumes:
+      - kizuna-pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U kizuna -d kizuna']
+      interval: 2s
+      timeout: 3s
+      retries: 20
+      start_period: 5s
+
+volumes:
+  kizuna-pgdata:
