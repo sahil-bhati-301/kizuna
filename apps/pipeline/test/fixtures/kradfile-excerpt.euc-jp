@@ -1,0 +1,27 @@
+#
+#                           K R A D F I L E (fixture excerpt)
+#
+#	Copyright 2001/2007 Michael Raine, James Breen and the Electronic
+#       Dictionary Research & Development Group
+#	See: http://www.edrdg.org/edrdg/licence.html
+#       for permissions for use and redistribution.
+#
+# Test fixture: an abridged excerpt of KRADFILE (EDRDG, CC BY-SA 4.0), kept for the W01-5 parser tests.
+# Where an element alone is not in JIS X 0208, a kanji which contains the element is used instead.
+# For example, çè is used for the kusa-kanmuri element at the top, and Ë® for the kozato element on the right.
+#
+# ²½ U+2E85
+# çè U+2EBE
+# Ë® U+2ECF
+# ïô U+2ED6
+# ¾° U+2E8C
+#
+°¢ : ¡Ã °ì ¸ý
+°¡ : ¡Ã °ì ¸ý
+²½ : ²½ Ò¸
+²Ö : çè ²½
+ÅÔ : ÅÚ Æü Ë®
+ïô : ¥Î ½½ ïô
+¾® : ¾°
+this line is malformed
+·î : ·î
