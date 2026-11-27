@@ -78,6 +78,33 @@ describe('headword and kana (AC 2)', () => {
   });
 });
 
+describe('review fixes', () => {
+  it('matches re_restr against the NFC form of an NFD keb', async () => {
+    const nfd = xml.replace('<keb>台所</keb>', '<keb>' + '台所'.normalize('NFD') + '</keb>');
+    const { words } = await run([nfd]);
+    expect(words.find((w) => w.entSeq === 1000150)).toMatchObject({
+      headword: '台所',
+      kana: 'だいどころ',
+    });
+  });
+
+  it('takes the first non-nokanji, non-search-only reading in the all-irregular fallback', async () => {
+    const entry = xml.replace(
+      '<reb>いる</reb>',
+      '<reb>ゐる</reb>\n<re_inf>&sk;</re_inf>\n</r_ele>\n<r_ele>\n<reb>いる</reb>',
+    );
+    const { words } = await run([entry]);
+    expect(words.find((w) => w.entSeq === 1000170)).toMatchObject({
+      headword: 'いる',
+      kana: 'いる',
+    });
+  });
+
+  it('has no entry without a valid reading on the fixture', async () => {
+    expect((await run()).report.noValidReading).toHaveLength(0);
+  });
+});
+
 describe('forms, senses and entities (AC 1)', () => {
   it('lists the other forms with their info tags and priorities', async () => {
     const w = await byId(1000140);

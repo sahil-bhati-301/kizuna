@@ -27,3 +27,5 @@ Out-of-scope finds go here, not into code. One line each, with the WP that found
 - (W01-3) sources lock: nothing verifies the new `transcribed:` entries yet. Add a check that each checked-in file's sha256 matches its lock entry (CI or `sources:verify`).
 - (W01-3 review) Nine Jōyō readings are absent from KANJIDIC2 and are only reported (塞, 羨, 曽 ゾ, 速, 中 ジュウ, 丼 どん, 務, 踊, 絡). Decide whether the pipeline adds them as Jōyō-sourced reading rows.
 - (W01-3) The Jōyō 付表 (special word readings) is not imported. It is a candidate input for the words work (W02).
+- (W02-2) The XML tokenizer is duplicated between domain/kanjidic and domain/jmdict (candidate for a shared lib).
+- (W02-2) stagk and stagr are ignored by the W02-2 parser; W02-3 alignment should consider them.

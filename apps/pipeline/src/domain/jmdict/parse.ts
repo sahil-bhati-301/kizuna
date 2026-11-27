@@ -151,11 +151,12 @@ function reduce(e: RawEntry, provenance: Provenance): Reduced {
   if (kanji !== undefined) {
     headword = kanji;
     reading = e.readings.find(
-      (r) => !r.nokanji && (r.restr.length === 0 || r.restr.includes(kanji.text)),
+      (r) => !r.nokanji && (r.restr.length === 0 || r.restr.includes(nfc(kanji.text))),
     );
     if (reading === undefined) return { skipped: 'no-reading', entSeq: e.entSeq };
   } else {
-    reading = e.readings[0] as RawForm;
+    reading =
+      e.readings.find((r) => !r.nokanji && !r.info.includes('sk')) ?? (e.readings[0] as RawForm);
     headword = reading;
   }
 
