@@ -6,7 +6,13 @@ Light: 🟢 green at session 5 (week 20%, 5h 42%). Run /budget with /usage figur
 ## Active WPs
 | WP | Title | Tier/Size | State |
 |---|---|---|---|
-| (none) | W01 not planned yet: run /plan-week W01 | | |
+| W01-1 | Pipeline app, sources lock, fetcher | B/S | ⬜ todo (awaiting plan approval) |
+| W01-6 | kernel: pure code under src/domain/ | B/S | ⬜ todo |
+| W01-2 | content Drizzle schema and types | B/M | ⬜ todo |
+| W01-7 | CI hygiene: Node 24 actions, .nvmrc | C/S | ⬜ todo |
+| W01-4 | Normalisation library | A/M | ⬜ todo |
+| W01-3 | KANJIDIC2 parser and Jōyō import | A/M | ⛔ blocked on W01-3 Q1 |
+| W01-5 | KRADFILE parser | B/S | ⬜ todo |
 
 ## Merged last week (W00, all 7 WPs)
 - W00-7 Budget guard and checkpoints, W00-3 Agent scaffolding (PR #2)
@@ -16,12 +22,15 @@ Light: 🟢 green at session 5 (week 20%, 5h 42%). Run /budget with /usage figur
 ## Owner tasks
 - O-3: done, ADR-0001 accepted (Fly.io, Vercel, Neon, R2, Better Auth).
 - O-4: done, approved by the owner (session 5).
+- O-5 (W01): allow the EDRDG host for cloud sessions, or fetch locally once.
+- O-6 (W01): re-verify the KANJIDIC2 and KRADFILE licences at source.
 
 ## Blockers
 - (none)
 
 ## OPEN-Q
-- (none)
+- W01-1 Q1: where pinned source copies live (owner).
+- W01-3 Q1 (Tier A): source of the machine-readable Jōyō table (owner; blocks W01-3).
 
 ## Last decisions
 - Plan: docs/development-plan.md is the source for workflow; docs/architecture-design.md wins design conflicts.
