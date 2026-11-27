@@ -10,7 +10,7 @@ Adaptive kanji-learning SaaS. TypeScript modular monolith: pnpm + Turborepo, Fas
 ## Commands (always use these)
 - pnpm verify:affected: lint + typecheck + tests + boundaries for changed packages (terse output)
 - pnpm verify: everything, once before a PR
-- pnpm db:up / pnpm db:migrate: local Postgres
+- pnpm db:up: start local Postgres via Docker and wait until healthy (60 s limit); pnpm db:migrate: apply Drizzle migrations; pnpm db:down: stop it. See packages/persistence/CLAUDE.md
 - Never run raw test commands with full output.
 - Until W00-1 lands, the verify scripts and pnpm commands above do not exist. The only test command is `node --test "scripts/claude/*.test.mjs"`.
 

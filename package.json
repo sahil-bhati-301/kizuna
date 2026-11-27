@@ -12,12 +12,16 @@
     "boundaries": "depcruise --config .dependency-cruiser.cjs packages",
     "test:scripts": "node --test \"scripts/**/*.test.mjs\"",
     "verify": "node scripts/verify-summary.mjs run",
-    "verify:affected": "node scripts/verify-summary.mjs run --affected"
+    "verify:affected": "node scripts/verify-summary.mjs run --affected",
+    "db:up": "docker compose up -d --wait --wait-timeout 60 && echo 'Postgres healthy (limit: 60 s).'",
+    "db:down": "docker compose down",
+    "db:migrate": "drizzle-kit migrate"
   },
   "devDependencies": {
     "@eslint/js": "^9.0.0",
     "@types/node": "^22.20.7",
     "dependency-cruiser": "^17.0.0",
+    "drizzle-kit": "^0.31.11",
     "eslint": "^9.0.0",
     "eslint-config-prettier": "^10.0.0",
     "prettier": "^3.0.0",
