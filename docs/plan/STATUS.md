@@ -9,7 +9,7 @@ Light: 🟢 green at session 15 start (week 40%, 5h 0%). Run /budget with /usage
 - Need from the owner: /usage figures at the end of session 15 (W02-4), session 14 (W02-1) and session 11.
 
 ## Active WPs
-- W02-4 Tatoeba → sentence: done, PR open (branch claude/sleepy-thompson-7go6fm), awaiting merge. 145,873 sentences kept.
+- W02-4 Tatoeba → sentence: done, PR #22 open, awaiting merge. 145,873 sentences kept.
 - W02-3, W02-5 and W02-6 remain.
 
 ## Merged in W02
