@@ -55,7 +55,7 @@ function flagById(rows: readonly (Row & { id: string })[], id: string) {
 describe('parseJoyoTable', () => {
   it('skips comments and the header and reads one entry per row', () => {
     const entries = parseJoyoTable(tsv);
-    expect(entries).toHaveLength(25);
+    expect(entries).toHaveLength(38);
     expect(entries[0]).toEqual({ literal: '食', kind: 'on', reading: 'ショク' });
     expect(entries.at(-1)).toEqual({ literal: '丼', kind: 'kun', reading: 'どんぶり' });
   });
@@ -65,7 +65,7 @@ describe('applyJoyo: kanji flags (AC 3)', () => {
   it('sets is_joyo on exactly the Jōyō kanji present in KANJIDIC2', async () => {
     const { kanji } = await applied();
     const joyo = kanji.filter((k) => k.isJoyo === true).map((k) => k.literal);
-    expect(joyo.sort()).toEqual(['御', '生', '日', '食'].sort());
+    expect(joyo.sort()).toEqual(['御', '生', '日', '食', '謡', '籠', '薄'].sort());
     for (const lit of ['犀', '唖', '狼'])
       expect(kanji.find((k) => k.literal === lit)?.isJoyo).toBe(false);
   });
@@ -122,6 +122,63 @@ describe('applyJoyo: exact-first matching (Q3, Q9)', () => {
       kind: 'kun',
       reading: 'か',
     });
+  });
+});
+
+describe('applyJoyo: kana-only fallback (Q12)', () => {
+  it('ignores the split position when no exact form exists: 謡 うたい flags 謡:kun:うた.い', async () => {
+    const { readings, report } = await applied();
+    expect(flagById(readings, '謡:kun:うた.い')).toBe(true);
+    expect(flagById(readings, '謡:kun:うた.う')).toBe(true); // exact
+    expect(report.missingReadings).not.toContainEqual({
+      literal: '謡',
+      kind: 'kun',
+      reading: 'うたい',
+    });
+  });
+
+  it('籠 こ.もる flags 籠:kun:こも.る, and no other 籠 kun row', async () => {
+    const { readings, report } = await applied();
+    expect(flagById(readings, '籠:kun:こも.る')).toBe(true);
+    expect(flagById(readings, '籠:kun:こ.める')).toBe(false);
+    expect(flagById(readings, '籠:kun:こ.む')).toBe(false);
+    expect(report.missingReadings).not.toContainEqual({
+      literal: '籠',
+      kind: 'kun',
+      reading: 'こ.もる',
+    });
+  });
+
+  it('exact-first still wins: 生 なま flags only 生:kun:なま', async () => {
+    const { readings } = await applied();
+    expect(flagById(readings, '生:kun:なま')).toBe(true);
+    expect(flagById(readings, '生:kun:なま-')).toBe(false);
+  });
+});
+
+describe('applyJoyo: ambiguous fallback (Q13)', () => {
+  // Synthetic Jōyō row 薄 kun うす: KANJIDIC2 has no exact うす, only うす- and -うす.
+  it('flags none of the candidates when the fallback finds more than one', async () => {
+    const { readings } = await applied();
+    expect(flagById(readings, '薄:kun:うす-')).toBe(false);
+    expect(flagById(readings, '薄:kun:-うす')).toBe(false);
+  });
+
+  it('lists the Jōyō reading in report.ambiguousReadings', async () => {
+    const { report } = await applied();
+    const ambiguous = (report as { ambiguousReadings?: readonly Record<string, unknown>[] })
+      .ambiguousReadings;
+    expect(ambiguous).toBeDefined();
+    const hits = (ambiguous ?? []).filter(
+      (e) => (e.literal ?? e.kanji) === '薄' && e.kind === 'kun' && e.reading === 'うす',
+    );
+    expect(hits).toHaveLength(1);
+  });
+
+  it('does not flag the unambiguous 薄 readings any differently', async () => {
+    const { readings } = await applied();
+    expect(flagById(readings, '薄:kun:うす.い')).toBe(true);
+    expect(flagById(readings, '薄:on:はく')).toBe(true);
   });
 });
 

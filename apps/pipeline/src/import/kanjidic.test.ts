@@ -49,7 +49,7 @@ describe('parseKanjidic: kanji rows (AC 1)', () => {
   it('emits one kanji row per <character>, keyed by literal', async () => {
     const { kanji } = await parse();
     expect(kanji.map((k) => k.literal).sort()).toEqual(
-      ['唖', '御', '犀', '狼', '生', '日', '食'].sort(),
+      ['唖', '御', '犀', '狼', '生', '日', '食', '謡', '籠', '薄'].sort(),
     );
   });
 

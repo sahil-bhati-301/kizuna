@@ -4,7 +4,7 @@
   KANJIDIC2 is copyright the Electronic Dictionary Research and Development Group (EDRDG),
   https://www.edrdg.org/, and is used under the Creative Commons Attribution-ShareAlike 4.0
   licence, https://creativecommons.org/licenses/by-sa/4.0/ (see https://www.edrdg.org/edrdg/licence.html).
-  Modified: eight entries selected (one a CJK compatibility ideograph, U+FA67); dic_number and query_code elements removed; no other change.
+  Modified: eleven entries selected (one a CJK compatibility ideograph, U+FA67); dic_number and query_code elements removed; no other change.
   This excerpt is itself CC BY-SA 4.0.
 -->
 <kanjidic2>
@@ -341,6 +341,151 @@
 <meaning m_lang="es">confundirse</meaning>
 <meaning m_lang="es">estar desordenado</meaning>
 <meaning m_lang="es">estar desorganizado</meaning>
+</rmgroup>
+</reading_meaning>
+</character>
+<!-- Entry for Kanji: 謡 -->
+<character>
+<literal>謡</literal>
+<codepoint>
+<cp_value cp_type="ucs">8b21</cp_value>
+<cp_value cp_type="jis208">1-45-56</cp_value>
+</codepoint>
+<radical>
+<rad_value rad_type="classical">149</rad_value>
+</radical>
+<misc>
+<grade>8</grade>
+<stroke_count>16</stroke_count>
+<variant var_type="jis208">1-75-79</variant>
+<freq>1580</freq>
+<jlpt>1</jlpt>
+</misc>
+<reading_meaning>
+<rmgroup>
+<reading r_type="pinyin">yao2</reading>
+<reading r_type="korean_r">yo</reading>
+<reading r_type="korean_h">요</reading>
+<reading r_type="vietnam">Dao</reading>
+<reading r_type="ja_on">ヨウ</reading>
+<reading r_type="ja_kun">うた.い</reading>
+<reading r_type="ja_kun">うた.う</reading>
+<meaning>song</meaning>
+<meaning>sing</meaning>
+<meaning>ballad</meaning>
+<meaning>noh chanting</meaning>
+<meaning m_lang="fr">chanter</meaning>
+<meaning m_lang="fr">chant Noh</meaning>
+<meaning m_lang="es">canto del teatro Noh</meaning>
+<meaning m_lang="es">canto melódico</meaning>
+<meaning m_lang="es">cantar</meaning>
+<meaning m_lang="pt">Canto de teatro noh</meaning>
+</rmgroup>
+</reading_meaning>
+</character>
+<!-- Entry for Kanji: 籠 -->
+<character>
+<literal>籠</literal>
+<codepoint>
+<cp_value cp_type="ucs">7c60</cp_value>
+<cp_value cp_type="jis208">1-68-38</cp_value>
+</codepoint>
+<radical>
+<rad_value rad_type="classical">118</rad_value>
+</radical>
+<misc>
+<grade>8</grade>
+<stroke_count>22</stroke_count>
+<variant var_type="jis208">1-47-22</variant>
+</misc>
+<reading_meaning>
+<rmgroup>
+<reading r_type="pinyin">long2</reading>
+<reading r_type="pinyin">long3</reading>
+<reading r_type="korean_r">rong</reading>
+<reading r_type="korean_h">롱</reading>
+<reading r_type="vietnam">Lung</reading>
+<reading r_type="vietnam">Lộng</reading>
+<reading r_type="ja_on">ロウ</reading>
+<reading r_type="ja_on">ル</reading>
+<reading r_type="ja_kun">かご</reading>
+<reading r_type="ja_kun">こ.める</reading>
+<reading r_type="ja_kun">こも.る</reading>
+<reading r_type="ja_kun">こ.む</reading>
+<meaning>basket</meaning>
+<meaning>devote oneself</meaning>
+<meaning>seclude oneself</meaning>
+<meaning>cage</meaning>
+<meaning>coop</meaning>
+<meaning>implied</meaning>
+<meaning m_lang="es">cesto</meaning>
+<meaning m_lang="es">canasta</meaning>
+<meaning m_lang="es">palanquín</meaning>
+<meaning m_lang="es">confinarse</meaning>
+<meaning m_lang="es">recluirse</meaning>
+<meaning m_lang="es">confinar</meaning>
+<meaning m_lang="es">recluir</meaning>
+<meaning m_lang="es">engatusar</meaning>
+<meaning m_lang="es">seducir</meaning>
+</rmgroup>
+<nanori>ごめ</nanori>
+<nanori>もり</nanori>
+</reading_meaning>
+</character>
+<!-- Entry for Kanji: 薄 -->
+<character>
+<literal>薄</literal>
+<codepoint>
+<cp_value cp_type="ucs">8584</cp_value>
+<cp_value cp_type="jis208">1-39-86</cp_value>
+</codepoint>
+<radical>
+<rad_value rad_type="classical">140</rad_value>
+</radical>
+<misc>
+<grade>8</grade>
+<stroke_count>16</stroke_count>
+<freq>1009</freq>
+<jlpt>2</jlpt>
+</misc>
+<reading_meaning>
+<rmgroup>
+<reading r_type="pinyin">bo2</reading>
+<reading r_type="pinyin">bao2</reading>
+<reading r_type="pinyin">bo4</reading>
+<reading r_type="korean_r">bag</reading>
+<reading r_type="korean_h">박</reading>
+<reading r_type="vietnam">Bạc</reading>
+<reading r_type="vietnam">Bác</reading>
+<reading r_type="ja_on">ハク</reading>
+<reading r_type="ja_kun">うす.い</reading>
+<reading r_type="ja_kun">うす-</reading>
+<reading r_type="ja_kun">-うす</reading>
+<reading r_type="ja_kun">うす.める</reading>
+<reading r_type="ja_kun">うす.まる</reading>
+<reading r_type="ja_kun">うす.らぐ</reading>
+<reading r_type="ja_kun">うす.ら-</reading>
+<reading r_type="ja_kun">うす.れる</reading>
+<reading r_type="ja_kun">すすき</reading>
+<meaning>dilute</meaning>
+<meaning>thin</meaning>
+<meaning>weak (tea)</meaning>
+<meaning>pampas grass</meaning>
+<meaning m_lang="fr">fin</meaning>
+<meaning m_lang="fr">dilué</meaning>
+<meaning m_lang="fr">léger (thé)</meaning>
+<meaning m_lang="es">pálido</meaning>
+<meaning m_lang="es">fino</meaning>
+<meaning m_lang="es">delgado</meaning>
+<meaning m_lang="es">diluirse</meaning>
+<meaning m_lang="es">debilitarse</meaning>
+<meaning m_lang="es">diluir</meaning>
+<meaning m_lang="es">aclarar</meaning>
+<meaning m_lang="es">palidecer</meaning>
+<meaning m_lang="es">desvanecerse</meaning>
+<meaning m_lang="pt">diluir</meaning>
+<meaning m_lang="pt">fraco</meaning>
+<meaning m_lang="pt">ralo (chá)</meaning>
 </rmgroup>
 </reading_meaning>
 </character>
