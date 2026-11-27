@@ -1,7 +1,7 @@
 # STATUS
 
-Phase 0 · Week W01 (Pipeline I: parse and normalise the core sources) · Updated: session 10 (W01-3)
-Light: 🟢 green at session 10 (week 25%, 5h 0%). Run /budget with /usage figures at the start and end of every session.
+Phase 0 · Week W01 (Pipeline I: parse and normalise the core sources) · Updated: session 10 (W01-3, W01-5)
+Light: 🟢 green at session 10 (week 29%, 5h 19%). Run /budget with /usage figures at the start and end of every session.
 
 ## Active WPs
 | WP | Title | Tier/Size | State |
@@ -11,8 +11,8 @@ Light: 🟢 green at session 10 (week 25%, 5h 0%). Run /budget with /usage figur
 | W01-2 | content Drizzle schema and types | B/M | ✅ merged (PR #12) |
 | W01-7 | CI hygiene: Node 24 actions, .nvmrc | C/S | ⬜ todo |
 | W01-4 | Normalisation library | A/M | ✅ merged (PR #11) |
-| W01-3 | KANJIDIC2 parser and Jōyō import | A/M | 🔄 in review (PR #13, session 10) |
-| W01-5 | KRADFILE parser | B/S | ⬜ todo |
+| W01-3 | KANJIDIC2 parser and Jōyō import | A/M | ✅ merged (PR #13) |
+| W01-5 | KRADFILE parser | B/S | 🔄 in review (PR #14, session 10) |
 
 ## Merged last week (W00, all 7 WPs)
 - W00-7 Budget guard and checkpoints, W00-3 Agent scaffolding (PR #2)
@@ -32,6 +32,7 @@ Light: 🟢 green at session 10 (week 25%, 5h 0%). Run /budget with /usage figur
 - (none)
 
 ## Last decisions
+- W01-5: plain 月 stays 月 (radical null), and there is no ⺼ mapping from KRADFILE, which cannot tell 月 and 肉 apart; W02 must not assume ⺼. KRADFILE lines are decoded one at a time, so an undecodable line (or one with JIS X 0212 0x8F) is reported. Provenance comes from the caller (W03-5), as for KANJIDIC2.
 - W01-3: owner answered Q2-Q13. Reading IDs keep okurigana and affix markers (`食:kun:た.べる`, `生:kun:なま-`); no-okurigana is NULL. Jōyō matching tries the exact form, then the bare kana; an ambiguous fallback flags nothing and is reported. Compatibility ideographs are excluded and reported. The Jōyō TSV comes from the official 2010 PDF; www.bunka.go.jp is allowed in the "kizuna" environment.
 - W01-2: content migrations live in packages/persistence/drizzle/ and the content integration test in packages/persistence/test/ (harness not exported). Keywords are a separate `item_keyword` table; owner may revert to a column at PR review.
 - W01-4 OPEN-Q 1-3 resolved by the owner: standard radical-variant set, ヴ/ヵ/ヶ by offset, KANJIDIC hyphen convention (trailing `-` = prefix). 月 as 肉 is keyed ⺼; KRADFILE mapping is for W01-3/W01-5.
