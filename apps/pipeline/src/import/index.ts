@@ -137,6 +137,11 @@ export function serialiseRows(result: ImportResult): string {
         readings: m.readings.map(entry),
       })),
       missingReadings: sorted.report.missingReadings.map(entry),
+      ambiguousReadings: sorted.report.ambiguousReadings.map((e) => ({
+        kanji: e.kanji,
+        kind: e.kind,
+        reading: e.reading,
+      })),
       excludedCharacters: sorted.report.excludedCharacters.map((e) => ({
         literal: e.literal,
         codepoint: e.codepoint,

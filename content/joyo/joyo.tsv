@@ -6,14 +6,13 @@
 # A cabinet notice: generally outside copyright under Art. 13 of the Japanese Copyright Act; cited as
 #   required (pipeline.md §3.4).
 # Extracted from the PDF text layer (W01-3), in table order: 2,136 kanji, 2,352 on and 2,036 kun
-#   readings, as in the table. Indented (limited-use) readings are included. Not included: the 付表
+#   readings (4,388), as in the table. Indented (limited-use) readings are included. Not included: the 付表
 #   (word readings such as 明日 あす, which belong to words, not to single kanji), the 備考 notes,
 #   the traditional forms in （ ） and the permitted forms in ［ ］.
 # Readings use KANJIDIC notation: on'yomi in katakana, kun'yomi in hiragana, "." before okurigana.
 #   The table marks no okurigana in the reading column; the split is taken from the table's example
-#   words (哀れむ -> あわ.れむ; 恋い慕う -> こ.う).
-# PENDING rows: the examples do not settle the okurigana split (W01-3 OPEN-Q Q10); they are
-#   commented out until the owner answers.
+#   words (哀れむ -> あわ.れむ; 恋い慕う -> こ.う). Owner decisions where the examples do not
+#   settle it (W01-3 OPEN-Q Q10, Q11): 干 ひ.る, 並 なみ, 守 もり.
 literal	kind	reading
 亜	on	ア
 哀	on	アイ
@@ -504,7 +503,7 @@ literal	kind	reading
 刈	kun	か.る
 干	on	カン
 干	kun	ほ.す
-# PENDING Q10: 干	kun	ひる
+干	kun	ひ.る
 刊	on	カン
 甘	on	カン
 甘	kun	あま.い
@@ -1784,7 +1783,7 @@ literal	kind	reading
 守	on	シュ
 守	on	ス
 守	kun	まも.る
-守	kun	も.り
+守	kun	もり
 朱	on	シュ
 取	on	シュ
 取	kun	と.る
@@ -3710,7 +3709,7 @@ literal	kind	reading
 併	on	ヘイ
 併	kun	あわ.せる
 並	on	ヘイ
-# PENDING Q10: 並	kun	なみ
+並	kun	なみ
 並	kun	なら.べる
 並	kun	なら.ぶ
 並	kun	なら.びに
