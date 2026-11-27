@@ -6,7 +6,7 @@ Light: 🟢 green at session 5 (week 20%, 5h 42%). Run /budget with /usage figur
 ## Active WPs
 | WP | Title | Tier/Size | State |
 |---|---|---|---|
-| W01-1 | Pipeline app, sources lock, fetcher | B/S | ⬜ todo |
+| W01-1 | Pipeline app, sources lock, fetcher | B/S | 🔄 in review (session 6) |
 | W01-6 | kernel: pure code under src/domain/ | B/S | ⬜ todo |
 | W01-2 | content Drizzle schema and types | B/M | ⬜ todo |
 | W01-7 | CI hygiene: Node 24 actions, .nvmrc | C/S | ⬜ todo |
@@ -22,7 +22,7 @@ Light: 🟢 green at session 5 (week 20%, 5h 42%). Run /budget with /usage figur
 ## Owner tasks
 - O-3: done, ADR-0001 accepted (Fly.io, Vercel, Neon, R2, Better Auth).
 - O-4: done, approved by the owner (session 5).
-- O-5 (W01): approve the allowed-hosts request for EDRDG when W01-1 asks. No local machine.
+- O-5 (W01): done. The "kizuna" cloud environment allows www.edrdg.org.
 - O-6 (W01): re-verify the KANJIDIC2 and KRADFILE licences at source.
 
 ## Blockers
