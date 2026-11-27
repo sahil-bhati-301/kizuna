@@ -1,0 +1,413 @@
+{
+  "words": [
+    {
+      "entSeq": 1000100,
+      "headword": "食べる",
+      "kana": "たべる",
+      "altForms": [
+        {
+          "kind": "kanji",
+          "text": "喰べる",
+          "info": ["rK"],
+          "priority": []
+        }
+      ],
+      "senses": [
+        {
+          "pos": ["v1", "vt"],
+          "glosses": [
+            {
+              "lang": "eng",
+              "text": "to eat"
+            },
+            {
+              "lang": "eng",
+              "text": "to live on (e.g. a salary)"
+            },
+            {
+              "lang": "ger",
+              "text": "essen"
+            },
+            {
+              "lang": "fre",
+              "text": "manger"
+            }
+          ]
+        },
+        {
+          "pos": ["v1", "vt"],
+          "glosses": [
+            {
+              "lang": "eng",
+              "text": "to make a living"
+            },
+            {
+              "lang": "dut",
+              "text": "de kost verdienen"
+            }
+          ]
+        }
+      ],
+      "freqRank": 3,
+      "isCommon": true,
+      "jlptApprox": null,
+      "source": "jmdict",
+      "sourceVersion": "test",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "entSeq": 1000110,
+      "headword": "書く",
+      "kana": "かく",
+      "altForms": [],
+      "senses": [
+        {
+          "pos": ["v5k", "vt"],
+          "glosses": [
+            {
+              "lang": "eng",
+              "text": "to write"
+            },
+            {
+              "lang": "ger",
+              "text": "schreiben"
+            }
+          ]
+        }
+      ],
+      "freqRank": 1,
+      "isCommon": true,
+      "jlptApprox": null,
+      "source": "jmdict",
+      "sourceVersion": "test",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "entSeq": 1000120,
+      "headword": "ありがとう",
+      "kana": "ありがとう",
+      "altForms": [],
+      "senses": [
+        {
+          "pos": ["exp"],
+          "glosses": [
+            {
+              "lang": "eng",
+              "text": "thank you"
+            },
+            {
+              "lang": "spa",
+              "text": "gracias"
+            }
+          ]
+        }
+      ],
+      "freqRank": 2,
+      "isCommon": true,
+      "jlptApprox": null,
+      "source": "jmdict",
+      "sourceVersion": "test",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "entSeq": 1000130,
+      "headword": "珈琲",
+      "kana": "コーヒー",
+      "altForms": [],
+      "senses": [
+        {
+          "pos": ["n"],
+          "glosses": [
+            {
+              "lang": "eng",
+              "text": "coffee"
+            },
+            {
+              "lang": "ger",
+              "text": "Kaffee"
+            }
+          ]
+        }
+      ],
+      "freqRank": 4,
+      "isCommon": true,
+      "jlptApprox": null,
+      "source": "jmdict",
+      "sourceVersion": "test",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "entSeq": 1000140,
+      "headword": "淋しい",
+      "kana": "さびしい",
+      "altForms": [
+        {
+          "kind": "kanji",
+          "text": "寂しい",
+          "info": ["sK"],
+          "priority": []
+        },
+        {
+          "kind": "kanji",
+          "text": "寞しい",
+          "info": ["iK"],
+          "priority": []
+        },
+        {
+          "kind": "kana",
+          "text": "さみしい",
+          "info": ["sk"],
+          "priority": []
+        }
+      ],
+      "senses": [
+        {
+          "pos": ["adj-i"],
+          "glosses": [
+            {
+              "lang": "eng",
+              "text": "lonely"
+            },
+            {
+              "lang": "eng",
+              "text": "lonesome"
+            },
+            {
+              "lang": "fre",
+              "text": "solitaire"
+            }
+          ]
+        }
+      ],
+      "freqRank": 8,
+      "isCommon": true,
+      "jlptApprox": null,
+      "source": "jmdict",
+      "sourceVersion": "test",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "entSeq": 1000150,
+      "headword": "台所",
+      "kana": "だいどころ",
+      "altForms": [
+        {
+          "kind": "kanji",
+          "text": "勝手",
+          "info": [],
+          "priority": []
+        },
+        {
+          "kind": "kana",
+          "text": "かって",
+          "info": [],
+          "priority": []
+        }
+      ],
+      "senses": [
+        {
+          "pos": ["n"],
+          "glosses": [
+            {
+              "lang": "eng",
+              "text": "kitchen"
+            }
+          ]
+        }
+      ],
+      "freqRank": 5,
+      "isCommon": false,
+      "jlptApprox": null,
+      "source": "jmdict",
+      "sourceVersion": "test",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "entSeq": 1000160,
+      "headword": "土産",
+      "kana": "みやげ",
+      "altForms": [
+        {
+          "kind": "kana",
+          "text": "どさん",
+          "info": [],
+          "priority": []
+        }
+      ],
+      "senses": [
+        {
+          "pos": ["n"],
+          "glosses": [
+            {
+              "lang": "eng",
+              "text": "souvenir"
+            },
+            {
+              "lang": "ger",
+              "text": "Mitbringsel & Geschenk"
+            }
+          ]
+        }
+      ],
+      "freqRank": 9,
+      "isCommon": true,
+      "jlptApprox": null,
+      "source": "jmdict",
+      "sourceVersion": "test",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "entSeq": 1000170,
+      "headword": "いる",
+      "kana": "いる",
+      "altForms": [
+        {
+          "kind": "kanji",
+          "text": "居る",
+          "info": ["iK"],
+          "priority": ["gai1"]
+        }
+      ],
+      "senses": [
+        {
+          "pos": ["v1", "vi"],
+          "glosses": [
+            {
+              "lang": "eng",
+              "text": "to be (of animate objects)"
+            }
+          ]
+        }
+      ],
+      "freqRank": 10,
+      "isCommon": true,
+      "jlptApprox": null,
+      "source": "jmdict",
+      "sourceVersion": "test",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "entSeq": 1000180,
+      "headword": "ワイン",
+      "kana": "ワイン",
+      "altForms": [],
+      "senses": [
+        {
+          "pos": ["n"],
+          "glosses": [
+            {
+              "lang": "eng",
+              "text": "wine"
+            },
+            {
+              "lang": "ger",
+              "text": "Wein"
+            }
+          ]
+        }
+      ],
+      "freqRank": 11,
+      "isCommon": false,
+      "jlptApprox": null,
+      "source": "jmdict",
+      "sourceVersion": "test",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "entSeq": 1000190,
+      "headword": "山葵",
+      "kana": "わさび",
+      "altForms": [
+        {
+          "kind": "kana",
+          "text": "ワサビ",
+          "info": ["ok"],
+          "priority": []
+        }
+      ],
+      "senses": [
+        {
+          "pos": ["n", "uk"],
+          "glosses": [
+            {
+              "lang": "eng",
+              "text": "wasabi"
+            }
+          ]
+        },
+        {
+          "pos": ["n", "uk"],
+          "glosses": [
+            {
+              "lang": "eng",
+              "text": "Japanese horseradish"
+            },
+            {
+              "lang": "ger",
+              "text": "Wasabi"
+            }
+          ]
+        }
+      ],
+      "freqRank": 12,
+      "isCommon": false,
+      "jlptApprox": null,
+      "source": "jmdict",
+      "sourceVersion": "test",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "entSeq": 1000200,
+      "headword": "書物",
+      "kana": "しょもつ",
+      "altForms": [],
+      "senses": [
+        {
+          "pos": ["n"],
+          "glosses": [
+            {
+              "lang": "eng",
+              "text": "book"
+            }
+          ]
+        }
+      ],
+      "freqRank": 6,
+      "isCommon": false,
+      "jlptApprox": null,
+      "source": "jmdict",
+      "sourceVersion": "test",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "entSeq": 1000210,
+      "headword": "図書",
+      "kana": "としょ",
+      "altForms": [],
+      "senses": [
+        {
+          "pos": ["n"],
+          "glosses": [
+            {
+              "lang": "eng",
+              "text": "books"
+            }
+          ]
+        }
+      ],
+      "freqRank": 7,
+      "isCommon": false,
+      "jlptApprox": null,
+      "source": "jmdict",
+      "sourceVersion": "test",
+      "license": "CC BY-SA 4.0"
+    }
+  ],
+  "report": {
+    "entriesRead": 14,
+    "entriesLoaded": 12,
+    "commonLoaded": 7,
+    "kanaHeadwordFallbacks": [1000170],
+    "noValidReading": []
+  }
+}

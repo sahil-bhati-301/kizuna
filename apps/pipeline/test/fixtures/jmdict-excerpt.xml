@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Excerpt for tests (W02-2): a hand-built selection in JMdict's format, not a verbatim copy of any
+  entry. JMdict/EDICT is the property of the Electronic Dictionary Research and Development Group,
+  used under the Group's licence (CC BY-SA 4.0): https://www.edrdg.org/edrdg/licence.html
+  The DTD subset below is shortened to the entities the excerpt uses.
+-->
+<!DOCTYPE JMdict [
+<!ELEMENT JMdict (entry*)>
+<!ENTITY n "noun (common) (futsuumeishi)">
+<!ENTITY v1 "Ichidan verb">
+<!ENTITY vt "transitive verb">
+<!ENTITY v5k "Godan verb with 'ku' ending">
+<!ENTITY vi "intransitive verb">
+<!ENTITY adj-i "adjective (keiyoushi)">
+<!ENTITY exp "expressions (phrases, clauses, etc.)">
+<!ENTITY uk "word usually written using kana alone">
+<!ENTITY ateji "ateji (phonetic) reading">
+<!ENTITY iK "word containing irregular kanji usage">
+<!ENTITY sK "search-only kanji form">
+<!ENTITY oK "word containing out-dated kanji or kanji usage">
+<!ENTITY rK "rarely-used kanji form">
+<!ENTITY sk "search-only kana form">
+<!ENTITY ok "out-dated or obsolete kana usage">
+]>
+<JMdict>
+<entry>
+<ent_seq>1000010</ent_seq>
+<r_ele>
+<reb>ヾ</reb>
+</r_ele>
+<sense>
+<pos>&n;</pos>
+<gloss>voiced repetition mark in katakana (no priority tag: not loaded)</gloss>
+</sense>
+</entry>
+<entry>
+<ent_seq>1000100</ent_seq>
+<k_ele>
+<keb>食べる</keb>
+<ke_pri>ichi1</ke_pri>
+<ke_pri>news1</ke_pri>
+<ke_pri>nf09</ke_pri>
+</k_ele>
+<k_ele>
+<keb>喰べる</keb>
+<ke_inf>&rK;</ke_inf>
+</k_ele>
+<r_ele>
+<reb>たべる</reb>
+<re_pri>ichi1</re_pri>
+<re_pri>news1</re_pri>
+<re_pri>nf09</re_pri>
+</r_ele>
+<sense>
+<pos>&v1;</pos>
+<pos>&vt;</pos>
+<gloss>to eat</gloss>
+<gloss>to live on (e.g. a salary)</gloss>
+<gloss xml:lang="ger">essen</gloss>
+<gloss xml:lang="fre">manger</gloss>
+</sense>
+<sense>
+<gloss>to make a living</gloss>
+<gloss xml:lang="dut">de kost verdienen</gloss>
+</sense>
+</entry>
+<entry>
+<ent_seq>1000110</ent_seq>
+<k_ele>
+<keb>書く</keb>
+<ke_pri>ichi1</ke_pri>
+<ke_pri>news1</ke_pri>
+<ke_pri>nf02</ke_pri>
+</k_ele>
+<r_ele>
+<reb>かく</reb>
+<re_pri>ichi1</re_pri>
+<re_pri>news1</re_pri>
+<re_pri>nf02</re_pri>
+</r_ele>
+<sense>
+<pos>&v5k;</pos>
+<pos>&vt;</pos>
+<gloss>to write</gloss>
+<gloss xml:lang="ger">schreiben</gloss>
+</sense>
+</entry>
+<entry>
+<ent_seq>1000120</ent_seq>
+<r_ele>
+<reb>ありがとう</reb>
+<re_pri>ichi1</re_pri>
+<re_pri>nf02</re_pri>
+</r_ele>
+<sense>
+<pos>&exp;</pos>
+<gloss>thank you</gloss>
+<gloss xml:lang="spa">gracias</gloss>
+</sense>
+</entry>
+<entry>
+<ent_seq>1000130</ent_seq>
+<k_ele>
+<keb>珈琲</keb>
+<ke_inf>&ateji;</ke_inf>
+<ke_inf>&oK;</ke_inf>
+<ke_pri>ichi1</ke_pri>
+<ke_pri>nf09</ke_pri>
+</k_ele>
+<r_ele>
+<reb>コーヒー</reb>
+<re_pri>ichi1</re_pri>
+<re_pri>nf09</re_pri>
+</r_ele>
+<sense>
+<pos>&n;</pos>
+<gloss>coffee</gloss>
+<gloss xml:lang="ger">Kaffee</gloss>
+</sense>
+</entry>
+<entry>
+<ent_seq>1000140</ent_seq>
+<k_ele>
+<keb>寂しい</keb>
+<ke_inf>&sK;</ke_inf>
+</k_ele>
+<k_ele>
+<keb>淋しい</keb>
+<ke_pri>ichi1</ke_pri>
+<ke_pri>spec2</ke_pri>
+</k_ele>
+<k_ele>
+<keb>寞しい</keb>
+<ke_inf>&iK;</ke_inf>
+</k_ele>
+<r_ele>
+<reb>さびしい</reb>
+<re_pri>ichi1</re_pri>
+<re_pri>spec2</re_pri>
+</r_ele>
+<r_ele>
+<reb>さみしい</reb>
+<re_inf>&sk;</re_inf>
+</r_ele>
+<sense>
+<pos>&adj-i;</pos>
+<gloss>lonely</gloss>
+<gloss>lonesome</gloss>
+<gloss xml:lang="fre">solitaire</gloss>
+</sense>
+</entry>
+<entry>
+<ent_seq>1000150</ent_seq>
+<k_ele>
+<keb>台所</keb>
+<ke_pri>news2</ke_pri>
+<ke_pri>nf20</ke_pri>
+</k_ele>
+<k_ele>
+<keb>勝手</keb>
+</k_ele>
+<r_ele>
+<reb>かって</reb>
+<re_restr>勝手</re_restr>
+</r_ele>
+<r_ele>
+<reb>だいどころ</reb>
+<re_restr>台所</re_restr>
+<re_pri>news2</re_pri>
+<re_pri>nf20</re_pri>
+</r_ele>
+<sense>
+<pos>&n;</pos>
+<gloss>kitchen</gloss>
+</sense>
+</entry>
+<entry>
+<ent_seq>1000160</ent_seq>
+<k_ele>
+<keb>土産</keb>
+<ke_pri>spec1</ke_pri>
+</k_ele>
+<r_ele>
+<reb>どさん</reb>
+<re_nokanji/>
+</r_ele>
+<r_ele>
+<reb>みやげ</reb>
+<re_pri>spec1</re_pri>
+</r_ele>
+<sense>
+<pos>&n;</pos>
+<gloss>souvenir</gloss>
+<gloss xml:lang="ger">Mitbringsel &amp; Geschenk</gloss>
+</sense>
+</entry>
+<entry>
+<ent_seq>1000170</ent_seq>
+<k_ele>
+<keb>居る</keb>
+<ke_inf>&iK;</ke_inf>
+<ke_pri>gai1</ke_pri>
+</k_ele>
+<r_ele>
+<reb>いる</reb>
+<re_pri>gai1</re_pri>
+</r_ele>
+<sense>
+<pos>&v1;</pos>
+<pos>&vi;</pos>
+<gloss>to be (of animate objects)</gloss>
+</sense>
+</entry>
+<entry>
+<ent_seq>1000180</ent_seq>
+<r_ele>
+<reb>ワイン</reb>
+<re_pri>gai2</re_pri>
+</r_ele>
+<sense>
+<pos>&n;</pos>
+<gloss>wine</gloss>
+<gloss xml:lang="ger">Wein</gloss>
+</sense>
+</entry>
+<entry>
+<ent_seq>1000190</ent_seq>
+<k_ele>
+<keb>山葵</keb>
+<ke_inf>&ateji;</ke_inf>
+<ke_pri>ichi2</ke_pri>
+</k_ele>
+<r_ele>
+<reb>わさび</reb>
+<re_pri>ichi2</re_pri>
+</r_ele>
+<r_ele>
+<reb>ワサビ</reb>
+<re_inf>&ok;</re_inf>
+</r_ele>
+<sense>
+<pos>&n;</pos>
+<pos>&uk;</pos>
+<gloss>wasabi</gloss>
+</sense>
+<sense>
+<gloss>Japanese horseradish</gloss>
+<gloss xml:lang="ger">Wasabi</gloss>
+</sense>
+</entry>
+<entry>
+<ent_seq>1000200</ent_seq>
+<k_ele>
+<keb>書物</keb>
+<ke_pri>news2</ke_pri>
+<ke_pri>nf20</ke_pri>
+</k_ele>
+<r_ele>
+<reb>しょもつ</reb>
+<re_pri>news2</re_pri>
+<re_pri>nf20</re_pri>
+</r_ele>
+<sense>
+<pos>&n;</pos>
+<gloss>book</gloss>
+</sense>
+</entry>
+<entry>
+<ent_seq>1000210</ent_seq>
+<k_ele>
+<keb>図書</keb>
+<ke_pri>news2</ke_pri>
+<ke_pri>nf20</ke_pri>
+</k_ele>
+<r_ele>
+<reb>としょ</reb>
+<re_pri>news2</re_pri>
+<re_pri>nf20</re_pri>
+</r_ele>
+<sense>
+<pos>&n;</pos>
+<gloss>books</gloss>
+</sense>
+</entry>
+<entry>
+<ent_seq>1000220</ent_seq>
+<k_ele>
+<keb>古本</keb>
+</k_ele>
+<r_ele>
+<reb>ふるほん</reb>
+</r_ele>
+<sense>
+<pos>&n;</pos>
+<gloss>second-hand book (no priority tag: not loaded)</gloss>
+</sense>
+</entry>
+</JMdict>

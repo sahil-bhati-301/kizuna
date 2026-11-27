@@ -7,6 +7,7 @@ import type { JoyoEntry, JoyoReport } from '../domain/joyo/index.ts';
 import { parseKanjidic } from '../domain/kanjidic/index.ts';
 import { parseKradfileBytes } from '../domain/kradfile/index.ts';
 import type { BadLine, KradRow } from '../domain/kradfile/index.ts';
+import { stringify } from './json.ts';
 import type {
   ExcludedCharacter,
   KanjiRow,
@@ -104,27 +105,6 @@ function pick<T extends object>(row: T, keys: readonly (keyof T)[]): Record<stri
   return out;
 }
 
-/** JSON.stringify with 2-space indent, but arrays of primitives on one line (as Prettier does). */
-function stringify(value: unknown, indent = ''): string {
-  if (Array.isArray(value)) {
-    if (value.length === 0) return '[]';
-    if (value.every((v) => v === null || typeof v !== 'object'))
-      return `[${value.map((v) => JSON.stringify(v)).join(', ')}]`;
-    const inner = `${indent}  `;
-    return `[\n${value.map((v) => inner + stringify(v, inner)).join(',\n')}\n${indent}]`;
-  }
-  if (value !== null && typeof value === 'object') {
-    const entries = Object.entries(value);
-    if (entries.length === 0) return '{}';
-    const inner = `${indent}  `;
-    const body = entries
-      .map(([k, v]) => `${inner}${JSON.stringify(k)}: ${stringify(v, inner)}`)
-      .join(',\n');
-    return `{\n${body}\n${indent}}`;
-  }
-  return JSON.stringify(value);
-}
-
 const entry = (e: JoyoEntry) => ({ literal: e.literal, kind: e.kind, reading: e.reading });
 
 /** Sorted JSON rows with a fixed key order: byte-stable for the same inputs. */
@@ -182,3 +162,6 @@ export function serialiseKradfile(result: KradfileResult): string {
     badLines: result.badLines.map((b) => ({ line: b.line, text: b.text, reason: b.reason })),
   })}\n`;
 }
+
+export { importJmdict, importJmdictFile, serialiseWords } from './jmdict.ts';
+export type { JmdictImportResult } from './jmdict.ts';

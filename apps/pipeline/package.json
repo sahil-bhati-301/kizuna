@@ -10,7 +10,8 @@
     "format:check": "prettier --check . --ignore-path ../../.prettierignore",
     "test": "vitest run",
     "sources:fetch": "node --experimental-strip-types src/sources/cli.ts fetch",
-    "sources:pin": "node --experimental-strip-types src/sources/cli.ts pin"
+    "sources:pin": "node --experimental-strip-types src/sources/cli.ts pin",
+    "jmdict:run": "node --experimental-strip-types src/import/jmdict-cli.ts"
   },
   "dependencies": {
     "@kizuna/content": "workspace:*",
