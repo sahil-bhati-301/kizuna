@@ -1,0 +1,4 @@
+ALTER TABLE "content"."feature_tag" ADD CONSTRAINT "feature_tag_item_type_check" CHECK ("content"."feature_tag"."item_type" in ('kanji', 'word'));--> statement-breakpoint
+ALTER TABLE "content"."item_keyword" ADD CONSTRAINT "item_keyword_item_type_check" CHECK ("content"."item_keyword"."item_type" in ('kanji', 'radical', 'component'));--> statement-breakpoint
+ALTER TABLE "content"."relation" ADD CONSTRAINT "relation_from_type_check" CHECK ("content"."relation"."from_type" in ('kanji', 'word'));--> statement-breakpoint
+ALTER TABLE "content"."relation" ADD CONSTRAINT "relation_to_type_check" CHECK ("content"."relation"."to_type" in ('kanji', 'word'));
