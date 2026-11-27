@@ -17,7 +17,8 @@ export function dockerAvailable(): boolean {
  * In CI (CI=true) a missing Docker is a failure, never a skip.
  */
 export function skipReason(): string | undefined {
-  if (process.env.CI || dockerAvailable()) return undefined;
+  const ci = process.env.CI === 'true' || process.env.CI === '1';
+  if (ci || dockerAvailable()) return undefined;
   return 'Docker daemon not available: Testcontainers needs Docker (this skip is disabled in CI)';
 }
 
