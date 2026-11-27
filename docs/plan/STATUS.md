@@ -6,7 +6,7 @@ Light: ⚪ unknown (owner band at session 4: weekly <25%). Use /budget if needed
 ## Active WPs
 | WP | Title | Tier/Size | State |
 |---|---|---|---|
-| W00-4 | Spec digests | C/M | ⏸ paused (wrap-up) · resume: /wp W00-4 |
+| W00-4 | Spec digests | C/M | 🔄 in review (session 4); O-4 owner skim |
 | W00-6 | Local dev and DB harness | B/S | ⬜ todo |
 
 ## Merged this week

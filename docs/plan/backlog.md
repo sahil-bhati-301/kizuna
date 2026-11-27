@@ -6,6 +6,8 @@ Out-of-scope finds go here, not into code. One line each, with the WP that found
 - (W00-5 OQ-1, owner decision session 4) kernel: move pure code under packages/kernel/src/domain/ so the repo-wide domain lint and dependency-cruiser rules cover it; replace the source-scan stand-in. Small follow-up WP for /plan-week.
 
 ## Ideas
+- (W00-4) spec cross-check: optional allowlist so intended duplicate numbers stop showing, then fail on new duplicates.
+- (W00-4) budget guard: the tool-call fallback fired WRAP-UP while the owner reported low usage; consider a higher fallback or prompting for /budget figures first.
 
 ## Deferred
 - (W00-1 review) dependency-cruiser: add an apps-to-apps boundary rule once apps/ exists.
