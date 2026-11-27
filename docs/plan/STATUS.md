@@ -6,7 +6,7 @@ Light: ⚪ unknown (owner band at session 4: weekly <25%). Use /budget if needed
 ## Active WPs
 | WP | Title | Tier/Size | State |
 |---|---|---|---|
-| W00-4 | Spec digests | C/M | ⬜ todo |
+| W00-4 | Spec digests | C/M | ⏸ paused (wrap-up) · resume: /wp W00-4 |
 | W00-6 | Local dev and DB harness | B/S | ⬜ todo |
 
 ## Merged this week
@@ -16,7 +16,7 @@ Light: ⚪ unknown (owner band at session 4: weekly <25%). Use /budget if needed
 - (none)
 
 ## OPEN-Q
-- (none)
+- W00-4 OQ-1: content and web digests are ~1,285 words at honest length; accept a lower floor? (see WP file)
 
 ## Last decisions
 - Plan: docs/development-plan.md is the source for workflow; docs/architecture-design.md wins design conflicts.
