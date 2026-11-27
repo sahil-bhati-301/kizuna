@@ -267,6 +267,8 @@ export function cmdSessionStart(input, cfg) {
   s.toolCalls = 0;
   s.blocked = false;
   s.notified = { light: a.light, level: a.level };
+  let flushed = 0;
+  try { flushed = flushPendingLog(guard, root); } catch { /* never break a session */ }
   writeGuard(guard);
 
   const lines = [];
@@ -281,6 +283,7 @@ export function cmdSessionStart(input, cfg) {
     if (a.light === 'red' || a.light === 'hardstop') lines.push('Light is red: no new WPs; suggest owner-track work.');
   }
   lines.push(...resumeCards(root));
+  if (flushed) lines.push(`Logged ${flushed} earlier session(s) to docs/plan/budget-log.md: include it in this session's next commit.`);
   if (dirtyLines(cwd).length) lines.push('Uncommitted changes from a previous session: inspect git status/log before resuming.');
   const text = lines.join('\n').slice(0, 1500);
   emitContext('SessionStart', text);
@@ -338,10 +341,23 @@ export function cmdSessionEnd(input, cfg) {
     a.light,
     dirty ? 'no-checkpoint' : '—',
   ].map(cell);
+  // Don't touch the repo after the session has ended: queue the row in guard state.
+  // The next session-start in this repo writes it to the log, and that session commits it.
+  guard.pendingLog = Array.isArray(guard.pendingLog) ? guard.pendingLog : [];
+  guard.pendingLog.push({ root, row: `| ${row.join(' | ')} |` });
+  writeGuard(guard);
+}
+
+export function flushPendingLog(guard, root) {
+  const pending = Array.isArray(guard.pendingLog) ? guard.pendingLog : [];
+  const mine = pending.filter((p) => p.root === root);
+  if (!mine.length) return 0;
   const file = path.join(root, 'docs', 'plan', 'budget-log.md');
   fs.mkdirSync(path.dirname(file), { recursive: true });
   if (!fs.existsSync(file)) fs.writeFileSync(file, LOG_HEADER);
-  fs.appendFileSync(file, `| ${row.join(' | ')} |\n`);
+  fs.appendFileSync(file, mine.map((p) => `${p.row}\n`).join(''));
+  guard.pendingLog = pending.filter((p) => p.root !== root);
+  return mine.length;
 }
 
 export function cmdSet(args, cfg) {

@@ -228,13 +228,19 @@ test('session-start card, resume card and dirty warning', () => {
   assert.equal(JSON.parse(fs.readFileSync(path.join(dir, 'state', 'guard-state.json'), 'utf8')).ss1.startWeekly, 41);
 });
 
-test('session-end appends a budget log row', () => {
+test('session-end queues the row; the next session-start writes it', () => {
   const repo = makeRepo('wp/W07-2-thing');
   run('statusline', fixture('statusline-full.json'));
   run('session-start', { session_id: 'abcdefgh-1', cwd: repo }, { cwd: repo });
   fs.writeFileSync(path.join(repo, 'a.txt'), 'dirty');
   run('session-end', { session_id: 'abcdefgh-1', cwd: repo }, { cwd: repo });
-  const log = fs.readFileSync(path.join(repo, 'docs/plan/budget-log.md'), 'utf8');
+  const logFile = path.join(repo, 'docs/plan/budget-log.md');
+  assert.equal(fs.existsSync(logFile), false, 'session-end must not write to the repo');
+  const card = run('session-start', { session_id: 'second-01', cwd: repo }, { cwd: repo });
+  assert.match(card, /Logged 1 earlier session/);
+  const log = fs.readFileSync(logFile, 'utf8');
+  run('session-start', { session_id: 'third-001', cwd: repo }, { cwd: repo });
+  assert.equal(fs.readFileSync(logFile, 'utf8'), log, 'rows are written once');
   assert.match(log, /^\| Date \| Day \|/);
   assert.match(log, /\| 4 \| abcdefgh \| wp\/W07-2-thing \| Opus \| 41% \| 41% \| \+0 \| 23% \| green \| no-checkpoint \|/);
 });

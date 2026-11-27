@@ -288,7 +288,7 @@ The guard is one script, `scripts/claude/budget.mjs`, with three jobs. It never 
    - **SessionStart:** injects a short budget card: the light, both figures, today's line, minutes until the 5-hour reset. It also injects the resume card from §3.7.
    - **PostToolUse:** runs after every tool call, in subagents too. It is silent unless a level has changed since the last notice; the last notice is kept in `~/.claude/kizuna/guard-state.json`. Checking is continuous, but Claude sees a message (about 40 tokens) only when something changes.
    - **UserPromptSubmit:** the same check, so a session left open across a reset notices it.
-3. **Logger.** SessionStart and SessionEnd append the weekly % at start and end to `docs/plan/budget-log.md`. That feeds calibration (§2.7) without any typing.
+3. **Logger.** SessionStart records the weekly % at the start. SessionEnd works out the session's row but only queues it in the guard state file, because writing to the repository after a session has ended would leave uncommitted changes. The next session-start appends any queued rows to `docs/plan/budget-log.md`, and that session commits them along with its own work. That feeds calibration (§2.7) without any typing. In a cloud session, the queued row is lost if the container is reclaimed before the next session starts in it.
 
 **Notice levels** (defaults live in `.claude/budget.json`):
 
