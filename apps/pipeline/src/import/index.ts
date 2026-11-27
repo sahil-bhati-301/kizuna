@@ -5,7 +5,7 @@
 import { applyJoyo, parseJoyoTable } from '../domain/joyo/index.ts';
 import type { JoyoEntry, JoyoReport } from '../domain/joyo/index.ts';
 import { parseKanjidic } from '../domain/kanjidic/index.ts';
-import { decodeEucJp, parseKradfile } from '../domain/kradfile/index.ts';
+import { parseKradfileBytes } from '../domain/kradfile/index.ts';
 import type { BadLine, KradRow } from '../domain/kradfile/index.ts';
 import type {
   ExcludedCharacter,
@@ -161,7 +161,7 @@ export interface KradfileResult {
 
 /** Decodes and parses KRADFILE bytes; kanji sorted by code point (the file is not). */
 export function importKradfile(bytes: Uint8Array, provenance: Provenance): KradfileResult {
-  const parsed = parseKradfile(decodeEucJp(bytes), provenance);
+  const parsed = parseKradfileBytes(bytes, provenance);
   return {
     kanji: [...parsed.kanji].sort((a, b) => a.codepoint - b.codepoint),
     badLines: parsed.badLines,

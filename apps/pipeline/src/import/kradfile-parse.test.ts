@@ -12,7 +12,7 @@
 import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { describe, expect, it } from 'vitest';
-import { decodeEucJp, parseKradfile } from '../domain/kradfile/index.ts';
+import { decodeEucJp, parseKradfile, parseKradfileBytes } from '../domain/kradfile/index.ts';
 
 const bytes = new Uint8Array(
   readFileSync(
@@ -126,5 +126,36 @@ describe('parseKradfile: bad lines (AC 4)', () => {
     const { kanji, badLines } = parse('亜 : 口\n\n日 : \n亜 : 一\r\n木 : 木\n');
     expect(kanji.map((k) => k.literal)).toEqual(['亜', '木']);
     expect(badLines.map((b) => b.line)).toEqual([2, 3, 4]);
+  });
+});
+
+describe('parseKradfileBytes: undecodable lines (AC 4)', () => {
+  const enc = (s: string) => Array.from(new TextEncoder().encode(s)); // ASCII only below
+  const file = (...lines: number[][]) => new Uint8Array(lines.flatMap((l) => [...l, 0x0a]));
+  const ya = [0xb0, 0xa1]; // 亜
+  const good = [...ya, ...enc(' : '), 0xb8, 0xfd];
+
+  it('reports an invalid sequence with its line number and parses the lines around it', () => {
+    const r = parseKradfileBytes(
+      file(good, [...enc('x : '), 0xff, 0xff], [0xb0, 0xa2, ...enc(' : '), ...ya]),
+      PROVENANCE,
+    );
+    expect(r.badLines).toEqual([{ line: 2, text: expect.any(String), reason: expect.any(String) }]);
+    expect(r.kanji.map((k) => k.literal)).toEqual(['亜', '唖']);
+  });
+
+  it('reports a stray 0x8F (JIS X 0212 lead byte) instead of decoding it', () => {
+    // 8F B0 A1 is a valid JIS X 0212 character to a plain EUC-JP decoder.
+    const r = parseKradfileBytes(
+      file([...ya, ...enc(' : '), 0x8f, 0xb0, 0xa1], [...ya, ...enc(' : '), ...ya]),
+      PROVENANCE,
+    );
+    expect(r.badLines.map((b) => b.line)).toEqual([1]);
+    expect(r.badLines[0]?.reason).toContain('0x8F');
+    expect(r.kanji).toHaveLength(1);
+  });
+
+  it('matches parseKradfile on the fixture', () => {
+    expect(parseKradfileBytes(bytes, PROVENANCE)).toEqual(parse());
   });
 });

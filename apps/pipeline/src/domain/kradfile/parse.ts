@@ -45,13 +45,61 @@ function toComponent(raw: string): KradComponent {
 const isOneCodePoint = (s: string) => Array.from(s).length === 1;
 
 export function parseKradfile(text: string, provenance: Provenance): KradRows {
+  const lines = text.split('\n');
+  if (lines.at(-1) === '') lines.pop(); // the newline that ends the file
+  return parseLines(lines, provenance);
+}
+
+const LF = 0x0a;
+const JIS_X_0212_LEAD = 0x8f;
+const hex = (b: Uint8Array) => Array.from(b, (x) => x.toString(16).padStart(2, '0')).join(' ');
+
+/**
+ * Decodes each line on its own, so a byte error becomes a bad line (with its number) rather than
+ * failing the file. A stray 0x8F (JIS X 0212 lead byte) is rejected: the file is JIS X 0208 only.
+ */
+export function parseKradfileBytes(bytes: Uint8Array, provenance: Provenance): KradRows {
+  const decoder = new TextDecoder('euc-jp', { fatal: true });
+  const raw: Uint8Array[] = [];
+  let start = 0;
+  for (let i = 0; i <= bytes.length; i++) {
+    if (i === bytes.length || bytes[i] === LF) {
+      if (i < bytes.length || start < bytes.length) raw.push(bytes.subarray(start, i));
+      start = i + 1;
+    }
+  }
+  const failures = new Map<number, BadLine>();
+  const lines = raw.map((line, i) => {
+    const reason = line.includes(JIS_X_0212_LEAD)
+      ? 'JIS X 0212 byte 0x8F (file is JIS X 0208 only)'
+      : 'invalid EUC-JP byte sequence';
+    try {
+      if (line.includes(JIS_X_0212_LEAD)) throw new TypeError(reason);
+      return decoder.decode(line);
+    } catch {
+      failures.set(i, { line: i + 1, text: `bytes: ${hex(line)}`, reason });
+      return '#'; // placeholder, replaced by the failure below
+    }
+  });
+  const parsed = parseLines(lines, provenance, failures);
+  return parsed;
+}
+
+function parseLines(
+  lines: readonly string[],
+  provenance: Provenance,
+  failures: ReadonlyMap<number, BadLine> = new Map(),
+): KradRows {
   const kanji: KradRow[] = [];
   const badLines: BadLine[] = [];
   const seen = new Set<string>();
-  const lines = text.split('\n');
-  if (lines.at(-1) === '') lines.pop(); // the newline that ends the file
   lines.forEach((raw, i) => {
     const line = i + 1;
+    const failure = failures.get(i);
+    if (failure) {
+      badLines.push(failure);
+      return;
+    }
     const text = raw.endsWith('\r') ? raw.slice(0, -1) : raw;
     if (text.startsWith('#')) return;
     const bad = (reason: string) => badLines.push({ line, text, reason });
