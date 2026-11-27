@@ -3,6 +3,7 @@
 Out-of-scope finds go here, not into code. One line each, with the WP that found it.
 
 ## Should-fix
+- (W00-5 OQ-1, owner decision session 4) kernel: move pure code under packages/kernel/src/domain/ so the repo-wide domain lint and dependency-cruiser rules cover it; replace the source-scan stand-in. Small follow-up WP for /plan-week.
 
 ## Ideas
 

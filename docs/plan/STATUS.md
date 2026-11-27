@@ -16,12 +16,14 @@ Light: ⚪ unknown (owner band at session 4: weekly <25%). Use /budget if needed
 - (none)
 
 ## OPEN-Q
-- W00-5 OQ-1: kernel has no domain/ folder; is the source-scan stand-in enough for AC5? (see WP file)
+- (none)
 
 ## Last decisions
 - Plan: docs/development-plan.md is the source for workflow; docs/architecture-design.md wins design conflicts.
 - Until W00-1 lands, the only test command is `node --test "scripts/claude/*.test.mjs"`.
 - W00-1 worked on the session branch claude/gallant-davinci-z3yvft instead of wp/W00-1-monorepo (cloud session branch restriction). W00-2 likewise, in the same session at the owner's request. W00-5 likewise (session 3).
+
+- W00-5 OQ-1 closed by owner: kernel gains a domain/ folder (follow-up in backlog Should-fix).
 
 ## Flaky tests
 - None
