@@ -78,7 +78,7 @@ describe('strokes', () => {
   it('lists each source value and suggests the majority', () => {
     const [item] = checkStrokes(input({ unihan: new Map([['肝', [8]]]) }));
     expect(item).toMatchObject({
-      id: 'strokes:U+809D:kd7.kvg7.uh8',
+      id: 'strokes:U+809D',
       evidence: { kanjidic2: 7, kanjivg: 7, unihan: [8] },
       suggested: { field: 'strokes', value: 7 },
     });
@@ -129,16 +129,46 @@ describe('queue', () => {
       reason: 'r',
       author: 'a',
     });
-    const q = buildQueue(bad, [
-      decision('strokes:U+4E95:kd4.kvg4.uh5'),
-      decision('strokes:U+0000:x'),
-    ]);
+    const q = buildQueue(bad, [decision('strokes:U+4E95'), decision('strokes:U+0000:x')]);
     expect(q.items.map((i) => i.kanji)).toEqual(['肝']);
     expect(q.summary).toMatchObject({
       decidedSkipped: 1,
       staleDecisions: ['strokes:U+0000:x'],
       open: { strokes: 1 },
     });
+  });
+});
+
+describe('changed evidence', () => {
+  const base = input({ unihan: new Map([['肝', [8]]]) });
+  const decision = (evidence?: Record<string, unknown>) => ({
+    id: 'strokes:U+809D',
+    decision: 'accept' as const,
+    reason: 'r',
+    author: 'a',
+    ...(evidence ? { evidence } : {}),
+  });
+
+  it('keeps the ID when a source value changes', () => {
+    const other = input({ unihan: new Map([['肝', [9]]]) });
+    expect(checkStrokes(base)[0]!.id).toBe(checkStrokes(other)[0]!.id);
+  });
+
+  it('skips an item whose evidence matches the decision', () => {
+    const q = buildQueue(base, [decision({ kanjidic2: 7, kanjivg: 7, unihan: [8] })]);
+    expect(q.items).toEqual([]);
+    expect(q.summary.changedSinceDecision).toBe(0);
+  });
+
+  it('lists an item again, marked, when its evidence changed', () => {
+    const q = buildQueue(base, [decision({ kanjidic2: 7, kanjivg: 7, unihan: [9] })]);
+    expect(q.items).toHaveLength(1);
+    expect(q.items[0]!.changedSinceDecision).toMatchObject({ decision: 'accept' });
+    expect(q.summary).toMatchObject({ changedSinceDecision: 1, decidedSkipped: 0 });
+  });
+
+  it('skips a decision with no recorded evidence', () => {
+    expect(buildQueue(base, [decision()]).items).toEqual([]);
   });
 });
 

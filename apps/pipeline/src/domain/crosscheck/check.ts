@@ -56,6 +56,11 @@ export interface ReviewItem {
   readonly evidence: Readonly<Record<string, unknown>>;
   /** What an override would do; null when the sources give no clear answer. */
   readonly suggested: Readonly<Record<string, unknown>> | null;
+  /** Set when the owner decided this item but the evidence differs from what they saw. */
+  readonly changedSinceDecision?: {
+    readonly decision: string;
+    readonly decidedEvidence: Readonly<Record<string, unknown>>;
+  };
 }
 
 const MEAT_RADICAL = '⺼'; // ⺼, KanjiVG's form of 月 as 肉 (W01-5 note)
@@ -155,7 +160,7 @@ export function checkStrokes(input: CrosscheckInput): ReviewItem[] {
     if (agrees) continue;
     const suggestion = suggestStrokes(k.strokes, vg, uni);
     items.push({
-      id: `strokes:${hex(k.literal)}:kd${k.strokes}.kvg${vg ?? '-'}.uh${uni?.join('+') ?? '-'}`,
+      id: `strokes:${hex(k.literal)}`,
       check: 'strokes',
       kanji: k.literal,
       freqRank: k.freqRank,

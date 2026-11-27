@@ -1,5 +1,6 @@
 decisions:
-  - id: strokes:U+4E95:kd4.kvg4.uh5
+  - id: strokes:U+4E95
     decision: accept
     reason: test
     author: tester
+    evidence: { kanjidic2: 4, kanjivg: 4, unihan: [5] }

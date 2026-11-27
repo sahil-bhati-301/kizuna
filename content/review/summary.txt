@@ -4,4 +4,5 @@ decomposition-missing-in-kradfile: 1827
 decomposition-no-data: 4
 strokes: 225
 decided and skipped: 0
+decided items changed since the decision (listed again): 0
 stale decisions: 0

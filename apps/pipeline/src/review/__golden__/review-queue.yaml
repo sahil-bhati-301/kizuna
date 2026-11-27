@@ -7,6 +7,7 @@ summary:
     decomposition-no-data: 0
     strokes: 1
   decidedSkipped: 1
+  changedSinceDecision: 0
   staleDecisions: []
 items:
   - id: decomposition-missing-in-kanjivg:U+4E95:U+4E00
@@ -93,7 +94,7 @@ items:
     suggested:
       field: components
       add: 廾
-  - id: strokes:U+6301:kd9.kvg9.uh10
+  - id: strokes:U+6301
     check: strokes
     kanji: 持
     evidence:

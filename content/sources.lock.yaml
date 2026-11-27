@@ -51,7 +51,7 @@ sources:
     license: CC BY 2.0 FR (some sentences CC0)
   - id: unihan
     url: https://www.unicode.org/Public/UCD/latest/ucd/Unihan.zip
-    version: Unicode UCD latest (Unihan.zip of 2026-08-05)
+    version: Unicode UCD latest (Unihan.zip, files dated 2026-07-31)
     fetched: '2026-11-27'
     file: Unihan.zip
     sha256: '4c93ea9c1f636451729a840978f1667a53886af37ba854fdcce109721c63d43e'
@@ -66,8 +66,7 @@ transcribed:
     file: joyo/joyo.tsv
     sha256: '597fe0c96ea25075861eefd2e642764d6dcc64994ee69fe75cadc8802d707de6'
     upstream_sha256: 'd9f28aeb4ce8250dbde07de20ac66cca71805ba09d94e4942c752dffa84d8d42'
-    license: Cabinet notice, outside copyright (Art. 13, Japanese Copyright Act);
-      cite the source
+    license: Cabinet notice, outside copyright (Art. 13, Japanese Copyright Act); cite the source
 # Built locally from a pinned upstream commit (W02 Q-G answer a: GitHub release files are not
 # reachable from the session). Not fetched by sources:fetch. Rebuild with
 # pnpm --filter @kizuna/pipeline kanjivg:bundle <kanjivg clone at the commit>; the sha256 is of the

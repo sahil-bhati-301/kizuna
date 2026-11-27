@@ -42,6 +42,8 @@ export function parseDecisions(text: string): Decision[] {
       if (typeof d[f] !== 'string' || !d[f]) throw new DecisionsError(`${label} needs "${f}"`);
     if (d.decision !== 'accept' && d.decision !== 'flag')
       throw new DecisionsError(`${label} "decision" must be accept or flag`);
+    if (d.evidence !== undefined && (typeof d.evidence !== 'object' || d.evidence === null))
+      throw new DecisionsError(`${label} "evidence" must be a mapping`);
     if (seen.has(d.id as string)) throw new DecisionsError(`${label} repeats ${String(d.id)}`);
     seen.add(d.id as string);
     return d as unknown as Decision;

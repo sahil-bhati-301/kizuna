@@ -11,6 +11,8 @@ export interface Decision {
   readonly decision: 'accept' | 'flag';
   readonly reason: string;
   readonly author: string;
+  /** The queue item's evidence when decided (copy it from queue.yaml); a later change re-lists the item. */
+  readonly evidence?: Readonly<Record<string, unknown>>;
 }
 
 export interface QueueSummary {
@@ -18,6 +20,8 @@ export interface QueueSummary {
   readonly open: Readonly<Record<Check, number>>;
   /** Items skipped because the owner already decided them. */
   readonly decidedSkipped: number;
+  /** Decided items listed again because their evidence changed since the decision. */
+  readonly changedSinceDecision: number;
   /** Decisions whose item no longer appears (the evidence changed or the problem is fixed). */
   readonly staleDecisions: readonly string[];
 }
@@ -42,8 +46,20 @@ function sortItems(items: readonly ReviewItem[]): ReviewItem[] {
 
 export function buildQueue(input: CrosscheckInput, decisions: readonly Decision[]): Queue {
   const all = sortItems([...checkDecomposition(input), ...checkStrokes(input)]);
-  const decided = new Set(decisions.map((d) => d.id));
-  const items = all.filter((i) => !decided.has(i.id));
+  const byId = new Map(decisions.map((d) => [d.id, d]));
+  let changed = 0;
+  const items: ReviewItem[] = [];
+  for (const i of all) {
+    const d = byId.get(i.id);
+    if (!d) items.push(i);
+    else if (d.evidence && JSON.stringify(d.evidence) !== JSON.stringify(i.evidence)) {
+      changed++;
+      items.push({
+        ...i,
+        changedSinceDecision: { decision: d.decision, decidedEvidence: d.evidence },
+      });
+    }
+  }
   const present = new Set(all.map((i) => i.id));
   const open = Object.fromEntries(CHECKS.map((c) => [c, 0])) as Record<Check, number>;
   for (const i of items) open[i.check]++;
@@ -53,6 +69,7 @@ export function buildQueue(input: CrosscheckInput, decisions: readonly Decision[
       kanjiChecked: input.kanji.length,
       open,
       decidedSkipped: all.length - items.length,
+      changedSinceDecision: changed,
       staleDecisions: decisions
         .map((d) => d.id)
         .filter((id) => !present.has(id))
@@ -72,6 +89,7 @@ export function queueDocument(queue: Queue): Record<string, unknown> {
       kanji: i.kanji,
       evidence: i.evidence,
       suggested: i.suggested,
+      ...(i.changedSinceDecision ? { changedSinceDecision: i.changedSinceDecision } : {}),
     })),
   };
 }
@@ -82,6 +100,7 @@ export function summaryLines(s: QueueSummary): string[] {
     `kanji checked: ${s.kanjiChecked}`,
     ...CHECKS.map((c) => `${c}: ${s.open[c]}`),
     `decided and skipped: ${s.decidedSkipped}`,
+    `decided items changed since the decision (listed again): ${s.changedSinceDecision}`,
     `stale decisions: ${s.staleDecisions.length}`,
   ];
 }

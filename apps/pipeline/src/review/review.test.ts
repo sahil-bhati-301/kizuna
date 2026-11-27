@@ -84,6 +84,21 @@ describe('zip reader', () => {
     expect(readZipEntry(zip('a.txt', data, 8), 'a.txt').equals(data)).toBe(true);
   });
 
+  it('rejects encrypted entries and ZIP64 markers', () => {
+    const base = zip('a.txt', Buffer.from('x'), 0);
+    const cdir = base.indexOf(Buffer.from([0x50, 0x4b, 0x01, 0x02]));
+    const eocd = base.indexOf(Buffer.from([0x50, 0x4b, 0x05, 0x06]));
+    const patch = (at: number, bytes: number[]) => {
+      const c = Buffer.from(base);
+      Buffer.from(bytes).copy(c, at);
+      return c;
+    };
+    expect(() => readZipEntry(patch(cdir + 8, [1, 0]), 'a.txt')).toThrow(/encrypted/);
+    expect(() => readZipEntry(patch(cdir + 20, [255, 255, 255, 255]), 'a.txt')).toThrow(/ZIP64/);
+    expect(() => readZipEntry(patch(cdir + 42, [255, 255, 255, 255]), 'a.txt')).toThrow(/ZIP64/);
+    expect(() => readZipEntry(patch(eocd + 10, [255, 255]), 'a.txt')).toThrow(/ZIP64/);
+  });
+
   it('rejects a missing entry and a non-zip', () => {
     expect(() => readZipEntry(zip('a.txt', Buffer.from('x'), 0), 'b.txt')).toThrow(ZipError);
     expect(() => readZipEntry(Buffer.from('not a zip at all, just text'), 'a')).toThrow(ZipError);

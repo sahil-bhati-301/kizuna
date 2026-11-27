@@ -7,6 +7,7 @@ summary:
     decomposition-no-data: 4
     strokes: 225
   decidedSkipped: 0
+  changedSinceDecision: 0
   staleDecisions: []
 items:
   - id: decomposition-missing-in-kanjivg:U+4F1A:U+201A2
@@ -88461,7 +88462,7 @@ items:
       kradfile: null
       kanjivg: true
     suggested: null
-  - id: strokes:U+793E:kd7.kvg7.uh8
+  - id: strokes:U+793E
     check: strokes
     kanji: 社
     evidence:
@@ -88472,7 +88473,7 @@ items:
     suggested:
       field: strokes
       value: 7
-  - id: strokes:U+9023:kd10.kvg10.uh11
+  - id: strokes:U+9023
     check: strokes
     kanji: 連
     evidence:
@@ -88483,7 +88484,7 @@ items:
     suggested:
       field: strokes
       value: 10
-  - id: strokes:U+90E8:kd11.kvg11.uh10
+  - id: strokes:U+90E8
     check: strokes
     kanji: 部
     evidence:
@@ -88494,7 +88495,7 @@ items:
     suggested:
       field: strokes
       value: 11
-  - id: strokes:U+8005:kd8.kvg8.uh9
+  - id: strokes:U+8005
     check: strokes
     kanji: 者
     evidence:
@@ -88505,7 +88506,7 @@ items:
     suggested:
       field: strokes
       value: 8
-  - id: strokes:U+901A:kd10.kvg10.uh11
+  - id: strokes:U+901A
     check: strokes
     kanji: 通
     evidence:
@@ -88516,7 +88517,7 @@ items:
     suggested:
       field: strokes
       value: 10
-  - id: strokes:U+6210:kd6.kvg6.uh7
+  - id: strokes:U+6210
     check: strokes
     kanji: 成
     evidence:
@@ -88527,7 +88528,7 @@ items:
     suggested:
       field: strokes
       value: 6
-  - id: strokes:U+90FD:kd11.kvg11.uh12
+  - id: strokes:U+90FD
     check: strokes
     kanji: 都
     evidence:
@@ -88538,7 +88539,7 @@ items:
     suggested:
       field: strokes
       value: 11
-  - id: strokes:U+9032:kd11.kvg11.uh12
+  - id: strokes:U+9032
     check: strokes
     kanji: 進
     evidence:
@@ -88549,7 +88550,7 @@ items:
     suggested:
       field: strokes
       value: 11
-  - id: strokes:U+9662:kd10.kvg10.uh9
+  - id: strokes:U+9662
     check: strokes
     kanji: 院
     evidence:
@@ -88560,7 +88561,7 @@ items:
     suggested:
       field: strokes
       value: 10
-  - id: strokes:U+521D:kd7.kvg7.uh8
+  - id: strokes:U+521D
     check: strokes
     kanji: 初
     evidence:
@@ -88571,7 +88572,7 @@ items:
     suggested:
       field: strokes
       value: 7
-  - id: strokes:U+8FD1:kd7.kvg7.uh8
+  - id: strokes:U+8FD1
     check: strokes
     kanji: 近
     evidence:
@@ -88582,7 +88583,7 @@ items:
     suggested:
       field: strokes
       value: 7
-  - id: strokes:U+6D77:kd9.kvg9.uh10
+  - id: strokes:U+6D77
     check: strokes
     kanji: 海
     evidence:
@@ -88593,7 +88594,7 @@ items:
     suggested:
       field: strokes
       value: 9
-  - id: strokes:U+9053:kd12.kvg12.uh13
+  - id: strokes:U+9053
     check: strokes
     kanji: 道
     evidence:
@@ -88604,7 +88605,7 @@ items:
     suggested:
       field: strokes
       value: 12
-  - id: strokes:U+904B:kd12.kvg12.uh13
+  - id: strokes:U+904B
     check: strokes
     kanji: 運
     evidence:
@@ -88615,7 +88616,7 @@ items:
     suggested:
       field: strokes
       value: 12
-  - id: strokes:U+904E:kd12.kvg12.uh13
+  - id: strokes:U+904E
     check: strokes
     kanji: 過
     evidence:
@@ -88626,7 +88627,7 @@ items:
     suggested:
       field: strokes
       value: 12
-  - id: strokes:U+55B6:kd12.kvg12.uh11
+  - id: strokes:U+55B6
     check: strokes
     kanji: 営
     evidence:
@@ -88637,7 +88638,7 @@ items:
     suggested:
       field: strokes
       value: 12
-  - id: strokes:U+9001:kd9.kvg9.uh10
+  - id: strokes:U+9001
     check: strokes
     kanji: 送
     evidence:
@@ -88648,7 +88649,7 @@ items:
     suggested:
       field: strokes
       value: 9
-  - id: strokes:U+96E3:kd18.kvg18.uh19
+  - id: strokes:U+96E3
     check: strokes
     kanji: 難
     evidence:
@@ -88659,7 +88660,7 @@ items:
     suggested:
       field: strokes
       value: 18
-  - id: strokes:U+88DC:kd12.kvg12.uh13
+  - id: strokes:U+88DC
     check: strokes
     kanji: 補
     evidence:
@@ -88670,7 +88671,7 @@ items:
     suggested:
       field: strokes
       value: 12
-  - id: strokes:U+795E:kd9.kvg9.uh10
+  - id: strokes:U+795E
     check: strokes
     kanji: 神
     evidence:
@@ -88681,7 +88682,7 @@ items:
     suggested:
       field: strokes
       value: 9
-  - id: strokes:U+8B77:kd20.kvg20.uh21
+  - id: strokes:U+8B77
     check: strokes
     kanji: 護
     evidence:
@@ -88692,7 +88693,7 @@ items:
     suggested:
       field: strokes
       value: 20
-  - id: strokes:U+8FF0:kd8.kvg8.uh9
+  - id: strokes:U+8FF0
     check: strokes
     kanji: 述
     evidence:
@@ -88703,7 +88704,7 @@ items:
     suggested:
       field: strokes
       value: 8
-  - id: strokes:U+6B8B:kd10.kvg10.uh9
+  - id: strokes:U+6B8B
     check: strokes
     kanji: 残
     evidence:
@@ -88714,7 +88715,7 @@ items:
     suggested:
       field: strokes
       value: 10
-  - id: strokes:U+885B:kd16.kvg16.uh15
+  - id: strokes:U+885B
     check: strokes
     kanji: 衛
     evidence:
@@ -88725,7 +88726,7 @@ items:
     suggested:
       field: strokes
       value: 16
-  - id: strokes:U+76E3:kd15.kvg15.uh14
+  - id: strokes:U+76E3
     check: strokes
     kanji: 監
     evidence:
@@ -88736,7 +88737,7 @@ items:
     suggested:
       field: strokes
       value: 15
-  - id: strokes:U+8FFD:kd9.kvg9.uh10
+  - id: strokes:U+8FFD
     check: strokes
     kanji: 追
     evidence:
@@ -88747,7 +88748,7 @@ items:
     suggested:
       field: strokes
       value: 9
-  - id: strokes:U+8449:kd12.kvg12.uh13
+  - id: strokes:U+8449
     check: strokes
     kanji: 葉
     evidence:
@@ -88758,7 +88759,7 @@ items:
     suggested:
       field: strokes
       value: 12
-  - id: strokes:U+9000:kd9.kvg9.uh10
+  - id: strokes:U+9000
     check: strokes
     kanji: 退
     evidence:
@@ -88769,7 +88770,7 @@ items:
     suggested:
       field: strokes
       value: 9
-  - id: strokes:U+9020:kd10.kvg10.uh11
+  - id: strokes:U+9020
     check: strokes
     kanji: 造
     evidence:
@@ -88780,7 +88781,7 @@ items:
     suggested:
       field: strokes
       value: 10
-  - id: strokes:U+82F1:kd8.kvg8.uh9
+  - id: strokes:U+82F1
     check: strokes
     kanji: 英
     evidence:
@@ -88791,7 +88792,7 @@ items:
     suggested:
       field: strokes
       value: 8
-  - id: strokes:U+88AB:kd10.kvg10.uh11
+  - id: strokes:U+88AB
     check: strokes
     kanji: 被
     evidence:
@@ -88802,7 +88803,7 @@ items:
     suggested:
       field: strokes
       value: 10
-  - id: strokes:U+97D3:kd18.kvg18.uh17
+  - id: strokes:U+97D3
     check: strokes
     kanji: 韓
     evidence:
@@ -88813,7 +88814,7 @@ items:
     suggested:
       field: strokes
       value: 18
-  - id: strokes:U+82E5:kd8.kvg8.uh9
+  - id: strokes:U+82E5
     check: strokes
     kanji: 若
     evidence:
@@ -88824,7 +88825,7 @@ items:
     suggested:
       field: strokes
       value: 8
-  - id: strokes:U+798F:kd13.kvg13.uh14
+  - id: strokes:U+798F
     check: strokes
     kanji: 福
     evidence:
@@ -88835,7 +88836,7 @@ items:
     suggested:
       field: strokes
       value: 13
-  - id: strokes:U+8535:kd15.kvg15.uh14
+  - id: strokes:U+8535
     check: strokes
     kanji: 蔵
     evidence:
@@ -88846,7 +88847,7 @@ items:
     suggested:
       field: strokes
       value: 15
-  - id: strokes:U+9054:kd12.kvg12.uh13
+  - id: strokes:U+9054
     check: strokes
     kanji: 達
     evidence:
@@ -88857,7 +88858,7 @@ items:
     suggested:
       field: strokes
       value: 12
-  - id: strokes:U+962A:kd7.kvg7.uh6
+  - id: strokes:U+962A
     check: strokes
     kanji: 阪
     evidence:
@@ -88868,7 +88869,7 @@ items:
     suggested:
       field: strokes
       value: 7
-  - id: strokes:U+968E:kd12.kvg12.uh11
+  - id: strokes:U+968E
     check: strokes
     kanji: 階
     evidence:
@@ -88879,7 +88880,7 @@ items:
     suggested:
       field: strokes
       value: 12
-  - id: strokes:U+7A81:kd8.kvg8.uh9
+  - id: strokes:U+7A81
     check: strokes
     kanji: 突
     evidence:
@@ -88890,7 +88891,7 @@ items:
     suggested:
       field: strokes
       value: 8
-  - id: strokes:U+5668:kd15.kvg15.uh16
+  - id: strokes:U+5668
     check: strokes
     kanji: 器
     evidence:
@@ -88901,7 +88902,7 @@ items:
     suggested:
       field: strokes
       value: 15
-  - id: strokes:U+53CA:kd3.kvg3.uh4
+  - id: strokes:U+53CA
     check: strokes
     kanji: 及
     evidence:
@@ -88912,7 +88913,7 @@ items:
     suggested:
       field: strokes
       value: 3
-  - id: strokes:U+96E2:kd19.kvg19.uh18
+  - id: strokes:U+96E2
     check: strokes
     kanji: 離
     evidence:
@@ -88923,7 +88924,7 @@ items:
     suggested:
       field: strokes
       value: 19
-  - id: strokes:U+5065:kd11.kvg11.uh10
+  - id: strokes:U+5065
     check: strokes
     kanji: 健
     evidence:
@@ -88934,7 +88935,7 @@ items:
     suggested:
       field: strokes
       value: 11
-  - id: strokes:U+901F:kd10.kvg10.uh11
+  - id: strokes:U+901F
     check: strokes
     kanji: 速
     evidence:
@@ -88945,7 +88946,7 @@ items:
     suggested:
       field: strokes
       value: 10
-  - id: strokes:U+82B1:kd7.kvg7.uh8
+  - id: strokes:U+82B1
     check: strokes
     kanji: 花
     evidence:
@@ -88956,7 +88957,7 @@ items:
     suggested:
       field: strokes
       value: 7
-  - id: strokes:U+964D:kd10.kvg10.uh9
+  - id: strokes:U+964D
     check: strokes
     kanji: 降
     evidence:
@@ -88967,7 +88968,7 @@ items:
     suggested:
       field: strokes
       value: 10
-  - id: strokes:U+82E6:kd8.kvg8.uh9
+  - id: strokes:U+82E6
     check: strokes
     kanji: 苦
     evidence:
@@ -88978,7 +88979,7 @@ items:
     suggested:
       field: strokes
       value: 8
-  - id: strokes:U+8FCE:kd7.kvg7.uh8
+  - id: strokes:U+8FCE
     check: strokes
     kanji: 迎
     evidence:
@@ -88989,7 +88990,7 @@ items:
     suggested:
       field: strokes
       value: 7
-  - id: strokes:U+53B3:kd17.kvg17.uh16
+  - id: strokes:U+53B3
     check: strokes
     kanji: 厳
     evidence:
@@ -89000,7 +89001,7 @@ items:
     suggested:
       field: strokes
       value: 17
-  - id: strokes:U+821E:kd15.kvg15.uh14
+  - id: strokes:U+821E
     check: strokes
     kanji: 舞
     evidence:
@@ -89011,7 +89012,7 @@ items:
     suggested:
       field: strokes
       value: 15
-  - id: strokes:U+8AF8:kd15.kvg15.uh16
+  - id: strokes:U+8AF8
     check: strokes
     kanji: 諸
     evidence:
@@ -89022,7 +89023,7 @@ items:
     suggested:
       field: strokes
       value: 15
-  - id: strokes:U+9063:kd13.kvg13.uh14
+  - id: strokes:U+9063
     check: strokes
     kanji: 遣
     evidence:
@@ -89033,7 +89034,7 @@ items:
     suggested:
       field: strokes
       value: 13
-  - id: strokes:U+6A21:kd14.kvg14.uh15
+  - id: strokes:U+6A21
     check: strokes
     kanji: 模
     evidence:
@@ -89044,7 +89045,7 @@ items:
     suggested:
       field: strokes
       value: 14
-  - id: strokes:U+9069:kd14.kvg14.uh15
+  - id: strokes:U+9069
     check: strokes
     kanji: 適
     evidence:
@@ -89055,7 +89056,7 @@ items:
     suggested:
       field: strokes
       value: 14
-  - id: strokes:U+7DCA:kd15.kvg15.uh14
+  - id: strokes:U+7DCA
     check: strokes
     kanji: 緊
     evidence:
@@ -89066,7 +89067,7 @@ items:
     suggested:
       field: strokes
       value: 15
-  - id: strokes:U+985E:kd18.kvg18.uh19
+  - id: strokes:U+985E
     check: strokes
     kanji: 類
     evidence:
@@ -89077,7 +89078,7 @@ items:
     suggested:
       field: strokes
       value: 18
-  - id: strokes:U+9006:kd9.kvg9.uh10
+  - id: strokes:U+9006
     check: strokes
     kanji: 逆
     evidence:
@@ -89088,7 +89089,7 @@ items:
     suggested:
       field: strokes
       value: 9
-  - id: strokes:U+967A:kd11.kvg11.uh10
+  - id: strokes:U+967A
     check: strokes
     kanji: 険
     evidence:
@@ -89099,7 +89100,7 @@ items:
     suggested:
       field: strokes
       value: 11
-  - id: strokes:U+76DB:kd11.kvg11.uh12
+  - id: strokes:U+76DB
     check: strokes
     kanji: 盛
     evidence:
@@ -89110,7 +89111,7 @@ items:
     suggested:
       field: strokes
       value: 11
-  - id: strokes:U+81E8:kd18.kvg18.uh17
+  - id: strokes:U+81E8
     check: strokes
     kanji: 臨
     evidence:
@@ -89121,7 +89122,7 @@ items:
     suggested:
       field: strokes
       value: 18
-  - id: strokes:U+7F72:kd13.kvg13.uh14
+  - id: strokes:U+7F72
     check: strokes
     kanji: 署
     evidence:
@@ -89132,7 +89133,7 @@ items:
     suggested:
       field: strokes
       value: 13
-  - id: strokes:U+9678:kd11.kvg11.uh10
+  - id: strokes:U+9678
     check: strokes
     kanji: 陸
     evidence:
@@ -89143,7 +89144,7 @@ items:
     suggested:
       field: strokes
       value: 11
-  - id: strokes:U+969C:kd14.kvg14.uh13
+  - id: strokes:U+969C
     check: strokes
     kanji: 障
     evidence:
@@ -89154,7 +89155,7 @@ items:
     suggested:
       field: strokes
       value: 14
-  - id: strokes:U+846C:kd12.kvg12.uh13
+  - id: strokes:U+846C
     check: strokes
     kanji: 葬
     evidence:
@@ -89165,7 +89166,7 @@ items:
     suggested:
       field: strokes
       value: 12
-  - id: strokes:U+902E:kd11.kvg11.uh12
+  - id: strokes:U+902E
     check: strokes
     kanji: 逮
     evidence:
@@ -89176,7 +89177,7 @@ items:
     suggested:
       field: strokes
       value: 11
-  - id: strokes:U+7DF4:kd14.kvg14.uh15
+  - id: strokes:U+7DF4
     check: strokes
     kanji: 練
     evidence:
@@ -89187,7 +89188,7 @@ items:
     suggested:
       field: strokes
       value: 14
-  - id: strokes:U+5C64:kd14.kvg14.uh15
+  - id: strokes:U+5C64
     check: strokes
     kanji: 層
     evidence:
@@ -89198,7 +89199,7 @@ items:
     suggested:
       field: strokes
       value: 14
-  - id: strokes:U+9663:kd10.kvg10.uh9
+  - id: strokes:U+9663
     check: strokes
     kanji: 陣
     evidence:
@@ -89209,7 +89210,7 @@ items:
     suggested:
       field: strokes
       value: 10
-  - id: strokes:U+52E4:kd12.kvg12.uh13
+  - id: strokes:U+52E4
     check: strokes
     kanji: 勤
     evidence:
@@ -89220,7 +89221,7 @@ items:
     suggested:
       field: strokes
       value: 12
-  - id: strokes:U+6E29:kd12.kvg12.uh13
+  - id: strokes:U+6E29
     check: strokes
     kanji: 温
     evidence:
@@ -89231,7 +89232,7 @@ items:
     suggested:
       field: strokes
       value: 12
-  - id: strokes:U+8457:kd11.kvg11.uh13
+  - id: strokes:U+8457
     check: strokes
     kanji: 著
     evidence:
@@ -89242,7 +89243,7 @@ items:
     suggested:
       field: strokes
       value: 11
-  - id: strokes:U+50CF:kd14.kvg14.uh13
+  - id: strokes:U+50CF
     check: strokes
     kanji: 像
     evidence:
@@ -89253,7 +89254,7 @@ items:
     suggested:
       field: strokes
       value: 14
-  - id: strokes:U+62D2:kd8.kvg8.uh7
+  - id: strokes:U+62D2
     check: strokes
     kanji: 拒
     evidence:
@@ -89264,7 +89265,7 @@ items:
     suggested:
       field: strokes
       value: 8
-  - id: strokes:U+585A:kd12.kvg12.uh13
+  - id: strokes:U+585A
     check: strokes
     kanji: 塚
     evidence:
@@ -89275,7 +89276,7 @@ items:
     suggested:
       field: strokes
       value: 12
-  - id: strokes:U+81F4:kd10.kvg10.uh9
+  - id: strokes:U+81F4
     check: strokes
     kanji: 致
     evidence:
@@ -89286,7 +89287,7 @@ items:
     suggested:
       field: strokes
       value: 10
-  - id: strokes:U+68C4:kd13.kvg13.uh12
+  - id: strokes:U+68C4
     check: strokes
     kanji: 棄
     evidence:
@@ -89297,7 +89298,7 @@ items:
     suggested:
       field: strokes
       value: 13
-  - id: strokes:U+90B8:kd8.kvg8.uh7
+  - id: strokes:U+90B8
     check: strokes
     kanji: 邸
     evidence:
@@ -89308,7 +89309,7 @@ items:
     suggested:
       field: strokes
       value: 8
-  - id: strokes:U+8907:kd14.kvg14.uh15
+  - id: strokes:U+8907
     check: strokes
     kanji: 複
     evidence:
@@ -89319,7 +89320,7 @@ items:
     suggested:
       field: strokes
       value: 14
-  - id: strokes:U+90F5:kd11.kvg11.uh10
+  - id: strokes:U+90F5
     check: strokes
     kanji: 郵
     evidence:
@@ -89330,7 +89331,7 @@ items:
     suggested:
       field: strokes
       value: 11
-  - id: strokes:U+4F3C:kd7.kvg7.uh6
+  - id: strokes:U+4F3C
     check: strokes
     kanji: 似
     evidence:
@@ -89341,7 +89342,7 @@ items:
     suggested:
       field: strokes
       value: 7
-  - id: strokes:U+9003:kd9.kvg9.uh10
+  - id: strokes:U+9003
     check: strokes
     kanji: 逃
     evidence:
@@ -89352,7 +89353,7 @@ items:
     suggested:
       field: strokes
       value: 9
-  - id: strokes:U+8FF7:kd9.kvg9.uh10
+  - id: strokes:U+8FF7
     check: strokes
     kanji: 迷
     evidence:
@@ -89363,7 +89364,7 @@ items:
     suggested:
       field: strokes
       value: 9
-  - id: strokes:U+5922:kd13.kvg13.uh14
+  - id: strokes:U+5922
     check: strokes
     kanji: 夢
     evidence:
@@ -89374,7 +89375,7 @@ items:
     suggested:
       field: strokes
       value: 13
-  - id: strokes:U+5DFB:kd9.kvg9.uh8
+  - id: strokes:U+5DFB
     check: strokes
     kanji: 巻
     evidence:
@@ -89385,7 +89386,7 @@ items:
     suggested:
       field: strokes
       value: 9
-  - id: strokes:U+7372:kd16.kvg16.uh17
+  - id: strokes:U+7372
     check: strokes
     kanji: 獲
     evidence:
@@ -89396,7 +89397,7 @@ items:
     suggested:
       field: strokes
       value: 16
-  - id: strokes:U+90E1:kd10.kvg10.uh9
+  - id: strokes:U+90E1
     check: strokes
     kanji: 郡
     evidence:
@@ -89407,7 +89408,7 @@ items:
     suggested:
       field: strokes
       value: 10
-  - id: strokes:U+8349:kd9.kvg9.uh10
+  - id: strokes:U+8349
     check: strokes
     kanji: 草
     evidence:
@@ -89418,7 +89419,7 @@ items:
     suggested:
       field: strokes
       value: 9
-  - id: strokes:U+66AE:kd14.kvg14.uh15
+  - id: strokes:U+66AE
     check: strokes
     kanji: 暮
     evidence:
@@ -89429,7 +89430,7 @@ items:
     suggested:
       field: strokes
       value: 14
-  - id: strokes:U+81D3:kd19.kvg19.uh18
+  - id: strokes:U+81D3
     check: strokes
     kanji: 臓
     evidence:
@@ -89440,7 +89441,7 @@ items:
     suggested:
       field: strokes
       value: 19
-  - id: strokes:U+8D08:kd18.kvg18.uh19
+  - id: strokes:U+8D08
     check: strokes
     kanji: 贈
     evidence:
@@ -89451,7 +89452,7 @@ items:
     suggested:
       field: strokes
       value: 18
-  - id: strokes:U+8584:kd16.kvg16.uh17
+  - id: strokes:U+8584
     check: strokes
     kanji: 薄
     evidence:
@@ -89462,7 +89463,7 @@ items:
     suggested:
       field: strokes
       value: 16
-  - id: strokes:U+8A95:kd15.kvg15.uh13
+  - id: strokes:U+8A95
     check: strokes
     kanji: 誕
     evidence:
@@ -89473,7 +89474,7 @@ items:
     suggested:
       field: strokes
       value: 15
-  - id: strokes:U+654F:kd10.kvg10.uh11
+  - id: strokes:U+654F
     check: strokes
     kanji: 敏
     evidence:
@@ -89484,7 +89485,7 @@ items:
     suggested:
       field: strokes
       value: 10
-  - id: strokes:U+98EF:kd12.kvg12.uh13
+  - id: strokes:U+98EF
     check: strokes
     kanji: 飯
     evidence:
@@ -89495,7 +89496,7 @@ items:
     suggested:
       field: strokes
       value: 12
-  - id: strokes:U+5805:kd12.kvg12.uh11
+  - id: strokes:U+5805
     check: strokes
     kanji: 堅
     evidence:
@@ -89506,7 +89507,7 @@ items:
     suggested:
       field: strokes
       value: 12
-  - id: strokes:U+52C9:kd10.kvg10.uh9
+  - id: strokes:U+52C9
     check: strokes
     kanji: 勉
     evidence:
@@ -89517,7 +89518,7 @@ items:
     suggested:
       field: strokes
       value: 10
-  - id: strokes:U+90F7:kd11.kvg11.uh10
+  - id: strokes:U+90F7
     check: strokes
     kanji: 郷
     evidence:
@@ -89528,7 +89529,7 @@ items:
     suggested:
       field: strokes
       value: 11
-  - id: strokes:U+656C:kd12.kvg12.uh13
+  - id: strokes:U+656C
     check: strokes
     kanji: 敬
     evidence:
@@ -89539,7 +89540,7 @@ items:
     suggested:
       field: strokes
       value: 12
-  - id: strokes:U+514D:kd8.kvg8.uh7
+  - id: strokes:U+514D
     check: strokes
     kanji: 免
     evidence:
@@ -89550,7 +89551,7 @@ items:
     suggested:
       field: strokes
       value: 8
-  - id: strokes:U+65E2:kd10.kvg10.uh9
+  - id: strokes:U+65E2
     check: strokes
     kanji: 既
     evidence:
@@ -89561,7 +89562,7 @@ items:
     suggested:
       field: strokes
       value: 10
-  - id: strokes:U+85A6:kd16.kvg16.uh17
+  - id: strokes:U+85A6
     check: strokes
     kanji: 薦
     evidence:
@@ -89572,7 +89573,7 @@ items:
     suggested:
       field: strokes
       value: 16
-  - id: strokes:U+96A3:kd16.kvg16.uh14
+  - id: strokes:U+96A3
     check: strokes
     kanji: 隣
     evidence:
@@ -89583,7 +89584,7 @@ items:
     suggested:
       field: strokes
       value: 16
-  - id: strokes:U+83EF:kd10.kvg10.uh12
+  - id: strokes:U+83EF
     check: strokes
     kanji: 華
     evidence:
@@ -89594,7 +89595,7 @@ items:
     suggested:
       field: strokes
       value: 10
-  - id: strokes:U+96A0:kd14.kvg14.uh13
+  - id: strokes:U+96A0
     check: strokes
     kanji: 隠
     evidence:
@@ -89605,7 +89606,7 @@ items:
     suggested:
       field: strokes
       value: 14
-  - id: strokes:U+8352:kd9.kvg9.uh10
+  - id: strokes:U+8352
     check: strokes
     kanji: 荒
     evidence:
@@ -89616,7 +89617,7 @@ items:
     suggested:
       field: strokes
       value: 9
-  - id: strokes:U+6EDE:kd13.kvg13.uh12
+  - id: strokes:U+6EDE
     check: strokes
     kanji: 滞
     evidence:
@@ -89627,7 +89628,7 @@ items:
     suggested:
       field: strokes
       value: 13
-  - id: strokes:U+9686:kd11.kvg11.uh12
+  - id: strokes:U+9686
     check: strokes
     kanji: 隆
     evidence:
@@ -89638,7 +89639,7 @@ items:
     suggested:
       field: strokes
       value: 11
-  - id: strokes:U+8336:kd9.kvg9.uh10
+  - id: strokes:U+8336
     check: strokes
     kanji: 茶
     evidence:
@@ -89649,7 +89650,7 @@ items:
     suggested:
       field: strokes
       value: 9
-  - id: strokes:U+9A5A:kd22.kvg22.uh23
+  - id: strokes:U+9A5A
     check: strokes
     kanji: 驚
     evidence:
@@ -89660,7 +89661,7 @@ items:
     suggested:
       field: strokes
       value: 22
-  - id: strokes:U+9665:kd10.kvg10.uh9
+  - id: strokes:U+9665
     check: strokes
     kanji: 陥
     evidence:
@@ -89671,7 +89672,7 @@ items:
     suggested:
       field: strokes
       value: 10
-  - id: strokes:U+8CE2:kd16.kvg16.uh15
+  - id: strokes:U+8CE2
     check: strokes
     kanji: 賢
     evidence:
@@ -89682,7 +89683,7 @@ items:
     suggested:
       field: strokes
       value: 16
-  - id: strokes:U+795D:kd9.kvg9.uh10
+  - id: strokes:U+795D
     check: strokes
     kanji: 祝
     evidence:
@@ -89693,7 +89694,7 @@ items:
     suggested:
       field: strokes
       value: 9
-  - id: strokes:U+793C:kd5.kvg5.uh6
+  - id: strokes:U+793C
     check: strokes
     kanji: 礼
     evidence:
@@ -89704,7 +89705,7 @@ items:
     suggested:
       field: strokes
       value: 5
-  - id: strokes:U+8302:kd8.kvg8.uh9
+  - id: strokes:U+8302
     check: strokes
     kanji: 茂
     evidence:
@@ -89715,7 +89716,7 @@ items:
     suggested:
       field: strokes
       value: 8
-  - id: strokes:U+96C5:kd13.kvg13.uh12
+  - id: strokes:U+96C5
     check: strokes
     kanji: 雅
     evidence:
@@ -89726,7 +89727,7 @@ items:
     suggested:
       field: strokes
       value: 13
-  - id: strokes:U+7E41:kd16.kvg16.uh17
+  - id: strokes:U+7E41
     check: strokes
     kanji: 繁
     evidence:
@@ -89737,7 +89738,7 @@ items:
     suggested:
       field: strokes
       value: 16
-  - id: strokes:U+9B45:kd15.kvg15.uh14
+  - id: strokes:U+9B45
     check: strokes
     kanji: 魅
     evidence:
@@ -89748,7 +89749,7 @@ items:
     suggested:
       field: strokes
       value: 15
-  - id: strokes:U+7956:kd9.kvg9.uh10
+  - id: strokes:U+7956
     check: strokes
     kanji: 祖
     evidence:
@@ -89759,7 +89760,7 @@ items:
     suggested:
       field: strokes
       value: 9
-  - id: strokes:U+6885:kd10.kvg10.uh11
+  - id: strokes:U+6885
     check: strokes
     kanji: 梅
     evidence:
@@ -89770,7 +89771,7 @@ items:
     suggested:
       field: strokes
       value: 10
-  - id: strokes:U+5B64:kd9.kvg9.uh8
+  - id: strokes:U+5B64
     check: strokes
     kanji: 孤
     evidence:
@@ -89781,7 +89782,7 @@ items:
     suggested:
       field: strokes
       value: 9
-  - id: strokes:U+81E3:kd7.kvg7.uh6
+  - id: strokes:U+81E3
     check: strokes
     kanji: 臣
     evidence:
@@ -89792,7 +89793,7 @@ items:
     suggested:
       field: strokes
       value: 7
-  - id: strokes:U+6D45:kd9.kvg9.uh8
+  - id: strokes:U+6D45
     check: strokes
     kanji: 浅
     evidence:
@@ -89803,7 +89804,7 @@ items:
     suggested:
       field: strokes
       value: 9
-  - id: strokes:U+77AC:kd18.kvg18.uh17
+  - id: strokes:U+77AC
     check: strokes
     kanji: 瞬
     evidence:
@@ -89814,7 +89815,7 @@ items:
     suggested:
       field: strokes
       value: 18
-  - id: strokes:U+7965:kd10.kvg10.uh11
+  - id: strokes:U+7965
     check: strokes
     kanji: 祥
     evidence:
@@ -89825,7 +89826,7 @@ items:
     suggested:
       field: strokes
       value: 10
-  - id: strokes:U+963B:kd8.kvg8.uh7
+  - id: strokes:U+963B
     check: strokes
     kanji: 阻
     evidence:
@@ -89836,7 +89837,7 @@ items:
     suggested:
       field: strokes
       value: 8
-  - id: strokes:U+83CA:kd11.kvg11.uh12
+  - id: strokes:U+83CA
     check: strokes
     kanji: 菊
     evidence:
@@ -89847,7 +89848,7 @@ items:
     suggested:
       field: strokes
       value: 11
-  - id: strokes:U+82B3:kd7.kvg7.uh8
+  - id: strokes:U+82B3
     check: strokes
     kanji: 芳
     evidence:
@@ -89858,7 +89859,7 @@ items:
     suggested:
       field: strokes
       value: 7
-  - id: strokes:U+61F2:kd18.kvg18.uh19
+  - id: strokes:U+61F2
     check: strokes
     kanji: 懲
     evidence:
@@ -89869,7 +89870,7 @@ items:
     suggested:
       field: strokes
       value: 18
-  - id: strokes:U+90CA:kd9.kvg9.uh8
+  - id: strokes:U+90CA
     check: strokes
     kanji: 郊
     evidence:
@@ -89880,7 +89881,7 @@ items:
     suggested:
       field: strokes
       value: 9
-  - id: strokes:U+9673:kd11.kvg11.uh10
+  - id: strokes:U+9673
     check: strokes
     kanji: 陳
     evidence:
@@ -89891,7 +89892,7 @@ items:
     suggested:
       field: strokes
       value: 11
-  - id: strokes:U+83DC:kd11.kvg11.uh12
+  - id: strokes:U+83DC
     check: strokes
     kanji: 菜
     evidence:
@@ -89902,7 +89903,7 @@ items:
     suggested:
       field: strokes
       value: 11
-  - id: strokes:U+6982:kd14.kvg14.uh13
+  - id: strokes:U+6982
     check: strokes
     kanji: 概
     evidence:
@@ -89913,7 +89914,7 @@ items:
     suggested:
       field: strokes
       value: 14
-  - id: strokes:U+5893:kd13.kvg13.uh14
+  - id: strokes:U+5893
     check: strokes
     kanji: 墓
     evidence:
@@ -89924,7 +89925,7 @@ items:
     suggested:
       field: strokes
       value: 13
-  - id: strokes:U+9047:kd12.kvg12.uh13
+  - id: strokes:U+9047
     check: strokes
     kanji: 遇
     evidence:
@@ -89935,7 +89936,7 @@ items:
     suggested:
       field: strokes
       value: 12
-  - id: strokes:U+8266:kd21.kvg21.uh20
+  - id: strokes:U+8266
     check: strokes
     kanji: 艦
     evidence:
@@ -89946,7 +89947,7 @@ items:
     suggested:
       field: strokes
       value: 21
-  - id: strokes:U+9694:kd13.kvg13.uh12
+  - id: strokes:U+9694
     check: strokes
     kanji: 隔
     evidence:
@@ -89957,7 +89958,7 @@ items:
     suggested:
       field: strokes
       value: 13
-  - id: strokes:U+80BA:kd9.kvg9.uh8
+  - id: strokes:U+80BA
     check: strokes
     kanji: 肺
     evidence:
@@ -89968,7 +89969,7 @@ items:
     suggested:
       field: strokes
       value: 9
-  - id: strokes:U+9451:kd23.kvg23.uh22
+  - id: strokes:U+9451
     check: strokes
     kanji: 鑑
     evidence:
@@ -89979,7 +89980,7 @@ items:
     suggested:
       field: strokes
       value: 23
-  - id: strokes:U+968F:kd12.kvg12.uh11
+  - id: strokes:U+968F
     check: strokes
     kanji: 随
     evidence:
@@ -89990,7 +89991,7 @@ items:
     suggested:
       field: strokes
       value: 12
-  - id: strokes:U+6BD2:kd8.kvg8.uh9
+  - id: strokes:U+6BD2
     check: strokes
     kanji: 毒
     evidence:
@@ -90001,7 +90002,7 @@ items:
     suggested:
       field: strokes
       value: 8
-  - id: strokes:U+9042:kd12.kvg12.uh13
+  - id: strokes:U+9042
     check: strokes
     kanji: 遂
     evidence:
@@ -90012,7 +90013,7 @@ items:
     suggested:
       field: strokes
       value: 12
-  - id: strokes:U+53EB:kd6.kvg6.uh5
+  - id: strokes:U+53EB
     check: strokes
     kanji: 叫
     evidence:
@@ -90023,7 +90024,7 @@ items:
     suggested:
       field: strokes
       value: 6
-  - id: strokes:U+965B:kd10.kvg10.uh9
+  - id: strokes:U+965B
     check: strokes
     kanji: 陛
     evidence:
@@ -90034,7 +90035,7 @@ items:
     suggested:
       field: strokes
       value: 10
-  - id: strokes:U+7DEF:kd16.kvg16.uh15
+  - id: strokes:U+7DEF
     check: strokes
     kanji: 緯
     evidence:
@@ -90045,7 +90046,7 @@ items:
     suggested:
       field: strokes
       value: 16
-  - id: strokes:U+8247:kd13.kvg13.uh12
+  - id: strokes:U+8247
     check: strokes
     kanji: 艇
     evidence:
@@ -90056,7 +90057,7 @@ items:
     suggested:
       field: strokes
       value: 13
-  - id: strokes:U+6691:kd12.kvg12.uh13
+  - id: strokes:U+6691
     check: strokes
     kanji: 暑
     evidence:
@@ -90067,7 +90068,7 @@ items:
     suggested:
       field: strokes
       value: 12
-  - id: strokes:U+6094:kd9.kvg9.uh10
+  - id: strokes:U+6094
     check: strokes
     kanji: 悔
     evidence:
@@ -90078,7 +90079,7 @@ items:
     suggested:
       field: strokes
       value: 9
-  - id: strokes:U+7948:kd8.kvg8.uh9
+  - id: strokes:U+7948
     check: strokes
     kanji: 祈
     evidence:
@@ -90089,7 +90090,7 @@ items:
     suggested:
       field: strokes
       value: 8
-  - id: strokes:U+589C:kd15.kvg15.uh14
+  - id: strokes:U+589C
     check: strokes
     kanji: 墜
     evidence:
@@ -90100,7 +90101,7 @@ items:
     suggested:
       field: strokes
       value: 15
-  - id: strokes:U+59C9:kd8.kvg8.uh7
+  - id: strokes:U+59C9
     check: strokes
     kanji: 姉
     evidence:
@@ -90111,7 +90112,7 @@ items:
     suggested:
       field: strokes
       value: 8
-  - id: strokes:U+6F22:kd13.kvg13.uh14
+  - id: strokes:U+6F22
     check: strokes
     kanji: 漢
     evidence:
@@ -90122,7 +90123,7 @@ items:
     suggested:
       field: strokes
       value: 13
-  - id: strokes:U+89A7:kd17.kvg17.uh16
+  - id: strokes:U+89A7
     check: strokes
     kanji: 覧
     evidence:
@@ -90133,7 +90134,7 @@ items:
     suggested:
       field: strokes
       value: 17
-  - id: strokes:U+9B54:kd21.kvg21.uh20
+  - id: strokes:U+9B54
     check: strokes
     kanji: 魔
     evidence:
@@ -90144,7 +90145,7 @@ items:
     suggested:
       field: strokes
       value: 21
-  - id: strokes:U+6B04:kd20.kvg20.uh21
+  - id: strokes:U+6B04
     check: strokes
     kanji: 欄
     evidence:
@@ -90155,7 +90156,7 @@ items:
     suggested:
       field: strokes
       value: 20
-  - id: strokes:U+9038:kd11.kvg11.uh12
+  - id: strokes:U+9038
     check: strokes
     kanji: 逸
     evidence:
@@ -90166,7 +90167,7 @@ items:
     suggested:
       field: strokes
       value: 11
-  - id: strokes:U+74F6:kd11.kvg11.uh10
+  - id: strokes:U+74F6
     check: strokes
     kanji: 瓶
     evidence:
@@ -90177,7 +90178,7 @@ items:
     suggested:
       field: strokes
       value: 11
-  - id: strokes:U+845B:kd11.kvg12.uh13
+  - id: strokes:U+845B
     check: strokes
     kanji: 葛
     evidence:
@@ -90186,7 +90187,7 @@ items:
       unihan:
         - 13
     suggested: null
-  - id: strokes:U+716E:kd12.kvg12.uh13
+  - id: strokes:U+716E
     check: strokes
     kanji: 煮
     evidence:
@@ -90197,7 +90198,7 @@ items:
     suggested:
       field: strokes
       value: 12
-  - id: strokes:U+59EB:kd10.kvg10.uh9
+  - id: strokes:U+59EB
     check: strokes
     kanji: 姫
     evidence:
@@ -90208,7 +90209,7 @@ items:
     suggested:
       field: strokes
       value: 10
-  - id: strokes:U+8DF5:kd13.kvg13.uh12
+  - id: strokes:U+8DF5
     check: strokes
     kanji: 践
     evidence:
@@ -90219,7 +90220,7 @@ items:
     suggested:
       field: strokes
       value: 13
-  - id: strokes:U+8B21:kd16.kvg16.uh17
+  - id: strokes:U+8B21
     check: strokes
     kanji: 謡
     evidence:
@@ -90230,7 +90231,7 @@ items:
     suggested:
       field: strokes
       value: 16
-  - id: strokes:U+5606:kd13.kvg13.uh14
+  - id: strokes:U+5606
     check: strokes
     kanji: 嘆
     evidence:
@@ -90241,7 +90242,7 @@ items:
     suggested:
       field: strokes
       value: 13
-  - id: strokes:U+983B:kd17.kvg17.uh16
+  - id: strokes:U+983B
     check: strokes
     kanji: 頻
     evidence:
@@ -90252,7 +90253,7 @@ items:
     suggested:
       field: strokes
       value: 17
-  - id: strokes:U+9685:kd12.kvg12.uh11
+  - id: strokes:U+9685
     check: strokes
     kanji: 隅
     evidence:
@@ -90263,7 +90264,7 @@ items:
     suggested:
       field: strokes
       value: 12
-  - id: strokes:U+90AA:kd8.kvg8.uh7
+  - id: strokes:U+90AA
     check: strokes
     kanji: 邪
     evidence:
@@ -90274,7 +90275,7 @@ items:
     suggested:
       field: strokes
       value: 8
-  - id: strokes:U+58A8:kd14.kvg14.uh15
+  - id: strokes:U+58A8
     check: strokes
     kanji: 墨
     evidence:
@@ -90285,7 +90286,7 @@ items:
     suggested:
       field: strokes
       value: 14
-  - id: strokes:U+5049:kd12.kvg12.uh11
+  - id: strokes:U+5049
     check: strokes
     kanji: 偉
     evidence:
@@ -90296,7 +90297,7 @@ items:
     suggested:
       field: strokes
       value: 12
-  - id: strokes:U+4E4F:kd4.kvg4.uh5
+  - id: strokes:U+4E4F
     check: strokes
     kanji: 乏
     evidence:
@@ -90307,7 +90308,7 @@ items:
     suggested:
       field: strokes
       value: 4
-  - id: strokes:U+9AC4:kd19.kvg19.uh18
+  - id: strokes:U+9AC4
     check: strokes
     kanji: 髄
     evidence:
@@ -90318,7 +90319,7 @@ items:
     suggested:
       field: strokes
       value: 19
-  - id: strokes:U+8CD3:kd15.kvg15.uh14
+  - id: strokes:U+8CD3
     check: strokes
     kanji: 賓
     evidence:
@@ -90329,7 +90330,7 @@ items:
     suggested:
       field: strokes
       value: 15
-  - id: strokes:U+732B:kd11.kvg11.uh12
+  - id: strokes:U+732B
     check: strokes
     kanji: 猫
     evidence:
@@ -90340,7 +90341,7 @@ items:
     suggested:
       field: strokes
       value: 11
-  - id: strokes:U+82D7:kd8.kvg8.uh9
+  - id: strokes:U+82D7
     check: strokes
     kanji: 苗
     evidence:
@@ -90351,7 +90352,7 @@ items:
     suggested:
       field: strokes
       value: 8
-  - id: strokes:U+50E7:kd13.kvg13.uh14
+  - id: strokes:U+50E7
     check: strokes
     kanji: 僧
     evidence:
@@ -90362,7 +90363,7 @@ items:
     suggested:
       field: strokes
       value: 13
-  - id: strokes:U+7A40:kd14.kvg14.uh15
+  - id: strokes:U+7A40
     check: strokes
     kanji: 穀
     evidence:
@@ -90373,7 +90374,7 @@ items:
     suggested:
       field: strokes
       value: 14
-  - id: strokes:U+9675:kd11.kvg11.uh10
+  - id: strokes:U+9675
     check: strokes
     kanji: 陵
     evidence:
@@ -90384,7 +90385,7 @@ items:
     suggested:
       field: strokes
       value: 11
-  - id: strokes:U+9727:kd19.kvg19.uh18
+  - id: strokes:U+9727
     check: strokes
     kanji: 霧
     evidence:
@@ -90395,7 +90396,7 @@ items:
     suggested:
       field: strokes
       value: 19
-  - id: strokes:U+5F0A:kd15.kvg15.uh14
+  - id: strokes:U+5F0A
     check: strokes
     kanji: 弊
     evidence:
@@ -90406,7 +90407,7 @@ items:
     suggested:
       field: strokes
       value: 15
-  - id: strokes:U+814E:kd13.kvg13.uh12
+  - id: strokes:U+814E
     check: strokes
     kanji: 腎
     evidence:
@@ -90417,7 +90418,7 @@ items:
     suggested:
       field: strokes
       value: 13
-  - id: strokes:U+81ED:kd9.kvg9.uh10
+  - id: strokes:U+81ED
     check: strokes
     kanji: 臭
     evidence:
@@ -90428,7 +90429,7 @@ items:
     suggested:
       field: strokes
       value: 9
-  - id: strokes:U+6E26:kd12.kvg12.uh11
+  - id: strokes:U+6E26
     check: strokes
     kanji: 渦
     evidence:
@@ -90439,7 +90440,7 @@ items:
     suggested:
       field: strokes
       value: 12
-  - id: strokes:U+7891:kd14.kvg14.uh13
+  - id: strokes:U+7891
     check: strokes
     kanji: 碑
     evidence:
@@ -90450,7 +90451,7 @@ items:
     suggested:
       field: strokes
       value: 14
-  - id: strokes:U+5E63:kd15.kvg15.uh14
+  - id: strokes:U+5E63
     check: strokes
     kanji: 幣
     evidence:
@@ -90461,7 +90462,7 @@ items:
     suggested:
       field: strokes
       value: 15
-  - id: strokes:U+618E:kd14.kvg14.uh15
+  - id: strokes:U+618E
     check: strokes
     kanji: 憎
     evidence:
@@ -90472,7 +90473,7 @@ items:
     suggested:
       field: strokes
       value: 14
-  - id: strokes:U+934B:kd17.kvg17.uh16
+  - id: strokes:U+934B
     check: strokes
     kanji: 鍋
     evidence:
@@ -90483,7 +90484,7 @@ items:
     suggested:
       field: strokes
       value: 17
-  - id: strokes:U+7CFE:kd9.kvg9.uh8
+  - id: strokes:U+7CFE
     check: strokes
     kanji: 糾
     evidence:
@@ -90494,7 +90495,7 @@ items:
     suggested:
       field: strokes
       value: 9
-  - id: strokes:U+559D:kd11.kvg11.uh12
+  - id: strokes:U+559D
     check: strokes
     kanji: 喝
     evidence:
@@ -90505,7 +90506,7 @@ items:
     suggested:
       field: strokes
       value: 11
-  - id: strokes:U+6168:kd13.kvg13.uh12
+  - id: strokes:U+6168
     check: strokes
     kanji: 慨
     evidence:
@@ -90516,7 +90517,7 @@ items:
     suggested:
       field: strokes
       value: 13
-  - id: strokes:U+8FC5:kd6.kvg6.uh7
+  - id: strokes:U+8FC5
     check: strokes
     kanji: 迅
     evidence:
@@ -90527,7 +90528,7 @@ items:
     suggested:
       field: strokes
       value: 6
-  - id: strokes:U+7985:kd13.kvg13.uh12
+  - id: strokes:U+7985
     check: strokes
     kanji: 禅
     evidence:
@@ -90538,7 +90539,7 @@ items:
     suggested:
       field: strokes
       value: 13
-  - id: strokes:U+8FED:kd8.kvg8.uh9
+  - id: strokes:U+8FED
     check: strokes
     kanji: 迭
     evidence:
@@ -90549,7 +90550,7 @@ items:
     suggested:
       field: strokes
       value: 8
-  - id: strokes:U+966A:kd11.kvg11.uh10
+  - id: strokes:U+966A
     check: strokes
     kanji: 陪
     evidence:
@@ -90560,7 +90561,7 @@ items:
     suggested:
       field: strokes
       value: 11
-  - id: strokes:U+5091:kd13.kvg13.uh12
+  - id: strokes:U+5091
     check: strokes
     kanji: 傑
     evidence:
@@ -90571,7 +90572,7 @@ items:
     suggested:
       field: strokes
       value: 13
-  - id: strokes:U+8CED:kd15.kvg16.uh15
+  - id: strokes:U+8CED
     check: strokes
     kanji: 賭
     evidence:
@@ -90582,7 +90583,7 @@ items:
     suggested:
       field: strokes
       value: 15
-  - id: strokes:U+5351:kd9.kvg9.uh8
+  - id: strokes:U+5351
     check: strokes
     kanji: 卑
     evidence:
@@ -90593,7 +90594,7 @@ items:
     suggested:
       field: strokes
       value: 9
-  - id: strokes:U+4FAE:kd8.kvg8.uh9
+  - id: strokes:U+4FAE
     check: strokes
     kanji: 侮
     evidence:
@@ -90604,7 +90605,7 @@ items:
     suggested:
       field: strokes
       value: 8
-  - id: strokes:U+798D:kd13.kvg13.uh12
+  - id: strokes:U+798D
     check: strokes
     kanji: 禍
     evidence:
@@ -90615,7 +90616,7 @@ items:
     suggested:
       field: strokes
       value: 13
-  - id: strokes:U+8B0E:kd16.kvg17.uh16
+  - id: strokes:U+8B0E
     check: strokes
     kanji: 謎
     evidence:
@@ -90626,7 +90627,7 @@ items:
     suggested:
       field: strokes
       value: 16
-  - id: strokes:U+533F:kd10.kvg10.uh11
+  - id: strokes:U+533F
     check: strokes
     kanji: 匿
     evidence:
@@ -90637,7 +90638,7 @@ items:
     suggested:
       field: strokes
       value: 10
-  - id: strokes:U+9375:kd17.kvg17.uh16
+  - id: strokes:U+9375
     check: strokes
     kanji: 鍵
     evidence:
@@ -90648,7 +90649,7 @@ items:
     suggested:
       field: strokes
       value: 17
-  - id: strokes:U+7259:kd5.kvg4.uh4
+  - id: strokes:U+7259
     check: strokes
     kanji: 牙
     evidence:
@@ -90659,7 +90660,7 @@ items:
     suggested:
       field: strokes
       value: 4
-  - id: strokes:U+8B39:kd17.kvg17.uh18
+  - id: strokes:U+8B39
     check: strokes
     kanji: 謹
     evidence:
@@ -90670,7 +90671,7 @@ items:
     suggested:
       field: strokes
       value: 17
-  - id: strokes:U+919C:kd17.kvg17.uh16
+  - id: strokes:U+919C
     check: strokes
     kanji: 醜
     evidence:
@@ -90681,7 +90682,7 @@ items:
     suggested:
       field: strokes
       value: 17
-  - id: strokes:U+9905:kd14.kvg15.uh14
+  - id: strokes:U+9905
     check: strokes
     kanji: 餅
     evidence:
@@ -90692,7 +90693,7 @@ items:
     suggested:
       field: strokes
       value: 14
-  - id: strokes:U+7BB8:kd15.kvg15.uh14
+  - id: strokes:U+7BB8
     check: strokes
     kanji: 箸
     evidence:
@@ -90703,7 +90704,7 @@ items:
     suggested:
       field: strokes
       value: 15
-  - id: strokes:U+8910:kd13.kvg13.uh14
+  - id: strokes:U+8910
     check: strokes
     kanji: 褐
     evidence:
@@ -90714,7 +90715,7 @@ items:
     suggested:
       field: strokes
       value: 13
-  - id: strokes:U+8877:kd9.kvg9.uh10
+  - id: strokes:U+8877
     check: strokes
     kanji: 衷
     evidence:
@@ -90725,7 +90726,7 @@ items:
     suggested:
       field: strokes
       value: 9
-  - id: strokes:U+9010:kd10.kvg10.uh11
+  - id: strokes:U+9010
     check: strokes
     kanji: 逐
     evidence:
@@ -90736,7 +90737,7 @@ items:
     suggested:
       field: strokes
       value: 10
-  - id: strokes:U+990C:kd14.kvg15.uh14
+  - id: strokes:U+990C
     check: strokes
     kanji: 餌
     evidence:
@@ -90747,7 +90748,7 @@ items:
     suggested:
       field: strokes
       value: 14
-  - id: strokes:U+5F27:kd9.kvg9.uh8
+  - id: strokes:U+5F27
     check: strokes
     kanji: 弧
     evidence:
@@ -90758,7 +90759,7 @@ items:
     suggested:
       field: strokes
       value: 9
-  - id: strokes:U+84CB:kd13.kvg13.uh14
+  - id: strokes:U+84CB
     check: strokes
     kanji: 蓋
     evidence:
@@ -90769,7 +90770,7 @@ items:
     suggested:
       field: strokes
       value: 13
-  - id: strokes:U+828B:kd6.kvg6.uh7
+  - id: strokes:U+828B
     check: strokes
     kanji: 芋
     evidence:
@@ -90780,7 +90781,7 @@ items:
     suggested:
       field: strokes
       value: 6
-  - id: strokes:U+8511:kd14.kvg14.uh15
+  - id: strokes:U+8511
     check: strokes
     kanji: 蔑
     evidence:
@@ -90791,7 +90792,7 @@ items:
     suggested:
       field: strokes
       value: 14
-  - id: strokes:U+7E6D:kd18.kvg18.uh19
+  - id: strokes:U+7E6D
     check: strokes
     kanji: 繭
     evidence:
@@ -90802,7 +90803,7 @@ items:
     suggested:
       field: strokes
       value: 18
-  - id: strokes:U+50B2:kd13.kvg13.uh12
+  - id: strokes:U+50B2
     check: strokes
     kanji: 傲
     evidence:
@@ -90813,7 +90814,7 @@ items:
     suggested:
       field: strokes
       value: 13
-  - id: strokes:U+50C5:kd12.kvg13.uh13
+  - id: strokes:U+50C5
     check: strokes
     kanji: 僅
     evidence:
@@ -90824,7 +90825,7 @@ items:
     suggested:
       field: strokes
       value: 13
-  - id: strokes:U+6FEB:kd18.kvg18.uh17
+  - id: strokes:U+6FEB
     check: strokes
     kanji: 濫
     evidence:
@@ -90835,7 +90836,7 @@ items:
     suggested:
       field: strokes
       value: 18
-  - id: strokes:U+7483:kd15.kvg15.uh14
+  - id: strokes:U+7483
     check: strokes
     kanji: 璃
     evidence:
@@ -90846,7 +90847,7 @@ items:
     suggested:
       field: strokes
       value: 15
-  - id: strokes:U+7F9E:kd11.kvg11.uh10
+  - id: strokes:U+7F9E
     check: strokes
     kanji: 羞
     evidence:
@@ -90857,7 +90858,7 @@ items:
     suggested:
       field: strokes
       value: 11
-  - id: strokes:U+840E:kd11.kvg11.uh12
+  - id: strokes:U+840E
     check: strokes
     kanji: 萎
     evidence:
@@ -90868,7 +90869,7 @@ items:
     suggested:
       field: strokes
       value: 11
-  - id: strokes:U+853D:kd15.kvg15.uh14
+  - id: strokes:U+853D
     check: strokes
     kanji: 蔽
     evidence:
@@ -90879,7 +90880,7 @@ items:
     suggested:
       field: strokes
       value: 15
-  - id: strokes:U+8B01:kd15.kvg15.uh16
+  - id: strokes:U+8B01
     check: strokes
     kanji: 謁
     evidence:
@@ -90890,7 +90891,7 @@ items:
     suggested:
       field: strokes
       value: 15
-  - id: strokes:U+905C:kd13.kvg14.uh14
+  - id: strokes:U+905C
     check: strokes
     kanji: 遜
     evidence:
@@ -90901,7 +90902,7 @@ items:
     suggested:
       field: strokes
       value: 14
-  - id: strokes:U+9061:kd13.kvg14.uh13
+  - id: strokes:U+9061
     check: strokes
     kanji: 遡
     evidence:
@@ -90912,7 +90913,7 @@ items:
     suggested:
       field: strokes
       value: 13
-  - id: strokes:U+9699:kd13.kvg13.uh12
+  - id: strokes:U+9699
     check: strokes
     kanji: 隙
     evidence:
@@ -90923,7 +90924,7 @@ items:
     suggested:
       field: strokes
       value: 13
-  - id: strokes:U+9AB8:kd16.kvg16.uh15
+  - id: strokes:U+9AB8
     check: strokes
     kanji: 骸
     evidence:

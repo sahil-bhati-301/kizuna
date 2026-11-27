@@ -20,8 +20,10 @@ export function readZipEntry(zip: Uint8Array, name: string): Buffer {
   if (eocd < 0) throw new ZipError('not a ZIP file (no end-of-directory record)');
   const count = b.readUInt16LE(eocd + 10);
   let p = b.readUInt32LE(eocd + 16);
+  if (count === 0xffff || p === 0xffffffff) throw new ZipError('ZIP64 archives are not supported');
   for (let n = 0; n < count; n++) {
     if (b.readUInt32LE(p) !== CENTRAL) throw new ZipError('corrupt ZIP central directory');
+    const flags = b.readUInt16LE(p + 8);
     const method = b.readUInt16LE(p + 10);
     const size = b.readUInt32LE(p + 20);
     const nameLength = b.readUInt16LE(p + 28);
@@ -31,6 +33,9 @@ export function readZipEntry(zip: Uint8Array, name: string): Buffer {
     const entryName = b.toString('utf8', p + 46, p + 46 + nameLength);
     p += 46 + nameLength + extraLength + commentLength;
     if (entryName !== name) continue;
+    if (flags & 1) throw new ZipError(`ZIP entry ${name} is encrypted`);
+    if (size === 0xffffffff || localOffset === 0xffffffff)
+      throw new ZipError(`ZIP entry ${name} needs ZIP64, which is not supported`);
     if (b.readUInt32LE(localOffset) !== LOCAL) throw new ZipError(`corrupt ZIP entry ${name}`);
     const start =
       localOffset + 30 + b.readUInt16LE(localOffset + 26) + b.readUInt16LE(localOffset + 28);

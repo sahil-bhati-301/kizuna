@@ -3,8 +3,9 @@
 #   decision: accept (the suggested override applies; W03-3 turns it into an override) | flag (keep as is, needs follow-up)
 #
 # decisions:
-#   - id: strokes:U+98DF:kd9.kvg8.uh9
+#   - id: strokes:U+98DF
 #     decision: accept
 #     reason: KanjiVG draws one stroke fewer than the standard form
 #     author: owner
+#     evidence: {kanjidic2: 9, kanjivg: 8, unihan: [9]}  # copied from queue.yaml; a change re-lists the item
 decisions: []
