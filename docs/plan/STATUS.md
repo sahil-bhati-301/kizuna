@@ -1,15 +1,16 @@
 # STATUS
 
-Phase 0 · Week W02 (Pipeline II: components, words, alignment) · planned and approved · Updated: session 12 (/plan-week W02)
-Light: 🟢 green at session 11 start (week 30%, 5h 26%). Run /budget with /usage figures at the start and end of every session.
+Phase 0 · Week W02 (Pipeline II: components, words, alignment) · planned and approved · Updated: session 13 (/wp W02-2)
+Light: 🟢 green at session 13 start (week 30%, 5h 40%). Run /budget with /usage figures at the start and end of every session.
 
 ## Next step
-- Run `/wp W02-2` (day 1). Plan approved and all W02 OPEN-Qs answered in session 12 (every recommendation taken).
+- Owner: review and merge PR #19 (W02-2). Then run the next W02 WP per the weekly plan.
 - W01 retro done: measured ≈2% per M-eq, capacity ≈30 M-eq (coarse). Schedule kept; W02 is planned at 8 M-eq (§2.7), the surplus is reserve.
 - Need from the owner: a /usage figure at the end of session 11 (W01-7 and the retro have no end reading).
 
 ## Active WPs
-- (none started; W02 plan: W02-1 to W02-6, 5.5 M-eq)
+- W02-2 JMdict → word: in review, PR #19 (30,188 entries, 22,668 common).
+- W02 plan: W02-1, W02-3 to W02-6 not started.
 
 ## Merged in W01 (all 7 WPs)
 - W01-1 Pipeline app, sources lock, fetcher (PR #9) · W01-6 kernel domain/ (PR #10)
@@ -31,6 +32,7 @@ Light: 🟢 green at session 11 start (week 30%, 5h 26%). Run /budget with /usag
 - (none open; W02 Q-G answered in session 12)
 
 ## Last decisions
+- W02-2: headword skips search-only and irregular (iK, io, sK) kanji forms; 37 all-irregular entries take a reading as headword; senses without pos inherit the previous one; glosses without xml:lang are eng; stagk/stagr not parsed yet (backlog, for W02-3).
 - W02 plan (session 12): all recommendations taken. Sources: commit compressed files under content/sources/; a file over 50 MB gets a filtered subset with the upstream checksum pinned. JMdict: all-language JMdict.gz, entries with any priority tag. W02-5 is M (adds Unihan); W02-6 added.
 - W01 retro: calibration factor 0.24 (≈2.0% per M-eq against the planned 7.5%). Keep the schedule; do not pull work forward in the first month.
 - W01-7: actions on checkout@v7, setup-node@v7, cache@v6, pnpm/action-setup@v6. Node comes from `.nvmrc` (22); `engines.node` stays `>=22`.
