@@ -4,17 +4,17 @@ Phase 0 · Week W02 (Pipeline II: components, words, alignment) · planned and a
 Light: 🟢 green at session 16 start (week 40%, 5h 6%). Run /budget with /usage figures at the start and end of every session.
 
 ## Next step
-- W02-4 and W02-5 PRs open (see Active WPs): owner review and merge. Then W02-3 or W02-6 per the weekly plan.
+- W02-5 PR #23 open: owner review and merge. Then W02-3 or W02-6 per the weekly plan.
 - O-7: triage content/review/queue.yaml into content/review/decisions.yaml.
 - W01 retro done: measured ≈2% per M-eq, capacity ≈30 M-eq (coarse). Schedule kept; W02 is planned at 8 M-eq (§2.7), the surplus is reserve.
 - Need from the owner: /usage figures at the end of session 16 (W02-5), session 15 (W02-4), session 14 (W02-1) and session 11.
 
 ## Active WPs
-- W02-4 Tatoeba → sentence: done, PR #22 open, awaiting merge. 145,873 sentences kept.
-- W02-5 cross-checks → review queue: done, PR open, awaiting merge. Unihan pinned. Queue: 4,552 items (2496 + 1827 decomposition, 4 no-data, 225 strokes).
+- W02-5 cross-checks → review queue: done, PR #23 open, awaiting merge. Unihan pinned. Queue: 4,552 items (2496 + 1827 decomposition, 4 no-data, 225 strokes).
 - W02-3 and W02-6 remain.
 
 ## Merged in W02
+- W02-4 Tatoeba → sentence (PR #22): 145,873 sentences kept
 - W02-1 KanjiVG parser (PR #21)
 - W02-2 JMdict common subset → word (PR #19)
 
