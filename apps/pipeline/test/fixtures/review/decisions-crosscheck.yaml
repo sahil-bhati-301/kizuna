@@ -1,0 +1,5 @@
+decisions:
+  - id: strokes:U+4E95:kd4.kvg4.uh5
+    decision: accept
+    reason: test
+    author: tester

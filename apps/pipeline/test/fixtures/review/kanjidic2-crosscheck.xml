@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Test fixture for the W02-5 cross-checks: a hand-made KANJIDIC2-shaped excerpt (five entries).
+  KANJIDIC2 is copyright the Electronic Dictionary Research and Development Group (EDRDG),
+  https://www.edrdg.org/, used under the Creative Commons Attribution-ShareAlike 4.0 licence,
+  https://creativecommons.org/licenses/by-sa/4.0/. Stroke counts, radicals and readings are
+  trimmed to what the test needs. This excerpt is itself CC BY-SA 4.0.
+-->
+<kanjidic2>
+<header>
+<file_version>4</file_version>
+<database_version>2026-331</database_version>
+<date_of_creation>2026-11-27</date_of_creation>
+</header>
+<character>
+<literal>明</literal>
+<codepoint>
+<cp_value cp_type="ucs">660e</cp_value>
+</codepoint>
+<radical>
+<rad_value rad_type="classical">72</rad_value>
+</radical>
+<misc>
+<grade>2</grade>
+<stroke_count>8</stroke_count>
+<freq>100</freq>
+</misc>
+<reading_meaning>
+<rmgroup>
+<reading r_type="ja_on">テスト</reading>
+<meaning>test</meaning>
+</rmgroup>
+</reading_meaning>
+</character>
+<character>
+<literal>池</literal>
+<codepoint>
+<cp_value cp_type="ucs">6c60</cp_value>
+</codepoint>
+<radical>
+<rad_value rad_type="classical">85</rad_value>
+</radical>
+<misc>
+<grade>2</grade>
+<stroke_count>6</stroke_count>
+<freq>101</freq>
+</misc>
+<reading_meaning>
+<rmgroup>
+<reading r_type="ja_on">テスト</reading>
+<meaning>test</meaning>
+</rmgroup>
+</reading_meaning>
+</character>
+<character>
+<literal>肝</literal>
+<codepoint>
+<cp_value cp_type="ucs">809d</cp_value>
+</codepoint>
+<radical>
+<rad_value rad_type="classical">130</rad_value>
+</radical>
+<misc>
+<grade>2</grade>
+<stroke_count>7</stroke_count>
+<freq>102</freq>
+</misc>
+<reading_meaning>
+<rmgroup>
+<reading r_type="ja_on">テスト</reading>
+<meaning>test</meaning>
+</rmgroup>
+</reading_meaning>
+</character>
+<character>
+<literal>持</literal>
+<codepoint>
+<cp_value cp_type="ucs">6301</cp_value>
+</codepoint>
+<radical>
+<rad_value rad_type="classical">64</rad_value>
+</radical>
+<misc>
+<grade>2</grade>
+<stroke_count>9</stroke_count>
+<freq>103</freq>
+</misc>
+<reading_meaning>
+<rmgroup>
+<reading r_type="ja_on">テスト</reading>
+<meaning>test</meaning>
+</rmgroup>
+</reading_meaning>
+</character>
+<character>
+<literal>井</literal>
+<codepoint>
+<cp_value cp_type="ucs">4e95</cp_value>
+</codepoint>
+<radical>
+<rad_value rad_type="classical">7</rad_value>
+</radical>
+<misc>
+<grade>2</grade>
+<stroke_count>4</stroke_count>
+<freq>104</freq>
+</misc>
+<reading_meaning>
+<rmgroup>
+<reading r_type="ja_on">テスト</reading>
+<meaning>test</meaning>
+</rmgroup>
+</reading_meaning>
+</character>
+</kanjidic2>

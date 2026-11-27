@@ -1,0 +1,10 @@
+# Owner decisions on review queue items (W02-5). Hand-edited; queue.yaml is generated and overwritten.
+# Key each entry by the item id shown in queue.yaml. A decided item is not listed again.
+#   decision: accept (the suggested override applies; W03-3 turns it into an override) | flag (keep as is, needs follow-up)
+#
+# decisions:
+#   - id: strokes:U+98DF:kd9.kvg8.uh9
+#     decision: accept
+#     reason: KanjiVG draws one stroke fewer than the standard form
+#     author: owner
+decisions: []

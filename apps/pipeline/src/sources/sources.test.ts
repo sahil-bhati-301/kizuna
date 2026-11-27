@@ -48,7 +48,7 @@ describe('lock schema', () => {
     new URL('../../../../content/sources.lock.yaml', import.meta.url),
     'utf8',
   );
-  it('accepts the committed lock with KANJIDIC2, KRADFILE, JMdict and Tatoeba', () => {
+  it('accepts the committed lock with KANJIDIC2, KRADFILE, JMdict, Tatoeba and Unihan', () => {
     expect(parseLock(lockText).sources.map((s) => s.id)).toEqual([
       'kanjidic2',
       'kradfile',
@@ -57,6 +57,7 @@ describe('lock schema', () => {
       'tatoeba-eng-sentences',
       'tatoeba-jpn-eng-links',
       'tatoeba-jpn-indices',
+      'unihan',
     ]);
   });
   it.each(['id', 'url', 'version', 'fetched', 'file', 'sha256', 'license'])(

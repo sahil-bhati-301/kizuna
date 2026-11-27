@@ -11,6 +11,7 @@ Content pipeline CLI (pipeline.md §8.2): import → normalise → enrich → va
 - `bundled:` entries (KanjiVG) are built from a pinned upstream commit, validated by `parseBundled` (adds `commit`) and never fetched: `pnpm --filter @kizuna/pipeline kanjivg:bundle <clone>` rebuilds `kanjivg.xml.gz` byte for byte. `transcribed:` (Jōyō) is not parsed by code.
 - Full-file smoke runs: `jmdict:run`, `kanjivg:run`, `tatoeba:run` (needs `bzip2` and `tar` on the PATH: Node has no bzip2; 14 s, about 1 GB).
 - Tatoeba (W02-4): four `.bz2` files pinned in `sources:`. Index items are `headword(reading)[sense]{form}~`; `(#id)` names the JMdict entry directly. Ambiguous or unknown words are reported, never guessed. Q1 a and Q2 a (quality = mapped / all index items) are in `domain/tatoeba/build.ts`.
+- Review queue (W02-5): `pnpm --filter @kizuna/pipeline review:build` runs the KRADFILE/KanjiVG and stroke cross-checks (`domain/crosscheck`, I/O in `review/`), writes generated `content/review/queue.yaml` + `summary.txt`, and skips items listed in hand-edited `content/review/decisions.yaml` (keyed by item ID). Unihan is pinned whole as `Unihan.zip`; the CLI reads `Unihan_IRGSources.txt` from it. Needs `pnpm --filter @kizuna/content build` first.
 - CLI files run under Node type stripping: no parameter properties, no enums, `.ts` import suffixes.
 
 ## Rules
