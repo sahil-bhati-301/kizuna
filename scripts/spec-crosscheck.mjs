@@ -57,7 +57,7 @@ export const SECTION_OWNERS = {
   6.7: ['insights'],
   7.1: ['web'],
   7.2: ['web', 'account'],
-  7.3: ['platform'],
+  7.3: ['web'],
   7.4: ['account'],
   7.5: ['platform', 'content', 'memory', 'insights', 'drills', 'account'],
   7.6: ['platform'],
