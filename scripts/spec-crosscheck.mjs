@@ -171,7 +171,8 @@ export function crossCheck(arch, digests, only) {
     for (const n of numbers) {
       const carriers = DIGESTS.filter((d) => numbersIn[d]?.has(n));
       if (owners) {
-        const relevant = only ? owners.includes(only) : true;
+        // Scoped to one digest, a shared section's numbers may live in another owner: skip them.
+        const relevant = only ? owners.length === 1 && owners[0] === only : true;
         if (relevant && !owners.some((o) => numbersIn[o]?.has(n)))
           report.missing.push({ section: id, number: n, owners: only ? [only] : owners });
       } else if (!only && carriers.length === 0) {
