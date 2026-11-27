@@ -12,6 +12,7 @@ Out-of-scope finds go here, not into code. One line each, with the WP that found
 - (W00-4) spec cross-check: optional allowlist so intended duplicate numbers stop showing, then fail on new duplicates.
 - (W00-4) budget guard: the tool-call fallback fired WRAP-UP while the owner reported low usage; consider a higher fallback or prompting for /budget figures first.
 - (W01-7) CI: pnpm/action-setup@v6 self-installs pnpm v11, then switches to v10.28.0 from `packageManager` and warns about the PNPM_HOME layout. Harmless; it goes away when the repo moves to pnpm 11 (or pin the action's `version`).
+- (W01 retro) budget guard: every budget-log row still has `?` for weekly start/end, so calibration used hand-typed /budget readings. Find why the guard gets no usage data in cloud sessions.
 - (W00-6) cloud environment: start dockerd in the environment setup script so the Testcontainers harness runs in cloud sessions without a manual step.
 
 ## Deferred
