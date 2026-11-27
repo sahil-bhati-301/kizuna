@@ -7,7 +7,7 @@ Light: 🟢 green at session 7 (week 22%, 5h 58%). Run /budget with /usage figur
 | WP | Title | Tier/Size | State |
 |---|---|---|---|
 | W01-1 | Pipeline app, sources lock, fetcher | B/S | ✅ merged (PR #9) |
-| W01-6 | kernel: pure code under src/domain/ | B/S | 🔄 in review (PR #10, session 7) |
+| W01-6 | kernel: pure code under src/domain/ | B/S | ✅ merged (PR #10) |
 | W01-2 | content Drizzle schema and types | B/M | ⬜ todo |
 | W01-7 | CI hygiene: Node 24 actions, .nvmrc | C/S | ⬜ todo |
 | W01-4 | Normalisation library | A/M | ⬜ todo |
