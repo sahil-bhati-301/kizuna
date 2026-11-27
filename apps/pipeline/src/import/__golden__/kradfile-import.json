@@ -1,0 +1,155 @@
+{
+  "kanji": [
+    {
+      "literal": "亜",
+      "codepoint": 20124,
+      "components": [
+        {
+          "component": "｜",
+          "radical": null
+        },
+        {
+          "component": "一",
+          "radical": null
+        },
+        {
+          "component": "口",
+          "radical": null
+        }
+      ],
+      "source": "kradfile",
+      "sourceVersion": "v-test",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "literal": "化",
+      "codepoint": 21270,
+      "components": [
+        {
+          "component": "亻",
+          "radical": 9
+        },
+        {
+          "component": "匕",
+          "radical": null
+        }
+      ],
+      "source": "kradfile",
+      "sourceVersion": "v-test",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "literal": "唖",
+      "codepoint": 21782,
+      "components": [
+        {
+          "component": "｜",
+          "radical": null
+        },
+        {
+          "component": "一",
+          "radical": null
+        },
+        {
+          "component": "口",
+          "radical": null
+        }
+      ],
+      "source": "kradfile",
+      "sourceVersion": "v-test",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "literal": "小",
+      "codepoint": 23567,
+      "components": [
+        {
+          "component": "⺌",
+          "radical": null
+        }
+      ],
+      "source": "kradfile",
+      "sourceVersion": "v-test",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "literal": "月",
+      "codepoint": 26376,
+      "components": [
+        {
+          "component": "月",
+          "radical": null
+        }
+      ],
+      "source": "kradfile",
+      "sourceVersion": "v-test",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "literal": "花",
+      "codepoint": 33457,
+      "components": [
+        {
+          "component": "艹",
+          "radical": 140
+        },
+        {
+          "component": "亻",
+          "radical": 9
+        }
+      ],
+      "source": "kradfile",
+      "sourceVersion": "v-test",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "literal": "都",
+      "codepoint": 37117,
+      "components": [
+        {
+          "component": "土",
+          "radical": null
+        },
+        {
+          "component": "日",
+          "radical": null
+        },
+        {
+          "component": "阝",
+          "radical": 163
+        }
+      ],
+      "source": "kradfile",
+      "sourceVersion": "v-test",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "literal": "阡",
+      "codepoint": 38433,
+      "components": [
+        {
+          "component": "ノ",
+          "radical": null
+        },
+        {
+          "component": "十",
+          "radical": null
+        },
+        {
+          "component": "阝",
+          "radical": 170
+        }
+      ],
+      "source": "kradfile",
+      "sourceVersion": "v-test",
+      "license": "CC BY-SA 4.0"
+    }
+  ],
+  "badLines": [
+    {
+      "line": 26,
+      "text": "this line is malformed",
+      "reason": "missing \" : \" separator"
+    }
+  ]
+}

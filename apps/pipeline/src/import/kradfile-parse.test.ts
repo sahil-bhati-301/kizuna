@@ -12,11 +12,11 @@
 import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { describe, expect, it } from 'vitest';
-import { decodeEucJp, parseKradfile } from './index.ts';
+import { decodeEucJp, parseKradfile } from '../domain/kradfile/index.ts';
 
 const bytes = new Uint8Array(
   readFileSync(
-    fileURLToPath(new URL('../../../test/fixtures/kradfile-excerpt.euc-jp', import.meta.url)),
+    fileURLToPath(new URL('../../test/fixtures/kradfile-excerpt.euc-jp', import.meta.url)),
   ),
 );
 const PROVENANCE = { source: 'kradfile', sourceVersion: 'v-test', license: 'CC BY-SA 4.0' };
@@ -40,7 +40,14 @@ describe('decodeEucJp (AC 1)', () => {
 describe('parseKradfile: lines (AC 1, 2)', () => {
   it('skips comment lines and keeps one row per data line, in file order', () => {
     expect(parse().kanji.map((k) => k.literal)).toEqual([
-      '唖', '亜', '化', '花', '都', '阡', '小', '月',
+      '唖',
+      '亜',
+      '化',
+      '花',
+      '都',
+      '阡',
+      '小',
+      '月',
     ]);
   });
 
@@ -52,7 +59,11 @@ describe('parseKradfile: lines (AC 1, 2)', () => {
 
   it('carries source, source_version and license on every row', () => {
     for (const k of parse().kanji) {
-      expect(k).toMatchObject({ source: 'kradfile', sourceVersion: 'v-test', license: 'CC BY-SA 4.0' });
+      expect(k).toMatchObject({
+        source: 'kradfile',
+        sourceVersion: 'v-test',
+        license: 'CC BY-SA 4.0',
+      });
     }
   });
 });
@@ -66,11 +77,19 @@ describe('parseKradfile: substitute characters (AC 3)', () => {
   });
 
   it('maps 邦 to right 阝 (163) and 阡 to left 阝 (170)', () => {
-    expect(parse().kanji.find((k) => k.literal === '都')?.components.at(-1)).toEqual({
+    expect(
+      parse()
+        .kanji.find((k) => k.literal === '都')
+        ?.components.at(-1),
+    ).toEqual({
       component: '阝',
       radical: 163,
     });
-    expect(parse().kanji.find((k) => k.literal === '阡')?.components.at(-1)).toEqual({
+    expect(
+      parse()
+        .kanji.find((k) => k.literal === '阡')
+        ?.components.at(-1),
+    ).toEqual({
       component: '阝',
       radical: 170,
     });
