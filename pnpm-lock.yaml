@@ -44,9 +44,16 @@ importers:
 
   apps/pipeline:
     dependencies:
+      '@kizuna/content':
+        specifier: workspace:*
+        version: link:../../packages/content
       yaml:
         specifier: ^2.9.1
         version: 2.9.1
+    devDependencies:
+      fast-check:
+        specifier: ^4.11.0
+        version: 4.11.0
 
   packages/content:
     dependencies:
