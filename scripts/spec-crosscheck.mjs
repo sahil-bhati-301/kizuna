@@ -10,6 +10,9 @@ import { fileURLToPath } from 'node:url';
 
 export const WORDS_MIN = 1500;
 export const WORDS_MAX = 3000;
+// Owner decision (W00-4 OQ-1): these digests have short sources and keep their honest length.
+export const WORDS_MIN_FOR = { content: 1000, web: 1000 };
+const minFor = (name) => WORDS_MIN_FOR[name] ?? WORDS_MIN;
 
 export const DIGESTS = [
   'content',
@@ -158,7 +161,7 @@ export function crossCheck(arch, digests, only) {
       continue;
     }
     const words = countWords(text);
-    if (words < WORDS_MIN || words > WORDS_MAX) report.words.push({ digest: name, words });
+    if (words < minFor(name) || words > WORDS_MAX) report.words.push({ digest: name, words });
     for (const a of anchorsIn(text))
       if (!ids.has(a)) report.badAnchors.push({ digest: name, anchor: a });
   }
@@ -190,7 +193,9 @@ export function crossCheck(arch, digests, only) {
 export function format(report) {
   const out = [];
   for (const w of report.words)
-    out.push(`✗ words ${w.digest}: ${w.problem ?? `${w.words} (want ${WORDS_MIN}–${WORDS_MAX})`}`);
+    out.push(
+      `✗ words ${w.digest}: ${w.problem ?? `${w.words} (want ${minFor(w.digest)}–${WORDS_MAX})`}`,
+    );
   for (const a of report.badAnchors) out.push(`✗ anchor ${a.digest}: §${a.anchor} has no heading`);
   for (const id of report.unowned) out.push(`✗ section §${id} has no owner in SECTION_OWNERS`);
   for (const m of report.missing)

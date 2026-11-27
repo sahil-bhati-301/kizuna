@@ -57,10 +57,10 @@ test('missing numbers are reported against the owning digest', () => {
 
 test('duplicates, bad anchors and word counts are reported', () => {
   const digests = Object.fromEntries(DIGESTS.map((d) => [d, words(1600)]));
-  digests.content += ' 2,136 0.85 → arch §9.9';
   digests.memory += ' 0.90 365 2,136';
   digests.platform += ' 30';
   digests.web = words(100);
+  digests.content = words(1100) + ' 2,136 0.85 → arch §9.9';
   const r = crossCheck(arch, digests);
   assert.deepEqual(r.duplicated, [{ number: '2,136', digests: ['content', 'memory'] }]);
   assert.deepEqual(r.badAnchors, [{ digest: 'content', anchor: '9.9' }]);

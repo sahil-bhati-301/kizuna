@@ -16,7 +16,7 @@ Light: ⚪ unknown (owner band at session 4: weekly <25%). Use /budget if needed
 - (none)
 
 ## OPEN-Q
-- W00-4 OQ-1: content and web digests are ~1,285 words at honest length; accept a lower floor? (see WP file)
+- (none)
 
 ## Last decisions
 - Plan: docs/development-plan.md is the source for workflow; docs/architecture-design.md wins design conflicts.
@@ -24,6 +24,8 @@ Light: ⚪ unknown (owner band at session 4: weekly <25%). Use /budget if needed
 - W00-1 worked on the session branch claude/gallant-davinci-z3yvft instead of wp/W00-1-monorepo (cloud session branch restriction). W00-2 likewise, in the same session at the owner's request. W00-5 likewise (session 3).
 
 - W00-5 OQ-1 closed by owner: kernel gains a domain/ folder (follow-up in backlog Should-fix).
+
+- W00-4 OQ-1 closed by owner: content and web digests keep their honest length (floor 1,000).
 
 ## Flaky tests
 - None
