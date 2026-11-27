@@ -1,8 +1,8 @@
 import type { Clock } from './clock.js';
 import type { Rng } from './rng.js';
 
-const MAX_MS = 2 ** 48 - 1;
-const COUNTER_MAX = 2 ** 42 - 1;
+export const MAX_MS = 2 ** 48 - 1;
+export const COUNTER_MAX = 2 ** 42 - 1;
 const UUID_V7 = /^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/;
 
 const hex = (value: number, width: number) => value.toString(16).padStart(width, '0');
@@ -18,9 +18,16 @@ const hex = (value: number, width: number) => value.toString(16).padStart(width,
  * counter overflows, the timestamp is bumped by 1 ms.
  */
 export function createIdGenerator(deps: { clock: Clock; rng: Rng }): () => string {
+  return createIdGeneratorFromState(deps, { lastMs: -1, counter: 0 });
+}
+
+/** Internal and test-only seam (not exported from index.ts): start from a given state. */
+export function createIdGeneratorFromState(
+  deps: { clock: Clock; rng: Rng },
+  start: { lastMs: number; counter: number },
+): () => string {
   const { clock, rng } = deps;
-  let lastMs = -1;
-  let counter = 0;
+  let { lastMs, counter } = start;
 
   const freshCounter = () => (rng.nextUint32() & 0x1ff) * 2 ** 32 + rng.nextUint32();
 
