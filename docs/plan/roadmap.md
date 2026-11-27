@@ -5,7 +5,7 @@ Legend: 🔄 in progress · ⏸ paused · [x] done · [ ] not started. One line 
 ## Phase 0 (W00–W04)
 - [x] W00 Setup and calibration: The agent-ready repository (all 7 WPs merged; owner tasks O-3, O-4 carried over)
 - [x] W01 Pipeline I: Parse and normalise the core sources (all 7 WPs merged; calibration ≈2% per M-eq, schedule kept; owner task O-6 carried over)
-- [ ] W02 Pipeline II: Components, words, alignment
+- 🔄 W02 Pipeline II: Components, words, alignment (plan approved session 12)
 - [ ] W03 Pipeline III and release 0.1: A deterministic, validated release
 - [ ] W04 Scheduler core and simulation · Gate 0: Decide the launch facet set with evidence
 

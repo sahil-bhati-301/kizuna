@@ -16,6 +16,8 @@ Out-of-scope finds go here, not into code. One line each, with the WP that found
 - (W00-6) cloud environment: start dockerd in the environment setup script so the Testcontainers harness runs in cloud sessions without a manual step.
 
 ## Deferred
+- (W02 planning) KanjiVG stroke SVGs for the web (validation needs a stroke SVG per teachable kanji): W02-1 parses only the tree and stroke counts; W03-5 static chunks must export them.
+- (W02 planning) review queue: add W02-3 irregular alignments as queue items once the queue format exists.
 - (W00-1 review) dependency-cruiser: add an apps-to-apps boundary rule once apps/ exists. Planned: W01-1.
 - (W00-1 review) dependency-cruiser: widen the domain-no-io banned module list (currently partial).
 - (W00-2) CI: bump actions/checkout, setup-node, cache and pnpm/action-setup to Node 24 majors (v4 warns about Node 20 deprecation). Done: W01-7.
