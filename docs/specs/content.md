@@ -1,6 +1,6 @@
 # content: spec digest
 Source: docs/architecture-design.md. The architecture doc wins any conflict.
-Covers: §2.2 (content row), §3.1, §3.2, §7.5 (content schema, stable references, release validation)
+Covers: §2.2 (content row), §3.1, §3.2, §7.5 (content schema, stable references, release validation), §7.6 (content job), §8.2 (content package and module shape), §8.4 (content hot path)
 
 ## §2.2 Module row
 
@@ -100,39 +100,34 @@ The graph is stored as adjacency rows in `content.relation` and loaded into memo
 - The table definitions in §7.5 are **pseudo-schema**, meant as design guidance rather than DDL. The `content` tables are listed in §3.1. → arch §7.5
 - Referenced content is never hard-deleted. It is deprecated and redirected through `id_redirect`; `content_release` rows are immutable. → arch §7.5, arch §3.1
 
-## Invariants and enumerations (restated for lookup)
+## §7.6 Content job
 
-Identifiers and keys. → arch §3.1
-- `kanji` PK is `literal`, the character itself.
-- `radical` PK is the Kangxi number 1–214; exactly one classification radical per kanji.
-- `component` PK is its own slug; components with no Unicode code point use the KanjiVG element ID.
-- `reading` ID has the form `生:on:せい`; kind is `on`, `kun` or `nanori`.
-- `word` PK is the JMdict `ent_seq`; only a curated, frequency-ranked subset (~30–50k) is loaded.
-- `relation` is a typed, weighted graph of about 100k edges; weight is 0–1; origin is `curated`, `computed` or `empirical`.
-- `mnemonic` author is `system` or `user`; original content only.
-- `content_release` carries semver, source manifest (versions and checksums) and `is_current`; releases are immutable.
-- `id_redirect` carries old ID, new ID and release, and handles JMdict merges and deprecations.
+| Job | Trigger | Purpose |
+|---|---|---|
+| `content.migrateRelease` | on release switch | Apply ID redirects to traces |
 
-Enumerations. → arch §3.1
-- `kanji_component.position`: `hen`, `tsukuri`, `kanmuri`, `ashi`, `tare`, `nyō`, `kamae`, …
-- `kanji_component.role`: `semantic`, `phonetic`, `form`, `unknown`.
-- `word_kanji.phenomenon`: `regular`, `rendaku`, `sokuon`, `jukujikun`, `ateji`, `irregular`.
+→ arch §7.6
 
-Teaching metadata rules. → arch §3.1
-- A reading is `is_core` when it is Jōyō and used by at least one common word.
-- Each kind has one `is_primary_of_kind` reading (the most frequent).
-- Rare and nanori readings appear on detail pages but are never drilled in isolation.
-- Grading accept-list for meanings: all KANJIDIC meanings, plus curated synonyms, plus that user's own synonyms.
-- Each kanji gets a primary `keyword` that we author ourselves; we never copy keywords from commercial courses.
-- English comes first; JMdict and KANJIDIC also carry French, Spanish, Portuguese, German and Russian glosses.
+## §8.2 Package and module internals
 
-Relation production rules. → arch §3.2
-- `shares_component`: derived from `kanji_component`; weight is the IDF-weighted overlap.
-- `visual_similar`: score = 0.5·position-aware component Jaccard + 0.3·same layout + 0.2·stroke-count closeness; keep the top 10 per kanji above a threshold, then add curated classic pairs.
-- `phonetic_series`: component `role=phonetic` plus a matching on'yomi; exceptions are flagged.
-- `semantic_related`: proposals seeded from gloss overlap and WordNet, drafted with LLM help, then human-reviewed; small semantic-field taxonomy (~60 fields).
-- `homophone`: derived from readings; weighted by frequency; used only for reading-confusion analysis.
-- `empirical_confusable`: mined from anonymised population confusion counts, with k-anonymity ≥ 20 users (Phase 4).
-- `variant_of`: KANJIDIC/Unihan variant fields (low priority).
-- Storage: adjacency rows in `content.relation`, loaded into memory per process; tens of megabytes at most; no graph database.
-- Feature tags are computed per item at release time; weakness discovery groups by them.
+- `packages/content/`: content types, query API, in-memory release index. → arch §8.2
+- Every backend module follows the same internal shape. → arch §8.2
+
+```
+packages/<module>/src/
+  domain/   pure logic: types, rules, statistics (no I/O, injected clock and RNG)
+  app/      use cases: orchestrate domain + repositories inside transactions
+  infra/    Postgres repositories, job handlers, provider adapters
+  index.ts  public API: the only import path for other modules
+```
+
+Enforced rules. → arch §8.2
+- `domain/` imports nothing from `infra/`.
+- Modules import each other only through `index.ts`.
+- `apps/web` may import only `contracts`, `drills/grading`, `content` types and `ui`.
+- Migrations live with the module that owns the schema.
+
+## §8.4 Hot path
+
+- Content comes from the in-process index, and the client fetches content from the CDN, not the API. → arch §8.4
+- Extraction seam (third in order of likely need): content serving goes fully static. → arch §8.4
