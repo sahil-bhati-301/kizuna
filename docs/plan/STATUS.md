@@ -1,29 +1,28 @@
 # STATUS
 
-Phase 0 · Week W00 (Setup and calibration) · Updated: session 2
+Phase 0 · Week W00 (Setup and calibration) · Updated: session 3
 Light: ⚪ unknown until the budget guard runs (W00-7). Use /budget if needed.
 
 ## Active WPs
 | WP | Title | Tier/Size | State |
 |---|---|---|---|
-| W00-2 | CI and branch protection | B/S | 🔄 in review (session 2); O-2 pending |
 | W00-4 | Spec digests | C/M | ⬜ todo |
-| W00-5 | kernel package | A/S | ⬜ todo |
+| W00-5 | kernel package | A/S | 🔄 in review (session 3); OQ-1 for owner |
 | W00-6 | Local dev and DB harness | B/S | ⬜ todo |
 
 ## Merged this week
-- W00-3 Agent scaffolding, W00-7 Budget guard and checkpoints (PR #2); W00-1 Monorepo, verify scripts (PR #3)
+- W00-3 Agent scaffolding, W00-7 Budget guard and checkpoints (PR #2); W00-1 Monorepo, verify scripts (PR #3); W00-2 CI (PR #4; O-2 branch protection still with the owner)
 
 ## Blockers
 - (none)
 
 ## OPEN-Q
-- (none)
+- W00-5 OQ-1: kernel has no domain/ folder; is the source-scan stand-in enough for AC5? (see WP file)
 
 ## Last decisions
 - Plan: docs/development-plan.md is the source for workflow; docs/architecture-design.md wins design conflicts.
 - Until W00-1 lands, the only test command is `node --test "scripts/claude/*.test.mjs"`.
-- W00-1 worked on the session branch claude/gallant-davinci-z3yvft instead of wp/W00-1-monorepo (cloud session branch restriction). W00-2 likewise, in the same session at the owner's request.
+- W00-1 worked on the session branch claude/gallant-davinci-z3yvft instead of wp/W00-1-monorepo (cloud session branch restriction). W00-2 likewise, in the same session at the owner's request. W00-5 likewise (session 3).
 
 ## Flaky tests
 - None
