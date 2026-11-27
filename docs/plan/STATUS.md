@@ -9,7 +9,7 @@ Light: 🟢 green at session 14 start (week 33%, 5h 53%). Run /budget with /usag
 - Need from the owner: /usage figures at the end of session 14 (W02-1) and session 11.
 
 ## Active WPs
-- W02-1 KanjiVG parser: done, PR open, awaiting merge. W02-3 to W02-6 remain.
+- W02-1 KanjiVG parser: done, PR #21 open, awaiting merge. W02-3 to W02-6 remain.
 
 ## Merged in W02
 - W02-2 JMdict common subset → word (PR #19)
