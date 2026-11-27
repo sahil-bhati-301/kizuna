@@ -1,17 +1,16 @@
 # STATUS
 
-Phase 0 · Week W00 (Setup and calibration) · Updated: session 3
-Light: ⚪ unknown until the budget guard runs (W00-7). Use /budget if needed.
+Phase 0 · Week W00 (Setup and calibration) · Updated: session 4
+Light: ⚪ unknown (owner band at session 4: weekly <25%). Use /budget if needed.
 
 ## Active WPs
 | WP | Title | Tier/Size | State |
 |---|---|---|---|
 | W00-4 | Spec digests | C/M | ⬜ todo |
-| W00-5 | kernel package | A/S | 🔄 in review (session 3); OQ-1 for owner |
 | W00-6 | Local dev and DB harness | B/S | ⬜ todo |
 
 ## Merged this week
-- W00-3 Agent scaffolding, W00-7 Budget guard and checkpoints (PR #2); W00-1 Monorepo, verify scripts (PR #3); W00-2 CI (PR #4; O-2 branch protection still with the owner)
+- W00-3 Agent scaffolding, W00-7 Budget guard and checkpoints (PR #2); W00-1 Monorepo, verify scripts (PR #3); W00-2 CI (PR #4; O-2 branch protection done by the owner); W00-5 kernel (PR #5; OQ-1 still with the owner)
 
 ## Blockers
 - (none)
