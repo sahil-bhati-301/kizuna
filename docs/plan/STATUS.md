@@ -1,7 +1,7 @@
 # STATUS
 
 Phase 0 · Week W02 (Pipeline II: components, words, alignment) · planned and approved · Updated: session 13 (/wp W02-2)
-Light: 🟢 green at session 13 start (week 30%, 5h 40%). Run /budget with /usage figures at the start and end of every session.
+Light: 🟢 green at session 13 end (week 33%, 5h 55%). Run /budget with /usage figures at the start and end of every session.
 
 ## Next step
 - Owner: review and merge PR #19 (W02-2). Then run the next W02 WP per the weekly plan.
