@@ -3,7 +3,7 @@
 Legend: 🔄 in progress · ⏸ paused · [x] done · [ ] not started. One line per week; detail in weeks/Wnn.md.
 
 ## Phase 0 (W00–W04)
-- 🔄 W00 Setup and calibration: The agent-ready repository
+- [x] W00 Setup and calibration: The agent-ready repository (all 7 WPs merged; owner tasks O-3, O-4 carried over)
 - [ ] W01 Pipeline I: Parse and normalise the core sources
 - [ ] W02 Pipeline II: Components, words, alignment
 - [ ] W03 Pipeline III and release 0.1: A deterministic, validated release

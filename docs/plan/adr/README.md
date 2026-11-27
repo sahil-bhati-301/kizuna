@@ -20,4 +20,4 @@ What gets easier, what gets harder, what to revisit and when.
 ```
 
 ## Index
-- ADR-0001: hosting (planned, owner task O-3)
+- [ADR-0001](ADR-0001-hosting.md): hosting and auth provider (accepted 2026-11-27)

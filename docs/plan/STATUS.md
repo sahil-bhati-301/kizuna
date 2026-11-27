@@ -1,16 +1,21 @@
 # STATUS
 
-Phase 0 · Week W00 (Setup and calibration) · Updated: session 5
-Light: 🟢 green at session 5 (week 20%, 5h 42%). Use /budget if needed.
+Phase 0 · Week W01 (Pipeline I: parse and normalise the core sources) · Updated: W00 retro (session 5)
+Light: 🟢 green at session 5 (week 20%, 5h 42%). Run /budget with /usage figures at the start and end of every session.
 
 ## Active WPs
 | WP | Title | Tier/Size | State |
 |---|---|---|---|
-| W00-4 | Spec digests | C/M | 🔄 in review (session 4); O-4 owner skim |
-| W00-6 | Local dev and DB harness | B/S | 🔄 in review (session 5) |
+| (none) | W01 not planned yet: run /plan-week W01 | | |
 
-## Merged this week
-- W00-3 Agent scaffolding, W00-7 Budget guard and checkpoints (PR #2); W00-1 Monorepo, verify scripts (PR #3); W00-2 CI (PR #4; O-2 branch protection done by the owner); W00-5 kernel (PR #5; OQ-1 still with the owner)
+## Merged last week (W00, all 7 WPs)
+- W00-7 Budget guard and checkpoints, W00-3 Agent scaffolding (PR #2)
+- W00-1 Monorepo, verify scripts (PR #3) · W00-2 CI (PR #4)
+- W00-5 kernel (PR #5) · W00-4 Spec digests (PR #6) · W00-6 Local dev and DB harness (PR #7)
+
+## Owner tasks open
+- O-3: done, ADR-0001 accepted (Fly.io, Vercel, Neon, R2, Better Auth).
+- O-4: approve root CLAUDE.md, agent definitions and spec digests.
 
 ## Blockers
 - (none)
@@ -20,12 +25,11 @@ Light: 🟢 green at session 5 (week 20%, 5h 42%). Use /budget if needed.
 
 ## Last decisions
 - Plan: docs/development-plan.md is the source for workflow; docs/architecture-design.md wins design conflicts.
-- Until W00-1 lands, the only test command is `node --test "scripts/claude/*.test.mjs"`.
-- W00-1 worked on the session branch claude/gallant-davinci-z3yvft instead of wp/W00-1-monorepo (cloud session branch restriction). W00-2 likewise, in the same session at the owner's request. W00-5 likewise (session 3). W00-6 likewise, on claude/peaceful-shannon-y5vno6 (session 5).
-
-- W00-5 OQ-1 closed by owner: kernel gains a domain/ folder (follow-up in backlog Should-fix).
-
-- W00-4 OQ-1 closed by owner: content and web digests keep their honest length (floor 1,000).
+- Cloud sessions cannot push wp/ branches: each WP works on its session branch (W00-1, 2, 4, 5, 6).
+- Capacity stays at the assumed 8 M-eq for W01; calibration happens at the W01 retro (§2.7). W01 WPs carry Est. % (7.5% per M-eq).
+- W00-5 OQ-1: kernel gains a domain/ folder (backlog Should-fix; candidate W01 WP).
+- W00-4 OQ-1: content and web digests keep their honest length (floor 1,000).
+- Local DB: `pnpm db:up`, `pnpm db:migrate`, `pnpm db:down`. In a cloud session, start Docker with `dockerd &` before the harness test.
 
 ## Flaky tests
 - None
