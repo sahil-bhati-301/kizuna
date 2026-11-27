@@ -1,0 +1,29 @@
+{
+  "name": "kizuna",
+  "private": true,
+  "packageManager": "pnpm@10.28.0",
+  "engines": {
+    "node": ">=22"
+  },
+  "type": "module",
+  "scripts": {
+    "build": "turbo run build",
+    "format": "prettier --write .",
+    "boundaries": "depcruise --config .dependency-cruiser.cjs packages",
+    "test:scripts": "node --test \"scripts/**/*.test.mjs\"",
+    "verify": "node scripts/verify-summary.mjs run",
+    "verify:affected": "node scripts/verify-summary.mjs run --affected"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.0.0",
+    "@types/node": "^22.20.7",
+    "dependency-cruiser": "^17.0.0",
+    "eslint": "^9.0.0",
+    "eslint-config-prettier": "^10.0.0",
+    "prettier": "^3.0.0",
+    "turbo": "^2.0.0",
+    "typescript": "^5.6.0",
+    "typescript-eslint": "^8.0.0",
+    "vitest": "^3.0.0"
+  }
+}

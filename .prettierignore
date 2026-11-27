@@ -1,0 +1,13 @@
+node_modules
+dist
+.turbo
+pnpm-lock.yaml
+docs
+test/fixtures
+scripts/fixtures
+scripts/claude/fixtures
+.claude
+.github
+CLAUDE.md
+scripts/claude
+scripts/fixtures
