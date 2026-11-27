@@ -11,13 +11,14 @@ Out-of-scope finds go here, not into code. One line each, with the WP that found
 - (W01-4) radicals: 月 as 肉→130 is keyed as ⺼ (U+2EBC) because plain 月 is radical 74. KRADFILE uses plain 月, so W01-3 and W01-5 must decide how to map it.
 - (W00-4) spec cross-check: optional allowlist so intended duplicate numbers stop showing, then fail on new duplicates.
 - (W00-4) budget guard: the tool-call fallback fired WRAP-UP while the owner reported low usage; consider a higher fallback or prompting for /budget figures first.
+- (W01-7) CI: pnpm/action-setup@v6 self-installs pnpm v11, then switches to v10.28.0 from `packageManager` and warns about the PNPM_HOME layout. Harmless; it goes away when the repo moves to pnpm 11 (or pin the action's `version`).
 - (W00-6) cloud environment: start dockerd in the environment setup script so the Testcontainers harness runs in cloud sessions without a manual step.
 
 ## Deferred
 - (W00-1 review) dependency-cruiser: add an apps-to-apps boundary rule once apps/ exists. Planned: W01-1.
 - (W00-1 review) dependency-cruiser: widen the domain-no-io banned module list (currently partial).
-- (W00-2) CI: bump actions/checkout, setup-node, cache and pnpm/action-setup to Node 24 majors (v4 warns about Node 20 deprecation). Planned: W01-7.
-- (W00-2) CI: add .nvmrc or engines.node so local and CI Node versions come from one place. Planned: W01-7.
+- (W00-2) CI: bump actions/checkout, setup-node, cache and pnpm/action-setup to Node 24 majors (v4 warns about Node 20 deprecation). Done: W01-7.
+- (W00-2) CI: add .nvmrc or engines.node so local and CI Node versions come from one place. Done: W01-7.
 - (W01-6 review) dependency-cruiser: add a repo-level fixture test that cruises a deliberate I/O import from a domain/ file, so the domain-no-io rule is proven end to end (purity.test.ts used to do this for kernel only).
 - (W00-5) kernel: production ID generators need a crypto-seeded `Rng` wired at the composition root; `createSeededRng` is 32-bit and not secure.
 - (W01-3) sources lock: nothing verifies the new `transcribed:` entries yet. Add a check that each checked-in file's sha256 matches its lock entry (CI or `sources:verify`).
