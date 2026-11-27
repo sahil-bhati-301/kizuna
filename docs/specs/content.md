@@ -1,6 +1,6 @@
 # content: spec digest
 Source: docs/architecture-design.md. The architecture doc wins any conflict.
-Covers: §2.2 (content row), §3.1, §3.2, §7.5 (content schema, stable references, release validation), §7.6 (content job), §8.2 (content package and module shape), §8.4 (content hot path)
+Covers: §2.2 (content row), §3.1, §3.2, §7.5 (content schema, stable references, release validation), §7.6 (content job), §8.2 (content package), §8.4 (content hot path)
 
 ## §2.2 Module row
 
@@ -104,60 +104,15 @@ The graph is stored as adjacency rows in `content.relation` and loaded into memo
 
 | Job | Trigger | Purpose |
 |---|---|---|
-| `outbox.relay` | continuous | Publish outbox events to queues |
-| `insights.detect` | `SessionCompleted`, debounced 5 minutes | Incremental detection for one user; advances the lifecycle |
-| `insights.nightly` | nightly, for users active in the last 30 days | Full recompute, evidence decay, lifecycle transitions |
-| `experiments.evaluate` | daily | Schedule day 13–15 retention checks (capacity-capped, balanced across arms), record missed check days, evaluate complete windows, close experiments, release waitlists after the window closes |
-| `memory.fitParams` | weekly, for eligible users and facet families | FSRS optimisation per facet family, accepted only if held-out log-loss improves |
-| `population.stats` | nightly | Calibration offsets `c` and group offsets `μ_g` (§5.3), population FSRS parameters per facet family, item difficulty, `σ_type` priors, confusion mining (k-anonymous), detector precision |
-| `engagement.closeDay` | hourly, per timezone bucket | Finalise days 6 hours after they end (offline-sync grace period), streaks and freezes |
-| `notify.reminders` | hourly, per timezone bucket | Opt-in reminders with frequency caps |
-| `billing.reconcile` | daily | Re-sync subscriptions with the provider |
-| `privacy.export` / `privacy.delete` | on request | Build an export bundle; cascade-delete across every schema and remove the user's rows from Parquet archives (§7.8) |
 | `content.migrateRelease` | on release switch | Apply ID redirects to traces |
-| `db.maintenance` | monthly | Create partitions; write trace checkpoints at the archive boundary (§7.5), then archive events older than 90 days to Parquet, one file per (month, user-hash bucket) so a deletion rewrites only small files |
-
 
 → arch §7.6
 
-## §8.2 Package and module internals
+## §8.2 Package
 
 - `packages/content/`: content types, query API, in-memory release index. → arch §8.2
-- Every backend module follows the same internal shape. → arch §8.2
 
-```
-packages/<module>/src/
-  domain/   pure logic: types, rules, statistics (no I/O, injected clock and RNG)
-  app/      use cases: orchestrate domain + repositories inside transactions
-  infra/    Postgres repositories, job handlers, provider adapters
-  index.ts  public API: the only import path for other modules
-```
+## §8.4 Hot path
 
-Enforced rules. → arch §8.2
-- `domain/` imports nothing from `infra/`.
-- Modules import each other only through `index.ts`.
-- `apps/web` may import only `contracts`, `drills/grading`, `content` types and `ui`.
-- Migrations live with the module that owns the schema.
-
-## §8.4 Scalability and performance
-
-| | 1k DAU | 10k DAU | 100k DAU |
-|---|---|---|---|
-| Reviews per day (planning assumption: ≈ 100 per active user with the v1 facet set; between 10 and 17 minutes at 6–10 s per answer. The real figure and time come from the workload gate and beta data, and the new-item rate adapts to keep learners within their goal, §6.2) | 100k | 1M | 10M |
-| Peak answer-batch requests/s (5 answers per batch, 10× peak) | ≈ 2.5 | ≈ 25 | ≈ 250 |
-| `review_event` growth per year | ≈ 37M rows | ≈ 365M rows | ≈ 3.7B rows |
-| `review_event` storage per year (≈ 200 bytes per row plus indexes) | ≈ 10 GB | ≈ 100 GB | ≈ 1 TB (archived to Parquet after 90 days) |
-| `memory_trace` rows (registered users ≈ 5× DAU, ≈ 1.5k traces each) | ≈ 7.5M | ≈ 75M | ≈ 750M |
-| Architecture response | 1 API instance, small Postgres | 2–3 API instances, larger Postgres, read replica | Hash-partition traces by user; archive events older than 90 days to Parquet and columnar storage; a dedicated worker pool for insights |
-
-- **Hot path cost.** Planning a session loads one user's traces through `(user_id, …)` indexes. That is a few thousand rows, under 50 ms of CPU. Content comes from the in-process index, and the client fetches content from the CDN, not the API.
-- **Batch cost.** Nightly insights at about 100 ms per active user is about 17 CPU-minutes at 10k DAU, which is trivially parallel across workers.
-- **Performance budgets (p95):** session plan < 300 ms, answer batch < 150 ms, home < 200 ms, LCP < 2.5 s on a mid-range phone.
-- **Extraction seams, in order of likely need:**
-  1. the insights batch moves to its own worker pool;
-  2. analytics move to columnar storage;
-  3. content serving goes fully static.
-
-  Nothing needs to become a microservice before 100k DAU.
-
-→ arch §8.4
+- Content comes from the in-process index, and the client fetches content from the CDN, not the API. → arch §8.4
+- Extraction seam (third in order of likely need): content serving goes fully static. → arch §8.4
