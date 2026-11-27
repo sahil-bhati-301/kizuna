@@ -9,7 +9,7 @@ Light: 🟢 green at session 11 (week 30%, 5h 26%). Run /budget with /usage figu
 | W01-1 | Pipeline app, sources lock, fetcher | B/S | ✅ merged (PR #9) |
 | W01-6 | kernel: pure code under src/domain/ | B/S | ✅ merged (PR #10) |
 | W01-2 | content Drizzle schema and types | B/M | ✅ merged (PR #12) |
-| W01-7 | CI hygiene: Node 24 actions, .nvmrc | C/S | 🔄 in review (PR #15, session 11) |
+| W01-7 | CI hygiene: Node 24 actions, .nvmrc | C/S | ✅ merged (PR #15) |
 | W01-4 | Normalisation library | A/M | ✅ merged (PR #11) |
 | W01-3 | KANJIDIC2 parser and Jōyō import | A/M | ✅ merged (PR #13) |
 | W01-5 | KRADFILE parser | B/S | 🔄 in review (PR #14, session 10) |
