@@ -97,6 +97,7 @@ const REPORT_KEYS = [
   'unknownPositions',
   'codepointlessComponents',
   'unmatchedParts',
+  'nonKanjiSkipped',
   'ambiguousRadicals',
 ] as const satisfies readonly (keyof KanjivgReport)[];
 

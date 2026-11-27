@@ -16,6 +16,8 @@
  * - Elements inside a later part belong to the merged row: parent = part 1, depth = its depth + 1.
  * - The merged row is phonetic (or a semantic candidate) when any of its parts carries the mark.
  * - kvg:element values that are not one code point (CDP-8BB0, ...) have no code point (Q3).
+ * - Orchestrator decision: <kanji> entries that are not Han script (kana, Latin, punctuation, 〆)
+ *   are skipped and counted (`nonKanjiSkipped`); compatibility ideographs are kept.
  * - The kanji literal is the code point of the <kanji> ID, kept as is (no NFC), so a
  *   compatibility ideograph does not collide with its unified form.
  */
@@ -73,6 +75,8 @@ export interface KanjivgReport {
   readonly codepointlessComponents: number;
   /** Split parts n > 1 with no part n-1 to join; kept as rows of their own. */
   readonly unmatchedParts: number;
+  /** <kanji> entries whose character is not Han script (kana, Latin, punctuation); skipped. */
+  readonly nonKanjiSkipped: number;
   /** Component rows whose radical variant needs a position (阝); radicalNumber is null. */
   readonly ambiguousRadicals: number;
 }
@@ -118,6 +122,8 @@ const GETA = '〓';
 const NIKUZUKI = '⺼';
 const SEMANTIC_RADICALS: ReadonlySet<string> = new Set(['general', 'tradit']);
 const KANJI_ID = /^kvg:kanji_([0-9a-f]{5})$/u;
+/** A <kanji> is loaded when its character is Han script (kanji, radical forms, 々). */
+const HAN = /^\p{Script=Han}$/u;
 
 interface RawRow {
   readonly kvgId: string;
@@ -161,6 +167,7 @@ class KanjiBuilder {
   private stack: Frame[] = [];
   private strokes = 0;
   unmatchedParts = 0;
+  nonKanjiSkipped = 0;
   private readonly onKanji: (literal: string, rows: RawRow[], strokes: number) => void;
 
   constructor(onKanji: (literal: string, rows: RawRow[], strokes: number) => void) {
@@ -192,7 +199,13 @@ class KanjiBuilder {
     const id = attrs['id'] ?? '';
     const m = KANJI_ID.exec(id);
     if (!m) throw new KanjivgDataError(`<kanji> has an unexpected id "${id}"`);
-    this.literal = String.fromCodePoint(Number.parseInt(m[1] as string, 16));
+    const literal = String.fromCodePoint(Number.parseInt(m[1] as string, 16));
+    if (!HAN.test(literal)) {
+      // Kana, Latin and punctuation are out of scope (WP): skipped and counted.
+      this.nonKanjiSkipped++;
+      return;
+    }
+    this.literal = literal;
     this.rows = [];
     this.groups = [];
     this.stack = [];
@@ -311,6 +324,7 @@ export async function parseKanjivg(
       unknownPositions: kanjiComponents.filter((r) => r.position === 'unknown').length,
       codepointlessComponents: componentRows.filter((c) => c.kanjiVgId !== null).length,
       unmatchedParts: builder.unmatchedParts,
+      nonKanjiSkipped: builder.nonKanjiSkipped,
       ambiguousRadicals,
     },
   };

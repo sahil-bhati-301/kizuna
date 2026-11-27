@@ -899,6 +899,7 @@
     "unknownPositions": 0,
     "codepointlessComponents": 6,
     "unmatchedParts": 0,
+    "nonKanjiSkipped": 0,
     "ambiguousRadicals": 0
   }
 }
