@@ -8,6 +8,7 @@ Out-of-scope finds go here, not into code. One line each, with the WP that found
 ## Ideas
 - (W00-4) spec cross-check: optional allowlist so intended duplicate numbers stop showing, then fail on new duplicates.
 - (W00-4) budget guard: the tool-call fallback fired WRAP-UP while the owner reported low usage; consider a higher fallback or prompting for /budget figures first.
+- (W00-6) cloud environment: start dockerd in the environment setup script so the Testcontainers harness runs in cloud sessions without a manual step.
 
 ## Deferred
 - (W00-1 review) dependency-cruiser: add an apps-to-apps boundary rule once apps/ exists.
