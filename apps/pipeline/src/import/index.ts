@@ -5,6 +5,8 @@
 import { applyJoyo, parseJoyoTable } from '../domain/joyo/index.ts';
 import type { JoyoEntry, JoyoReport } from '../domain/joyo/index.ts';
 import { parseKanjidic } from '../domain/kanjidic/index.ts';
+import { parseKradfileBytes } from '../domain/kradfile/index.ts';
+import type { BadLine, KradRow } from '../domain/kradfile/index.ts';
 import type {
   ExcludedCharacter,
   KanjiRow,
@@ -149,5 +151,34 @@ export function serialiseRows(result: ImportResult): string {
         reason: e.reason,
       })),
     },
+  })}\n`;
+}
+
+export interface KradfileResult {
+  readonly kanji: readonly KradRow[];
+  readonly badLines: readonly BadLine[];
+}
+
+/** Decodes and parses KRADFILE bytes; kanji sorted by code point (the file is not). */
+export function importKradfile(bytes: Uint8Array, provenance: Provenance): KradfileResult {
+  const parsed = parseKradfileBytes(bytes, provenance);
+  return {
+    kanji: [...parsed.kanji].sort((a, b) => a.codepoint - b.codepoint),
+    badLines: parsed.badLines,
+  };
+}
+
+/** JSON with a fixed key order and a trailing newline: byte-stable for the same input. */
+export function serialiseKradfile(result: KradfileResult): string {
+  return `${stringify({
+    kanji: result.kanji.map((k) => ({
+      literal: k.literal,
+      codepoint: k.codepoint,
+      components: k.components.map((c) => ({ component: c.component, radical: c.radical })),
+      source: k.source,
+      sourceVersion: k.sourceVersion,
+      license: k.license,
+    })),
+    badLines: result.badLines.map((b) => ({ line: b.line, text: b.text, reason: b.reason })),
   })}\n`;
 }
