@@ -487,7 +487,7 @@
       "kind": "kun",
       "kana": "か",
       "okurigana": null,
-      "isJoyo": false,
+      "isJoyo": true,
       "source": "kanjidic2",
       "sourceVersion": "2026-331",
       "license": "CC BY-SA 4.0"
@@ -872,7 +872,7 @@
       "kind": "kun",
       "kana": "なま",
       "okurigana": null,
-      "isJoyo": true,
+      "isJoyo": false,
       "source": "kanjidic2",
       "sourceVersion": "2026-331",
       "license": "CC BY-SA 4.0"
@@ -1264,7 +1264,18 @@
     }
   ],
   "report": {
-    "missingKanji": ["丼"],
+    "missingKanji": [
+      {
+        "kanji": "丼",
+        "readings": [
+          {
+            "literal": "丼",
+            "kind": "kun",
+            "reading": "どんぶり"
+          }
+        ]
+      }
+    ],
     "missingReadings": [
       {
         "literal": "食",
@@ -1272,6 +1283,13 @@
         "reading": "め.し"
       }
     ],
-    "excludedCharacters": []
+    "excludedCharacters": [
+      {
+        "literal": "逸",
+        "codepoint": 64103,
+        "nfcLiteral": "逸",
+        "reason": "compatibility-ideograph"
+      }
+    ]
   }
 }
