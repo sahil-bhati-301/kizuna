@@ -15,3 +15,5 @@ Written by the budget guard. "Ended by" is one of `done`, `wrap-up`, `checkpoint
 | 2026-11-27 | 5 | 0189b61d | main | ? | ? | ? | ? | ? | unknown | — |
 | 2026-11-27 | 5 | b5de7fd2 | claude/practical-mendel-hecci7 | ? | ? | ? | ? | ? | unknown | — |
 | 2026-11-27 | 5 | 05bfeb49 | main | ? | ? | ? | ? | ? | unknown | — |
+| 2026-11-27 | 5 | 05bfeb49 | main | ? | ? | ? | ? | ? | unknown | — |
+| 2026-11-27 | 5 | 3829c5b3 | claude/nice-curie-xu4v0y | ? | ? | 33% | ? | 53% | green | — |

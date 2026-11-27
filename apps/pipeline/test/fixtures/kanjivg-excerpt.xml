@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (C) 2009-2013 Ulrich Apel.
+This work is distributed under the conditions of the Creative Commons
+Attribution-Share Alike 3.0 Licence. This means you are free:
+* to Share - to copy, distribute and transmit the work
+* to Remix - to adapt the work
+
+Under the following conditions:
+* Attribution. You must attribute the work by stating your use of KanjiVG in
+  your own copyright header and linking to KanjiVG's website
+  (http://kanjivg.tagaini.net)
+* Share Alike. If you alter, transform, or build upon this work, you may
+  distribute the resulting work only under the same or similar license to this
+  one.
+
+See http://creativecommons.org/licenses/by-sa/3.0/ for more details.
+
+Kizuna test fixture (W02-1): an excerpt of the KanjiVG release bundle (kanjivg.xml),
+built from KanjiVG commit 9d7220df (kanji/*.svg) by the same slicing as kvg.py release():
+one <kanjivg> root; per base SVG (0xxxx.svg, no variant files) one
+<kanji id="kvg:kanji_XXXXX"> holding the content of <g id="kvg:StrokePaths_XXXXX">, that is
+the kanji root <g id="kvg:XXXXX" kvg:element="..."> with its nested <g> element tree and
+<path> strokes. The StrokeNumbers group, the SVG wrapper and the DTD are dropped.
+Kanji: 054c0 056de 05f85 06301 0660e 06c60 07279 07af6 0809d 08863 (哀 回 待 持 明 池 特 競 肝 衣).
+Unmodified KanjiVG data; redistributed under CC BY-SA 3.0. http://kanjivg.tagaini.net
+-->
+<kanjivg xmlns:kvg='http://kanjivg.tagaini.net'>
+<kanji id="kvg:kanji_054c0">
+<g id="kvg:054c0" kvg:element="哀">
+	<g id="kvg:054c0-g1" kvg:element="衣" kvg:part="1" kvg:position="top" kvg:phon="衣1">
+		<g id="kvg:054c0-g2" kvg:element="亠" kvg:position="top" kvg:radical="nelson">
+			<path id="kvg:054c0-s1" kvg:type="㇑a" d="M52.75,10.1c1.14,1.14,1.81,2.53,1.81,4.18c0,4.21-0.06,5.09-0.06,7.72"/>
+			<path id="kvg:054c0-s2" kvg:type="㇐" d="M18.25,25.04c3.5,0.71,5.92,0.75,9.11,0.39c13.77-1.55,40.1-3.75,54.65-4.35c2.83-0.12,6.3-0.22,9,0.78"/>
+		</g>
+	</g>
+	<g id="kvg:054c0-g3" kvg:position="bottom">
+		<g id="kvg:054c0-g4" kvg:element="口" kvg:radical="tradit">
+			<path id="kvg:054c0-s3" kvg:type="㇑" d="M32,36.16c0.79,0.79,1.43,1.73,1.88,3.05c0.99,2.91,2.13,7.41,3.02,11.45c0.38,1.74,0.72,3.4,0.98,4.81"/>
+			<path id="kvg:054c0-s4" kvg:type="㇕b" d="M33.94,37.23c9.63-1.19,27.67-3.14,34.94-3.81c2.79-0.26,5.42,0.3,4.34,3.61c-1.02,3.11-1.68,4.42-3.44,10.28"/>
+			<path id="kvg:054c0-s5" kvg:type="㇐b" d="M38.56,52.15c5.32-0.41,19.03-2.37,28.44-3.39c1.93-0.21,3.64-0.37,5.02-0.46"/>
+		</g>
+		<g id="kvg:054c0-g5" kvg:element="衣" kvg:part="2" kvg:position="bottom" kvg:phon="衣2">
+			<path id="kvg:054c0-s6" kvg:type="㇒" d="M45.99,54.14c0.12,1.15-0.17,2.17-0.68,3.19c-3.2,6.4-11.29,18.18-27,26.64"/>
+			<path id="kvg:054c0-s7" kvg:type="㇙" d="M38.5,71.74c0.69,0.69,1,1.76,1,3c0,11.82-0.07,16.89-0.07,19.94c0,2,0.82,2.95,2.93,1.14c1.75-1.5,14.39-11.31,17.1-13.09"/>
+			<path id="kvg:054c0-s8" kvg:type="㇒" d="M78.54,50.89c-0.04,0.98-0.29,1.86-0.78,2.5c-3.07,4.01-7.22,7.65-16.45,14.33"/>
+			<path id="kvg:054c0-s9" kvg:type="㇏" d="M51.25,62.75c3.39,0,7.82,5.07,29.71,24.17c2.67,2.33,5.42,4.2,9.29,6.08"/>
+		</g>
+	</g>
+</g>
+</kanji>
+<kanji id="kvg:kanji_056de">
+<g id="kvg:056de" kvg:element="回">
+	<g id="kvg:056de-g1" kvg:element="囗" kvg:part="1" kvg:position="kamae" kvg:radical="general">
+		<path id="kvg:056de-s1" kvg:type="㇑" d="M17.5,26.25c1.06,1.06,1.9,3.09,2.11,4.98c1.27,11.64,2.42,29.54,4.16,51.27c0.17,2.12,0.34,2.78,0.53,5"/>
+		<path id="kvg:056de-s2" kvg:type="㇕a" d="M20.54,28.66c20.23-2.59,57.72-6.91,68.71-6.91c2.75,0,3.82,2.51,3.5,5.5c-1.35,12.85-3.11,34.06-5.64,51.98c-0.28,1.95-0.56,2.88-0.86,4.77"/>
+	</g>
+	<g id="kvg:056de-g2" kvg:element="口">
+		<path id="kvg:056de-s3" kvg:type="㇑" d="M37.75,45.14c0.8,0.64,1.29,1.45,1.47,2.45c1.2,3.61,2.35,10.46,3.54,16.12c0.28,1.32,0.53,2.1,0.74,3.3"/>
+		<path id="kvg:056de-s4" kvg:type="㇕b" d="M40.03,46.4c7.97-1.53,22.18-3.48,26.41-3.91c1.8-0.19,2.89,1.11,2.63,2.21c-0.88,3.74-3.13,11.37-4.34,16.3"/>
+		<path id="kvg:056de-s5" kvg:type="㇐b" d="M44.25,64.5c5.23-0.84,12.05-1.6,18.8-2.43c1.31-0.16,2.62-0.32,3.92-0.46"/>
+	</g>
+	<g id="kvg:056de-g3" kvg:element="囗" kvg:part="2" kvg:position="kamae" kvg:radical="general">
+		<path id="kvg:056de-s6" kvg:type="㇐a" d="M25.25,84.76c15.54-1.45,41.13-3.14,60.75-4.51"/>
+	</g>
+</g>
+</kanji>
+<kanji id="kvg:kanji_05f85">
+<g id="kvg:05f85" kvg:element="待">
+	<g id="kvg:05f85-g1" kvg:element="彳" kvg:position="left" kvg:radical="general">
+		<path id="kvg:05f85-s1" kvg:type="㇒" d="M35.33,15.25c0.15,1.08-0.22,1.8-0.92,2.65c-3.3,4-9.9,10.35-18.79,15.35"/>
+		<g id="kvg:05f85-g2" kvg:element="亻" kvg:variant="true" kvg:original="人">
+			<path id="kvg:05f85-s2" kvg:type="㇒" d="M35.84,32.75c0.07,0.75-0.17,2.1-0.64,3.03c-3.32,6.54-11.54,17.41-23.7,28.47"/>
+			<path id="kvg:05f85-s3" kvg:type="㇑" d="M25.97,52c1.01,1.01,1.41,2.5,1.41,3.88c0,5.46,0,27.73-0.05,37.12c-0.01,2.05-0.02,3.49-0.03,4"/>
+		</g>
+	</g>
+	<g id="kvg:05f85-g3" kvg:element="寺" kvg:position="right" kvg:phon="寺">
+		<g id="kvg:05f85-g4" kvg:element="土" kvg:position="top">
+			<path id="kvg:05f85-s4" kvg:type="㇐" d="M48.11,27.78c2.02,0.35,3.66,0.24,5.4,0.02c6.01-0.75,17.57-2.51,25.74-2.93c1.72-0.09,3.42-0.18,5.11,0.21"/>
+			<path id="kvg:05f85-s5" kvg:type="㇑a" d="M64.35,11.87c1.14,1.14,1.51,2.32,1.51,4c0,8.76-0.06,22.88-0.06,25.35"/>
+			<path id="kvg:05f85-s6" kvg:type="㇐" d="M39.63,44.1c2.87,0.65,5.83,0.36,8.61,0.05c15.05-1.65,30.01-3.28,42.26-4.08c2.44-0.16,4.98-0.33,7.38,0.15"/>
+		</g>
+		<g id="kvg:05f85-g5" kvg:element="寸" kvg:position="bottom">
+			<path id="kvg:05f85-s7" kvg:type="㇐" d="M40.03,60.99c2.22,0.51,4.77,0.43,6.99,0.25c10.69-0.9,30.7-3.37,41.36-4.03c2.47-0.15,4.91-0.3,7.34,0.29"/>
+			<path id="kvg:05f85-s8" kvg:type="㇚" d="M76.25,47.5c1,1.25,1.91,3,1.91,4.9c0,12.98-0.13,36.67-0.13,40.77c0,7.31-4.78,3.71-8.05-0.04"/>
+			<path id="kvg:05f85-s9" kvg:type="㇔" d="M54.03,70.38c2.91,1.83,7.51,7.53,8.24,10.38"/>
+		</g>
+	</g>
+</g>
+</kanji>
+<kanji id="kvg:kanji_06301">
+<g id="kvg:06301" kvg:element="持">
+	<g id="kvg:06301-g1" kvg:element="扌" kvg:variant="true" kvg:original="手" kvg:position="left" kvg:radical="general">
+		<path id="kvg:06301-s1" kvg:type="㇐" d="M15.67,37c1.46,0.5,3.09,0.44,5.08,0.25c2.19-0.21,12.99-2.13,19.01-2.92c1.19-0.16,2.19-0.25,2.9-0.25"/>
+		<path id="kvg:06301-s2" kvg:type="㇚" d="M30.77,13.83c1.14,1.14,1.76,2.92,1.76,5.02c0,14.56-0.01,62.92-0.01,67.87c0,11.52-6.21,2.5-7.71,1.25"/>
+		<path id="kvg:06301-s3" kvg:type="㇀" d="M14.38,65.87c1.37,0.45,2.71,0.29,4.2-0.74c1.55-1.08,12.99-10.2,19.55-15.38"/>
+	</g>
+	<g id="kvg:06301-g2" kvg:element="寺" kvg:position="right" kvg:phon="寺">
+		<g id="kvg:06301-g3" kvg:element="土">
+			<path id="kvg:06301-s4" kvg:type="㇐" d="M50.71,29.03c1.41,0.22,3.56,0.2,4.68,0.06c7.48-0.96,18.86-2.34,26.76-3.06c1.86-0.17,2.99,0.15,3.92,0.3"/>
+			<path id="kvg:06301-s5" kvg:type="㇑a" d="M66.95,11.62c0.78,0.78,1.36,1.99,1.36,3.5c0,8.26,0.02,26.13,0.02,28.6"/>
+			<path id="kvg:06301-s6" kvg:type="㇐" d="M44.63,45.35c1.53,0.44,4.32,0.6,5.85,0.44c12.52-1.29,26.9-3.16,39.07-3.99c2.53-0.17,4.06,0.21,5.34,0.43"/>
+		</g>
+		<g id="kvg:06301-g4" kvg:element="寸">
+			<path id="kvg:06301-s7" kvg:type="㇐" d="M44.57,60.99c1.77,0.46,5.01,0.64,6.79,0.46c10.26-1.07,27.3-3.2,37.82-3.89c2.93-0.19,4.72,0.22,6.19,0.44"/>
+			<path id="kvg:06301-s8" kvg:type="㇚" d="M77.06,46.08c1.12,1.12,1.72,3.04,1.72,4.56c0,12.03-0.09,34.43-0.09,38.52c0,10.21-5.31,3.08-7.24,0.71"/>
+			<path id="kvg:06301-s9" kvg:type="㇔" d="M56.25,70.5c2.58,1.59,6.66,6.53,7.3,9"/>
+		</g>
+	</g>
+</g>
+</kanji>
+<kanji id="kvg:kanji_0660e">
+<g id="kvg:0660e" kvg:element="明">
+	<g id="kvg:0660e-g1" kvg:element="日" kvg:position="left" kvg:radical="general">
+		<path id="kvg:0660e-s1" kvg:type="㇑" d="M16.75,25.22c0.89,0.89,1.32,2.29,1.32,3.66c0,1.11,0.07,27.44,0,37.63c-0.02,2.32-0.02,3.78-0.02,3.91"/>
+		<path id="kvg:0660e-s2" kvg:type="㇕a" d="M19.29,27.75c5.66-0.81,19.54-2.59,21.22-2.75c1.76-0.17,2.89,1.89,2.75,2.91c-0.23,1.7-0.45,27.34-0.52,36.6c-0.01,1.9-0.02,3.11-0.02,3.29"/>
+		<path id="kvg:0660e-s3" kvg:type="㇐a" d="M19.16,46.97C23.5,46.5,37,45.12,41.77,44.76"/>
+		<path id="kvg:0660e-s4" kvg:type="㇐a" d="M19,66.59c8.5-0.97,14.37-1.59,22.49-2.11"/>
+	</g>
+	<g id="kvg:0660e-g2" kvg:element="月" kvg:position="right">
+		<path id="kvg:0660e-s5" kvg:type="㇓" d="M57.55,16c0.95,1.25,1.09,2.48,1.11,3.5c1.09,49.25-4.41,64.75-17.41,75.75"/>
+		<path id="kvg:0660e-s6" kvg:type="㇆a" d="M59.5,17.98c6.56-1.04,21.76-3.51,23.07-3.73c2.97-0.5,5.21,0.62,5.21,4.5c0,1.49,0.19,50.25,0.19,70.5c0,11.88-7.22,3.5-8.3,2.5"/>
+		<path id="kvg:0660e-s7" kvg:type="㇐a" d="M59.77,39c7.85-1,19.73-2.25,26.95-2.75"/>
+		<path id="kvg:0660e-s8" kvg:type="㇐a" d="M59.25,57.75c6.62-0.62,20-1.5,27.36-2"/>
+	</g>
+</g>
+</kanji>
+<kanji id="kvg:kanji_06c60">
+<g id="kvg:06c60" kvg:element="池">
+	<g id="kvg:06c60-g1" kvg:element="氵" kvg:variant="true" kvg:original="水" kvg:position="left" kvg:radical="general">
+		<path id="kvg:06c60-s1" kvg:type="㇔" d="M21.75,19.75c3.88,1.5,10.03,6.17,11,8.5"/>
+		<path id="kvg:06c60-s2" kvg:type="㇔" d="M16.75,42.38c3.62,1.48,9.34,6.08,10.25,8.38"/>
+		<path id="kvg:06c60-s3" kvg:type="㇀" d="M15.5,89.98c2,0.52,3.81-0.19,4.75-1.74c2.07-3.41,4.09-7.55,7.25-14.84"/>
+	</g>
+	<g id="kvg:06c60-g2" kvg:element="也" kvg:position="right" kvg:phon="也">
+		<path id="kvg:06c60-s4" kvg:type="㇆v" d="M35,54.06c2.96,0.91,5.47,0.57,8.39-0.27C54.1,50.68,80.11,40.95,85.5,39c2.63-0.95,5.25,0,4.76,2.86c-0.93,5.4-4.5,18.28-6.26,22.39c-2.25,5.25-4.25,3.75-7.25,0"/>
+		<path id="kvg:06c60-s5" kvg:type="㇑" d="M65,19c0.94,0.94,1.75,2.62,1.75,3.75c0,5.12-0.18,29.87-0.37,43.5c-0.04,2.8-0.08,4.93-0.13,6"/>
+		<g id="kvg:06c60-g3" kvg:element="乙" kvg:variant="true">
+			<path id="kvg:06c60-s6" kvg:type="㇟" d="M45.99,40.12c1.26,1.26,1.77,3.13,1.77,4.85c0,7.07-0.63,18.39-0.63,26.79c0,17.5,1.62,19.75,24.37,19.75s24.39-2,24.39-13.07"/>
+		</g>
+	</g>
+</g>
+</kanji>
+<kanji id="kvg:kanji_07279">
+<g id="kvg:07279" kvg:element="特">
+	<g id="kvg:07279-g1" kvg:element="牛" kvg:variant="true" kvg:position="left" kvg:radical="general">
+		<path id="kvg:07279-s1" kvg:type="㇒" d="M22.03,26.39c0.22,0.73,0.4,1.84,0.2,2.69c-1.35,5.79-4.6,15.04-9.42,23.38"/>
+		<path id="kvg:07279-s2" kvg:type="㇐" d="M21.25,41.5c1.25,0.12,2.07,0.06,3.28-0.12c7.6-1.13,12.97-2.13,17.22-2.88c1.23-0.22,3.25-0.38,4.5,0"/>
+		<path id="kvg:07279-s3" kvg:type="㇑" d="M31.87,15c0.94,0.94,1.46,2.62,1.46,4c0,0.87,0.02,51.18,0.03,70.87c0,3.48,0,6,0,7.13"/>
+		<path id="kvg:07279-s4" kvg:type="㇀" d="M13.08,71.24c1.17,0.46,2.29,0.46,3.55-0.29c1.12-0.67,20.1-12.21,24.87-15.44"/>
+	</g>
+	<g id="kvg:07279-g2" kvg:element="寺" kvg:position="right" kvg:phon="寺">
+		<g id="kvg:07279-g3" kvg:element="土" kvg:position="top">
+			<path id="kvg:07279-s5" kvg:type="㇐" d="M52.38,27.53c1.37,0.31,3.9,0.21,5.25,0.06c5.54-0.6,19.12-2.59,26.33-3.06c2.27-0.15,3.65,0.15,4.79,0.3"/>
+			<path id="kvg:07279-s6" kvg:type="㇑a" d="M67.92,11.62c0.86,0.85,1.27,1.98,1.27,3.5c0,9.89-0.11,23.64-0.11,26.85"/>
+			<path id="kvg:07279-s7" kvg:type="㇐" d="M46.13,45.1c1.77,0.44,5.05,0.44,6.8,0.19c11.58-1.66,28.37-3.54,39.25-4.24c2.95-0.19,4.73-0.04,6.21,0.18"/>
+		</g>
+		<g id="kvg:07279-g4" kvg:element="寸" kvg:position="bottom">
+			<path id="kvg:07279-s8" kvg:type="㇐" d="M49.38,60.99c1.56,0.46,4.43,0.66,5.97,0.46c13.15-1.7,25.78-3.2,35.58-4.14c2.58-0.25,4.4-0.03,5.7,0.19"/>
+			<path id="kvg:07279-s9" kvg:type="㇚" d="M80.07,45.33c0.99,0.99,1.65,2.29,1.65,3.81c0,12.6,0.1,39.35,0.1,44.02c0,9.08-5.96,1.47-7.96,0.21"/>
+			<path id="kvg:07279-s10" kvg:type="㇔" d="M60.75,70.25c2.03,1.46,5.24,5.99,5.75,8.25"/>
+		</g>
+	</g>
+</g>
+</kanji>
+<kanji id="kvg:kanji_07af6">
+<g id="kvg:07af6" kvg:element="競">
+	<g id="kvg:07af6-g1" kvg:position="left">
+		<g id="kvg:07af6-g2" kvg:element="立" kvg:position="top" kvg:radical="general">
+			<g id="kvg:07af6-g3" kvg:element="亠" kvg:position="top">
+				<path id="kvg:07af6-s1" kvg:type="㇑a" d="M28.74,15.05c1.11,0.64,1.92,1.68,1.92,3.41c0,1.73,0,4.21,0,8.91"/>
+				<path id="kvg:07af6-s2" kvg:type="㇐" d="M15.28,29.38c1.13,0.14,2.48,0.19,3.61,0.06c4.97-0.56,15.5-1.96,20.99-2.5c1.32-0.13,2.68-0.26,4-0.19"/>
+			</g>
+			<g id="kvg:07af6-g4" kvg:position="bottom">
+				<path id="kvg:07af6-s3" kvg:type="㇔" d="M21.35,33.28c1.65,1.84,3.56,6.17,3.83,8.58"/>
+				<path id="kvg:07af6-s4" kvg:type="㇒" d="M38.78,30.39c0.35,0.61,0.49,1.5,0.35,1.91c-1.25,3.58-2.92,6.05-4.12,8.37"/>
+				<path id="kvg:07af6-s5" kvg:type="㇐" d="M11.03,45.82c1.59,0.31,3.24,0.54,4.84,0.32c8.25-1.14,17.4-2.55,24.98-3.4c1.47-0.16,3.14-0.24,4.6-0.03"/>
+			</g>
+		</g>
+		<g id="kvg:07af6-g5" kvg:element="兄" kvg:position="bottom">
+			<g id="kvg:07af6-g6" kvg:element="口" kvg:position="top">
+				<path id="kvg:07af6-s6" kvg:type="㇑" d="M16.86,53.72c0.96,0.79,1.5,1.81,1.79,3.02c0.57,2.36,1.03,4.91,1.87,8.61c0.18,0.79,0.37,1.63,0.59,2.53"/>
+				<path id="kvg:07af6-s7" kvg:type="㇕b" d="M18.7,54.69c6.02-0.93,16.13-2.77,20.42-3.41c1.47-0.22,2.82,1.13,2.54,2.49c-0.71,3.45-1.16,4.23-2.66,8.65"/>
+				<path id="kvg:07af6-s8" kvg:type="㇐b" d="M21.68,65.46c3.78-0.24,10.32-1.49,15.97-2.15c0.99-0.12,1.95-0.21,2.86-0.28"/>
+			</g>
+			<g id="kvg:07af6-g7" kvg:element="儿" kvg:original="八" kvg:position="bottom">
+				<g id="kvg:07af6-g8" kvg:element="丿">
+					<path id="kvg:07af6-s9" kvg:type="㇒" d="M24.53,70.55c0.04,0.55,0.08,1.42-0.07,2.22C23.55,77.45,18.71,88.39,11.25,94"/>
+				</g>
+				<path id="kvg:07af6-s10" kvg:type="㇟" d="M34.06,66.88c1.03,1.03,1.43,2.13,1.45,3.51c0.08,4.81-0.26,11.86-0.26,17.11c0,3,0.52,3.75,2.5,1.25c2.38-3,5.88-7.12,11.75-13"/>
+			</g>
+		</g>
+	</g>
+	<g id="kvg:07af6-g9" kvg:position="right">
+		<g id="kvg:07af6-g10" kvg:element="立" kvg:position="top">
+			<g id="kvg:07af6-g11" kvg:element="亠" kvg:position="top">
+				<path id="kvg:07af6-s11" kvg:type="㇑a" d="M67.91,12.92c0.9,0.9,1.33,2.2,1.33,3.67c0,2,0,1.48,0,6.89"/>
+				<path id="kvg:07af6-s12" kvg:type="㇐" d="M53.42,26.13c1.33,0.16,2.78,0.15,4.1-0.03c5.34-0.7,17.87-2.49,24.25-3.26c1.68-0.2,3.36-0.17,5.05-0.09"/>
+			</g>
+			<g id="kvg:07af6-g12" kvg:position="bottom">
+				<path id="kvg:07af6-s13" kvg:type="㇔" d="M59.62,29.62c2.04,2.25,3.83,6.54,4.18,8.74"/>
+				<path id="kvg:07af6-s14" kvg:type="㇒" d="M79.95,26.64c0.3,0.61,0.42,1.61,0.16,2.41c-0.95,2.85-3.3,6.8-4.62,9.12"/>
+				<path id="kvg:07af6-s15" kvg:type="㇐" d="M50.78,41.82c2,0.19,4,0.08,5.98-0.12c9.82-0.99,20.76-2.65,31.23-3.47c1.91-0.15,4-0.1,5.72,0.24"/>
+			</g>
+		</g>
+		<g id="kvg:07af6-g13" kvg:element="兄" kvg:position="bottom">
+			<g id="kvg:07af6-g14" kvg:element="口" kvg:position="top">
+				<path id="kvg:07af6-s16" kvg:type="㇑" d="M55.48,50.87c0.9,0.63,1.36,1.9,1.44,2.96c0.5,2.49,1.33,5.99,2.03,9.66c0.22,1.19,0.43,2.4,0.61,3.59"/>
+				<path id="kvg:07af6-s17" kvg:type="㇕b" d="M57.21,51.94c6.31-0.98,17.9-2.16,23.43-2.91c2.97-0.4,4.65,0.84,3.65,3.87c-0.77,2.35-1.96,5.37-2.85,8.18"/>
+				<path id="kvg:07af6-s18" kvg:type="㇐b" d="M60.42,63.98c5.44-0.6,12.6-1.21,18.84-1.7c1.31-0.1,2.58-0.2,3.78-0.29"/>
+			</g>
+			<g id="kvg:07af6-g15" kvg:element="儿" kvg:original="八" kvg:position="bottom">
+				<g id="kvg:07af6-g16" kvg:element="丿">
+					<path id="kvg:07af6-s19" kvg:type="㇒" d="M63.38,70c0.04,0.58,0.05,1.5-0.09,2.34c-1.09,6.63-6.63,18.4-15.54,22.41"/>
+				</g>
+				<path id="kvg:07af6-s20" kvg:type="㇟" d="M72.68,66.2c0.93,0.93,1.29,2.31,1.29,3.87c0,5.93,0.03,10.55,0.03,15.81c0,7.38,1.51,8.47,11.76,8.47c8.37,0,9.63-1.22,9.63-7.23"/>
+			</g>
+		</g>
+	</g>
+</g>
+</kanji>
+<kanji id="kvg:kanji_0809d">
+<g id="kvg:0809d" kvg:element="肝">
+	<g id="kvg:0809d-g1" kvg:element="月" kvg:variant="true" kvg:original="肉" kvg:position="left" kvg:radical="general">
+		<path id="kvg:0809d-s1" kvg:type="㇓" d="M19.41,17.74c0.8,0.8,1.2,2.01,1.2,3.55c0,40.46-1.61,53.46-9.61,67.1"/>
+		<path id="kvg:0809d-s2" kvg:type="㇆a" d="M21.56,19.56c4.73-1.14,12.33-2.99,16.57-3.55c3.21-0.43,4.16,0.95,4.16,3.99c-0.01,8.26-0.1,44.7-0.1,61.55c0,12.95-3.66,6.17-6.78,3.04"/>
+		<path id="kvg:0809d-s3" kvg:type="㇐a" d="M21.81,37.2c7.44-1.08,13.44-1.95,19.49-2.58"/>
+		<path id="kvg:0809d-s4" kvg:type="㇐a" d="M21,55.16c6-0.66,14.28-1.53,20.15-1.95"/>
+	</g>
+	<g id="kvg:0809d-g2" kvg:element="干" kvg:position="right" kvg:phon="干">
+		<path id="kvg:0809d-s5" kvg:type="㇐" d="M55.87,21.16c2.25,0.47,4.39,0.2,6.13-0.01c5.43-0.66,15.22-1.92,21.76-2.53c1.9-0.18,3.85-0.29,5.71,0.25"/>
+		<g id="kvg:0809d-g3" kvg:element="十">
+			<path id="kvg:0809d-s6" kvg:type="㇐" d="M49.63,44.48c2.32,0.74,4.9,0.23,7.25-0.01c9.72-0.98,24.58-2.42,33.51-3.08c2.22-0.16,4.3-0.3,6.49,0.12"/>
+			<path id="kvg:0809d-s7" kvg:type="㇑" d="M72.06,22.63c1.09,1.09,1.54,2.62,1.54,4.33c0,2.92-0.06,45.71-0.08,62.29c0,3.5-0.01,5.83-0.01,6.38"/>
+		</g>
+	</g>
+</g>
+</kanji>
+<kanji id="kvg:kanji_08863">
+<g id="kvg:08863" kvg:element="衣" kvg:radical="general">
+	<g id="kvg:08863-g1" kvg:element="亠" kvg:position="top">
+		<path id="kvg:08863-s1" kvg:type="㇑a" d="M52.11,13.25c1.38,1.38,1.98,2.88,1.98,4.66c0,2.34-0.15,8.59-0.15,11.15"/>
+		<path id="kvg:08863-s2" kvg:type="㇐" d="M13.25,33.11c3.25,0.64,5.81,0.6,8.88,0.32c15.74-1.42,41.74-4.55,58.12-5.85c2.9-0.23,6.38-0.33,9.5,0.33"/>
+	</g>
+	<g id="kvg:08863-g2" kvg:position="bottom">
+		<path id="kvg:08863-s3" kvg:type="㇒" d="M46.72,33.89c0,1.11-0.14,2.25-0.68,3.39C42.56,44.65,30,59,13.81,69.72"/>
+		<path id="kvg:08863-s4" kvg:type="㇙" d="M37.5,53.75c0.88,0.88,1.25,2.12,1.25,3.5c0,11.82,0.18,31.19,0.18,33.19c0,2.81,1.01,3.02,3.31,1.05c4.38-3.74,13.64-11.39,15.47-12.76"/>
+		<path id="kvg:08863-s5" kvg:type="㇒" d="M77,38.89c0.25,1.11-0.04,1.96-0.75,2.86c-3.5,4.38-8,8.25-18.19,15.22"/>
+		<path id="kvg:08863-s6" kvg:type="㇏" d="M46.25,50.75c3.73,0.63,25.49,21.06,36.59,28.66c3.29,2.25,6.3,4.07,10.16,5.34"/>
+	</g>
+</g>
+</kanji>
+</kanjivg>
