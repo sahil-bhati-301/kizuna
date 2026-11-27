@@ -1,15 +1,15 @@
 # STATUS
 
-Phase 0 · Week W02 (Pipeline II: components, words, alignment) · planned and approved · Updated: session 13 (/wp W02-2)
-Light: 🟢 green at session 13 end (week 33%, 5h 55%). Run /budget with /usage figures at the start and end of every session.
+Phase 0 · Week W02 (Pipeline II: components, words, alignment) · planned and approved · Updated: session 14 (/wp W02-1)
+Light: 🟢 green at session 14 start (week 33%, 5h 53%). Run /budget with /usage figures at the start and end of every session.
 
 ## Next step
-- Run the next W02 WP per the weekly plan (W02-2 merged in PR #19).
+- W02-1 PR open (see Active WPs): owner review and merge. Then the next W02 WP per the weekly plan.
 - W01 retro done: measured ≈2% per M-eq, capacity ≈30 M-eq (coarse). Schedule kept; W02 is planned at 8 M-eq (§2.7), the surplus is reserve.
-- Need from the owner: a /usage figure at the end of session 11 (W01-7 and the retro have no end reading).
+- Need from the owner: /usage figures at the end of session 14 (W02-1) and session 11.
 
 ## Active WPs
-- (none started; W02-1, W02-3 to W02-6 remain)
+- W02-1 KanjiVG parser: done, PR open, awaiting merge. W02-3 to W02-6 remain.
 
 ## Merged in W02
 - W02-2 JMdict common subset → word (PR #19)
@@ -34,6 +34,7 @@ Light: 🟢 green at session 13 end (week 33%, 5h 55%). Run /budget with /usage 
 - (none open; W02 Q-G answered in session 12)
 
 ## Last decisions
+- W02-1 (Q4–Q7, session 14): `ord` is the pre-order index per kanji (PK unique, tree rebuilds from depth + ord); only kvg:radical general/tradit count as semantic; a merged split element takes part 1's place; code-point-less components get glyph 〓; `middle` → `unknown`. KanjiVG bundle = the 6,984 base files at commit 9d7220df, in a `bundled:` lock section.
 - W02-2: headword skips search-only and irregular (iK, io, sK) kanji forms; 37 all-irregular entries take a reading as headword; senses without pos inherit the previous one; glosses without xml:lang are eng; stagk/stagr not parsed yet (backlog, for W02-3).
 - W02 plan (session 12): all recommendations taken. Sources: commit compressed files under content/sources/; a file over 50 MB gets a filtered subset with the upstream checksum pinned. JMdict: all-language JMdict.gz, entries with any priority tag. W02-5 is M (adds Unihan); W02-6 added.
 - W01 retro: calibration factor 0.24 (≈2.0% per M-eq against the planned 7.5%). Keep the schedule; do not pull work forward in the first month.
