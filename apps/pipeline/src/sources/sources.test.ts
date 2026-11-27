@@ -4,8 +4,11 @@ import { mkdtemp, readFile, rm, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { readFileSync } from 'node:fs';
-import { afterAll, beforeAll, beforeEach, describe, expect, it } from 'vitest';
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it } from 'vitest';
 import { ChecksumMismatchError, defaultFetch, fetchSource, pinSource, sha256 } from './fetch.ts';
+import { run } from './run.ts';
+import { execFileSync } from 'node:child_process';
+import { mkdirSync } from 'node:fs';
 import { LockSchemaError, parseLock, validateLock, type SourceEntry } from './lock.ts';
 
 const body = new TextEncoder().encode('stub payload');
@@ -23,6 +26,7 @@ beforeAll(async () => {
   base = `http://127.0.0.1:${(server.address() as AddressInfo).port}`;
 });
 afterAll(() => new Promise<void>((r) => server.close(() => r())));
+afterEach(() => rm(dir, { recursive: true, force: true }));
 beforeEach(async () => {
   hits = 0;
   dir = await mkdtemp(join(tmpdir(), 'pipeline-src-'));
@@ -81,7 +85,6 @@ describe('fetchSource', () => {
     expect((err as Error).message).toContain('"stub"');
     expect((err as Error).message).toContain('sources:pin stub');
     await expect(readFile(join(dir, 'stub.gz'))).rejects.toThrow();
-    await rm(dir, { recursive: true });
   });
   it('re-downloads when the stored file is corrupt', async () => {
     await writeFile(join(dir, 'stub.gz'), 'corrupt');
@@ -92,5 +95,70 @@ describe('fetchSource', () => {
     expect(await pinSource(entry({ sha256: '0'.repeat(64) }), { sourcesDir: dir })).toBe(
       sha256(body),
     );
+  });
+});
+
+describe('cli run', () => {
+  const lockFor = (sha: string) =>
+    `sources:\n  - id: stub\n    url: ${base}/stub.gz\n    version: '1'\n    fetched: '2026-01-01'\n    file: stub.gz\n    sha256: '${sha}'\n    license: CC BY-SA 4.0\n`;
+  it('exits non-zero on a checksum mismatch, naming source and re-pin command', async () => {
+    const lockPath = join(dir, 'lock.yaml');
+    await writeFile(lockPath, lockFor('f'.repeat(64)));
+    const lines: string[] = [];
+    const code = await run(['fetch'], {
+      lockPath,
+      sourcesDir: join(dir, 's'),
+      today: '2026-01-02',
+      log: (l) => lines.push(l),
+    });
+    expect(code).toBe(1);
+    expect(lines.join('\n')).toMatch(/stub[\s\S]*sources:pin stub/);
+  });
+  it('pin writes file and lock together', async () => {
+    const lockPath = join(dir, 'lock.yaml');
+    await writeFile(lockPath, lockFor('0'.repeat(64)));
+    const code = await run(['pin'], {
+      lockPath,
+      sourcesDir: join(dir, 's'),
+      today: '2026-01-02',
+      log: () => {},
+    });
+    expect(code).toBe(0);
+    expect(parseLock(await readFile(lockPath, 'utf8')).sources[0]?.sha256).toBe(sha256(body));
+  });
+  it('pin leaves the lock untouched when a download fails', async () => {
+    const lockPath = join(dir, 'lock.yaml');
+    const text = lockFor('0'.repeat(64))
+      .replace('/stub.gz', '/stub.gz')
+      .replace(base, 'http://127.0.0.1:1');
+    await writeFile(lockPath, text);
+    await expect(
+      run(['pin'], { lockPath, sourcesDir: join(dir, 's'), today: 'x', log: () => {} }),
+    ).rejects.toThrow();
+    expect(await readFile(lockPath, 'utf8')).toBe(text);
+  });
+});
+
+describe('no-app-to-app rule', () => {
+  it('fires when one app imports another', () => {
+    const root = new URL('../../../../', import.meta.url).pathname;
+    mkdirSync(join(dir, 'apps/a'), { recursive: true });
+    mkdirSync(join(dir, 'apps/b'), { recursive: true });
+    return Promise.all([
+      writeFile(join(dir, 'apps/a/x.ts'), "import '../b/y.ts';\nexport {};\n"),
+      writeFile(join(dir, 'apps/b/y.ts'), 'export {};\n'),
+    ]).then(() => {
+      let out = '';
+      try {
+        execFileSync(
+          join(root, 'node_modules/.bin/depcruise'),
+          ['--config', join(root, '.dependency-cruiser.cjs'), 'apps'],
+          { cwd: dir, encoding: 'utf8', stdio: 'pipe' },
+        );
+      } catch (e) {
+        out = String((e as { stdout?: string }).stdout);
+      }
+      expect(out).toContain('no-app-to-app');
+    });
   });
 });

@@ -10,3 +10,4 @@ cloud sessions and CI need no network. Fetch or verify with `pnpm --filter @kizu
 - Licence: Creative Commons Attribution-ShareAlike 4.0, <https://creativecommons.org/licenses/by-sa/4.0/>.
   See <https://www.edrdg.org/edrdg/licence.html>. Derived data stays share-alike.
 - Files are stored unmodified, as downloaded.
+- `pin` writes `fetched` and `sha256` into the lock; `version` is set by hand.

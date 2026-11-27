@@ -1,5 +1,5 @@
 import { createHash } from 'node:crypto';
-import { mkdir, readFile, rename, writeFile } from 'node:fs/promises';
+import { mkdir, readFile, rename, rm, writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import type { SourceEntry } from './lock.ts';
 
@@ -40,8 +40,12 @@ async function download(entry: SourceEntry, fetchFn: FetchFn): Promise<Uint8Arra
 async function store(path: string, bytes: Uint8Array, dir: string): Promise<void> {
   await mkdir(dir, { recursive: true });
   const tmp = `${path}.part`;
-  await writeFile(tmp, bytes);
-  await rename(tmp, path);
+  try {
+    await writeFile(tmp, bytes);
+    await rename(tmp, path);
+  } finally {
+    await rm(tmp, { force: true });
+  }
 }
 
 /** Returns 'cached' when the committed file already matches the pin; no network is touched. */
@@ -62,12 +66,28 @@ export async function fetchSource(
   return 'downloaded';
 }
 
-/** Downloads unconditionally, stores the file and returns the new checksum for the lock. */
+/** Downloads unconditionally and returns the bytes and checksum; writes nothing. */
+export async function downloadForPin(
+  entry: SourceEntry,
+  fetchFn: FetchFn = defaultFetch,
+): Promise<{ bytes: Uint8Array; sha256: string }> {
+  const bytes = await download(entry, fetchFn);
+  return { bytes, sha256: sha256(bytes) };
+}
+
+/** Writes a downloaded file into the sources directory. */
+export const storeSource = (
+  entry: SourceEntry,
+  bytes: Uint8Array,
+  sourcesDir: string,
+): Promise<void> => store(sourcePath(sourcesDir, entry), bytes, sourcesDir);
+
+/** Downloads unconditionally, stores the file and returns the new checksum. */
 export async function pinSource(
   entry: SourceEntry,
   opts: { sourcesDir: string; fetchFn?: FetchFn },
 ): Promise<string> {
-  const bytes = await download(entry, opts.fetchFn ?? defaultFetch);
-  await store(sourcePath(opts.sourcesDir, entry), bytes, opts.sourcesDir);
-  return sha256(bytes);
+  const got = await downloadForPin(entry, opts.fetchFn);
+  await storeSource(entry, got.bytes, opts.sourcesDir);
+  return got.sha256;
 }
