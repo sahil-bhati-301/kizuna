@@ -22,12 +22,13 @@ Light: 🟢 green at session 11 start (week 30%, 5h 26%). Run /budget with /usag
 - O-6 (W01): re-verify the KANJIDIC2 and KRADFILE licences at source. Open; needed before the W03 release.
 - W02 hosts: allowed by the owner in session 12. Tatoeba and Unicode download; GitHub release files (KanjiVG, JmdictFurigana) are still refused by the session's git proxy (W02 Q-G).
 - O-7 (W02 day 5): triage the first review queue.
+- W02 Q-G (before W02-3, day 3): upload the JmdictFurigana release file to `content/sources/`. KanjiVG is bundled by W02-1 from a pinned commit.
 
 ## Blockers
 - (none)
 
 ## OPEN-Q
-- W02 Q-G: how to get the KanjiVG and JmdictFurigana release files (docs/plan/weeks/W02.md). Blocks only the W02-1 and W02-3 lock pins and full-file runs.
+- (none open; W02 Q-G answered in session 12)
 
 ## Last decisions
 - W02 plan (session 12): all recommendations taken. Sources: commit compressed files under content/sources/; a file over 50 MB gets a filtered subset with the upstream checksum pinned. JMdict: all-language JMdict.gz, entries with any priority tag. W02-5 is M (adds Unihan); W02-6 added.
