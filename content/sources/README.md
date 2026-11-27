@@ -23,4 +23,6 @@ cloud sessions and CI need no network. Fetch or verify with `pnpm --filter @kizu
   downloaded from the session (W02 Q-G). Same content as the upstream release file `kanjivg.xml`:
   the 6,984 base files `kanji/XXXXX.svg` (variant files such as `-Kaisho` are left out), sliced as
   `kvg.py release()` does, unmodified. Only the generated-on date line of the header is replaced by
-  the commit. Pinned under `bundled:` in the lock; `sources:fetch` does not download it.
+  the commit. The gzip bytes repeat only with the same zlib build (Node
+  version); another build may compress the same XML differently, so check the XML, not the
+  sha256, after a Node upgrade. Pinned under `bundled:` in the lock; `sources:fetch` does not download it.

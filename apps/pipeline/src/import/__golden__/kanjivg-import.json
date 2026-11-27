@@ -91,6 +91,15 @@
       "license": "CC BY-SA 3.0"
     },
     {
+      "slug": "二",
+      "glyph": "二",
+      "kanjiVgId": null,
+      "radicalNumber": null,
+      "source": "kanjivg",
+      "sourceVersion": "test",
+      "license": "CC BY-SA 3.0"
+    },
+    {
       "slug": "亠",
       "glyph": "亠",
       "kanjiVgId": null,
@@ -190,6 +199,15 @@
       "license": "CC BY-SA 3.0"
     },
     {
+      "slug": "廾",
+      "glyph": "廾",
+      "kanjiVgId": null,
+      "radicalNumber": null,
+      "source": "kanjivg",
+      "sourceVersion": "test",
+      "license": "CC BY-SA 3.0"
+    },
+    {
       "slug": "彳",
       "glyph": "彳",
       "kanjiVgId": null,
@@ -263,6 +281,58 @@
     }
   ],
   "kanjiComponents": [
+    {
+      "kanjiLiteral": "井",
+      "componentSlug": "二",
+      "position": "none",
+      "role": "unknown",
+      "depth": 1,
+      "ord": 1,
+      "kvgId": "kvg:04e95-g1",
+      "parentKvgId": null,
+      "source": "kanjivg",
+      "sourceVersion": "test",
+      "license": "CC BY-SA 3.0"
+    },
+    {
+      "kanjiLiteral": "井",
+      "componentSlug": "十",
+      "position": "none",
+      "role": "unknown",
+      "depth": 2,
+      "ord": 2,
+      "kvgId": "kvg:04e95-g4",
+      "parentKvgId": "kvg:04e95-g1",
+      "source": "kanjivg",
+      "sourceVersion": "test",
+      "license": "CC BY-SA 3.0"
+    },
+    {
+      "kanjiLiteral": "井",
+      "componentSlug": "廾",
+      "position": "none",
+      "role": "unknown",
+      "depth": 1,
+      "ord": 3,
+      "kvgId": "kvg:04e95-g2",
+      "parentKvgId": null,
+      "source": "kanjivg",
+      "sourceVersion": "test",
+      "license": "CC BY-SA 3.0"
+    },
+    {
+      "kanjiLiteral": "井",
+      "componentSlug": "丿",
+      "position": "none",
+      "role": "unknown",
+      "depth": 2,
+      "ord": 4,
+      "kvgId": "kvg:04e95-g5",
+      "parentKvgId": "kvg:04e95-g2",
+      "source": "kanjivg",
+      "sourceVersion": "test",
+      "license": "CC BY-SA 3.0"
+    },
     {
       "kanjiLiteral": "哀",
       "componentSlug": "衣",
@@ -851,6 +921,10 @@
   ],
   "strokes": [
     {
+      "kanji": "井",
+      "strokes": 4
+    },
+    {
       "kanji": "哀",
       "strokes": 9
     },
@@ -892,10 +966,10 @@
     }
   ],
   "report": {
-    "kanjiCount": 10,
-    "componentRows": 29,
-    "kanjiComponentRows": 45,
-    "unknownRoles": 33,
+    "kanjiCount": 11,
+    "componentRows": 31,
+    "kanjiComponentRows": 49,
+    "unknownRoles": 37,
     "unknownPositions": 0,
     "codepointlessComponents": 6,
     "unmatchedParts": 0,

@@ -4,7 +4,8 @@
  * `kvg.py release()`: only the base files `kanji/XXXXX.svg` (no `-Kaisho`, `-VtLst`, ... variants),
  * sorted by file name; per file, the content of <g id="kvg:StrokePaths_XXXXX"> wrapped in
  * <kanji id="kvg:kanji_XXXXX">; one licence header. The generated-on date is replaced by the commit,
- * and the gzip header has no name, mtime 0 and OS 255, so a rerun gives the same bytes.
+ * and the gzip header has no name, mtime 0 and OS 255, so a rerun gives the same bytes
+ * with the same zlib build (Node version); another zlib may compress the same XML differently.
  */
 import { gzipSync } from 'node:zlib';
 

@@ -35,7 +35,9 @@ transcribed:
 # Built locally from a pinned upstream commit (W02 Q-G answer a: GitHub release files are not
 # reachable from the session). Not fetched by sources:fetch. Rebuild with
 # pnpm --filter @kizuna/pipeline kanjivg:bundle <kanjivg clone at the commit>; the sha256 is of the
-# committed file. Same selection as upstream kvg.py release(): the 6,984 base files kanji/XXXXX.svg.
+# committed file. The bytes repeat only with the same zlib build (Node version); a rebuild with
+# another one may give a different sha256 for the same XML. Same selection as upstream
+# kvg.py release(): the 6,984 base files kanji/XXXXX.svg.
 bundled:
   - id: kanjivg
     url: https://github.com/KanjiVG/kanjivg

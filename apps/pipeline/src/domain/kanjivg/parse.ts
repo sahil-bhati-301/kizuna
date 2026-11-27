@@ -8,7 +8,7 @@
  * - Q2, Q5: kvg:phon → phonetic; kvg:radical general/tradit in a kanji with a kvg:phon → semantic;
  *   everything else unknown. `form` is never produced (curated overrides only).
  * - Q3, Q7: an element with no code point is slugged by its element ID (`kvg:05e73-g1`), glyph 〓.
- * - Q4: `ord` is the pre-order index of the row within the kanji, 1..n.
+ * - Q4: `ord` is the pre-order index of the row in the merged tree of the kanji, 1..n.
  * - Q6: a split element (kvg:part 1, 2, ...) is one row at the place of part 1.
  * Consequences of those answers, applied here (documented in the WP handoff):
  * - Parts pair by kvg:element and kvg:number: part n joins the latest part n-1 of the same key.
@@ -133,7 +133,10 @@ interface RawRow {
   readonly codepointless: boolean;
   readonly position: KanjiPosition;
   readonly depth: number;
-  readonly ord: number;
+  /** Set at </kanji> by a pre-order walk of the merged tree. */
+  ord: number;
+  /** Child rows in document order; a later part's children follow part 1's. */
+  readonly children: RawRow[];
   phon: boolean;
   semanticRadical: boolean;
 }
@@ -159,10 +162,24 @@ function slugOf(attrs: Readonly<Record<string, string>>, id: string) {
   return { slug: glyph, glyph, codepointless: false };
 }
 
+/**
+ * Rows of the merged tree in pre-order, numbered 1..n (Q4a). Numbering after merging keeps the
+ * children of a later split part right after their merged element, so depth + ord rebuild the tree.
+ */
+function preOrder(roots: readonly RawRow[]): RawRow[] {
+  const out: RawRow[] = [];
+  const visit = (r: RawRow) => {
+    r.ord = out.push(r);
+    r.children.forEach(visit);
+  };
+  roots.forEach(visit);
+  return out;
+}
+
 /** Folds tokens into one tree per <kanji>; `onKanji` fires when a </kanji> closes. */
 class KanjiBuilder {
   private literal: string | undefined;
-  private rows: RawRow[] = [];
+  private roots: RawRow[] = [];
   private groups: SplitGroup[] = [];
   private stack: Frame[] = [];
   private strokes = 0;
@@ -190,7 +207,7 @@ class KanjiBuilder {
     if (this.literal === undefined) return;
     if (t.name === 'g') this.stack.pop();
     else if (t.name === 'kanji') {
-      this.onKanji(this.literal, this.rows, this.strokes);
+      this.onKanji(this.literal, preOrder(this.roots), this.strokes);
       this.literal = undefined;
     }
   }
@@ -206,7 +223,7 @@ class KanjiBuilder {
       return;
     }
     this.literal = literal;
-    this.rows = [];
+    this.roots = [];
     this.groups = [];
     this.stack = [];
     this.strokes = 0;
@@ -248,11 +265,12 @@ class KanjiBuilder {
       codepointless,
       position: mapPosition(attrs['kvg:position']),
       depth: parent === null ? 1 : parent.depth + 1,
-      ord: this.rows.length + 1,
+      ord: 0,
+      children: [],
       phon,
       semanticRadical,
     };
-    this.rows.push(row);
+    (parent === null ? this.roots : parent.children).push(row);
     if (part === 1 && element !== undefined) this.groups.push({ key, row, last: 1 });
     if (!selfClosing) this.stack.push({ row });
   }
