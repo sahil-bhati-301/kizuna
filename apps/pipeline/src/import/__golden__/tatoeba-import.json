@@ -1,0 +1,202 @@
+{
+  "sentences": [
+    {
+      "id": "101",
+      "japanese": "彼は書物を書く。",
+      "translations": [
+        {
+          "lang": "eng",
+          "id": 5001,
+          "text": "He writes a book."
+        }
+      ],
+      "wordIds": [1000110, 1000200],
+      "quality": 0.4,
+      "attributionUrl": "https://tatoeba.org/en/sentences/show/101",
+      "source": "tatoeba",
+      "sourceVersion": "test",
+      "license": "CC BY 2.0 FR"
+    },
+    {
+      "id": "102",
+      "japanese": "台所でコーヒーを飲む。",
+      "translations": [
+        {
+          "lang": "eng",
+          "id": 5002,
+          "text": "I drink coffee in the kitchen."
+        },
+        {
+          "lang": "eng",
+          "id": 5003,
+          "text": "Coffee is drunk in the kitchen."
+        }
+      ],
+      "wordIds": [1000130, 1000150],
+      "quality": 0.4,
+      "attributionUrl": "https://tatoeba.org/en/sentences/show/102",
+      "source": "tatoeba",
+      "sourceVersion": "test",
+      "license": "CC BY 2.0 FR"
+    },
+    {
+      "id": "103",
+      "japanese": "ありがとう。",
+      "translations": [
+        {
+          "lang": "eng",
+          "id": 5004,
+          "text": "Thank you."
+        }
+      ],
+      "wordIds": [1000120],
+      "quality": 1,
+      "attributionUrl": "https://tatoeba.org/en/sentences/show/103",
+      "source": "tatoeba",
+      "sourceVersion": "test",
+      "license": "CC BY 2.0 FR"
+    },
+    {
+      "id": "104",
+      "japanese": "ワインとビール。",
+      "translations": [
+        {
+          "lang": "eng",
+          "id": 5005,
+          "text": "Wine and beer."
+        }
+      ],
+      "wordIds": [1000180],
+      "quality": 0.333,
+      "attributionUrl": "https://tatoeba.org/en/sentences/show/104",
+      "source": "tatoeba",
+      "sourceVersion": "test",
+      "license": "CC BY 2.0 FR"
+    },
+    {
+      "id": "107",
+      "japanese": "寂しい。",
+      "translations": [
+        {
+          "lang": "eng",
+          "id": 5007,
+          "text": "I feel lonely."
+        }
+      ],
+      "wordIds": [1000140],
+      "quality": 1,
+      "attributionUrl": "https://tatoeba.org/en/sentences/show/107",
+      "source": "tatoeba",
+      "sourceVersion": "test",
+      "license": "CC BY 2.0 FR"
+    },
+    {
+      "id": "109",
+      "japanese": "食べる。",
+      "translations": [
+        {
+          "lang": "eng",
+          "id": 5008,
+          "text": "Eat."
+        }
+      ],
+      "wordIds": [1000100],
+      "quality": 1,
+      "attributionUrl": "https://tatoeba.org/en/sentences/show/109",
+      "source": "tatoeba",
+      "sourceVersion": "test",
+      "license": "CC BY 2.0 FR"
+    },
+    {
+      "id": "110",
+      "japanese": "食べた人がいる。",
+      "translations": [
+        {
+          "lang": "eng",
+          "id": 5009,
+          "text": "Someone who is eating is here."
+        }
+      ],
+      "wordIds": [1000100, 1000170],
+      "quality": 0.5,
+      "attributionUrl": "https://tatoeba.org/en/sentences/show/110",
+      "source": "tatoeba",
+      "sourceVersion": "test",
+      "license": "CC BY 2.0 FR"
+    }
+  ],
+  "report": {
+    "japaneseRead": 10,
+    "sentencesKept": 7,
+    "noEnglishTranslation": 2,
+    "noIndexLine": 0,
+    "noMappedWord": 1,
+    "wordLinks": 10,
+    "unknownItems": 10,
+    "ambiguousItems": 0,
+    "unparsedItems": 0,
+    "optionBKept": 2,
+    "unmapped": [
+      {
+        "sentenceId": 101,
+        "headword": "彼",
+        "reading": "かれ",
+        "reason": "unknown"
+      },
+      {
+        "sentenceId": 101,
+        "headword": "は",
+        "reading": null,
+        "reason": "unknown"
+      },
+      {
+        "sentenceId": 101,
+        "headword": "を",
+        "reading": null,
+        "reason": "unknown"
+      },
+      {
+        "sentenceId": 102,
+        "headword": "で",
+        "reading": null,
+        "reason": "unknown"
+      },
+      {
+        "sentenceId": 102,
+        "headword": "を",
+        "reading": null,
+        "reason": "unknown"
+      },
+      {
+        "sentenceId": 102,
+        "headword": "飲む",
+        "reading": null,
+        "reason": "unknown"
+      },
+      {
+        "sentenceId": 104,
+        "headword": "と",
+        "reading": null,
+        "reason": "unknown"
+      },
+      {
+        "sentenceId": 104,
+        "headword": "ビール",
+        "reading": null,
+        "reason": "unknown"
+      },
+      {
+        "sentenceId": 110,
+        "headword": "人",
+        "reading": null,
+        "reason": "unknown"
+      },
+      {
+        "sentenceId": 110,
+        "headword": "が",
+        "reading": null,
+        "reason": "unknown"
+      }
+    ]
+  }
+}

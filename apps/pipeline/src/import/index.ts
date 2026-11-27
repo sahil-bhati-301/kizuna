@@ -167,3 +167,5 @@ export { importJmdict, importJmdictFile, serialiseWords } from './jmdict.ts';
 export type { JmdictImportResult } from './jmdict.ts';
 export { importKanjivg, importKanjivgFile, serialiseKanjivg } from './kanjivg.ts';
 export type { KanjivgImportResult } from './kanjivg.ts';
+export { bzLines, importTatoeba, importTatoebaFiles, serialiseSentences } from './tatoeba.ts';
+export type { TatoebaFiles, TatoebaImportResult, TatoebaInput } from './tatoeba.ts';
