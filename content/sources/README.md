@@ -26,3 +26,11 @@ cloud sessions and CI need no network. Fetch or verify with `pnpm --filter @kizu
   the commit. The gzip bytes repeat only with the same zlib build (Node
   version); another build may compress the same XML differently, so check the XML, not the
   sha256, after a Node upgrade. Pinned under `bundled:` in the lock; `sources:fetch` does not download it.
+
+## Tatoeba
+
+- `jpn_sentences.tsv.bz2`, `eng_sentences.tsv.bz2`, `jpn-eng_links.tsv.bz2`, `jpn_indices.tar.bz2`:
+  Tatoeba per-language exports of 2026-11-21, <https://tatoeba.org/>, stored unmodified (each under 50 MB).
+- Licence: Creative Commons Attribution 2.0 France, <https://creativecommons.org/licenses/by/2.0/fr/>
+  (some sentences are CC0). Per-sentence attribution: every sentence row carries a link to
+  `https://tatoeba.org/en/sentences/show/<id>`, where the author is shown.

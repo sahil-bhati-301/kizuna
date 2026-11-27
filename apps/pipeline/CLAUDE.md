@@ -9,7 +9,8 @@ Content pipeline CLI (pipeline.md §8.2): import → normalise → enrich → va
 - `pinSource`: unconditional download that returns the new sha256; the CLI `pin` writes it and the date into the lock.
 - Commands: `pnpm --filter @kizuna/pipeline sources:fetch [id]`, `sources:pin [id]`. Behind the agent proxy set `NODE_USE_ENV_PROXY=1 NODE_EXTRA_CA_CERTS=/root/.ccr/ca-bundle.crt`.
 - `bundled:` entries (KanjiVG) are built from a pinned upstream commit, validated by `parseBundled` (adds `commit`) and never fetched: `pnpm --filter @kizuna/pipeline kanjivg:bundle <clone>` rebuilds `kanjivg.xml.gz` byte for byte. `transcribed:` (Jōyō) is not parsed by code.
-- Full-file smoke runs: `jmdict:run`, `kanjivg:run`.
+- Full-file smoke runs: `jmdict:run`, `kanjivg:run`, `tatoeba:run` (needs `bzip2` and `tar` on the PATH: Node has no bzip2; 14 s, about 1 GB).
+- Tatoeba (W02-4): four `.bz2` files pinned in `sources:`. Index items are `headword(reading)[sense]{form}~`; `(#id)` names the JMdict entry directly. Ambiguous or unknown words are reported, never guessed. Q1 a and Q2 a (quality = mapped / all index items) are in `domain/tatoeba/build.ts`.
 - CLI files run under Node type stripping: no parameter properties, no enums, `.ts` import suffixes.
 
 ## Rules
