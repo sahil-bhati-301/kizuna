@@ -5,7 +5,10 @@
  *   parseJoyoTable(tsv: string): JoyoEntry[]   // { literal, kind: 'on' | 'kun', reading }
  *     TSV: `#` comment lines, header `literal<TAB>kind<TAB>reading`, readings in KANJIDIC notation.
  *   applyJoyo(parsed: { kanji, readings }, entries: JoyoEntry[])
- *     : { kanji; readings; report: { missingKanji: string[]; missingReadings: JoyoEntry[] } }
+ *     : { kanji; readings; report: { missingKanji: { kanji: string; readings: [...] }[]; missingReadings: JoyoEntry[] } }
+ * Owner answers (WP OPEN-Q): Q2/Q3 reading IDs keep markers (`食:kun:た.べる`, `生:kun:なま-`);
+ * Q5/Q8 a missing kanji's readings are attached to its `missingKanji` entry only;
+ * Q9 Jōyō matching tries the exact form first and ignores markers only when no exact row exists.
  * Expected values are hand-read from test/fixtures/joyo-sample.tsv and kanjidic2-excerpt.xml.
  */
 import { readFileSync } from 'node:fs';
@@ -40,6 +43,12 @@ function joyoFlag(rows: readonly Row[], kanji: string, kind: string, kana: strin
       (r.okurigana ?? '') === okurigana,
   );
   expect(hits, `${kanji}:${kind}:${kana}.${okurigana}`).toHaveLength(1);
+  return hits[0]?.isJoyo;
+}
+
+function flagById(rows: readonly (Row & { id: string })[], id: string) {
+  const hits = rows.filter((r) => r.id === id);
+  expect(hits, id).toHaveLength(1);
   return hits[0]?.isJoyo;
 }
 
@@ -93,17 +102,49 @@ describe('applyJoyo: reading flags (AC 3)', () => {
   });
 });
 
+describe('applyJoyo: exact-first matching (Q3, Q9)', () => {
+  it('flags the exact form when one exists: 生 なま flags 生:kun:なま, not 生:kun:なま-', async () => {
+    const { readings } = await applied();
+    expect(flagById(readings, '生:kun:なま')).toBe(true);
+    expect(flagById(readings, '生:kun:なま-')).toBe(false);
+  });
+
+  it('ignores markers only when no exact row exists: 日 か flags 日:kun:-か', async () => {
+    const { readings } = await applied();
+    expect(flagById(readings, '日:kun:-か')).toBe(true);
+    expect(flagById(readings, '日:kun:-び')).toBe(false);
+  });
+
+  it('does not report a reading matched by the marker-free fallback as missing', async () => {
+    const { report } = await applied();
+    expect(report.missingReadings).not.toContainEqual({
+      literal: '日',
+      kind: 'kun',
+      reading: 'か',
+    });
+  });
+});
+
 describe('applyJoyo: unmatched entries are reported (AC 4)', () => {
   it('reports a Jōyō kanji absent from KANJIDIC2', async () => {
     const { report, kanji } = await applied();
-    expect(report.missingKanji).toEqual(['丼']);
+    expect(report.missingKanji).toEqual([
+      {
+        kanji: '丼',
+        readings: [expect.objectContaining({ kind: 'kun', reading: 'どんぶり' })],
+      },
+    ]);
     expect(kanji.find((k) => k.literal === '丼')).toBeUndefined();
   });
 
   it('reports a Jōyō reading KANJIDIC2 does not list, instead of dropping it silently', async () => {
     const { report } = await applied();
-    const forKnownKanji = report.missingReadings.filter((e) => e.literal !== '丼');
-    expect(forKnownKanji).toEqual([{ literal: '食', kind: 'kun', reading: 'め.し' }]);
+    expect(report.missingReadings).toEqual([{ literal: '食', kind: 'kun', reading: 'め.し' }]);
+  });
+
+  it('lists the readings of a missing kanji only on its missingKanji entry (Q5)', async () => {
+    const { report } = await applied();
+    expect(report.missingReadings.some((e) => e.literal === '丼')).toBe(false);
   });
 
   it('keeps provenance on every row after flagging (AC 6)', async () => {

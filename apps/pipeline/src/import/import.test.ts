@@ -47,8 +47,28 @@ describe('import provenance (AC 6)', () => {
 describe('import report (AC 4)', () => {
   it('reports unmatched Jōyō kanji and readings', async () => {
     const { report } = await run([xml]);
-    expect(report.missingKanji).toContain('丼');
+    expect(report.missingKanji).toContainEqual({
+      kanji: '丼',
+      readings: [expect.objectContaining({ kind: 'kun', reading: 'どんぶり' })],
+    });
     expect(report.missingReadings).toContainEqual({ literal: '食', kind: 'kun', reading: 'め.し' });
+  });
+});
+
+describe('compatibility ideographs (Q7)', () => {
+  const COMPAT = '\uFA67'; // NFC folds it onto 逸 U+9038
+
+  it('leaves a CJK compatibility ideograph out of the rows', async () => {
+    const { kanji, readings } = await run([xml]);
+    for (const lit of [COMPAT, '\u9038']) {
+      expect(kanji.some((k) => k.literal === lit)).toBe(false);
+      expect(readings.some((r) => r.kanjiLiteral === lit)).toBe(false);
+    }
+  });
+
+  it('lists it in report.excludedCharacters instead of dropping it silently', async () => {
+    const { report } = await run([xml]);
+    expect(report.excludedCharacters).toEqual([expect.objectContaining({ literal: COMPAT })]);
   });
 });
 

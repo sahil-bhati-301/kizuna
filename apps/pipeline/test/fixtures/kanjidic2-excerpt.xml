@@ -4,7 +4,7 @@
   KANJIDIC2 is copyright the Electronic Dictionary Research and Development Group (EDRDG),
   https://www.edrdg.org/, and is used under the Creative Commons Attribution-ShareAlike 4.0
   licence, https://creativecommons.org/licenses/by-sa/4.0/ (see https://www.edrdg.org/edrdg/licence.html).
-  Modified: seven entries selected; dic_number and query_code elements removed; no other change.
+  Modified: eight entries selected (one a CJK compatibility ideograph, U+FA67); dic_number and query_code elements removed; no other change.
   This excerpt is itself CC BY-SA 4.0.
 -->
 <kanjidic2>
@@ -341,6 +341,27 @@
 <meaning m_lang="es">confundirse</meaning>
 <meaning m_lang="es">estar desordenado</meaning>
 <meaning m_lang="es">estar desorganizado</meaning>
+</rmgroup>
+</reading_meaning>
+</character>
+<!-- Entry for Kanji: 逸 -->
+<character>
+<literal>逸</literal>
+<codepoint>
+<cp_value cp_type="ucs">FA67</cp_value>
+<cp_value cp_type="jis213">1-92-57</cp_value>
+</codepoint>
+<radical>
+<rad_value rad_type="classical">162</rad_value>
+</radical>
+<misc>
+<grade>10</grade>
+<stroke_count>12</stroke_count>
+<variant var_type="jis208">1-16-79</variant>
+</misc>
+<reading_meaning>
+<rmgroup>
+<reading r_type="ja_kun">しんにょう</reading>
 </rmgroup>
 </reading_meaning>
 </character>
