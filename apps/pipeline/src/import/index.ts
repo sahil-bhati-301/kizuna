@@ -3,7 +3,7 @@
  * Input arrives as text; reading files is the caller's job.
  */
 import { applyJoyo, parseJoyoTable } from '../domain/joyo/index.ts';
-import type { JoyoReport } from '../domain/joyo/index.ts';
+import type { JoyoEntry, JoyoReport } from '../domain/joyo/index.ts';
 import { parseKanjidic } from '../domain/kanjidic/index.ts';
 import type {
   ExcludedCharacter,
@@ -123,6 +123,8 @@ function stringify(value: unknown, indent = ''): string {
   return JSON.stringify(value);
 }
 
+const entry = (e: JoyoEntry) => ({ literal: e.literal, kind: e.kind, reading: e.reading });
+
 /** Sorted JSON rows with a fixed key order: byte-stable for the same inputs. */
 export function serialiseRows(result: ImportResult): string {
   const sorted = sortRows(result);
@@ -130,12 +132,11 @@ export function serialiseRows(result: ImportResult): string {
     kanji: sorted.kanji.map((k) => pick(k, KANJI_KEYS)),
     readings: sorted.readings.map((r) => pick(r, READING_KEYS)),
     report: {
-      missingKanji: sorted.report.missingKanji,
-      missingReadings: sorted.report.missingReadings.map((e) => ({
-        literal: e.literal,
-        kind: e.kind,
-        reading: e.reading,
+      missingKanji: sorted.report.missingKanji.map((m) => ({
+        kanji: m.kanji,
+        readings: m.readings.map(entry),
       })),
+      missingReadings: sorted.report.missingReadings.map(entry),
       excludedCharacters: sorted.report.excludedCharacters.map((e) => ({
         literal: e.literal,
         codepoint: e.codepoint,
