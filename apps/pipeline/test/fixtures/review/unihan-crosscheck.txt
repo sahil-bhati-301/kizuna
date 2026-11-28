@@ -1,0 +1,18 @@
+# Unihan_IRGSources.txt
+# Date: 2026-07-31 00:00:00 GMT [KL]
+# Unicode Version 18.0.0
+#
+# Unicode Character Database
+# © 2026 Unicode®, Inc.
+# Unicode and the Unicode Logo are registered trademarks of Unicode, Inc. in the U.S. and other countries.
+# For terms of use and license, see https://www.unicode.org/terms_of_use.html
+#
+# Test fixture: an excerpt (five characters, kTotalStrokes lines only) of the Unihan database,
+# used under the Unicode License v3, https://www.unicode.org/license.txt. Values for 持 and 井
+# are altered by hand to give disagreements; this excerpt is not the upstream file.
+U+4E95	kIRG_JSource	JA-3B21
+U+4E95	kTotalStrokes	5
+U+6301	kTotalStrokes	10
+U+660E	kTotalStrokes	8
+U+6C60	kTotalStrokes	6
+U+809D	kTotalStrokes	7 8

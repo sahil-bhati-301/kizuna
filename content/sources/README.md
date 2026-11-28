@@ -34,3 +34,12 @@ cloud sessions and CI need no network. Fetch or verify with `pnpm --filter @kizu
 - Licence: Creative Commons Attribution 2.0 France, <https://creativecommons.org/licenses/by/2.0/fr/>
   (some sentences are CC0). Per-sentence attribution: every sentence row carries a link to
   `https://tatoeba.org/en/sentences/show/<id>`, where the author is shown.
+
+## Unihan
+
+- `Unihan.zip`: the Unicode Han Database (UCD `latest`, files dated 2026-07-31, Unicode 18.0.0),
+  <https://www.unicode.org/charts/unihan.html>, stored unmodified (8 MB). Used only for
+  `kTotalStrokes` (in `Unihan_IRGSources.txt`) by the review cross-checks (W02-5).
+- Copyright (c) 1991-2026 Unicode, Inc. Licence: Unicode License v3, <https://www.unicode.org/license.txt>
+  (permissive: keep this copyright and permission notice with copies of the data). The `latest`
+  URL moves with each Unicode release; the pinned sha256 detects a change, so re-pin on purpose.
